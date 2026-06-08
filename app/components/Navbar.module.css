@@ -154,3 +154,207 @@
   color: var(--color-cta-text-hover);
   border-color: var(--color-cta-bg-hover);
 }
+
+/* ─── HAMBURGER, DRAWER, AND OVERLAY (DEFAULT HIDDEN) ─── */
+.hamburger {
+  display: none;
+}
+
+.overlay {
+  display: none;
+}
+
+.drawer {
+  display: none;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+  .navbar.scrolled {
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .navLinks {
+    display: none; /* Hide desktop links */
+  }
+
+  .ctaBtn {
+    display: none; /* Hide CTA button */
+  }
+
+  /* Show hamburger button */
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    padding: 0;
+    z-index: 110;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hamburger:focus,
+  .hamburger:active,
+  .hamburger:focus-visible {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .bar {
+    position: absolute;
+    width: 22px;
+    height: 2px;
+    background-color: var(--color-text-primary);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    display: block;
+  }
+
+  .bar:nth-child(1) {
+    transform: translateY(-6px);
+  }
+
+  .bar:nth-child(2) {
+    transform: translateY(0);
+  }
+
+  .bar:nth-child(3) {
+    transform: translateY(6px);
+  }
+
+  /* Hamburger transformations */
+  .hamburgerOpen .bar:nth-child(1) {
+    transform: translateY(0) rotate(45deg);
+  }
+  .hamburgerOpen .bar:nth-child(2) {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  .hamburgerOpen .bar:nth-child(3) {
+    transform: translateY(0) rotate(-45deg);
+  }
+
+
+  /* Mobile Drawer Overlay */
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 98;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .overlayOpen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Mobile Drawer */
+  .drawer {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    max-width: 340px;
+    background: var(--color-surface);
+    border-left: 1px solid var(--color-border);
+    z-index: 99;
+    padding: 8rem 2.5rem 3rem;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
+  }
+
+  .drawerOpen {
+    transform: translateX(0);
+  }
+
+  .drawerLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .drawerLinks li {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  .drawerOpen .drawerLinks li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .drawerLink {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    transition: color 0.25s ease;
+  }
+
+  .drawerLinkActive {
+    color: var(--color-accent);
+  }
+
+  .drawerNum {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    opacity: 0.8;
+  }
+
+  .drawerCta {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    border: 1.5px solid var(--color-border-strong);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+    margin-top: auto;
+  }
+
+  .drawerCta:hover {
+    background: var(--color-text-primary);
+    color: var(--color-btn-hover-text);
+    border-color: var(--color-text-primary);
+  }
+}
+

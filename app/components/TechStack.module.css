@@ -192,4 +192,11 @@
     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   }
   .card    { padding: 1.5rem 0.75rem; }
+  
+  .cardName {
+    white-space: normal;
+    word-break: break-word;
+    font-size: 0.62rem;
+    padding: 0 2px;
+  }
 }

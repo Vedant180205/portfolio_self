@@ -295,11 +295,46 @@
   .section { padding: 5rem 0 8rem; }
   .sectionHeader { padding: 0 1.5rem 4rem; flex-direction: column; gap: 0.5rem; }
   .projectList   { padding: 0 1.5rem; gap: 6rem; }
+  
   .projectRow,
-  .projectRowReverse { flex-direction: column; }
-  .collage { width: 100%; flex: none; height: 300px; }
+  .projectRowReverse { 
+    flex-direction: column; 
+    gap: 3.5rem;
+  }
+
+  /* Reset alignment for reverse rows on mobile so they align left */
+  .projectRowReverse .textSide {
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .projectRowReverse .tagList {
+    justify-content: flex-start;
+  }
+  
+  .projectRowReverse .viewBtn {
+    align-self: flex-start;
+  }
+
+  .collage { 
+    width: 100%; 
+    flex: none; 
+    height: 280px; 
+  }
+
+  /* Scale down decorative blocks to prevent horizontal screen overflow */
+  .blockA {
+    bottom: -12px;
+    left: -12px;
+  }
+
+  .blockB {
+    top: -12px;
+    right: -12px;
+  }
+
   .collageReverse .mainWrap  { right: auto; left: 4%; }
-  .collageReverse .blockA    { right: auto; left: -16px; }
-  .collageReverse .blockB    { left: auto;  right: -16px; }
+  .collageReverse .blockA    { right: auto; left: -12px; }
+  .collageReverse .blockB    { left: auto;  right: -12px; }
   .collageReverse .blockC    { left: auto;  right: 4%; }
 }

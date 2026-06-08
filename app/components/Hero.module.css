@@ -281,7 +281,23 @@
     flex: none;
     max-width: 100%;
     padding-right: 0;
+    padding-left: 0;
     z-index: 3;
+  }
+
+  .headline {
+    font-size: clamp(3.2rem, 12vw, 5.5rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .description br {
+    display: none;
   }
 
   .imageWrapper {
@@ -299,5 +315,10 @@
 
   .actions {
     gap: 1.5rem;
+    align-items: center;
+  }
+
+  .scrollIndicator {
+    display: none;
   }
 }
