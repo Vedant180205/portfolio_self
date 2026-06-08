@@ -1,0 +1,311 @@
+/* ─── SECTION ─── */
+.section {
+  background: var(--color-bg);
+  position: relative;
+  padding: 10rem 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── top hairline ── */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 3rem;
+  right: 3rem;
+  height: 1px;
+  background: var(--color-border-subtle);
+}
+
+/* ── bottom hairline ── */
+.section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 3rem;
+  right: 3rem;
+  height: 1px;
+  background: var(--color-border-subtle);
+}
+
+/* ─── DECORATIVE GLOW ─── */
+.glowLeft {
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  transform: translateY(-50%);
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.glowRight {
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  transform: translateY(-50%);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ─── DECORATIVE CORNER LINES ─── */
+.cornerTL,
+.cornerBR {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+.cornerTL {
+  top: 4rem;
+  left: 4rem;
+  border-top: 1px solid rgba(124, 58, 237, 0.8);
+  border-left: 1px solid rgba(124, 58, 237, 0.8);
+}
+
+.cornerBR {
+  bottom: 4rem;
+  right: 4rem;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.8);
+  border-right: 1px solid rgba(124, 58, 237, 0.8);
+}
+
+/* ─── INNER CONTENT ─── */
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2.5rem;
+}
+
+/* ─── EYEBROW ─── */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.5;
+}
+
+/* ─── META STRIP ─── */
+.metaStrip {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.metaLabel {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.metaValue {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.metaLink {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  position: relative;
+}
+
+.metaLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.metaLink:hover::after {
+  width: 100%;
+}
+
+.metaDivider {
+  width: 1px;
+  height: 36px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+/* ─── HEADING ─── */
+.heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 6.5vw, 8rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  line-height: 0.95;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ─── BODY TEXT ─── */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.para {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.9;
+  color: var(--color-text-secondary);
+  font-weight: 300;
+}
+
+.para strong {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+/* ─── DIVIDER DOT ROW ─── */
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.4;
+}
+
+.dot:nth-child(2) {
+  opacity: 0.25;
+  transform: scale(0.7);
+}
+
+.dot:nth-child(3) {
+  opacity: 0.15;
+  transform: scale(0.5);
+}
+
+/* ─── RESUME BUTTON ─── */
+.resumeBtn {
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 2.2rem;
+  border: 1.5px solid var(--color-border-strong);
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.35s ease, border-color 0.35s ease;
+}
+
+.resumeBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+.resumeBtn:hover::before {
+  transform: translateX(0);
+}
+
+.resumeBtn:hover {
+  color: var(--color-btn-hover-text);
+  border-color: var(--color-text-primary);
+}
+
+.resumeBtn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.resumeIcon {
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.resumeBtn:hover .resumeIcon {
+  opacity: 1;
+  transform: translateY(2px);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 700px) {
+  .section {
+    padding: 7rem 0;
+  }
+
+  .cornerTL,
+  .cornerBR {
+    display: none;
+  }
+
+  .glowLeft,
+  .glowRight {
+    width: 250px;
+    height: 250px;
+  }
+}

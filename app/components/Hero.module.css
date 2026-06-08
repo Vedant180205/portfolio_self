@@ -1,0 +1,303 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--color-bg);
+  overflow: hidden;
+  padding: 0 3rem;
+  padding-top: 90px;
+}
+
+/* Subtle film grain overlay */
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+/* ─── LEFT CONTENT ─── */
+.content {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 52%;
+  max-width: 52%;
+  padding-right: 0;
+  padding-left: 3rem;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.7s ease forwards;
+  animation-delay: 0.05s;
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: clamp(6rem, 11vw, 13rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin-bottom: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05em;
+}
+
+.headlineLine {
+  display: block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.headlineLastLine {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.2em;
+}
+
+.accentDot {
+  display: inline-block;
+  width: clamp(10px, 1.2vw, 16px);
+  height: clamp(10px, 1.2vw, 16px);
+  border-radius: 50%;
+  background: var(--color-accent);
+  margin-bottom: 0.12em;
+  flex-shrink: 0;
+  animation: dotPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.85s;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.65s ease forwards;
+  animation-delay: 0.7s;
+}
+
+/* ─── ACTIONS ROW ─── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  opacity: 0;
+  animation: fadeSlideUp 0.65s ease forwards;
+  animation-delay: 0.85s;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border: 1.5px solid var(--color-border-logo);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.primaryBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-text-primary);
+  transform: translateX(-101%);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+.primaryBtn:hover::before {
+  transform: translateX(0);
+}
+
+.primaryBtn:hover {
+  color: var(--color-btn-hover-text);
+  border-color: var(--color-text-primary);
+}
+
+.primaryBtn>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── SCROLL INDICATOR ─── */
+.scrollIndicator {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.scrollCircle {
+  position: absolute;
+  inset: 0;
+  animation: rotateSlow 12s linear infinite;
+}
+
+.scrollCircleText {
+  font-family: var(--font-body);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  fill: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+}
+
+.scrollArrow {
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.scrollIndicator:hover .scrollArrow {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* ─── RIGHT IMAGE ─── */
+.imageWrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 52%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.imageInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.portrait {
+  object-fit: contain;
+  object-position: bottom center;
+  filter: contrast(1.05) brightness(0.97);
+  width: 80% !important;
+  left: 2% !important;
+  transform: none;
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+/* Gradient fades: left edge blends into background */
+.imageFade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, var(--color-bg) 0%, var(--color-bg) 5%, transparent 35%),
+    linear-gradient(to top, var(--color-bg) 0%, transparent 12%);
+  pointer-events: none;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dotPop {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .hero {
+    padding: 0 2rem;
+    padding-top: 80px;
+  }
+
+  .content {
+    flex: 0 0 52%;
+    max-width: 52%;
+    padding-left: 4rem;
+  }
+
+  .imageWrapper {
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    padding: 6rem 1.5rem 3rem;
+    min-height: 100svh;
+  }
+
+  .content {
+    flex: none;
+    max-width: 100%;
+    padding-right: 0;
+    z-index: 3;
+  }
+
+  .imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 55vw;
+    margin-top: 2rem;
+  }
+
+  .imageFade {
+    background:
+      linear-gradient(to top, var(--color-bg) 0%, transparent 40%),
+      linear-gradient(to bottom, var(--color-bg) 0%, transparent 20%);
+  }
+
+  .actions {
+    gap: 1.5rem;
+  }
+}

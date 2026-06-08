@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ═══════════════════════════════
+   DARK MODE (default)
+═══════════════════════════════ */
+:root {
+  /* Brand */
+  --color-accent: #7c3aed;
+  --color-accent-gold: #d4a017;
+
+  /* Backgrounds */
+  --color-bg:        #0a0a0a;
+  --color-surface:   #111111;
+  --color-surface-2: #1a1a2e;
+  --color-surface-3: #0d0d0d;
+  --color-img-bg:    #0d0d0d;
+
+  /* Text */
+  --color-text-primary:   #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.55);
+  --color-text-muted:     rgba(255, 255, 255, 0.40);
+  --color-text-faint:     rgba(255, 255, 255, 0.20);
+
+  /* Borders */
+  --color-border:        rgba(255, 255, 255, 0.12);
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-strong: rgba(255, 255, 255, 0.22);
+  --color-border-logo:   rgba(255, 255, 255, 0.90);
+
+  /* Nav */
+  --color-nav-scrolled: rgba(10, 10, 10, 0.88);
+  --color-cta-bg-hover: #ffffff;
+  --color-cta-text-hover: #0a0a0a;
+  --color-cta-border: rgba(255, 255, 255, 0.75);
+
+  /* Decorative blocks */
+  --color-block-a-1: #0a1628;
+  --color-block-a-2: #0f2347;
+  --color-block-b:   #1a1a2e;
+
+  /* Misc */
+  --color-overlay: rgba(255, 255, 255, 0.07);
+  --color-btn-hover-text: #0a0a0a;
+
+  /* Fonts */
+  --font-heading: 'Barlow Condensed', sans-serif;
+  --font-body:    'Inter', sans-serif;
+}
+
+/* ═══════════════════════════════
+   LIGHT MODE
+═══════════════════════════════ */
+[data-theme="light"] {
+  /* Backgrounds */
+  --color-bg:        #f0efe9;
+  --color-surface:   #ffffff;
+  --color-surface-2: #dde8f5;
+  --color-surface-3: #e8e8e2;
+  --color-img-bg:    #e0e0da;
+
+  /* Text */
+  --color-text-primary:   #0f0f0f;
+  --color-text-secondary: rgba(15, 15, 15, 0.58);
+  --color-text-muted:     rgba(15, 15, 15, 0.42);
+  --color-text-faint:     rgba(15, 15, 15, 0.22);
+
+  /* Borders */
+  --color-border:        rgba(15, 15, 15, 0.12);
+  --color-border-subtle: rgba(15, 15, 15, 0.07);
+  --color-border-strong: rgba(15, 15, 15, 0.22);
+  --color-border-logo:   rgba(15, 15, 15, 0.85);
+
+  /* Nav */
+  --color-nav-scrolled: rgba(240, 239, 233, 0.92);
+  --color-cta-bg-hover: #0f0f0f;
+  --color-cta-text-hover: #ffffff;
+  --color-cta-border: rgba(15, 15, 15, 0.75);
+
+  /* Decorative blocks */
+  --color-block-a-1: #c8d8ee;
+  --color-block-a-2: #adc5e8;
+  --color-block-b:   #dde8f5;
+
+  /* Misc */
+  --color-overlay: rgba(15, 15, 15, 0.04);
+  --color-btn-hover-text: #ffffff;
+}
+
+/* ═══════════════════════════════
+   BASE
+═══════════════════════════════ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
