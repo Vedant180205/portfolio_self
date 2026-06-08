@@ -111,7 +111,8 @@ export default function Projects() {
                   <Image
                     src={project.image}
                     alt={project.imageAlt}
-                    fill
+                    width={1200}
+                    height={800}
                     className={styles.mainImg}
                     sizes="(max-width: 768px) 100vw, 42vw"
                     quality={88}

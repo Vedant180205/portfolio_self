@@ -5,12 +5,13 @@ import styles from './Navbar.module.css';
 import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
-  { label: 'HOME', href: '#home' },
-  { label: 'ABOUT', href: '#about' },
-  { label: 'PROJECTS', href: '#projects' },
+  { label: 'HOME',       href: '#home' },
+  { label: 'ABOUT',      href: '#about' },
+  { label: 'PROJECTS',   href: '#projects' },
+  { label: 'TECH STACK', href: '#techstack' },
   { label: 'ACHIEVEMENTS', href: '#achievements' },
-  { label: 'JOURNEY', href: '#journey' },
-  { label: 'CONTACT', href: '#contact' },
+  { label: 'JOURNEY',    href: '#journey' },
+  { label: 'CONTACT',    href: '#contact' },
 ];
 
 export default function Navbar() {

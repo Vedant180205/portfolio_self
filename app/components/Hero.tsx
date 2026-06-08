@@ -63,7 +63,7 @@ export default function Hero() {
             </svg>
             <div className={styles.scrollArrow} aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M4 11H18M18 11L12 5M18 11L12 17" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M4 11H18M18 11L12 5M18 11L12 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
           </div>

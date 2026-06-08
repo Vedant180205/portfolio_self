@@ -11,8 +11,13 @@
 ═══════════════════════════════ */
 :root {
   /* Brand */
-  --color-accent: #7c3aed;
+  --color-accent:      #7c3aed;
   --color-accent-gold: #d4a017;
+
+  /* Accent variants — used in component hover/glow states */
+  --color-accent-soft:   rgba(124, 58, 237, 0.06);
+  --color-accent-border: rgba(124, 58, 237, 0.40);
+  --color-accent-glow:   rgba(124, 58, 237, 0.30);
 
   /* Backgrounds */
   --color-bg:        #0a0a0a;
@@ -34,10 +39,10 @@
   --color-border-logo:   rgba(255, 255, 255, 0.90);
 
   /* Nav */
-  --color-nav-scrolled: rgba(10, 10, 10, 0.88);
-  --color-cta-bg-hover: #ffffff;
+  --color-nav-scrolled:   rgba(10, 10, 10, 0.88);
+  --color-cta-bg-hover:   #ffffff;
   --color-cta-text-hover: #0a0a0a;
-  --color-cta-border: rgba(255, 255, 255, 0.75);
+  --color-cta-border:     rgba(255, 255, 255, 0.75);
 
   /* Decorative blocks */
   --color-block-a-1: #0a1628;
@@ -45,7 +50,7 @@
   --color-block-b:   #1a1a2e;
 
   /* Misc */
-  --color-overlay: rgba(255, 255, 255, 0.07);
+  --color-overlay:        rgba(255, 255, 255, 0.07);
   --color-btn-hover-text: #0a0a0a;
 
   /* Fonts */
@@ -54,42 +59,51 @@
 }
 
 /* ═══════════════════════════════
-   LIGHT MODE
+   LIGHT MODE — WESTERN / VINTAGE
 ═══════════════════════════════ */
 [data-theme="light"] {
-  /* Backgrounds */
-  --color-bg:        #f0efe9;
-  --color-surface:   #ffffff;
-  --color-surface-2: #dde8f5;
-  --color-surface-3: #e8e8e2;
-  --color-img-bg:    #e0e0da;
+  /* Brand — saddle leather replaces purple */
+  --color-accent:      #8D5B2F;   /* saddle leather */
+  --color-accent-gold: #C89D6A;   /* twine / golden */
 
-  /* Text */
-  --color-text-primary:   #0f0f0f;
-  --color-text-secondary: rgba(15, 15, 15, 0.58);
-  --color-text-muted:     rgba(15, 15, 15, 0.42);
-  --color-text-faint:     rgba(15, 15, 15, 0.22);
+  /* Accent variants — warm leather tones */
+  --color-accent-soft:   rgba(141, 91, 47, 0.08);
+  --color-accent-border: rgba(141, 91, 47, 0.38);
+  --color-accent-glow:   rgba(141, 91, 47, 0.22);
 
-  /* Borders */
-  --color-border:        rgba(15, 15, 15, 0.12);
-  --color-border-subtle: rgba(15, 15, 15, 0.07);
-  --color-border-strong: rgba(15, 15, 15, 0.22);
-  --color-border-logo:   rgba(15, 15, 15, 0.85);
+  /* Backgrounds — aged parchment */
+  --color-bg:        #EDE8DC;   /* parchment base */
+  --color-surface:   #F5F0E6;   /* lighter parchment for cards */
+  --color-surface-2: #D8CFBA;   /* warm tan */
+  --color-surface-3: #E2DAC8;   /* dusty tan for ticker strip */
+  --color-img-bg:    #CEC5AD;   /* canvas tone for image bg */
+
+  /* Text — dark brown ink on parchment */
+  --color-text-primary:   #260B01;              /* bronco / deep brown */
+  --color-text-secondary: #64563C;              /* dusty olive */
+  --color-text-muted:     rgba(100, 86, 60, 0.62);
+  --color-text-faint:     rgba(100, 86, 60, 0.32);
+
+  /* Borders — warm brown */
+  --color-border:        rgba(38, 11, 1, 0.14);
+  --color-border-subtle: rgba(38, 11, 1, 0.07);
+  --color-border-strong: rgba(38, 11, 1, 0.28);
+  --color-border-logo:   rgba(38, 11, 1, 0.88);
 
   /* Nav */
-  --color-nav-scrolled: rgba(240, 239, 233, 0.92);
-  --color-cta-bg-hover: #0f0f0f;
-  --color-cta-text-hover: #ffffff;
-  --color-cta-border: rgba(15, 15, 15, 0.75);
+  --color-nav-scrolled:   rgba(237, 232, 220, 0.95);
+  --color-cta-bg-hover:   #260B01;
+  --color-cta-text-hover: #EDE8DC;
+  --color-cta-border:     rgba(38, 11, 1, 0.72);
 
-  /* Decorative blocks */
-  --color-block-a-1: #c8d8ee;
-  --color-block-a-2: #adc5e8;
-  --color-block-b:   #dde8f5;
+  /* Decorative blocks — leather gradient + dusty sage */
+  --color-block-a-1: #C89D6A;   /* twine / golden tan */
+  --color-block-a-2: #8D5B2F;   /* saddle leather */
+  --color-block-b:   #939789;   /* dusty sage-grey */
 
   /* Misc */
-  --color-overlay: rgba(15, 15, 15, 0.04);
-  --color-btn-hover-text: #ffffff;
+  --color-overlay:        rgba(141, 91, 47, 0.05);
+  --color-btn-hover-text: #EDE8DC;
 }
 
 /* ═══════════════════════════════
@@ -107,6 +121,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* Vintage paper grain overlay — light mode only */
+[data-theme="light"] body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
 }
 
 a {

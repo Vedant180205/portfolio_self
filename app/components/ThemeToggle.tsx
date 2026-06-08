@@ -1,33 +1,81 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './ThemeToggle.module.css';
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(true);
   const [pulling, setPulling] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Sync with persisted theme on mount
+  // Sync with persisted theme on mount + pre-load audio
   useEffect(() => {
     const saved = localStorage.getItem('theme');
     if (saved === 'light') setIsDark(false);
+
+    const audio = new Audio('/cowboy.mp3');
+    audio.loop = true;
+    audio.volume = 0;
+    audioRef.current = audio;
+
+    // If already in light mode on load, play immediately
+    if (saved === 'light') {
+      audio.play().catch(() => {});
+      fadeVolume(audio, 0, 0.35, 1500);
+    }
+
+    return () => {
+      audio.pause();
+      audio.src = '';
+    };
   }, []);
+
+  /** Smoothly ramp audio volume from `from` → `to` over `ms` milliseconds */
+  function fadeVolume(audio: HTMLAudioElement, from: number, to: number, ms: number) {
+    const steps = 40;
+    const interval = ms / steps;
+    const delta = (to - from) / steps;
+    let current = from;
+    audio.volume = from;
+    const timer = setInterval(() => {
+      current += delta;
+      audio.volume = Math.min(1, Math.max(0, current));
+      if ((delta > 0 && current >= to) || (delta < 0 && current <= to)) {
+        audio.volume = to;
+        clearInterval(timer);
+        if (to === 0) audio.pause();
+      }
+    }, interval);
+  }
 
   const toggle = () => {
     if (pulling) return;
     setPulling(true);
 
+    const goingLight = isDark;
+    const audio = audioRef.current;
+
+    if (audio) {
+      if (goingLight) {
+        // Switching to light — start playing and fade in
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+        fadeVolume(audio, 0, 0.35, 1500);
+      } else {
+        // Switching to dark — fade out and stop
+        fadeVolume(audio, audio.volume, 0, 800);
+      }
+    }
+
     setTimeout(() => {
       const next = !isDark;
       setIsDark(next);
-      const theme = next ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', next ? '' : 'light');
       if (!next) {
         document.documentElement.setAttribute('data-theme', 'light');
       } else {
         document.documentElement.removeAttribute('data-theme');
       }
-      localStorage.setItem('theme', theme);
+      localStorage.setItem('theme', next ? 'dark' : 'light');
       setPulling(false);
     }, 320);
   };

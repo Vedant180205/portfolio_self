@@ -69,15 +69,15 @@
 .cornerTL {
   top: 4rem;
   left: 4rem;
-  border-top: 1px solid rgba(124, 58, 237, 0.8);
-  border-left: 1px solid rgba(124, 58, 237, 0.8);
+  border-top: 1px solid var(--color-accent);
+  border-left: 1px solid var(--color-accent);
 }
 
 .cornerBR {
   bottom: 4rem;
   right: 4rem;
-  border-bottom: 1px solid rgba(124, 58, 237, 0.8);
-  border-right: 1px solid rgba(124, 58, 237, 0.8);
+  border-bottom: 1px solid var(--color-accent);
+  border-right: 1px solid var(--color-accent);
 }
 
 /* ─── INNER CONTENT ─── */
@@ -262,7 +262,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: #fff;
+  background: var(--color-text-primary);
   transform: translateX(-101%);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 0;
