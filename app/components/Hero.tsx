@@ -42,7 +42,7 @@ export default function Hero() {
           <a href="#projects" id="hero-view-work-btn" className={styles.primaryBtn}>
             <span>VIEW MY WORK</span>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M3.5 9H14.5M14.5 9L10 4.5M14.5 9L10 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M3.5 9H14.5M14.5 9L10 4.5M14.5 9L10 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
 
@@ -63,7 +63,7 @@ export default function Hero() {
             </svg>
             <div className={styles.scrollArrow} aria-hidden="true">
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M4 11H18M18 11L12 5M18 11L12 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M4 11H18M18 11L12 5M18 11L12 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
           </div>

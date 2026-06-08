@@ -277,7 +277,7 @@
   border-color: var(--color-text-primary);
 }
 
-.resumeBtn > * {
+.resumeBtn>* {
   position: relative;
   z-index: 1;
 }

@@ -53,18 +53,6 @@ export default function TechStack() {
           </div>
         ))}
       </div>
-
-      {/* Scrolling marquee strip */}
-      <div className={styles.marqueeWrap} aria-hidden="true">
-        <div className={styles.marqueeTrack}>
-          {[...techs, ...techs].map((tech, i) => (
-            <span key={i} className={styles.marqueeItem}>
-              {tech.name}
-              <span className={styles.marqueeDot}>·</span>
-            </span>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
