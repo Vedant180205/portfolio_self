@@ -1,19 +1,24 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './Hero.module.css';
 
 export default function Hero() {
-  const circleTextRef = useRef<SVGTextPathElement>(null);
 
-  useEffect(() => {
-    // Animate hero text lines on mount
-    const lines = document.querySelectorAll(`.${styles.headlineLine}`);
-    lines.forEach((line, i) => {
-      (line as HTMLElement).style.animationDelay = `${0.2 + i * 0.15}s`;
-    });
-  }, []);
+  const renderLetters = (text: string, baseDelay: number) => {
+    return text.split('').map((char, index) => (
+      <span
+        key={index}
+        className={styles.char}
+        style={{
+          '--char-index': index,
+          '--base-delay': `${baseDelay}s`,
+        } as React.CSSProperties}
+      >
+        {char}
+      </span>
+    ));
+  };
 
   return (
     <section className={styles.hero} id="home" aria-label="Hero section">
@@ -26,14 +31,18 @@ export default function Hero() {
 
         <h1 className={styles.headline} aria-label="Vedant Patil">
           {/* VEDANT — ghost outline, like a classified stamp */}
-          <span className={styles.headlineLine}>VEDANT</span>
+          <span className={styles.headlineLine}>
+            {renderLetters("VEDANT", 0.1)}
+          </span>
 
           {/* Gold classification divider */}
           <span className={styles.nameDivider} aria-hidden="true" />
 
           {/* PATIL — solid fill, same exact size */}
           <span className={styles.headlineLastLine}>
-            <span className={styles.headlineLastName}>PATIL</span>
+            <span className={styles.headlineLastName}>
+              {renderLetters("PATIL", 0.35)}
+            </span>
             <span className={styles.accentRule} aria-hidden="true" />
           </span>
         </h1>
