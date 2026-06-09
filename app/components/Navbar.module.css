@@ -29,13 +29,27 @@
 
 .logoMark {
   position: relative;
-  width: 44px;
-  height: 44px;
-  border: 1.5px solid var(--color-border-logo);
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.logoImg {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transform: scale(1.14);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logoImg {
+  transform: scale(1.2);
 }
 
 .logoLetters {
@@ -74,12 +88,13 @@
 
 .logoRole {
   font-family: var(--font-body);
-  font-size: 0.62rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
   color: var(--color-text-secondary);
   line-height: 1;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 /* Nav Links */
@@ -175,6 +190,23 @@
   }
   .navbar.scrolled {
     padding: 0.8rem 1.5rem;
+  }
+  
+  .logoMark {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logoImg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logoRole {
+    white-space: normal;
+    max-width: 110px;
+    line-height: 1.3;
+    font-size: 0.6rem;
   }
   
   .navLinks {
@@ -311,7 +343,7 @@
 
   .drawerLink {
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     color: var(--color-text-primary);

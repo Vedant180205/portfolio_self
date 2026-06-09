@@ -146,6 +146,7 @@
   font-weight: 700;
   color: var(--color-text-primary);
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .metaLink {
@@ -316,14 +317,24 @@
   }
 
   .metaStrip {
-    flex-direction: column;
-    gap: 1.25rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 2rem;
     width: 100%;
   }
 
   .metaDivider {
-    width: 40px;
-    height: 1px;
-    background: var(--color-border-subtle);
+    display: none;
+  }
+
+  .metaItem {
+    min-width: 40%;
+    flex: 1 1 40%;
+  }
+
+  /* Email spans full width so it sits alone on its own row */
+  .metaItem:last-child {
+    flex: 1 1 100%;
   }
 }

@@ -43,46 +43,78 @@
   animation-delay: 0.05s;
 }
 
+/* ─── HEADLINE ─────────────────────────────────────────────────── */
 .headline {
-  font-family: var(--font-heading);
-  font-size: clamp(6rem, 11vw, 13rem);
-  font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: 0.04em;
+  font-family: var(--font-name); /* Protest Guerrilla — hero name only */
   text-transform: uppercase;
   color: var(--color-text-primary);
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.05em;
+  gap: 0;
+  position: relative;
 }
 
-.headlineLine {
+/* ── Both lines — identical in every dimension ── */
+.headlineLine,
+.headlineLastName {
   display: block;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeSlideUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  font-size: clamp(4rem, 11.5vw, 14rem);
+  font-weight: 400;  /* Protest Guerrilla is single-weight */
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--color-text-primary);
 }
 
+/* VEDANT */
+.headlineLine {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+/* PATIL container */
 .headlineLastLine {
   display: flex;
-  align-items: flex-end;
-  gap: 0.2em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.25s;
 }
 
-.accentDot {
-  display: inline-block;
-  width: clamp(10px, 1.2vw, 16px);
-  height: clamp(10px, 1.2vw, 16px);
-  border-radius: 50%;
-  background: var(--color-accent);
-  margin-bottom: 0.12em;
-  flex-shrink: 0;
-  animation: dotPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  animation-delay: 0.85s;
-  opacity: 0;
-  transform: scale(0);
+/* PATIL text — same metrics as VEDANT */
+.headlineLastName {
+  opacity: 1;
+  transform: none;
+  color: var(--color-text-primary);
 }
+
+/* Gold rule beneath PATIL */
+.accentRule {
+  display: block;
+  width: 60%;
+  height: 2px;
+  margin-top: 0.7rem;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-gold) 0%,
+    rgba(212, 160, 23, 0.1) 100%
+  );
+  opacity: 0;
+  transform-origin: left center;
+  animation: ruleReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.55s;
+}
+
+.nameDivider { display: none; }
+.accentDot   { display: none; }
+
+
+
 
 .description {
   font-family: var(--font-body);
@@ -242,6 +274,17 @@
   }
 }
 
+@keyframes ruleReveal {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
 @keyframes rotateSlow {
   from {
     transform: rotate(0deg);
@@ -286,23 +329,18 @@
   }
 
   .headline {
-    font-size: clamp(3rem, 8.5vw, 3.2rem);
-    margin-bottom: 1.25rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    align-items: baseline;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Both lines: same size on mobile too */
+  .headlineLine,
+  .headlineLastName {
+    font-size: clamp(3.2rem, 12vw, 5rem);
+    letter-spacing: 0.05em;
   }
 
   .headlineLine {
-    display: inline-block;
-  }
-
-  .headlineLastLine {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.2em;
+    padding-left: 0;
   }
 
   .description {

@@ -25,10 +25,16 @@ export default function Hero() {
 
 
         <h1 className={styles.headline} aria-label="Vedant Patil">
+          {/* VEDANT — ghost outline, like a classified stamp */}
           <span className={styles.headlineLine}>VEDANT</span>
-          <span className={`${styles.headlineLine} ${styles.headlineLastLine}`}>
-            PATIL
-            <span className={styles.accentDot} aria-hidden="true" />
+
+          {/* Gold classification divider */}
+          <span className={styles.nameDivider} aria-hidden="true" />
+
+          {/* PATIL — solid fill, same exact size */}
+          <span className={styles.headlineLastLine}>
+            <span className={styles.headlineLastName}>PATIL</span>
+            <span className={styles.accentRule} aria-hidden="true" />
           </span>
         </h1>
 

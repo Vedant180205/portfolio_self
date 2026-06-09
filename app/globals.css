@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -54,8 +54,9 @@
   --color-btn-hover-text: #0a0a0a;
 
   /* Fonts */
-  --font-heading: 'Barlow Condensed', sans-serif;
-  --font-body:    'Inter', sans-serif;
+  --font-name:        'Protest Guerrilla', sans-serif; /* Hero name — VEDANT PATIL */
+  --font-heading:     'Protest Guerrilla', sans-serif; /* Section headings */
+  --font-body:        'Inter', sans-serif;
 }
 
 /* ═══════════════════════════════

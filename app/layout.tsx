@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Vedant Patil — I build real-world systems that combine embedded engineering, machine learning and software to solve meaningful problems.",
   keywords: ["Vedant Patil", "portfolio", "engineer", "builder", "embedded", "machine learning", "software"],
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     title: "Vedant Patil — Builder & Engineer",
     description: "I build real-world systems that combine embedded engineering, machine learning and software to solve meaningful problems.",

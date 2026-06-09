@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import styles from './Navbar.module.css';
 import ThemeToggle from './ThemeToggle';
 
@@ -42,12 +43,17 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#home" className={styles.logo} id="nav-logo">
           <div className={styles.logoMark}>
-            <span className={styles.logoLetters}>VP</span>
-            <span className={styles.logoDot}></span>
+            <Image
+              src="/logo.png"
+              alt="VP Logo"
+              width={80}
+              height={80}
+              className={styles.logoImg}
+              priority
+            />
           </div>
           <div className={styles.logoText}>
-            <span className={styles.logoName}>VEDANT PATIL</span>
-            <span className={styles.logoRole}>BUILDER &amp; ENGINEER</span>
+            <span className={styles.logoRole}>ENGINEERING THE IMPOSSIBLE.</span>
           </div>
         </a>
 
