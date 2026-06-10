@@ -1,81 +1,108 @@
-# Vedant's Portfolio
+# ⚡ Vedant Patil's Portfolio & Secure Dossier Archive
 
-A modern, responsive personal portfolio website built with **Next.js 16**, **React 19**, and **TypeScript**.
+A premium, interactive, and responsive portfolio website built with **Next.js 16 (App Router)**, **React 19**, and **TypeScript**. It integrates modern, visually rich aesthetics (glassmorphism, micro-animations, color gradients) and a fully immersive, classified espionage-themed **Dossier System** at `/dossier`.
 
-## ✨ Features
+---
 
-- **Hero** section with animated introduction
-- **About** section highlighting skills and background
-- **Projects** showcase with live demo & GitHub links
-- **Dark / Light mode** toggle
-- Fully responsive across all screen sizes
-- CSS Modules for scoped, maintainable styling
+## 🚀 Key Highlights & Interactive Features
 
-## 🛠️ Tech Stack
+### 🖥️ Core Portfolio Sections
+*   **Hero Grid**: Dark-mode terminal interface displaying a modern introductory grid.
+*   **Intel Brief (About)**: Detailed summary of engineering principles, tools, and background.
+*   **Mission Logs (Projects)**: Clean card decks presenting engineering endeavors, machine learning algorithms, and system designs.
+*   **Toolkit (Tech Stack)**: Comprehensive flat icon grid highlighting core languages (Python, TypeScript, C++, C), web frameworks (Next.js, React, Node.js, Flask, Express), data science tools (NumPy, Pandas, scikit-learn), and embedded hardware (Raspberry Pi, Arduino).
+*   **Academic Pathway (Education)**: Custom vertical timeline displaying schooling milestones with interactive scroll reveals and animated spine ticks.
+*   **Theme Switcher**: Tactile pull-cord cord toggle with volume-faded audio feedback and localStorage persistence.
 
-- [Next.js 16](https://nextjs.org/) — React framework with App Router
-- [React 19](https://react.dev/) — UI library
-- [TypeScript](https://www.typescriptlang.org/) — Type safety
-- CSS Modules — Component-scoped styles
+### 📁 The Decrypted Dossier (`/dossier`)
+A highly engaging, themed command center archiving multidisciplinary achievements:
+1.  **SYS_INIT Decryptor Terminal**: Immersive initial loading terminal simulating network handshakes and decryption key authorization with a bypass protocol.
+2.  **Section 01 // The Musician**: Interactive classical/western vocalist briefing. Features an HTML5 Canvas-driven sine wave generator generating overlapping floating audio frequencies and floating notation overlays.
+3.  **Section 02 // Mission Logs**: Classified pin-board visualizing hackathon achievements. Renders a glowing red thread network connection map. Hovering on nodes generates live technical briefs on a simulated terminal console, and clicking decrypts certificate evidence:
+    *   `LOG-01`: **IO Hackathon 2026** (IIT Guwahati & AQUA option pricing systems using Numba JIT).
+    *   `LOG-02`: **Code Sprint** (XIE Mahim 1st Place win under Team CodeRunners).
+    *   `LOG-03`: **Kaggle Knight** (IIT Jodhpur 36-Hour ML Hackathon under Team nightknight).
+    *   `LOG-04`: **AMUHACKS 5.0** (Aligarh Muslim University 1st Place win under Team CyberDevs).
+4.  **Section 03 // The Artist**: Multi-sensory layout shifting from pure dark mode to warm gallery off-white (`#efece5`) on scroll. Displays charcoal sketches framed in 3D walnut/mahogany wooden borders, brass hanging nails, support cables, and interactive spotlight halos on hover.
+5.  **Section 04 // Through My Lens**: Minimalist, asymmetric 3-column masonry photography collage. Bypasses standard Next.js downsizers to preserve original image aspect ratios, lens specifications (EXIF focal lengths, exposures), and pixel-perfect quality.
+6.  **Section 05 // The Human Calculator**: Fast-paced binary number generator grids and an interactive virtual abacus representing mathematical calculation speed, memory visualization, and focus metrics.
 
-## 🚀 Getting Started
+---
 
-### Prerequisites
+## 🛠️ Technology Stack
 
-- Node.js 18+
-- npm
+*   **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
+*   **Library**: [React 19](https://react.dev/)
+*   **Language**: [TypeScript](https://www.typescriptlang.org/)
+*   **Styling**: Pure CSS Modules (scoped layouts, custom CSS custom properties for transitions)
+*   **Linter**: [ESLint 9](https://eslint.org/) (Conforms to strict standard rule declarations)
 
-### Installation
+---
 
-```bash
-# Clone the repository
-git clone https://github.com/YOUR_USERNAME/vedant-portfolio.git
-cd vedant-portfolio
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 📁 Project Structure
+## 📁 Repository Structure
 
 ```
 vedant-portfolio/
 ├── app/
-│   ├── components/       # Reusable UI components
-│   │   ├── Navbar.tsx
-│   │   ├── Hero.tsx
-│   │   ├── About.tsx
-│   │   ├── Projects.tsx
-│   │   ├── Footer.tsx
-│   │   └── ThemeToggle.tsx
-│   ├── globals.css       # Global styles & CSS variables
-│   ├── layout.tsx        # Root layout
-│   └── page.tsx          # Home page
-└── public/               # Static assets (images, SVGs)
+│   ├── components/       # Reusable components
+│   │   ├── About.tsx     # Profile summary cards
+│   │   ├── Education.tsx # Interactive schooling timeline
+│   │   ├── Footer.tsx    # Ending signature and links
+│   │   ├── Hero.tsx      # Landing page terminal introduction
+│   │   ├── Navbar.tsx    # Responsive header with synchronized paths
+│   │   ├── Projects.tsx  # Project showcase cards
+│   │   ├── TechStack.tsx # toolkit icon grid
+│   │   └── ThemeToggle.tsx # Sound-faded pull-cord cord light switcher
+│   ├── dossier/          # Espionage-themed dossier system
+│   │   ├── page.tsx      # Main dossier code
+│   │   └── page.module.css # Stylesheet with layout transitions
+│   ├── globals.css       # Global rules & custom HSL root variables
+│   ├── layout.tsx        # HTML document layout structure
+│   └── page.tsx          # Main entry route
+└── public/               # Optimized assets (certificates, sketches, photography)
 ```
 
-## 📦 Available Scripts
+---
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
+## 🚀 Local Installation & Execution
 
-## 🌐 Deployment
+### Prerequisites
+*   Node.js 18.0.0 or higher
+*   npm 10.0.0 or higher
 
-This site is optimized for deployment on **Vercel**:
+### Steps
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/Vedant180205/portfolio_self.git
+    cd portfolio_self
+    ```
 
-1. Push this repo to GitHub
-2. Import it on [vercel.com](https://vercel.com)
-3. Vercel auto-detects Next.js and deploys instantly
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Run Development Server**
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+4.  **Static Build & Verification**
+    To test the production bundles and verify type safety:
+    ```bash
+    npx tsc --noEmit
+    npm run build
+    ```
+
+5.  **Code Styling Check**
+    To run ESLint checking tools:
+    ```bash
+    npm run lint
+    ```
+
+---
 
 ## 📄 License
 
-MIT — feel free to use this as inspiration for your own portfolio!
+This project is licensed under the MIT License. Feel free to use it as inspiration for your own portfolio builds.
