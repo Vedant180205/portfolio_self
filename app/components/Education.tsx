@@ -82,7 +82,7 @@ export default function Education() {
   }, []);
 
   return (
-    <section className={styles.section} id="journey" aria-label="Education Journey">
+    <section className={styles.section} id="education" aria-label="Education Journey">
       {/* Header */}
       <div className={styles.sectionHeader}>
         <span className={styles.sectionEyebrow}>ACADEMIC PATHWAY</span>

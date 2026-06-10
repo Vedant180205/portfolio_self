@@ -1,21 +1,23 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 'use client';
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
 import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
-  { label: 'HOME',         href: '#home' },
-  { label: 'ABOUT',        href: '#about' },
-  { label: 'PROJECTS',     href: '#projects' },
-  { label: 'TECH STACK',   href: '#techstack' },
-  { label: 'ACHIEVEMENTS', href: '#achievements' },
-  { label: 'JOURNEY',      href: '#journey' },
-  { label: 'CONTACT',      href: '#contact' },
+  { label: 'HOME',               href: '#home' },
+  { label: 'ABOUT',              href: '#about' },
+  { label: 'PROJECTS',           href: '#projects' },
+  { label: 'TECH STACK',         href: '#techstack' },
+  { label: 'EDUCATION',          href: '#education' },
+  { label: 'DOSSIER',            href: '/dossier' },
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled]   = useState(false);
   const [active, setActive]       = useState('HOME');
   const [menuOpen, setMenuOpen]   = useState(false);
@@ -25,6 +27,15 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Sync active nav item with path
+  useEffect(() => {
+    if (pathname === '/dossier') {
+      setActive('DOSSIER');
+    } else {
+      setActive('HOME');
+    }
+  }, [pathname]);
 
   // Lock body scroll when drawer is open
   useEffect(() => {
@@ -41,7 +52,7 @@ export default function Navbar() {
     <>
       <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
         {/* Logo */}
-        <a href="#home" className={styles.logo} id="nav-logo">
+        <a href={pathname === '/' ? '#home' : '/'} className={styles.logo} id="nav-logo">
           <div className={styles.logoMark}>
             <Image
               src="/logo.png"
@@ -59,23 +70,28 @@ export default function Navbar() {
 
         {/* Desktop nav links */}
         <ul className={styles.navLinks} role="list">
-          {navLinks.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                id={`nav-${link.label.toLowerCase().replace(' ', '-')}`}
-                className={`${styles.navLink} ${active === link.label ? styles.activeLink : ''}`}
-                onClick={() => handleLinkClick(link.label)}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isAnchor = link.href.startsWith('#');
+            const href = isAnchor && pathname !== '/' ? `/${link.href}` : link.href;
+            
+            return (
+              <li key={link.label}>
+                <a
+                  href={href}
+                  id={`nav-${link.label.toLowerCase().replace(' ', '-')}`}
+                  className={`${styles.navLink} ${active === link.label ? styles.activeLink : ''}`}
+                  onClick={() => handleLinkClick(link.label)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Right side: CTA + toggle + hamburger */}
         <div className={styles.rightGroup}>
-          <a href="#contact" id="nav-connect-btn" className={styles.ctaBtn}>
+          <a href={pathname === '/' ? '#contact' : '/#contact'} id="nav-connect-btn" className={styles.ctaBtn}>
             LET&apos;S CONNECT
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -107,22 +123,27 @@ export default function Navbar() {
       {/* Mobile drawer */}
       <div className={`${styles.drawer} ${menuOpen ? styles.drawerOpen : ''}`} role="dialog" aria-label="Navigation menu">
         <ul className={styles.drawerLinks}>
-          {navLinks.map((link, i) => (
-            <li key={link.label} style={{ animationDelay: `${i * 0.06}s` }}>
-              <a
-                href={link.href}
-                className={`${styles.drawerLink} ${active === link.label ? styles.drawerLinkActive : ''}`}
-                onClick={() => handleLinkClick(link.label)}
-              >
-                <span className={styles.drawerNum}>0{i + 1}</span>
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {navLinks.map((link, i) => {
+            const isAnchor = link.href.startsWith('#');
+            const href = isAnchor && pathname !== '/' ? `/${link.href}` : link.href;
+
+            return (
+              <li key={link.label} style={{ animationDelay: `${i * 0.06}s` }}>
+                <a
+                  href={href}
+                  className={`${styles.drawerLink} ${active === link.label ? styles.drawerLinkActive : ''}`}
+                  onClick={() => handleLinkClick(link.label)}
+                >
+                  <span className={styles.drawerNum}>0{i + 1}</span>
+                  {link.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         <a
-          href="#contact"
+          href={pathname === '/' ? '#contact' : '/#contact'}
           className={styles.drawerCta}
           onClick={() => setMenuOpen(false)}
         >
