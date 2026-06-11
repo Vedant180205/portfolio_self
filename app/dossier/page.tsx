@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import MusicianSection from '../components/MusicianSection';
 import styles from './page.module.css';
 
 // -------------------------------------------------------------
@@ -387,6 +388,8 @@ export default function DossierPage() {
         id="dossier-root"
       >
         <div className={styles.filmGrain} />
+
+        <MusicianSection setActiveCert={setActiveCert} />
 
         {/* -------------------------------------------------------------
             SECTION 02: MISSION LOGS

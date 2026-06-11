@@ -1,0 +1,896 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+
+/* ==========================================================================
+   EDITORIAL MUSICIAN STYLING (LUXURY MAGAZINE EXPERIENCE)
+   ========================================================================== */
+
+.editorialContainer {
+  background-color: #000000;
+  color: #ffffff;
+  position: relative;
+  width: 100%;
+  padding-bottom: 8rem;
+  box-sizing: border-box;
+}
+
+/* ─── TYPOGRAPHY & TAGS ─── */
+.sectionCategory {
+  display: block;
+  font-family: monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: #D4A017;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.chapterTag {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: #D4A017;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(212, 160, 23, 0.4);
+  padding-bottom: 0.4rem;
+}
+
+.massiveTitle {
+  font-family: var(--font-heading), "Georgia", serif;
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+  margin: 0 auto 2rem;
+  max-width: 1100px;
+}
+
+.sectionSubtitle {
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin: 0 auto;
+  max-width: 720px;
+}
+
+/* ─── IMAGE WRAPPER STYLES ─── */
+.editorialImg {
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.9) contrast(1.05);
+  transition: filter 0.5s ease;
+}
+
+.editorialImg:hover {
+  filter: grayscale(0%) brightness(1.0) contrast(1.0);
+}
+
+/* ─── SECTION TITLE / HERO ─── */
+.sectionHeader {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.75) 100%),
+              linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%, rgba(0, 0, 0, 0.8) 100%);
+  z-index: 2;
+}
+
+.headerContent {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 2rem;
+}
+
+.editorialHeroImg {
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.55) contrast(1.1);
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* ─── GENERAL CHAPTER SECTION LAYOUT ─── */
+.chapterSection {
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 12rem 2rem 0;
+  box-sizing: border-box;
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
+.chapterTitle {
+  font-family: var(--font-heading), "Georgia", serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0 0 2rem;
+  letter-spacing: -0.01em;
+}
+
+
+/* ─── CHAPTER 1: THE FOUNDATION ─── */
+.foundationSplit {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.foundationImageCol {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.portraitFrameContainer {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Offset gold keyline background */
+.portraitFrameContainer::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  right: -18px;
+  bottom: -18px;
+  border: 1px solid #D4A017;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.foundationPortraitFrame {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  border: 14px solid #ffffff; /* Thick white photo-print matting */
+  background-color: #ffffff;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 2; /* On top of offset border */
+}
+
+/* Vignette shadow inside the white border to create paper depth */
+.foundationPortraitFrame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.foundationTextCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.editorialTextContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.storyLead {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #D4A017;
+  margin: 0;
+}
+
+.storyParagraph {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+
+
+/* ─── CHAPTER 2: EXPANSION & TRANSITION (COLLAGE GRID) ─── */
+.transitionCollageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  width: 100%;
+  align-items: start;
+  margin-top: 4rem;
+  box-sizing: border-box;
+}
+
+/* Card Rotations to make it feel like a real collage */
+.cardRot1 { transform: rotate(-0.6deg); }
+.cardRot2 { transform: rotate(1.2deg); }
+.cardRot3 { transform: rotate(-1.5deg); }
+.cardRot4 { transform: rotate(-1deg); }
+.cardRot5 { transform: rotate(0.8deg); }
+.cardRot6 { transform: rotate(1.5deg); }
+.cardRot7 { transform: rotate(-0.8deg); }
+.cardRot8 { transform: rotate(-1.8deg); }
+.cardRot9 { transform: rotate(0.4deg); }
+
+/* Intro Card (spans 2 columns) */
+.introCardCollage {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(15, 15, 15, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.introCardCollage:hover {
+  transform: translateY(-5px) rotate(0deg) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+}
+
+.cardDivider {
+  width: 50px;
+  height: 2px;
+  background-color: #D4A017;
+  margin: 1.5rem 0;
+}
+
+/* Photograph Card Frame (White border to look like real photos) */
+.photoCardCollage {
+  background-color: #ffffff;
+  padding: 0.2cm; /* exactly 0.2cm border as requested */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease;
+  z-index: 10;
+  position: relative;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.photoCardCollage:hover {
+  z-index: 15;
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 25px 50px rgba(212, 160, 23, 0.15), 0 20px 40px rgba(0, 0, 0, 0.85);
+}
+
+.collagePhotoImg {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  object-fit: contain;
+  filter: none !important; /* Keep original color */
+  transition: none !important;
+}
+
+/* Alternating Info Cards in between images */
+.infoCardCollage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(15, 15, 15, 0.7);
+  border: 1px dashed rgba(212, 160, 23, 0.2);
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  position: relative;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.infoCardCollage:hover {
+  border-color: rgba(212, 160, 23, 0.45);
+  transform: translateY(-5px) rotate(0deg) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+}
+
+/* Bottom grounding full-width card */
+.infoCardCollageFullWidth {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(15, 15, 15, 0.7);
+  border: 1px dashed rgba(212, 160, 23, 0.25);
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.infoCardCollageFullWidth:hover {
+  border-color: rgba(212, 160, 23, 0.5);
+  transform: translateY(-5px) rotate(0deg) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+}
+
+.cardBadge {
+  font-family: var(--font-header), sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #D4A017;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.infoCardHeading {
+  font-family: var(--font-header), serif;
+  font-size: 1.6rem;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+.infoCardText {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+
+/* ─── CHAPTER 3: ON STAGE ─── */
+.sectionCenterHeader {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+
+
+/* ─── CHAPTER 4: THE BASS PLAYER (BACKGROUND & FLOATING COLLAGE) ─── */
+.bassSectionContainer {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+}
+
+.bassGuitarImageWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.bassGuitarImg {
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.55) contrast(1.1); /* Visible and crisp B&W bass shot matching first section */
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0.9;
+}
+
+.bassOverlayMask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.65) 45%, rgba(0, 0, 0, 0.15) 80%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bassContentGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 4rem;
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 6rem 4rem;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.bassTextOverlay {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.bassHeading {
+  font-family: var(--font-heading), "Georgia", serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0 0 2rem;
+  letter-spacing: -0.02em;
+}
+
+.bassParagraph {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+}
+
+.bassForegroundCollage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.bassSingleCard {
+  position: relative;
+  background-color: #ffffff;
+  padding: 0.2cm; /* exactly 0.2cm border as requested */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 360px;
+  transform: rotate(-2.5deg);
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+/* Translucent warm beige masking washi tape */
+.tapeStrip {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  width: 80px;
+  height: 22px;
+  background-color: rgba(225, 215, 190, 0.45);
+  backdrop-filter: blur(1px);
+  border-left: 1px dashed rgba(255, 255, 255, 0.2);
+  border-right: 1px dashed rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  z-index: 30;
+  pointer-events: none;
+}
+
+
+/* ─── CHAPTER 5: THE LEADER ─── */
+.leaderCollageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  width: 100%;
+  align-items: start;
+  margin-top: 4rem;
+  box-sizing: border-box;
+}
+
+.leaderPhotoCard {
+  background-color: #ffffff;
+  padding: 0.2cm; /* exactly 0.2cm border as requested */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 10;
+  position: relative;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.leaderPhotoImg {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  object-fit: contain;
+  filter: none !important;
+  transition: none !important;
+}
+
+.leaderInfoCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(15, 15, 15, 0.7);
+  border: 1px dashed rgba(212, 160, 23, 0.2);
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  position: relative;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.leaderInfoCard:hover {
+  border-color: rgba(212, 160, 23, 0.45);
+  transform: translateY(-5px) rotate(0deg) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+}
+
+.leaderInfoCardFullWidth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(15, 15, 15, 0.7);
+  border: 1px dashed rgba(212, 160, 23, 0.25);
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.leaderInfoCardFullWidth:hover {
+  border-color: rgba(212, 160, 23, 0.5);
+  transform: translateY(-5px) rotate(0deg) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+}
+
+
+
+
+
+/* ─── ENDING ─── */
+.endingSection {
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+  margin-top: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 400px;
+}
+
+.endingImageWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.endingBgImg {
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.25) contrast(1.1);
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.endingVignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 20%, #000000 100%),
+              linear-gradient(to top, #000000 0%, transparent 50%, #000000 100%);
+  z-index: 2;
+}
+
+.endingContent {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.endingQuoteMain {
+  font-family: var(--font-heading), "Georgia", serif;
+  font-size: clamp(2.4rem, 5.5vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0 0 0.8rem;
+  letter-spacing: -0.01em;
+}
+
+.endingQuoteSub {
+  font-family: var(--font-heading), "Georgia", serif;
+  font-size: clamp(2.4rem, 5.5vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.15;
+  color: #D4A017;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 30px rgba(212, 160, 23, 0.25);
+}
+
+.rolesRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 2.8rem;
+  max-width: 800px;
+  margin-bottom: 5rem;
+}
+
+.rolesRow span {
+  font-family: monospace;
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  font-weight: 500;
+  position: relative;
+}
+
+.rolesRow span::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: #D4A017;
+  transition: width 0.35s ease;
+}
+
+.rolesRow span:hover::after {
+  width: 100%;
+}
+
+.rolesRow span:hover {
+  color: #ffffff;
+}
+
+.closingDossierText {
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 4rem;
+  letter-spacing: 0.05em;
+}
+
+.decryptLogsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.1rem 2.8rem;
+  border: 1.5px solid #D4A017;
+  color: #ffffff;
+  background-color: transparent;
+  font-family: monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.35s ease, border-color 0.35s ease;
+}
+
+.decryptLogsBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #D4A017;
+  transform: translateX(-101%);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+.decryptLogsBtn:hover::before {
+  transform: translateX(0);
+}
+
+.decryptLogsBtn:hover {
+  color: #000000;
+  border-color: #D4A017;
+  box-shadow: 0 0 20px rgba(212, 160, 23, 0.25);
+}
+
+.decryptLogsBtn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.btnArrow {
+  transition: transform 0.35s ease;
+  font-weight: bold;
+}
+
+.decryptLogsBtn:hover .btnArrow {
+  transform: translateY(4px);
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .editorialSpread {
+    height: 680px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .foundationSplit {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    text-align: center;
+  }
+
+  .bassContentGrid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .transitionCollageGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .introCardCollage,
+  .infoCardCollageFullWidth {
+    grid-column: span 2;
+  }
+
+  .foundationTextCol,
+  .bassTextOverlay {
+    align-items: center;
+    text-align: center;
+  }
+
+
+  .leaderCollageGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .leaderInfoCardFullWidth {
+    grid-column: span 2 !important;
+  }
+
+  .leaderInfoCard.cardRot7 {
+    grid-column: span 1 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionHeader {
+    padding: 8rem 1.5rem 4rem;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .chapterSection {
+    padding: 6rem 1.5rem 0;
+  }
+
+  .massiveTitle {
+    margin-bottom: 1.5rem;
+  }
+
+  .sectionSubtitle {
+    margin-bottom: 4rem;
+  }
+
+  .portraitFrameContainer {
+    width: calc(100% - 12px);
+  }
+
+  .portraitFrameContainer::before {
+    top: 12px;
+    left: 12px;
+    right: -12px;
+    bottom: -12px;
+  }
+
+  .foundationPortraitFrame {
+    height: 400px;
+    border-width: 10px;
+  }
+
+  .transitionCollageGrid,
+  .leaderCollageGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .introCardCollage,
+  .infoCardCollageFullWidth,
+  .leaderInfoCardFullWidth {
+    padding: 2rem 1.5rem !important;
+    grid-column: span 1 !important;
+  }
+
+  .infoCardCollage,
+  .leaderInfoCard {
+    padding: 1.75rem 1.25rem !important;
+    grid-column: span 1 !important;
+  }
+
+  .cardRot1, .cardRot2, .cardRot3, .cardRot4, .cardRot5, .cardRot6, .cardRot7, .cardRot8, .cardRot9 {
+    transform: rotate(0deg) !important;
+  }
+
+  .bassContentGrid {
+    padding: 4rem 1.5rem;
+    gap: 2.5rem;
+  }
+
+  .bassForegroundCollage {
+    margin-top: 3rem;
+  }
+
+  .bassSingleCard {
+    transform: rotate(0deg) !important;
+    max-width: 290px;
+  }
+
+  .endingSection {
+    min-height: 40vh;
+    margin-top: 4rem;
+  }
+}
