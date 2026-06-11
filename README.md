@@ -1,5 +1,9 @@
 <div align="center">
 
+![Vedant Patil Portfolio Banner](public/banner.png)
+
+<br/>
+
 # ⚡ VP_SYSTEM_CORE // CLASSIFIED PORTFOLIO
 
 <br/>
