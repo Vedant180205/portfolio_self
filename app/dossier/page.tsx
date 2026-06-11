@@ -679,7 +679,6 @@ export default function DossierPage() {
                     src={item.src}
                     alt="Editorial archive photography"
                     fill
-                    unoptimized
                     className={styles.collageImg}
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
@@ -700,7 +699,6 @@ export default function DossierPage() {
                     src={item.src}
                     alt="Editorial archive photography"
                     fill
-                    unoptimized
                     className={styles.collageImg}
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
@@ -721,7 +719,6 @@ export default function DossierPage() {
                     src={item.src}
                     alt="Editorial archive photography"
                     fill
-                    unoptimized
                     className={styles.collageImg}
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
