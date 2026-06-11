@@ -200,9 +200,12 @@
   position: fixed;
   inset: 0;
   z-index: 999;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAYttNZAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAQ0lEQVQ4y2NgwAMYGBgY4IKMYMIIE2QEE0aYICOYMIEEMmF4hAMmgMkhE0ZGLJh4MHFiwqixgYGBgYFBDJkwMDIwMAAA1HwAY51E1bAAAAAElFTkSuQmCC");
+  background-repeat: repeat;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.15;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 
@@ -1874,7 +1877,6 @@ div[id="intel-pin-log-04"] .evidencePolaroid {
   z-index: 1;
   border: 8px solid #ffffff; /* white border directly to the images */
   box-sizing: border-box;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .artworkContainerLarge .sketchImage {
@@ -1885,11 +1887,6 @@ div[id="intel-pin-log-04"] .evidencePolaroid {
   width: 100% !important;
   height: 100% !important;
   border: 8px solid #ffffff;
-}
-
-.exhibitionFrame:hover .sketchImage,
-.exhibitionFrameLarge:hover .sketchImage {
-  transform: scale(1.025);
 }
 
 .artworkCanvasMock {
@@ -1983,46 +1980,7 @@ div[id="intel-pin-log-04"] .evidencePolaroid {
   color: rgba(0, 0, 0, 0.4);
 }
 
-/* Hover effects for exhibition */
-.exhibitionFrame:hover .artworkContainer {
-  box-shadow:
-    inset 0 0 0 2px #d4a017,
-    /* brighter gold fillet rim */
-    inset 0 0 15px rgba(0, 0, 0, 0.25),
-    0 35px 75px rgba(0, 0, 0, 0.65) !important;
-  /* deeper shadow on wall */
-  transform: translateY(-12px) rotate(0deg) scale(1.015) !important;
-  /* straighten completely */
-}
-
-.exhibitionFrameLarge:hover .artworkContainerLarge {
-  box-shadow:
-    inset 0 0 0 2px #d4a017,
-    inset 0 0 20px rgba(0, 0, 0, 0.3),
-    0 40px 80px rgba(0, 0, 0, 0.7) !important;
-  transform: translateY(-12px) rotate(0deg) scale(1.015) !important;
-  /* straighten completely */
-}
-
-.artistMode .exhibitionFrame:hover .artworkContainer {
-  box-shadow:
-    inset 0 0 0 2.5px #8d5b2f,
-    inset 0 0 15px rgba(0, 0, 0, 0.15),
-    0 35px 70px rgba(47, 29, 19, 0.25) !important;
-  /* warmer brown wall shadow */
-}
-
-.artistMode .exhibitionFrameLarge:hover .artworkContainerLarge {
-  box-shadow:
-    inset 0 0 0 2.5px #8d5b2f,
-    inset 0 0 20px rgba(0, 0, 0, 0.18),
-    0 38px 75px rgba(47, 29, 19, 0.28) !important;
-}
-
-.exhibitionFrame:hover .museumTag,
-.exhibitionFrameLarge:hover .museumTag {
-  transform: translateX(5px);
-}
+/* Hover effects for exhibition disabled for scroll performance */
 
 
 
@@ -2212,12 +2170,6 @@ div[id="intel-pin-log-04"] .evidencePolaroid {
   box-sizing: border-box;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   /* photo print shadow */
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-}
-
-.collagePhotoItem:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.16);
 }
 
 .collageImg {
@@ -2227,11 +2179,6 @@ div[id="intel-pin-log-04"] .evidencePolaroid {
   border: 1px solid rgba(0, 0, 0, 0.06);
   /* subtle keyline separator for print look */
   box-sizing: border-box;
-  transition: filter 0.4s ease;
-}
-
-.collagePhotoItem:hover .collageImg {
-  filter: brightness(1.02) contrast(1.02);
 }
 
 .collageFooter {
