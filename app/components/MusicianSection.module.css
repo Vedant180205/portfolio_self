@@ -97,7 +97,7 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.75) 100%),
-              linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%, rgba(0, 0, 0, 0.8) 100%);
+    linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%, rgba(0, 0, 0, 0.8) 100%);
   z-index: 2;
 }
 
@@ -177,12 +177,14 @@
   position: relative;
   width: 100%;
   height: 600px;
-  border: 14px solid #ffffff; /* Thick white photo-print matting */
+  border: 14px solid #ffffff;
+  /* Thick white photo-print matting */
   background-color: #ffffff;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
   box-sizing: border-box;
   overflow: hidden;
-  z-index: 2; /* On top of offset border */
+  z-index: 2;
+  /* On top of offset border */
 }
 
 /* Vignette shadow inside the white border to create paper depth */
@@ -239,15 +241,41 @@
 }
 
 /* Card Rotations to make it feel like a real collage */
-.cardRot1 { transform: rotate(-0.6deg); }
-.cardRot2 { transform: rotate(1.2deg); }
-.cardRot3 { transform: rotate(-1.5deg); }
-.cardRot4 { transform: rotate(-1deg); }
-.cardRot5 { transform: rotate(0.8deg); }
-.cardRot6 { transform: rotate(1.5deg); }
-.cardRot7 { transform: rotate(-0.8deg); }
-.cardRot8 { transform: rotate(-1.8deg); }
-.cardRot9 { transform: rotate(0.4deg); }
+.cardRot1 {
+  transform: rotate(-0.6deg);
+}
+
+.cardRot2 {
+  transform: rotate(1.2deg);
+}
+
+.cardRot3 {
+  transform: rotate(-1.5deg);
+}
+
+.cardRot4 {
+  transform: rotate(-1deg);
+}
+
+.cardRot5 {
+  transform: rotate(0.8deg);
+}
+
+.cardRot6 {
+  transform: rotate(1.5deg);
+}
+
+.cardRot7 {
+  transform: rotate(-0.8deg);
+}
+
+.cardRot8 {
+  transform: rotate(-1.8deg);
+}
+
+.cardRot9 {
+  transform: rotate(0.4deg);
+}
 
 /* Intro Card (spans 2 columns) */
 .introCardCollage {
@@ -282,7 +310,8 @@
 /* Photograph Card Frame (White border to look like real photos) */
 .photoCardCollage {
   background-color: #ffffff;
-  padding: 0.2cm; /* exactly 0.2cm border as requested */
+  padding: 0.2cm;
+  /* exactly 0.2cm border as requested */
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65);
   border-radius: 4px;
   display: flex;
@@ -308,7 +337,8 @@
   height: auto !important;
   display: block;
   object-fit: contain;
-  filter: none !important; /* Keep original color */
+  filter: none !important;
+  /* Keep original color */
   transition: none !important;
 }
 
@@ -417,7 +447,8 @@
 
 .bassGuitarImg {
   object-fit: cover;
-  filter: grayscale(100%) brightness(0.55) contrast(1.1); /* Visible and crisp B&W bass shot matching first section */
+  filter: grayscale(100%) brightness(0.55) contrast(1.1);
+  /* Visible and crisp B&W bass shot matching first section */
   width: 100% !important;
   height: 100% !important;
   opacity: 0.9;
@@ -481,7 +512,8 @@
 .bassSingleCard {
   position: relative;
   background-color: #ffffff;
-  padding: 0.2cm; /* exactly 0.2cm border as requested */
+  padding: 0.2cm;
+  /* exactly 0.2cm border as requested */
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65);
   border-radius: 4px;
   width: 100%;
@@ -522,7 +554,8 @@
 
 .leaderPhotoCard {
   background-color: #ffffff;
-  padding: 0.2cm; /* exactly 0.2cm border as requested */
+  padding: 0.2cm;
+  /* exactly 0.2cm border as requested */
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.65);
   border-radius: 4px;
   display: flex;
@@ -625,7 +658,7 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at center, transparent 20%, #000000 100%),
-              linear-gradient(to top, #000000 0%, transparent 50%, #000000 100%);
+    linear-gradient(to top, #000000 0%, transparent 50%, #000000 100%);
   z-index: 2;
 }
 
@@ -749,7 +782,7 @@
   box-shadow: 0 0 20px rgba(212, 160, 23, 0.25);
 }
 
-.decryptLogsBtn > * {
+.decryptLogsBtn>* {
   position: relative;
   z-index: 1;
 }
@@ -820,7 +853,7 @@
 
 @media (max-width: 768px) {
   .sectionHeader {
-    padding: 8rem 1.5rem 4rem;
+    padding: 8rem 0.75rem 4rem;
     height: auto;
     min-height: 100vh;
   }
@@ -831,9 +864,9 @@
 
   .massiveTitle {
     margin-bottom: 1.5rem;
-    font-size: clamp(2rem, 5.5vw, 3.2rem);
+    font-size: clamp(2.4rem, 7.5vw, 3.5rem);
     white-space: nowrap;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.06em;
   }
 
   .sectionSubtitle {
@@ -875,7 +908,15 @@
     grid-column: span 1 !important;
   }
 
-  .cardRot1, .cardRot2, .cardRot3, .cardRot4, .cardRot5, .cardRot6, .cardRot7, .cardRot8, .cardRot9 {
+  .cardRot1,
+  .cardRot2,
+  .cardRot3,
+  .cardRot4,
+  .cardRot5,
+  .cardRot6,
+  .cardRot7,
+  .cardRot8,
+  .cardRot9 {
     transform: rotate(0deg) !important;
   }
 
