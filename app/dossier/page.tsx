@@ -131,17 +131,17 @@ const col1Photos: Photo[] = [
   {
     id: 'C1_01',
     src: '/photography_sect/20230530_190843.jpg',
-    aspectRatio: 4 / 3
+    aspectRatio: 3 / 4
   },
   {
     id: 'C1_02',
     src: '/photography_sect/20230528_112806.jpg',
-    aspectRatio: 4 / 3
+    aspectRatio: 3 / 4
   },
   {
     id: 'C1_03',
     src: '/photography_sect/20240223_171922.jpg',
-    aspectRatio: 4 / 3
+    aspectRatio: 3 / 4
   },
   {
     id: 'C1_04',
@@ -154,7 +154,7 @@ const col2Photos: Photo[] = [
   {
     id: 'C2_01',
     src: '/photography_sect/20230529_184440.jpg',
-    aspectRatio: 4 / 3
+    aspectRatio: 3 / 4
   },
   {
     id: 'C2_02',
@@ -187,7 +187,7 @@ const col3Photos: Photo[] = [
   {
     id: 'C3_03',
     src: '/photography_sect/20230425_165853.jpg',
-    aspectRatio: 4 / 3
+    aspectRatio: 3 / 4
   }
 ];
 
