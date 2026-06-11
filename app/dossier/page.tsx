@@ -11,89 +11,7 @@ import styles from './page.module.css';
 // TYPES & DATA DEFINITIONS
 // -------------------------------------------------------------
 
-interface StoryBlock {
-  title: string;
-  subtitle: string;
-  bullets: string[];
-}
 
-interface MediaItem {
-  id: string;
-  title: string;
-  type: string;
-  description: string;
-  storyKey: 'classical' | 'western' | 'stage';
-}
-
-const stories: Record<'classical' | 'western' | 'stage', StoryBlock> = {
-  classical: {
-    title: 'CLASSICAL FOUNDATION',
-    subtitle: 'Trained Hindustani Classical Vocalist',
-    bullets: [
-      'Began formal training in Hindustani Classical Vocal music in the 5th standard.',
-      'Completed 5 progressive levels of the prestigious Gandharva Mahavidyalaya examinations.',
-      'Gained deep mastery over classical Raagas, Swaras, and rhythm structures (Taal).'
-    ]
-  },
-  western: {
-    title: 'WESTERN EXPANSION',
-    subtitle: 'Self-Taught Instrumental Development',
-    bullets: [
-      'Transitioned classical vocal theories to western musical instrumentation.',
-      'Learned western music theory, chord progressions, and scales.',
-      'Acoustic Guitar: Developed fingerstyle techniques and rhythm playing.',
-      'Bass Guitar: Focused on groove design, complex basslines, and syncopation.'
-    ]
-  },
-  stage: {
-    title: 'STAGE & LEADERSHIP',
-    subtitle: 'Live Performances and Group Management',
-    bullets: [
-      'Performed live at multiple college festivals and cultural showcases.',
-      'Core Member and leader of the college music group, managing live audio and setups.',
-      'Co-Headed and organized solo singing events, managing over 50+ participants and logistics.',
-      'Experienced in stage direction, band arrangements, and musical collaboration.'
-    ]
-  }
-};
-
-const mediaGallery: MediaItem[] = [
-  {
-    id: 'M-01',
-    title: 'Childhood Classical Vocals',
-    type: 'CLASSICAL ARCHIVE',
-    description: 'Early years of Hindustani Classical training, mastering raagas and vocal control.',
-    storyKey: 'classical'
-  },
-  {
-    id: 'M-02',
-    title: 'Gandharva Mahavidyalaya',
-    type: 'CERTIFICATE ARCHIVE',
-    description: 'Verification of 5 levels completed under the Gandharva Mahavidyalaya board.',
-    storyKey: 'classical'
-  },
-  {
-    id: 'M-03',
-    title: 'Bass Guitar Grooves',
-    type: 'INSTRUMENT ARCHIVE',
-    description: 'Session playing focusing on low-end frequencies, syncopation, and driving rhythm.',
-    storyKey: 'western'
-  },
-  {
-    id: 'M-04',
-    title: 'College Fest Spotlight',
-    type: 'LIVE PERFORMANCE',
-    description: 'On-stage performing classical-rock fusion set in front of a live crowd.',
-    storyKey: 'stage'
-  },
-  {
-    id: 'M-05',
-    title: 'Music Group Leadership',
-    type: 'LEADERSHIP RECORD',
-    description: 'Coordinating rehearsals, managing soundboards, and arranging band pieces.',
-    storyKey: 'stage'
-  }
-];
 
 interface MissionLog {
   id: string;
@@ -161,42 +79,42 @@ const sketches: Sketch[] = [
   {
     id: 'EXHIBIT 01',
     src: '/ved_sketch/20230926_232508.jpg',
-    title: 'THE STUDY OF EXPRESSION',
+    title: 'CHHATRAPATI SHIVAJI MAHARAJ',
     medium: 'Charcoal & Graphite on Art Paper',
     year: 'c. 2023'
   },
   {
     id: 'EXHIBIT 02',
     src: '/ved_sketch/20230926_232747.jpg',
-    title: 'THE STUDY OF GAZE',
+    title: 'SACHIN TENDULKAR',
     medium: 'Fine Pencil Drawing',
     year: 'c. 2023'
   },
   {
     id: 'EXHIBIT 03',
     src: '/ved_sketch/20241202_222420.jpg',
-    title: 'THE REFLECTION OF SPIRIT',
+    title: 'VIRAT KOHLI',
     medium: 'Detailed Graphite Sketch',
     year: 'c. 2024'
   },
   {
     id: 'EXHIBIT 04',
     src: '/ved_sketch/20230926_232844.jpg',
-    title: 'PERSPECTIVE STUDY',
+    title: 'MICHAEL FARADAY',
     medium: 'Ink & Graphite Drawing',
     year: 'c. 2023'
   },
   {
     id: 'EXHIBIT 05',
     src: '/ved_sketch/20230926_232914.jpg',
-    title: 'SHADOW SILHOUETTE',
+    title: 'LATA MANGESHKAR',
     medium: 'Fine Charcoal Blending',
     year: 'c. 2023'
   },
   {
     id: 'EXHIBIT 06',
     src: '/ved_sketch/20230926_233120.jpg',
-    title: 'THE ANATOMY OF SILENCE',
+    title: 'KAPIL DEV',
     medium: 'Fine Line Pencil Sketch',
     year: 'c. 2023'
   }
@@ -205,70 +123,70 @@ const sketches: Sketch[] = [
 interface Photo {
   id: string;
   src: string;
-  title: string;
-  lens: string;
-  specs: string;
-  location: string;
-  year: string;
-  palette: string[];
-  aspectRatio: string;
+  aspectRatio: number;
 }
 
-const photos: Photo[] = [
+const col1Photos: Photo[] = [
   {
-    id: 'PHOTO 01',
+    id: 'C1_01',
     src: '/photography_sect/20230530_190843.jpg',
-    title: 'SILHOUETTE GEOMETRY',
-    lens: 'FE 50mm F1.8',
-    specs: '1/250s · f/4.5 · ISO 100',
-    location: 'OUTDOOR FIELD TELEMETRY',
-    year: '2023',
-    palette: ['#070708', '#201614', '#59392b', '#c2875f', '#fadaa2'],
-    aspectRatio: '4080 / 3060'
+    aspectRatio: 4 / 3
   },
   {
-    id: 'PHOTO 02',
+    id: 'C1_02',
+    src: '/photography_sect/20230528_112806.jpg',
+    aspectRatio: 4 / 3
+  },
+  {
+    id: 'C1_03',
+    src: '/photography_sect/20240223_171922.jpg',
+    aspectRatio: 4 / 3
+  },
+  {
+    id: 'C1_04',
     src: '/photography_sect/20230528_063251.jpg',
-    title: 'THE REFLECTION OF DAWN',
-    lens: 'FE 28-70mm F3.5-5.6',
-    specs: '1/160s · f/5.6 · ISO 200',
-    location: 'WETLANDS MONITORING',
-    year: '2023',
-    palette: ['#0a141d', '#2f3b4c', '#757c8b', '#cca59d', '#ffd8c8'],
-    aspectRatio: '2296 / 4080'
-  },
+    aspectRatio: 2296 / 4080
+  }
+];
+
+const col2Photos: Photo[] = [
   {
-    id: 'PHOTO 03',
-    src: '/photography_sect/20230425_165853.jpg',
-    title: 'THE CHROME PERSPECTIVE',
-    lens: 'FE 85mm F1.8',
-    specs: '1/320s · f/2.2 · ISO 400',
-    location: 'URBAN PROFILE SENSOR',
-    year: '2023',
-    palette: ['#0a0b0f', '#2c353f', '#7d8a97', '#ccdbe3', '#b86b43'],
-    aspectRatio: '4080 / 3060'
-  },
-  {
-    id: 'PHOTO 04',
-    src: '/photography_sect/20230528_063441.jpg',
-    title: 'STREET SYMMETRY INDEX',
-    lens: 'FE 50mm F1.8',
-    specs: '1/125s · f/2.8 · ISO 400',
-    location: 'STREET CROSSING TRANSIT',
-    year: '2023',
-    palette: ['#0b0c0e', '#3a3d40', '#9ea2a6', '#e1e5eb', '#cc2a2a'],
-    aspectRatio: '2282 / 3761'
-  },
-  {
-    id: 'PHOTO 05',
+    id: 'C2_01',
     src: '/photography_sect/20230529_184440.jpg',
-    title: 'LANDSCAPE DUSK SHADOWS',
-    lens: 'FE 35mm F1.4',
-    specs: '1/80s · f/1.8 · ISO 800',
-    location: 'METROPOLITAN OBSERVATORY',
-    year: '2023',
-    palette: ['#0c0d16', '#262947', '#5f5478', '#a87e8e', '#fca381'],
-    aspectRatio: '4080 / 3060'
+    aspectRatio: 4 / 3
+  },
+  {
+    id: 'C2_02',
+    src: '/photography_sect/20230528_063441.jpg',
+    aspectRatio: 2282 / 3761
+  },
+  {
+    id: 'C2_03',
+    src: '/photography_sect/20240603_100635.jpg',
+    aspectRatio: 2576 / 3985
+  },
+  {
+    id: 'C2_04',
+    src: '/photography_sect/20251217_071811.jpg',
+    aspectRatio: 4 / 3
+  }
+];
+
+const col3Photos: Photo[] = [
+  {
+    id: 'C3_01',
+    src: '/photography_sect/20240603_183133.jpg',
+    aspectRatio: 1836 / 3398
+  },
+  {
+    id: 'C3_02',
+    src: '/photography_sect/20240606_094433.jpg',
+    aspectRatio: 2448 / 3264
+  },
+  {
+    id: 'C3_03',
+    src: '/photography_sect/20230425_165853.jpg',
+    aspectRatio: 4 / 3
   }
 ];
 
@@ -278,13 +196,11 @@ export default function DossierPage() {
   const [terminalText, setTerminalText] = useState<string[]>([]);
   const [progress, setProgress] = useState(0);
 
-  // Musician interactive states
-  const [activeStory, setActiveStory] = useState<StoryBlock | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
 
   // Mission logs state
   const [hoveredLog, setHoveredLog] = useState<MissionLog | null>(null);
-  const [activeCert, setActiveCert] = useState<string | null>(null);
+  const [activeCert, setActiveCert] = useState<MissionLog | string | null>(null);
 
   // Section backgrounds & scrolling
   const [isArtistActive, setIsArtistActive] = useState(false);
@@ -293,11 +209,54 @@ export default function DossierPage() {
   // Sketch gallery visibility
   const [showAllSketches, setShowAllSketches] = useState(false);
 
-  // Photography section visibility
-  const [showAllPhotos, setShowAllPhotos] = useState(false);
 
-  // Abacus Math animation numbers
-  const [mathNumbers, setMathNumbers] = useState<number[]>([1, 0, 8, 4, 9, 2, 7, 5]);
+
+  // Interactive Soroban Abacus States
+  const [abacusVal, setAbacusVal] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
+  const [targetVal, setTargetVal] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
+
+  const getArrayValue = (arr: number[]) => arr.reduce((acc, digit) => acc * 10 + digit, 0);
+
+  const formatValue = (arr: number[]) => {
+    const val = getArrayValue(arr);
+    return val.toString().padStart(7, '0').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
+  const generateNewChallenge = () => {
+    const newTarget = Array.from({ length: 7 }, () => Math.floor(Math.random() * 10));
+    setTargetVal(newTarget);
+  };
+
+  const toggleUpperBead = (colIdx: number) => {
+    setAbacusVal((prev) => {
+      const next = [...prev];
+      const currentVal = next[colIdx];
+      if (currentVal >= 5) {
+        next[colIdx] = currentVal - 5;
+      } else {
+        next[colIdx] = currentVal + 5;
+      }
+      return next;
+    });
+  };
+
+  const handleLowerBeadClick = (colIdx: number, clickedBeadNum: number) => {
+    setAbacusVal((prev) => {
+      const next = [...prev];
+      const currentVal = next[colIdx];
+      const hasUpper = currentVal >= 5;
+      const currentLowerCount = currentVal % 5;
+      let newLowerCount = 0;
+      if (clickedBeadNum <= currentLowerCount) {
+        newLowerCount = clickedBeadNum - 1;
+      } else {
+        newLowerCount = clickedBeadNum;
+      }
+      next[colIdx] = (hasUpper ? 5 : 0) + newLowerCount;
+      return next;
+    });
+  };
+
 
   // Terminal screen animation
   useEffect(() => {
@@ -316,7 +275,7 @@ export default function DossierPage() {
         currentLineIdx++;
       } else {
         clearInterval(interval);
-        
+
         // Progress bar simulation
         let currentProgress = 0;
         const progressInterval = setInterval(() => {
@@ -336,65 +295,7 @@ export default function DossierPage() {
     return () => clearInterval(interval);
   }, []);
 
-  // Canvas Soundwave Animation
-  useEffect(() => {
-    if (!accessGranted || !canvasRef.current) return;
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
 
-    let animationId: number;
-    let phase = 0;
-
-    const resizeCanvas = () => {
-      canvas.width = canvas.parentElement?.clientWidth || window.innerWidth;
-      canvas.height = 180;
-    };
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      phase += 0.015;
-
-      // Draw 3 overlapping transparent waves
-      const waves = [
-        { amplitude: 25, frequency: 0.005, opacity: 0.05, color: '#ffffff' },
-        { amplitude: 15, frequency: 0.008, opacity: 0.06, color: '#D4A017' },
-        { amplitude: 8, frequency: 0.012, opacity: 0.04, color: '#ffffff' }
-      ];
-
-      waves.forEach((w) => {
-        ctx.beginPath();
-        ctx.strokeStyle = w.color;
-        ctx.globalAlpha = w.opacity;
-        ctx.lineWidth = 1.5;
-
-        for (let x = 0; x < canvas.width; x++) {
-          const y =
-            canvas.height / 2 +
-            Math.sin(x * w.frequency + phase) *
-              w.amplitude *
-              Math.sin(x * 0.002); // Taper at edges
-          if (x === 0) {
-            ctx.moveTo(x, y);
-          } else {
-            ctx.lineTo(x, y);
-          }
-        }
-        ctx.stroke();
-      });
-
-      animationId = requestAnimationFrame(draw);
-    };
-
-    draw();
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resizeCanvas);
-    };
-  }, [accessGranted]);
 
   // Artist section theme transition observer
   useEffect(() => {
@@ -413,22 +314,20 @@ export default function DossierPage() {
 
 
 
-  // Abacus Math falling numbers
+  // Initialize first challenge on mount
   useEffect(() => {
-    if (!accessGranted) return;
-    const interval = setInterval(() => {
-      setMathNumbers(
-        Array.from({ length: 8 }, () => Math.floor(Math.random() * 10))
-      );
-    }, 180);
-    return () => clearInterval(interval);
+    if (accessGranted) {
+      generateNewChallenge();
+    }
   }, [accessGranted]);
+
+
+
 
   // Handle clicking escape to close modals
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setActiveStory(null);
         setActiveCert(null);
       }
     };
@@ -490,112 +389,13 @@ export default function DossierPage() {
         <div className={styles.filmGrain} />
 
         {/* -------------------------------------------------------------
-            SECTION 01: THE MUSICIAN
-            ------------------------------------------------------------- */}
-        <section className={styles.musicianSection} id="musician">
-          <div className={styles.soundwaveWrapper}>
-            <canvas ref={canvasRef} className={styles.soundwaveCanvas} />
-            <div className={styles.musicalNotesLayer}>
-              <span>♩</span>
-              <span>♫</span>
-              <span>♬</span>
-              <span>♭</span>
-              <span>♯</span>
-              <span>∮</span>
-            </div>
-          </div>
-
-          <div className={styles.musicHero}>
-            <div className={styles.musicHeroContent}>
-              <span className={styles.sectionCategory}>SECTION 01 // ARCHIVE_MUSIC</span>
-              <h2 className={styles.musicLargeTitle}>[MUSIC]</h2>
-              <h3 className={styles.musicSubtitle}>15+ YEARS OF MUSICAL JOURNEY</h3>
-              <p className={styles.musicSubtext}>
-                From Hindustani Classical Vocals to Live Stage Performances and Bass Guitar.
-              </p>
-              
-              <div className={styles.musicTechSpecs}>
-                <div className={styles.specItem}>
-                  <span className={styles.specLabel}>VOX RANGE</span>
-                  <strong className={styles.specVal}>HINDUSTANI CLASSICAL</strong>
-                </div>
-                <div className={styles.specItem}>
-                  <span className={styles.specLabel}>INSTRUMENTS</span>
-                  <strong className={styles.specVal}>BASS & ACOUSTIC GUITAR</strong>
-                </div>
-                <div className={styles.specItem}>
-                  <span className={styles.specLabel}>EXPERIENCE</span>
-                  <strong className={styles.specVal}>15+ YEARS ACTIVE</strong>
-                </div>
-              </div>
-            </div>
-            
-            <div className={styles.musicHeroImageWrapper}>
-              <div className={styles.singerGlow} />
-              <div className={styles.singerImageContainer}>
-                <Image
-                  src="/singer_pose2.PNG"
-                  alt="Vedant Patil Singing"
-                  width={600}
-                  height={750}
-                  className={styles.singerImage}
-                  priority
-                />
-              </div>
-              <div className={styles.singerVignette} />
-              <div className={styles.singerTag}>
-                <span>RECORD_SUBJECT: PATIL_V</span>
-                <span>DESATURATED_SPECS: 24-BIT // RAW</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Horizontal Gallery */}
-          <div className={styles.galleryTrackWrapper}>
-            <div className={styles.galleryTrack}>
-              {mediaGallery.map((item) => (
-                <div
-                  key={item.id}
-                  className={styles.mediaPanel}
-                  onClick={() => setActiveStory(stories[item.storyKey])}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`Open story: ${item.title}`}
-                  id={`media-panel-${item.id.toLowerCase()}`}
-                >
-                  <div className={styles.panelOverlay} />
-                  <div className={styles.panelFrame}>
-                    <div className={styles.panelTechTag}>{item.id} {'//'} {item.type}</div>
-                    
-                    {/* Placeholder image container */}
-                    <div className={styles.imagePlaceholder}>
-                      <div className={styles.placeholderLines} />
-                      <div className={styles.placeholderLabel}>
-                        <span>NO IMAGE LOADED</span>
-                        <small>AWAITING ASSET COMMAND</small>
-                      </div>
-                    </div>
-
-                    <div className={styles.panelInfo}>
-                      <h4 className={styles.panelTitle}>{item.title}</h4>
-                      <p className={styles.panelDesc}>{item.description}</p>
-                      <span className={styles.panelCta}>DECRYPT DOSSIER REPORT →</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* -------------------------------------------------------------
             SECTION 02: MISSION LOGS
             ------------------------------------------------------------- */}
         <section className={styles.missionLogsSection} id="mission-logs">
           <div className={styles.gridOverlay} />
-          
+
           <div className={styles.sectionHeaderCentered}>
-            <span className={styles.sectionCategory}>SECTION 02 // INTEL_LOGS</span>
+            <span className={styles.sectionCategory}>INTEL_LOGS // REPOSITORY</span>
             <h2 className={styles.logsLargeTitle}>MISSION LOGS</h2>
             <p className={styles.logsSubtitle}>Problems. Pressure. Deadlines.</p>
           </div>
@@ -607,7 +407,7 @@ export default function DossierPage() {
               <div className={styles.intelBoard}>
                 {/* Background Classified Stamp */}
                 <div className={styles.classifiedStampBg}>CLASSIFIED // TOP SECRET</div>
-                
+
                 {/* SVG Connecting threads (complex web of evidence) */}
                 <svg className={styles.connectionsSvg} aria-hidden="true">
                   <line x1="18%" y1="20%" x2="30%" y2="68%" className={styles.logLine} />
@@ -626,7 +426,7 @@ export default function DossierPage() {
                     style={{ left: log.coordinates.x, top: log.coordinates.y }}
                     onMouseEnter={() => setHoveredLog(log)}
                     onMouseLeave={() => setHoveredLog(null)}
-                    onClick={() => setActiveCert(log.image)}
+                    onClick={() => setActiveCert(log)}
                     role="button"
                     tabIndex={0}
                     aria-label={`View log details for ${log.name}`}
@@ -634,13 +434,13 @@ export default function DossierPage() {
                   >
                     <div className={styles.pinDot} />
                     <div className={styles.pinPulse} />
-                    
+
                     <div className={styles.evidencePolaroid}>
                       <div className={styles.polaroidPin} />
                       <div className={styles.polaroidStamp}>
                         {log.achievement.includes('RANK 1') || log.achievement.includes('1ST') ? '1ST PLACE' : 'WINNER'}
                       </div>
-                      
+
                       <div className={styles.polaroidImageMock}>
                         <Image
                           src={log.image}
@@ -650,7 +450,7 @@ export default function DossierPage() {
                           className={styles.polaroidImg}
                         />
                       </div>
-                      
+
                       <div className={styles.polaroidCaption}>
                         <span className={styles.polaroidId}>{log.id}</span>
                         <strong className={styles.polaroidName}>{log.name}</strong>
@@ -675,12 +475,12 @@ export default function DossierPage() {
                         <span className={styles.reportLabel}>EVENT:</span>
                         <h4 className={styles.reportTitle}>{hoveredLog.name}</h4>
                       </div>
-                      
+
                       <div className={styles.reportAchievementRow}>
                         <span className={styles.reportLabel}>CLASSIFICATION / OUTCOME:</span>
                         <div className={styles.reportAchievementVal}>{hoveredLog.achievement}</div>
                       </div>
-                      
+
                       <div className={styles.reportMetaRow}>
                         <div>
                           <span className={styles.reportLabel}>YEAR:</span>
@@ -691,13 +491,13 @@ export default function DossierPage() {
                           <span className={styles.reportVal}>{hoveredLog.role}</span>
                         </div>
                       </div>
-                      
+
                       <div className={styles.reportDescBlock}>
                         <span className={styles.reportLabel}>BRIEFING:</span>
                         <p className={styles.reportDesc}>{hoveredLog.description}</p>
-                        <button 
+                        <button
                           className={styles.decryptEvidenceBtn}
-                          onClick={() => setActiveCert(hoveredLog.image)}
+                          onClick={() => setActiveCert(hoveredLog)}
                         >
                           DECRYPT CERTIFICATE EVIDENCE →
                         </button>
@@ -721,7 +521,7 @@ export default function DossierPage() {
         <section ref={artistRef} className={styles.artistSection} id="artist">
           <div className={styles.artistWrapper}>
             <div className={styles.sectionHeaderLeft}>
-              <span className={styles.sectionCategoryLight}>SECTION 03 // ARCHIVE_CREATOR</span>
+              <span className={styles.sectionCategoryLight}>ARCHIVE_CREATOR // OBSERVATIONS</span>
               <h2 className={styles.artistLargeTitle}>
                 A PENCIL,<br />A PAGE,<br />AND A THOUSAND OBSERVATIONS.
               </h2>
@@ -840,224 +640,249 @@ export default function DossierPage() {
         </section>
 
         {/* -------------------------------------------------------------
-            SECTION 04: THROUGH MY LENS
+            SECTION 04: THROUGH MY LENS (Scrapbook Layout)
             ------------------------------------------------------------- */}
         <section className={styles.photographySection} id="photography">
-          <div className={styles.photographyWrapper}>
-            <div className={styles.sectionHeaderLeft}>
-              <span className={styles.sectionCategory}>SECTION 04 // THROUGH_MY_LENS</span>
-              <h2 className={styles.photographyTitle}>
-                THROUGH MY LENS.
-              </h2>
-            </div>
+          {/* Top Header */}
+          <div className={styles.collageHeader}>
+            <div className={styles.headerLeftText}>Documentation</div>
+            <div className={styles.headerCenterText}>Created by Vedant</div>
+            <div className={styles.headerRightText}>Typography & Details</div>
+          </div>
 
-            {/* Photo Exhibition Collage Layout */}
-            <div className={styles.photoJournalCollage}>
-              {/* Column 1 (Left Column) */}
-              <div className={styles.photoCollageCol1}>
-                {photos[3] && (
-                  <div className={styles.journalItem} key={photos[3].id}>
-                    <div 
-                      className={styles.photoContainer}
-                      style={{ aspectRatio: photos[3].aspectRatio }}
-                    >
-                      <Image
-                        src={photos[3].src}
-                        alt={photos[3].title}
-                        fill
-                        unoptimized
-                        className={styles.photoImage}
-                      />
-                    </div>
-                    <div className={styles.photoTag}>
-                      <span className={styles.photoTagNum}>{photos[3].id}</span>
-                      <h4 className={styles.photoTagTitle}>{photos[3].title}</h4>
-                      <p className={styles.photoTagSpecs}>{photos[3].lens} {'//'} {photos[3].specs}</p>
-                      <p className={styles.photoTagLocation}>{photos[3].location} {'//'} {photos[3].year}</p>
-                    </div>
-                  </div>
-                )}
-              </div>
+          {/* Swatches Container */}
+          <div className={styles.swatchesContainer}>
+            <span className={`${styles.swatch} ${styles.swatchOlive}`} />
+            <span className={`${styles.swatch} ${styles.swatchCharcoal}`} />
+            <span className={`${styles.swatch} ${styles.swatchGrey}`} />
+            <span className={`${styles.swatch} ${styles.swatchBlue}`} />
+            <span className={`${styles.swatch} ${styles.swatchRust}`} />
+          </div>
 
-              {/* Column 2 (Center Column) */}
-              <div className={styles.photoCollageCol2}>
-                {photos[0] && (
-                  <div className={styles.journalItem} key={photos[0].id}>
-                    <div 
-                      className={styles.photoContainer}
-                      style={{ aspectRatio: photos[0].aspectRatio }}
-                    >
-                      <Image
-                        src={photos[0].src}
-                        alt={photos[0].title}
-                        fill
-                        unoptimized
-                        className={styles.photoImage}
-                      />
-                    </div>
-                    <div className={styles.photoTag}>
-                      <span className={styles.photoTagNum}>{photos[0].id}</span>
-                      <h4 className={styles.photoTagTitle}>{photos[0].title}</h4>
-                      <p className={styles.photoTagSpecs}>{photos[0].lens} {'//'} {photos[0].specs}</p>
-                      <p className={styles.photoTagLocation}>{photos[0].location} {'//'} {photos[0].year}</p>
-                    </div>
-                  </div>
-                )}
+          {/* Archive Title Block */}
+          <div className={styles.collageTitleBlock}>
+            <span className={styles.collageSubTitle}>Archive ________</span>
+            <h3 className={styles.collageMainTitle}>THROUGH MY LENS.</h3>
+          </div>
 
-                {showAllPhotos && (
-                  <>
-                    {photos[2] && (
-                      <div className={styles.journalItem} key={photos[2].id}>
-                        <div 
-                          className={styles.photoContainer}
-                          style={{ aspectRatio: photos[2].aspectRatio }}
-                        >
-                          <Image
-                            src={photos[2].src}
-                            alt={photos[2].title}
-                            fill
-                            unoptimized
-                            className={styles.photoImage}
-                          />
-                        </div>
-                        <div className={styles.photoTag}>
-                          <span className={styles.photoTagNum}>{photos[2].id}</span>
-                          <h4 className={styles.photoTagTitle}>{photos[2].title}</h4>
-                          <p className={styles.photoTagSpecs}>{photos[2].lens} {'//'} {photos[2].specs}</p>
-                          <p className={styles.photoTagLocation}>{photos[2].location} {'//'} {photos[2].year}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    {photos[4] && (
-                      <div className={styles.journalItem} key={photos[4].id}>
-                        <div 
-                          className={styles.photoContainer}
-                          style={{ aspectRatio: photos[4].aspectRatio }}
-                        >
-                          <Image
-                            src={photos[4].src}
-                            alt={photos[4].title}
-                            fill
-                            unoptimized
-                            className={styles.photoImage}
-                          />
-                        </div>
-                        <div className={styles.photoTag}>
-                          <span className={styles.photoTagNum}>{photos[4].id}</span>
-                          <h4 className={styles.photoTagTitle}>{photos[4].title}</h4>
-                          <p className={styles.photoTagSpecs}>{photos[4].lens} {'//'} {photos[4].specs}</p>
-                          <p className={styles.photoTagLocation}>{photos[4].location} {'//'} {photos[4].year}</p>
-                        </div>
-                      </div>
-                    )}
-                  </>
-                )}
-              </div>
-
-              {/* Column 3 (Right Column) */}
-              <div className={styles.photoCollageCol3}>
-                {photos[1] && (
-                  <div className={styles.journalItem} key={photos[1].id}>
-                    <div 
-                      className={styles.photoContainer}
-                      style={{ aspectRatio: photos[1].aspectRatio }}
-                    >
-                      <Image
-                        src={photos[1].src}
-                        alt={photos[1].title}
-                        fill
-                        unoptimized
-                        className={styles.photoImage}
-                      />
-                    </div>
-                    <div className={styles.photoTag}>
-                      <span className={styles.photoTagNum}>{photos[1].id}</span>
-                      <h4 className={styles.photoTagTitle}>{photos[1].title}</h4>
-                      <p className={styles.photoTagSpecs}>{photos[1].lens} {'//'} {photos[1].specs}</p>
-                      <p className={styles.photoTagLocation}>{photos[1].location} {'//'} {photos[1].year}</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-              {/* View More Trigger */}
-              <div className={styles.photoViewMoreContainer}>
-                <button
-                  className={styles.photoViewMoreBtn}
-                  onClick={() => setShowAllPhotos(!showAllPhotos)}
+          <div className={styles.collageContainer}>
+            {/* Left Column */}
+            <div className={styles.collageColumnLeft}>
+              {col1Photos.map((item) => (
+                <div
+                  key={item.id}
+                  className={styles.collagePhotoItem}
+                  style={{ aspectRatio: item.aspectRatio }}
+                  onClick={() => setActiveCert(item.src)}
                 >
-                  {showAllPhotos ? 'RESTRICT ARCHIVE VIEW [ -2 RECORDS ]' : 'DECRYPT ALL EXHIBITS [ +2 RECORDS ]'}
-                </button>
-              </div>
+                  <Image
+                    src={item.src}
+                    alt="Editorial archive photography"
+                    fill
+                    unoptimized
+                    className={styles.collageImg}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              ))}
             </div>
+
+            {/* Center Column */}
+            <div className={styles.collageColumnCenter}>
+              {col2Photos.map((item) => (
+                <div
+                  key={item.id}
+                  className={styles.collagePhotoItem}
+                  style={{ aspectRatio: item.aspectRatio }}
+                  onClick={() => setActiveCert(item.src)}
+                >
+                  <Image
+                    src={item.src}
+                    alt="Editorial archive photography"
+                    fill
+                    unoptimized
+                    className={styles.collageImg}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Right Column */}
+            <div className={styles.collageColumnRight}>
+              {col3Photos.map((item) => (
+                <div
+                  key={item.id}
+                  className={styles.collagePhotoItem}
+                  style={{ aspectRatio: item.aspectRatio }}
+                  onClick={() => setActiveCert(item.src)}
+                >
+                  <Image
+                    src={item.src}
+                    alt="Editorial archive photography"
+                    fill
+                    unoptimized
+                    className={styles.collageImg}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className={styles.collageFooter}>
+            <div className={styles.footerLeftText}>
+              <p>Moments frozen in time, capturing the ordinary and the raw.</p>
+              <p>An archive of places, light, and the people who made them memorable.</p>
+              <p>Photography is not just about the frame; it is about the action of remembering.</p>
+            </div>
+            <div className={styles.footerDate}>
+              <span>26</span>
+              <span>Jun</span>
+              <span>26</span>
+            </div>
+          </div>
         </section>
 
         {/* -------------------------------------------------------------
             SECTION 05: THE HUMAN CALCULATOR
             ------------------------------------------------------------- */}
         <section className={styles.calculatorSection} id="calculator">
+          <div className={styles.gridOverlay} />
+          {/* Subtle math backdrop symbols floating */}
+          <div className={styles.mathBackdrop}>
+            <span>√x</span>
+            <span>∑</span>
+            <span>π</span>
+            <span>∞</span>
+            <span>f(x)</span>
+            <span>∫</span>
+          </div>
+
           <div className={styles.sectionHeaderCentered}>
-            <span className={styles.sectionCategory}>SECTION 05 // QUANT_COGNITION</span>
+            <span className={styles.sectionCategory}>COGNITIVE // PERFORMANCE</span>
             <h2 className={styles.calculatorTitle}>THE HUMAN CALCULATOR</h2>
-            <h3 className={styles.calculatorSubtitle}>Mental Mathematics Specialist</h3>
+            <p className={styles.logsSubtitle}>Mental Math. Visual Processing. Logic Foundations.</p>
           </div>
 
           <div className={styles.calculatorGrid}>
-            <div className={styles.mathConsole}>
-              <div className={styles.mathConsoleHeader}>
-                <span>COGNITIVE_NUMERIC_SHELL // ONLINE</span>
-                <span className={styles.pulseActive}>●</span>
-              </div>
-              
-              <div className={styles.mathStream}>
-                {/* Visual number columns */}
-                <div className={styles.numbersGrid}>
-                  {mathNumbers.map((num, i) => (
-                    <div key={i} className={styles.numColumn}>
-                      <span className={styles.runningNum}>{num}</span>
-                      <span className={styles.runningNum}>{(num + 3) % 10}</span>
-                      <span className={styles.runningNum}>{(num + 7) % 10}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className={styles.abacusDisplay}>
-                  <div className={styles.abacusFrame}>
-                    <div className={styles.abacusDivider} />
-                    {Array.from({ length: 7 }).map((_, col) => (
-                      <div key={col} className={styles.abacusCol}>
-                        <div className={styles.abacusBead} style={{ top: col % 2 === 0 ? '5px' : '20px' }} />
-                        <div className={styles.abacusBead} style={{ top: col % 3 === 0 ? '55px' : '75px' }} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.consoleStatus}>
-                <span>LEVEL: COMPLETED ALL LEVEL EXAMS</span>
-                <span>SYSTEM: ABACUS MENTAL MATHEMATICS</span>
-              </div>
+            {/* Story Panel */}
+            <div className={styles.calculatorStoryCard}>
+              <div className={styles.storyTag}>DEVELOPMENT_RECORD // 2018</div>
+              <h4 className={styles.storyHeadline}>COGNITIVE AWAKENING</h4>
+              <p className={styles.storyBody}>
+                Completed all progressive levels of Abacus Mental Mathematics at a very early stage. Rather than just calculation, this intense training served as a cognitive foundation that shaped my logical thinking and spatial processing.
+              </p>
+              <p className={styles.storyBody}>
+                By learning to visualize and manipulate a virtual abacus inside my mind, I developed strong mental imagery and concentration. This early development laid the groundwork for my analytical capabilities as an engineer, enabling me to visualize complex logic flows and system architectures before writing code.
+              </p>
+              {/* Tech card corner brackets */}
+              <div className={styles.cardCornerTopLeft} />
+              <div className={styles.cardCornerBottomRight} />
             </div>
 
-            <div className={styles.attributesBlock}>
-              <div className={styles.attrCard} id="attr-speed">
-                <h4>SPEED</h4>
-                <p>Instantaneous calculation triggers, executing arithmetic operations in fractions of a second without paper aids.</p>
+            {/* Polaroid Abacus Degree Photo */}
+            <div className={styles.abacusDegreePolaroid}>
+              <div className={styles.polaroidStamp}>CERTIFIED</div>
+              <div className={styles.polaroidFrame}>
+                <Image
+                  src="/IMG20180211114741[1].jpg"
+                  alt="Abacus Degree Certificate"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 300px"
+                  className={styles.polaroidImg}
+                />
               </div>
-              <div className={styles.attrCard} id="attr-concentration">
-                <h4>CONCENTRATION</h4>
-                <p>Sustained high-focus states, maintaining memory registers of multiple numbers simultaneously under noise.</p>
+              <div className={styles.polaroidCaption}>
+                <span className={styles.polaroidTitle}>ABACUS CERTIFICATE HOLDER</span>
+                <span className={styles.polaroidDate}>CERTIFIED // FEB 2018</span>
               </div>
-              <div className={styles.attrCard} id="attr-visualization">
-                <h4>VISUALIZATION</h4>
-                <p>Mental abacus mapping: spatial translation of mathematical problems onto a virtual abacus inside the mind.</p>
+            </div>
+          </div>
+
+          {/* Interactive Abacus Engine Console */}
+          <div className={styles.mathConsole}>
+            <div className={styles.crtScanline} />
+            <div className={styles.mathConsoleHeader}>
+              <span>COGNITIVE_SOROBAN_ENGINE // ONLINE</span>
+              <span className={styles.pulseActive}>●</span>
+            </div>
+
+            <div className={styles.abacusInterface}>
+              {/* Left Side: Readings and Controls */}
+              <div className={styles.abacusControlPanel}>
+                <div className={styles.abacusReadoutGroup}>
+                  <div className={styles.readoutLabel}>CURRENT LOGIC STATE</div>
+                  <div className={styles.readoutValue}>{formatValue(abacusVal)}</div>
+                </div>
+
+                <div className={styles.abacusReadoutGroup}>
+                  <div className={styles.readoutLabel}>COGNITIVE TARGET REGISTER</div>
+                  <div className={styles.readoutValue} style={{ color: '#00ff66', textShadow: '0 0 10px rgba(0,255,102,0.4)' }}>
+                    {formatValue(targetVal)}
+                  </div>
+                </div>
+
+                <div className={styles.abacusActions}>
+                  <button onClick={() => setAbacusVal([0, 0, 0, 0, 0, 0, 0])} className={styles.abacusButton}>
+                    RESET COGNITION
+                  </button>
+                  <button onClick={generateNewChallenge} className={styles.abacusButton} style={{ borderColor: '#00ff66', color: '#00ff66' }}>
+                    NEW TARGET
+                  </button>
+                </div>
+
+                {getArrayValue(abacusVal) === getArrayValue(targetVal) ? (
+                  <div className={styles.matchAlert}>
+                    <span className={styles.matchCheck}>✓</span>
+                    <span>COGNITIVE ALIGNMENT SECURED</span>
+                  </div>
+                ) : (
+                  <div className={styles.matchPending}>
+                    <span className={styles.pendingDot}>●</span>
+                    <span>AWAITING INPUT SYNC...</span>
+                  </div>
+                )}
               </div>
-              <div className={styles.attrCard} id="attr-reasoning">
-                <h4>NUMERICAL REASONING</h4>
-                <p>Rapid pattern recognition, dividing complex problems into structured quantitative logic segments instantly.</p>
+
+              {/* Right Side: The Abacus */}
+              <div className={styles.sorobanAbacus}>
+                <div className={styles.abacusInnerFrame}>
+                  {/* The Beam (Divider Bar) */}
+                  <div className={styles.abacusBeam} />
+
+                  {/* 7 rods */}
+                  {Array.from({ length: 7 }).map((_, colIdx) => {
+                    const digit = abacusVal[colIdx];
+                    const upperActive = digit >= 5;
+                    const lowerActiveCount = digit % 5;
+
+                    return (
+                      <div key={colIdx} className={styles.abacusRod}>
+                        {/* Upper deck bead (index 5) */}
+                        <div
+                          className={`${styles.abacusBead} ${styles.upperBead} ${upperActive ? styles.beadActive : ''} ${upperActive ? styles.upperBeadActive : ''}`}
+                          onClick={() => toggleUpperBead(colIdx)}
+                        />
+
+                        {/* Lower deck beads (index 1 to 4) */}
+                        <div className={styles.lowerDeck}>
+                          {[1, 2, 3, 4].map((beadNum) => {
+                            const isBeadActive = beadNum <= lowerActiveCount;
+                            return (
+                              <div
+                                key={beadNum}
+                                className={`${styles.abacusBead} ${styles.lowerBead} ${isBeadActive ? styles.beadActive : ''} ${isBeadActive ? styles.lowerBeadActive : ''}`}
+                                onClick={() => handleLowerBeadClick(colIdx, beadNum)}
+                              />
+                            );
+                          })}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
@@ -1068,17 +893,14 @@ export default function DossierPage() {
             ------------------------------------------------------------- */}
         <section className={styles.endingSection} id="ending">
           <div className={styles.endingOverlay} />
-          
+
           <div className={styles.endingContent}>
             <h2 className={styles.endingHeadline}>
               THE ENGINEER YOU SAW<br />
               IS ONLY ONE PART OF THE STORY.
             </h2>
-            
+
             <div className={styles.rolesRow}>
-              <span>Singer.</span>
-              <span>Musician.</span>
-              <span>Performer.</span>
               <span>Competitor.</span>
               <span>Artist.</span>
               <span>Leader.</span>
@@ -1099,49 +921,7 @@ export default function DossierPage() {
         </section>
       </div>
 
-      {/* -------------------------------------------------------------
-          STORY DETAILS MODAL OVERLAY
-          ------------------------------------------------------------- */}
-      {activeStory && (
-        <div
-          className={styles.modalOverlay}
-          onClick={() => setActiveStory(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-title"
-        >
-          <div
-            className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className={styles.modalClose}
-              onClick={() => setActiveStory(null)}
-              aria-label="Close details"
-            >
-              [ CLOSE RECORD × ]
-            </button>
-            <div className={styles.modalConsoleLine} />
-            <div className={styles.modalBody}>
-              <span className={styles.modalTag}>CLASSIFIED // PATIL_V</span>
-              <h3 id="modal-title" className={styles.modalTitle}>{activeStory.title}</h3>
-              <h4 className={styles.modalSubtitle}>{activeStory.subtitle}</h4>
-              <ul className={styles.modalList}>
-                {activeStory.bullets.map((bullet, idx) => (
-                  <li key={idx} className={styles.modalBullet}>
-                    <span className={styles.bulletPointer}>&gt;</span>
-                    <p>{bullet}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className={styles.modalFooter}>
-              <span>SECURITY: CONFIDENTIAL</span>
-              <span>VP_SYS_DYN_STORY</span>
-            </div>
-          </div>
-        </div>
-      )}
+
 
       {activeCert && (
         <div
@@ -1161,16 +941,63 @@ export default function DossierPage() {
             >
               [ CLOSE EVIDENCE × ]
             </button>
-            <div className={styles.certModalImageWrapper}>
-              <Image
-                src={activeCert}
-                alt="Hackathon Certificate Evidence"
-                width={1000}
-                height={700}
-                className={styles.certFullImg}
-                priority
-              />
-            </div>
+
+            {typeof activeCert !== 'string' ? (
+              /* Split Layout for Certificates / Mission Logs (Responsive) */
+              <div className={styles.certModalBody}>
+                <div className={styles.certModalImageWrapper}>
+                  <Image
+                    src={activeCert.image}
+                    alt={activeCert.name}
+                    width={1000}
+                    height={700}
+                    className={styles.certFullImg}
+                    priority
+                  />
+                </div>
+                <div className={styles.certModalDetails}>
+                  <div className={styles.certModalHeader}>
+                    <span className={styles.certModalLabel}>LOG REPORT:</span>
+                    <h3 className={styles.certModalTitle}>{activeCert.name}</h3>
+                  </div>
+
+                  <div className={styles.certModalMeta}>
+                    <div>
+                      <span className={styles.certModalLabel}>CLASSIFICATION / OUTCOME:</span>
+                      <div className={styles.certModalVal} style={{ color: '#D4A017' }}>{activeCert.achievement}</div>
+                    </div>
+                    <div className={styles.certModalMetaRow}>
+                      <div>
+                        <span className={styles.certModalLabel}>YEAR:</span>
+                        <span className={styles.certModalVal}>{activeCert.year}</span>
+                      </div>
+                      <div>
+                        <span className={styles.certModalLabel}>ROLE:</span>
+                        <span className={styles.certModalVal}>{activeCert.role}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={styles.certModalDesc}>
+                    <span className={styles.certModalLabel}>BRIEFING ANALYSIS:</span>
+                    <p>{activeCert.description}</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* Simple Image-Only Layout (for other sections like drawings/photos) */
+              <div className={styles.certModalImageWrapper}>
+                <Image
+                  src={activeCert}
+                  alt="Archive Asset Preview"
+                  width={1000}
+                  height={700}
+                  className={styles.certFullImg}
+                  priority
+                />
+              </div>
+            )}
+
             <div className={styles.certModalFooter}>
               <span>ENCRYPTED_FILE_DECRYPTED</span>
               <span>VP_SYS_INTEL_BOARD</span>
