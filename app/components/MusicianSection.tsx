@@ -30,7 +30,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
         
         <div className={styles.headerContent}>
           <span className={styles.sectionCategory}>MUSIC // CHRONICLE</span>
-          <h1 className={styles.massiveTitle}>15 YEARS OF MUSIC.</h1>
+          <h1 className={styles.massiveTitle}>10+ YEARS OF MUSIC.</h1>
           <p className={styles.sectionSubtitle}>
             From Hindustani Classical Vocals to Live Performances, Bass Guitar and Leadership.
           </p>
