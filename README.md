@@ -1,108 +1,152 @@
-# ⚡ Vedant Patil's Portfolio & Secure Dossier Archive
+# 🌐 VP_SYSTEM_CORE // CLASSIFIED PORTFOLIO & DOSSIER
 
-A premium, interactive, and responsive portfolio website built with **Next.js 16 (App Router)**, **React 19**, and **TypeScript**. It integrates modern, visually rich aesthetics (glassmorphism, micro-animations, color gradients) and a fully immersive, classified espionage-themed **Dossier System** at `/dossier`.
-
----
-
-## 🚀 Key Highlights & Interactive Features
-
-### 🖥️ Core Portfolio Sections
-*   **Hero Grid**: Dark-mode terminal interface displaying a modern introductory grid.
-*   **Intel Brief (About)**: Detailed summary of engineering principles, tools, and background.
-*   **Mission Logs (Projects)**: Clean card decks presenting engineering endeavors, machine learning algorithms, and system designs.
-*   **Toolkit (Tech Stack)**: Comprehensive flat icon grid highlighting core languages (Python, TypeScript, C++, C), web frameworks (Next.js, React, Node.js, Flask, Express), data science tools (NumPy, Pandas, scikit-learn), and embedded hardware (Raspberry Pi, Arduino).
-*   **Academic Pathway (Education)**: Custom vertical timeline displaying schooling milestones with interactive scroll reveals and animated spine ticks.
-*   **Theme Switcher**: Tactile pull-cord cord toggle with volume-faded audio feedback and localStorage persistence.
-
-### 📁 The Decrypted Dossier (`/dossier`)
-A highly engaging, themed command center archiving multidisciplinary achievements:
-1.  **SYS_INIT Decryptor Terminal**: Immersive initial loading terminal simulating network handshakes and decryption key authorization with a bypass protocol.
-2.  **Section 01 // The Musician**: Interactive classical/western vocalist briefing. Features an HTML5 Canvas-driven sine wave generator generating overlapping floating audio frequencies and floating notation overlays.
-3.  **Section 02 // Mission Logs**: Classified pin-board visualizing hackathon achievements. Renders a glowing red thread network connection map. Hovering on nodes generates live technical briefs on a simulated terminal console, and clicking decrypts certificate evidence:
-    *   `LOG-01`: **IO Hackathon 2026** (IIT Guwahati & AQUA option pricing systems using Numba JIT).
-    *   `LOG-02`: **Code Sprint** (XIE Mahim 1st Place win under Team CodeRunners).
-    *   `LOG-03`: **Kaggle Knight** (IIT Jodhpur 36-Hour ML Hackathon under Team nightknight).
-    *   `LOG-04`: **AMUHACKS 5.0** (Aligarh Muslim University 1st Place win under Team CyberDevs).
-4.  **Section 03 // The Artist**: Multi-sensory layout shifting from pure dark mode to warm gallery off-white (`#efece5`) on scroll. Displays charcoal sketches framed in 3D walnut/mahogany wooden borders, brass hanging nails, support cables, and interactive spotlight halos on hover.
-5.  **Section 04 // Through My Lens**: Minimalist, asymmetric 3-column masonry photography collage. Bypasses standard Next.js downsizers to preserve original image aspect ratios, lens specifications (EXIF focal lengths, exposures), and pixel-perfect quality.
-6.  **Section 05 // The Human Calculator**: Fast-paced binary number generator grids and an interactive virtual abacus representing mathematical calculation speed, memory visualization, and focus metrics.
-
----
-
-## 🛠️ Technology Stack
-
-*   **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
-*   **Library**: [React 19](https://react.dev/)
-*   **Language**: [TypeScript](https://www.typescriptlang.org/)
-*   **Styling**: Pure CSS Modules (scoped layouts, custom CSS custom properties for transitions)
-*   **Linter**: [ESLint 9](https://eslint.org/) (Conforms to strict standard rule declarations)
-
----
-
-## 📁 Repository Structure
-
+```text
+=========================================================================================
+      [SYS_INTEL_BOARD] // CLASSIFIED DOSSIER & MULTIDISCIPLINARY CORE ARCHIVE
+      IDENT: VP-PORTFOLIO-16.2 // ENCRYPTED ACCESS GRANTED // 0% INTERCEPT DETECTED
+=========================================================================================
 ```
+
+An advanced, high-performance, and immersive interactive command center representing the engineering portfolio, academic timeline, and secret archive dossiers of Vedant Patil. Powered by **Next.js 16 (App Router)**, **React 19**, and **TypeScript**, with absolute optimization targeting **0ms scroll lag** and **60fps hardware-accelerated animations**.
+
+---
+
+## 🛠️ System Architecture Diagram
+
+```mermaid
+graph TD
+    %% Base Layout
+    Layout[app/layout.tsx] --> Page[app/page.tsx]
+    Layout --> DossierPage[app/dossier/page.tsx]
+
+    %% Main Page Components
+    subgraph Core Portfolio (app/page.tsx)
+        Page --> Navbar[app/components/Navbar.tsx]
+        Page --> Hero[app/components/Hero.tsx]
+        Page --> About[app/components/About.tsx]
+        Page --> Projects[app/components/Projects.tsx]
+        Page --> TechStack[app/components/TechStack.tsx]
+        Page --> Education[app/components/Education.tsx]
+        Page --> ThemeToggle[app/components/ThemeToggle.tsx]
+        Page --> Footer[app/components/Footer.tsx]
+    end
+
+    %% Dossier Components
+    subgraph Secure Intel Dossier (/dossier)
+        DossierPage --> Decryptor[SYS_INIT Terminal Decryptor]
+        DossierPage --> Musician[Section 01: The Musician Component]
+        DossierPage --> Hackathons[Section 02: Log Pinboard & Red Threads]
+        DossierPage --> Artist[Section 03: Canvas Sketch Gallery]
+        DossierPage --> Photo[Section 04: Lens EXIF Masonry]
+        DossierPage --> Calculator[Section 05: Soroban Abacus Simulator]
+    end
+```
+
+---
+
+## ⚡ Decryption & Initialization Pipeline
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Field Agent
+    participant Browser as Browser/Client
+    participant Decryptor as Terminal Decryptor
+    participant MainDossier as Dossier Dashboard
+    participant Audio as Tactical Audio Engine
+
+    User->>Browser: Requests URL /dossier
+    Browser->>Decryptor: Initializes SYS_INIT Decryptor
+    Decryptor->>Audio: Pre-loads authorization alerts
+    Decryptor->>Browser: Executes terminal handshake logs
+    alt Automatic Bypass Key Used
+        User->>Decryptor: Presses "BYPASS PROTOCOL"
+        Decryptor->>MainDossier: Mounts all interactive sections
+    else System Authorization Complete
+        Decryptor->>Browser: Completes decryption loops
+        Decryptor->>MainDossier: Mounts all interactive sections
+    end
+    MainDossier->>Browser: Renders HTML5 Waveforms, Map Nodes, & Soroban Grids
+```
+
+---
+
+## 📁 System Modules Briefing
+
+| Component Name | File Path | Core Technology | Interactive States & Operations |
+| :--- | :--- | :--- | :--- |
+| **System Terminal Header** | [Hero.tsx](file:///app/components/Hero.tsx) | HTML5 Grid, Tailwind Core | Displays automated introduction grids simulating boot diagnostics. |
+| **Academic Spine** | [Education.tsx](file:///app/components/Education.tsx) | CSS Transforms, React States | Timeline milestones with dynamic SVG spine rendering and scroll triggers. |
+| **Light switch Switch** | [ThemeToggle.tsx](file:///app/components/ThemeToggle.tsx) | HTML5 Audio, localStorage | Sound-faded pull-cord switch with HSL variable switches and memory persistence. |
+| **Musician Chronicle** | [MusicianSection.tsx](file:///app/components/MusicianSection.tsx) | Next.js Image, 3D CSS Collage | Alternates vocal, guitar, and bass performance grids with organic rotations. |
+| **Espionage Pinboard** | [dossier/page.tsx](file:///app/dossier/page.tsx) | Canvas 2D Engine, React Hooks | Coordinates red vector pathing between project nodes with click certificate popups. |
+| **Soroban Simulator** | [dossier/page.tsx](file:///app/dossier/page.tsx) | Client Logic, state arrays | Full interactive abacus beads simulation tracking mathematical focus metrics. |
+
+---
+
+## 🚀 Performance & Rendering Optimization Engine
+
+To guarantee zero scroll lag and instantaneous paints, the system implements a strict client-side rendering pipeline:
+
+*   **GPU promotions**: Interactive elements like photo frames, scrapbook elements, and hovering info cards feature `will-change: transform`, `backface-visibility: hidden`, and `transform: translate3d(0, 0, 0)`. This bypasses CPU-driven painting and delegates calculations directly to the system GPU for buttery 60fps animations.
+*   **Next.js Image Optimizations**: Preserves precise aspect ratios and reduces transfer payload sizes by leveraging `quality={75}` compression across all below-the-fold assets, loading only screensize-matched resolutions using advanced `sizes` bindings.
+*   **Paint Containment**: Leverages CSS `content-visibility: auto` and `contain-intrinsic-size` on major chapter sections. The browser skips layout, styling, and paint recalculations for off-screen DOM nodes, dramatically reducing total page CPU overhead during high-speed scrolling.
+*   **RAF Canvas Throttling**: Interactive wave arrays and canvas renderers are driven by `requestAnimationFrame` throttled tick loops to eliminate thread blockages and minimize input lag.
+
+---
+
+## 📁 Repository Blueprint
+
+```text
 vedant-portfolio/
 ├── app/
-│   ├── components/       # Reusable components
-│   │   ├── About.tsx     # Profile summary cards
-│   │   ├── Education.tsx # Interactive schooling timeline
-│   │   ├── Footer.tsx    # Ending signature and links
-│   │   ├── Hero.tsx      # Landing page terminal introduction
-│   │   ├── Navbar.tsx    # Responsive header with synchronized paths
-│   │   ├── Projects.tsx  # Project showcase cards
-│   │   ├── TechStack.tsx # toolkit icon grid
-│   │   └── ThemeToggle.tsx # Sound-faded pull-cord cord light switcher
-│   ├── dossier/          # Espionage-themed dossier system
-│   │   ├── page.tsx      # Main dossier code
-│   │   └── page.module.css # Stylesheet with layout transitions
-│   ├── globals.css       # Global rules & custom HSL root variables
-│   ├── layout.tsx        # HTML document layout structure
-│   └── page.tsx          # Main entry route
-└── public/               # Optimized assets (certificates, sketches, photography)
+│   ├── components/                 # Reusable components
+│   │   ├── About.tsx               # Profile summary card grids
+│   │   ├── Education.tsx           # Interactive timeline with animated ticks
+│   │   ├── Footer.tsx              # Footer coordinates and links
+│   │   ├── Hero.tsx                # Terminal introduction boot-grid
+│   │   ├── MusicianSection.tsx     # Themed musician grid, scrapbook collage
+│   │   ├── Navbar.tsx              # Coordinated navigation pathing
+│   │   ├── Projects.tsx            # Project cards deck
+│   │   ├── TechStack.tsx           # Toolkit flat icons
+│   │   └── ThemeToggle.tsx         # Pull-cord persistent switcher
+│   ├── dossier/                    # Espionage-themed dossier system
+│   │   ├── page.tsx                # Secure dossier layouts, abacus, canvas
+│   │   └── page.module.css         # Scoped modular dossier animations
+│   ├── globals.css                 # Global styles and dynamic color tokens
+│   ├── layout.tsx                  # Base layout shell
+│   └── page.tsx                    # Core landing file
+└── public/                         # Classified static assets (EXIF photos, certificates)
 ```
 
 ---
 
-## 🚀 Local Installation & Execution
+## 🛡️ Operational Directives (Setup & Run)
 
-### Prerequisites
-*   Node.js 18.0.0 or higher
-*   npm 10.0.0 or higher
+Follow these protocols to initialize and verify the system codebase locally.
 
-### Steps
-1.  **Clone the Repository**
-    ```bash
-    git clone https://github.com/Vedant180205/portfolio_self.git
-    cd portfolio_self
-    ```
+### 1. Verification Checklist
 
-2.  **Install Dependencies**
-    ```bash
-    npm install
-    ```
+| Phase | Protocol command | Objective |
+| :--- | :--- | :--- |
+| **Boot Setup** | `npm install` | Download and bind required packages and locks. |
+| **Live Rehearsal** | `npm run dev` | Spin up local Next.js dev server on `http://localhost:3000`. |
+| **Static Build** | `npm run build` | Validate production compilations, type safety, and asset routing. |
+| **Static Check** | `npx tsc --noEmit` | Explicit TypeScript checks across all modules. |
+| **Lint Audit** | `npm run lint` | Trigger ESLint standards validation engine. |
 
-3.  **Run Development Server**
-    ```bash
-    npm run dev
-    ```
-    Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+### 2. Live Deployment
+To initialize production builds and test assets under server conditions:
+```bash
+# Compile and output static optimized static build
+npm run build
 
-4.  **Static Build & Verification**
-    To test the production bundles and verify type safety:
-    ```bash
-    npx tsc --noEmit
-    npm run build
-    ```
-
-5.  **Code Styling Check**
-    To run ESLint checking tools:
-    ```bash
-    npm run lint
-    ```
+# Boot local server to verify production bundles
+npm run start
+```
 
 ---
 
-## 📄 License
+## 📄 Operational License
 
-This project is licensed under the MIT License. Feel free to use it as inspiration for your own portfolio builds.
+Distributed under the MIT License. Prepared by Vedant Patil. Access authorization logs are kept strictly local.
