@@ -831,7 +831,9 @@
 
   .massiveTitle {
     margin-bottom: 1.5rem;
-    font-size: clamp(1.4rem, 5.5vw, 2.5rem);
+    font-size: clamp(2rem, 5.5vw, 3.2rem);
+    white-space: nowrap;
+    letter-spacing: -0.05em;
   }
 
   .sectionSubtitle {
