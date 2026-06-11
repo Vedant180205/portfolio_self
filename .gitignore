@@ -42,3 +42,6 @@ next-env.d.ts
 
 # original image backups
 /public/music_backup/
+/public/ved_sketch_backup/
+/public/photography_sect_backup/
+/public/hackathon_certs_backup/
