@@ -458,6 +458,10 @@ div[id="intel-pin-log-04"] .evidencePolaroid {
   transform: rotate(2.5deg);
 }
 
+div[id="intel-pin-log-05"] .evidencePolaroid {
+  transform: rotate(-2deg);
+}
+
 /* Polaroid Win Stamp Badge */
 .polaroidStamp {
   position: absolute;
@@ -2537,6 +2541,174 @@ div[id="intel-pin-log-04"] .evidencePolaroid {
 
   .modalBullet p {
     font-size: 0.82rem;
+  }
+}
+
+/* ─── SECTION 2.5: TOPPER SECTION STYLES ─── */
+.topperSection {
+  padding: 10rem 0 8rem;
+  position: relative;
+  background-color: #080808;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.topperWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 4rem;
+  box-sizing: border-box;
+}
+
+.topperGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 4.5rem;
+  align-items: stretch;
+  margin-top: 4rem;
+}
+
+.topperBriefing {
+  background-color: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 2px solid #D4A017;
+  padding: 2.4rem;
+  border-radius: 4px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+.topperHighlightBox {
+  padding: 0.65rem 0.95rem;
+  background-color: rgba(212, 160, 23, 0.06);
+  border: 1px solid rgba(212, 160, 23, 0.25);
+  border-radius: 4px;
+}
+
+.topperHighlightVal {
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #D4A017;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 6px rgba(212, 160, 23, 0.25);
+}
+
+.topperMetaGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.topperLabel {
+  display: block;
+  font-family: monospace;
+  font-size: 0.65rem;
+  color: #D4A017;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.topperVal {
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.topperDescBlock {
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-top: 1.5rem;
+}
+
+.topperDescText {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.topperCertFrame {
+  position: relative;
+  width: 100%;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.topperCertFrame:hover {
+  transform: scale(1.02);
+  border-color: rgba(212, 160, 23, 0.45);
+  box-shadow: 0 20px 45px rgba(212, 160, 23, 0.12);
+}
+
+.topperCertImg {
+  object-fit: contain;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+  filter: brightness(0.9);
+  transition: filter 0.4s ease;
+}
+
+.topperCertFrame:hover .topperCertImg {
+  filter: brightness(1);
+}
+
+.topperCertOverlayText {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: rgba(10, 10, 10, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0.8rem;
+  font-family: monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: #D4A017;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.topperHeadline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .topperGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .topperCertFrame {
+    aspect-ratio: 16/11;
+  }
+}
+
+@media (max-width: 768px) {
+  .topperSection {
+    padding: 7rem 0 5rem;
+  }
+  .topperWrapper {
+    padding: 0 2rem;
+  }
+  .topperBriefing {
+    padding: 1.8rem;
   }
 }
 

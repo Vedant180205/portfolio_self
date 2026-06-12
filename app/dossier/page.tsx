@@ -519,6 +519,71 @@ export default function DossierPage() {
         </section>
 
         {/* -------------------------------------------------------------
+            SECTION 2.5: FIRST YEAR TOPPER ACROSS ALL BRANCHES
+            ------------------------------------------------------------- */}
+        <section className={styles.topperSection} id="topper">
+          <div className={styles.gridOverlay} />
+          <div className={styles.topperWrapper}>
+            <div className={styles.sectionHeaderCentered}>
+              <span className={styles.sectionCategory}>ACADEMIC_INTEL // ACHIEVEMENT</span>
+              <h2 className={styles.topperHeadline}>FIRST YEAR TOPPER ACROSS ALL BRANCHES</h2>
+              <p className={styles.logsSubtitle}>Consistently pursuing academic and engineering excellence.</p>
+            </div>
+
+            <div className={styles.topperGrid}>
+              {/* Left Column: Intelligence Dossier Briefing Card */}
+              <div className={styles.topperBriefing}>
+                <div className={styles.reportHeader}>
+                  <span className={styles.reportStatus}>INTEL REPORT : ACADEMIC EXCELLENCE</span>
+                  <span className={styles.reportConsoleLine}>FILE_TO_DECRYPT_v1.0</span>
+                </div>
+
+                <div className={styles.topperHighlightBox}>
+                  <span className={styles.topperLabel}>CLASSIFICATION / PERFORMANCE:</span>
+                  <div className={styles.topperHighlightVal}>RANK 1 — PERFECT 10/10 SGPA (YEAR I)</div>
+                </div>
+
+                <div className={styles.topperMetaGrid}>
+                  <div>
+                    <span className={styles.topperLabel}>YEAR:</span>
+                    <span className={styles.topperVal}>2023 - 2024</span>
+                  </div>
+                  <div>
+                    <span className={styles.topperLabel}>ROLE:</span>
+                    <span className={styles.topperVal}>ECS Engineering Student</span>
+                  </div>
+                </div>
+
+                <div className={styles.topperDescBlock}>
+                  <span className={styles.topperLabel}>BRIEFING ANALYSIS:</span>
+                  <p className={styles.topperDescText}>
+                    Achieved a perfect 10.0 SGPA in both Semesters I and II during the first year of engineering. Secured the highest SGPA in the college across all engineering branches, demonstrating academic excellence alongside project building.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Column: Pinned Certificate Polaroid Frame */}
+              <div 
+                className={styles.topperCertFrame} 
+                onClick={() => setActiveCert('/certs/Untitled design (1).png')}
+                role="button"
+                tabIndex={0}
+                aria-label="View First Year Topper Certificate"
+              >
+                <Image
+                  src="/certs/Untitled design (1).png"
+                  alt="First Year Topper 10 SGPA Certificate"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 550px"
+                  className={styles.topperCertImg}
+                />
+                <div className={styles.topperCertOverlayText}>DECRYPT EVIDENCE [ CLICK TO PREVIEW ]</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* -------------------------------------------------------------
             SECTION 03: THE ARTIST
             ------------------------------------------------------------- */}
         <section ref={artistRef} className={styles.artistSection} id="artist">

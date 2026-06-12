@@ -7,40 +7,43 @@ import styles from './Education.module.css';
 const educationData = [
   {
     phase: 'PHASE 01',
+    phaseLabel: 'Phase I — Foundations',
     yearTop: '20',
     yearBottom: '21',
     titleLine1: 'VIVEKANAND ENGLISH',
     titleLine2: 'HIGH SCHOOL',
     degree: 'Secondary Schooling (SSC)',
-    highlight: '97.8% in 10th Grade',
+    highlight: '97.8% in SSC Board Examination',
     period: 'Completed 2021',
-    description: 'Developed core analytical, mathematical, and logical foundations, achieving top honors in final board examinations.',
+    description: 'Built the foundations of analytical thinking, problem solving, and academic discipline through a strong focus on mathematics and science. Consistently pursued excellence across technical activities, culminating in a 97.8% score in the SSC Board Examination. This established the curiosity and learning mindset that drove my interest in engineering and technology.',
     image: '/vehs.jpg',
     imageAlt: 'Vivekanand English High School Building',
   },
   {
     phase: 'PHASE 02',
+    phaseLabel: 'Phase II — Exploration',
     yearTop: '20',
     yearBottom: '23',
     titleLine1: 'RAMNIVAS RUIA',
     titleLine2: 'JUNIOR COLLEGE',
-    degree: 'Junior College (11th & 12th)',
-    highlight: 'Science Stream',
+    degree: 'Higher Secondary Education (HSC)',
+    highlight: 'Science Stream (PCM)',
     period: 'Completed 2023',
-    description: 'Studied core sciences and mathematics, building a solid bridge into engineering and computing systems.',
+    description: 'Strengthened understanding of Physics, Chemistry, and Mathematics while preparing for competitive engineering entrance examinations. Developed a deeper appreciation for logical reasoning, quantitative analysis, and scientific problem-solving that became central to my engineering education. This phase transitioned from academic excellence to technical specialization.',
     image: '/ruia.png',
     imageAlt: 'Ramnivas Ruia Junior College Building',
   },
   {
     phase: 'PHASE 03',
+    phaseLabel: 'Phase III — Engineering',
     yearTop: '20',
     yearBottom: '28',
     titleLine1: 'SHAH & ANCHOR KUTCHHI',
     titleLine2: 'ENGINEERING COLLEGE',
-    degree: 'Bachelor of Technology (BTech)',
-    highlight: 'Electronics & Computer Science',
+    degree: 'Bachelor of Technology (Electronics & Computer Science)',
+    highlight: 'Electronics & Computer Science (ECS)',
     period: 'Ongoing (2023 - 2028)',
-    description: 'Engineering systems across hardware and software domains, specializing in systems programming, IoT, and application development.',
+    description: 'Pursuing a multidisciplinary engineering education spanning software, embedded systems, machine learning, computer networks, and hardware systems. Built and deployed projects across quantitative finance, AI, IoT, full-stack development, computer vision, and predictive analytics while participating in hackathons, technical initiatives, and research. Focused on transforming theoretical concepts into practical systems to solve real-world problems.',
     image: '/sakec.png',
     imageAlt: 'Shah and Anchor Kutchhi Engineering College Building',
   },
@@ -136,6 +139,7 @@ export default function Education() {
                 <div className={styles.leftCol}>
                   {!isEven ? (
                     <div className={styles.textBlock}>
+                      <span className={styles.phaseLabel}>{item.phaseLabel}</span>
                       <h3 className={styles.title}>
                         <span className={styles.titleLine}>{item.titleLine1}</span>
                         <br />
@@ -164,6 +168,7 @@ export default function Education() {
                 <div className={styles.rightCol}>
                   {isEven ? (
                     <div className={styles.textBlock}>
+                      <span className={styles.phaseLabel}>{item.phaseLabel}</span>
                       <h3 className={styles.title}>
                         <span className={styles.titleLine}>{item.titleLine1}</span>
                         <br />
