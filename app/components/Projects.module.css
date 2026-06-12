@@ -65,12 +65,23 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 1; /* Fully visible */
+  opacity: 1;
   pointer-events: none;
   z-index: 1;
-  /* Fade all 4 edges (top, bottom, left, right) smoothly using a single SVG mask with a blurred rect */
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cfilter id='blur'%3E%3CfeGaussianBlur stdDeviation='2'/%3E%3C/filter%3E%3C/defs%3E%3Crect x='4' y='4' width='92' height='92' fill='black' filter='url(%23blur)'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cfilter id='blur'%3E%3CfeGaussianBlur stdDeviation='2'/%3E%3C/filter%3E%3C/defs%3E%3Crect x='4' y='4' width='92' height='92' fill='black' filter='url(%23blur)'/%3E%3C/svg%3E");
+}
+
+/* Fade all 4 edges using a pseudo-element overlay approach for maximum browser compatibility */
+.rowBg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right,  var(--color-bg) 0%, transparent 12%),
+    linear-gradient(to left,   var(--color-bg) 0%, transparent 12%),
+    linear-gradient(to bottom, var(--color-bg) 0%, transparent 12%),
+    linear-gradient(to top,    var(--color-bg) 0%, transparent 12%);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .projectRowReverse .rowBg {
@@ -337,7 +348,5 @@
     top: -40px !important;
     height: 380px !important;
     bottom: auto !important;
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 75%) !important;
-    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 75%) !important;
   }
 }

@@ -12,6 +12,7 @@ const navLinks = [
   { label: 'ABOUT',              href: '#about' },
   { label: 'PROJECTS',           href: '#projects' },
   { label: 'TECH STACK',         href: '#techstack' },
+  { label: 'CERTIFICATIONS',     href: '#certifications' },
   { label: 'EDUCATION',          href: '#education' },
   { label: 'DOSSIER',            href: '/dossier' },
 ];
