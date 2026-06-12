@@ -7,60 +7,81 @@ const projects = [
     number: '01',
     title: 'OPTIONS PRICING MODEL',
     subtitle: 'Quantitative Finance',
-    description:
-      'A quantitative finance hackathon project implementing Black-Scholes and binomial tree models for real-time options pricing. Combines mathematical finance theory with practical market data analysis to evaluate derivatives.',
-    tags: ['Python', 'NumPy', 'Black-Scholes', 'Finance'],
+    description: (
+      <>
+        Built a <strong>quantitative finance platform</strong> for pricing and analyzing stock options using industry-standard derivatives models. Implemented the <strong>Cox-Ross-Rubinstein (CRR) Binomial Tree Model</strong>, <strong>EWMA volatility forecasting</strong>, and <strong>risk-neutral valuation</strong> techniques to estimate option prices under varying market conditions. Integrated <strong>interactive visualizations</strong> and <strong>financial analytics</strong> to help users evaluate volatility, risk exposure, and potential trading opportunities.
+      </>
+    ),
+    tags: ['Python', 'Binomial Tree', 'Black-Scholes', 'Finance'],
     github: 'https://github.com/Vedant180205/OptionsPricingModel_QuantDevs',
     image: '/project-quantdevs.jpg',
     imageAlt: 'QUANTDEVS — Options pricing and risk analysis CLI splash screen',
+    bgImage: '/project_bg/options_bg.png',
   },
   {
     id: 2,
     number: '02',
     title: 'CAMPUS IQ',
     subtitle: 'AI-Powered Campus Platform',
-    description:
-      'An intelligent campus management system built at AMUHACKS 5.0. Leverages AI to streamline student services, automate administrative workflows, and deliver smart insights for universities.',
-    tags: ['Next.js', 'AI', 'Node.js', 'MongoDB'],
+    description: (
+      <>
+        Built an <strong>AI-powered placement intelligence platform</strong> that predicts student placement readiness through automated resume analysis, GitHub portfolio evaluation, and skill-gap detection. Leveraged <strong>Groq Llama-3</strong>, <strong>PDFMiner</strong>, <strong>GitHub API integration</strong>, and a custom <strong>Placement Readiness Score (PRS)</strong> algorithm to generate real-time career insights and personalized improvement recommendations. Designed a <strong>Power BI-style analytics dashboard</strong> that enables administrators to identify at-risk students, track campus-wide skill trends, and take proactive interventions before placement season.
+      </>
+    ),
+    tags: ['Next.js', 'Groq Llama-3', 'Node.js', 'MongoDB'],
     github: 'https://github.com/Vedant180205/CyberDevs_AMUHACKS5.0',
     image: '/project-campusiq.png',
     imageAlt: 'CampusIQ — placement readiness platform landing page',
+    bgImage: '/project_bg/campusiq_bg.png',
+    bgOpacity: 0.55,
   },
   {
     id: 3,
     number: '03',
     title: 'PREDICTKART',
     subtitle: 'Machine Learning Marketplace',
-    description:
-      'A machine learning model deployment platform where users can upload datasets, train models, and get predictions in real time — making ML accessible without needing a data science background.',
-    tags: ['Python', 'ML', 'Flask', 'React'],
+    description: (
+      <>
+        Developed a <strong>full-stack e-commerce intelligence system</strong> that automates cross-platform product discovery and price comparison across online marketplaces. Integrated <strong>large language models (Groq Llama 3.1)</strong>, <strong>web scraping infrastructure</strong>, and <strong>predictive analytics</strong> techniques to generate deal recommendations, estimate price-drop probabilities, and provide personalized shopping insights. Engineered a scalable architecture using <strong>FastAPI</strong>, <strong>Next.js</strong>, <strong>PostgreSQL</strong>, and <strong>asynchronous data processing</strong> to deliver real-time market intelligence for consumer purchasing decisions.
+      </>
+    ),
+    tags: ['FastAPI', 'Next.js', 'PostgreSQL', 'Llama 3.1'],
     github: 'https://github.com/Vedant180205/PredictKart',
     image: '/project-predictkart.png',
     imageAlt: 'PredictKart — price history & tracker web app homepage',
+    bgImage: '/project_bg/predict_bg.png',
   },
   {
     id: 4,
     number: '04',
     title: 'VITAL TRACKER',
     subtitle: 'Healthcare IoT Project',
-    description:
-      'A healthcare-focused project that tracks and monitors patient vital signs in real time, generating alerts and trend analysis to assist medical professionals in early diagnosis and patient management.',
-    tags: ['IoT', 'Python', 'Healthcare', 'Real-time'],
+    description: (
+      <>
+        Developed an <strong>AI-powered IoT health monitoring system</strong> that continuously tracks <strong>Heart Rate, SpO₂, and fatigue levels</strong> using <strong>ESP32 and MAX30102 sensors</strong>. Integrated <strong>Firebase Realtime Database</strong> for live health data streaming and <strong>Google Gemini</strong> to provide personalized wellness insights through an intelligent healthcare assistant. Implemented <strong>fatigue analysis</strong> using HRV patterns, oxygen saturation trends, and movement data, enabling <strong>real-time health monitoring</strong>, <strong>anomaly detection</strong>, and <strong>proactive wellness recommendations</strong>.
+      </>
+    ),
+    tags: ['IoT', 'ESP32', 'Firebase', 'Gemini AI'],
     github: 'https://github.com/Vedant180205/VitalTracker',
     image: '/project-vital-tracker.jpg',
     imageAlt: 'Vital Tracker — IoT breadboard prototype with OLED display',
+    bgImage: '/project_bg/vital_bg.png',
   },
   {
     id: 5,
     number: '05',
     title: 'GESTURE CONTROL SYSTEM',
     subtitle: 'Computer Vision',
-    description:
-      'A Chrome Extension enabling browser control through real-time hand gesture recognition. Built with MediaPipe, WebAssembly, and Manifest V3 — no keyboard or mouse needed to navigate the web.',
+    description: (
+      <>
+        Built a <strong>privacy-first gesture-controlled browser interface</strong> that enables touchless navigation using real-time hand tracking and computer vision. Utilized <strong>Google MediaPipe Hand Landmarker</strong>, <strong>WebAssembly inference</strong>, <strong>21-point hand landmark detection</strong>, <strong>Euclidean-distance-based gesture classification</strong>, and temporal smoothing techniques to achieve low-latency gesture recognition directly in the browser. Engineered a <strong>Chrome Extension architecture</strong> with cross-context messaging, dynamic gesture pipelines, and <strong>local-first processing</strong> for real-time scrolling, tab management, and virtual cursor control without transmitting any user data.
+      </>
+    ),
     tags: ['MediaPipe', 'WebAssembly', 'Chrome Extension', 'CV'],
     github: 'https://github.com/Vedant180205/Gesture-based-control-system',
     image: '/project-gesture-control.png',
     imageAlt: 'Gesture Control System — Chrome extension overlay with hand landmark tracking',
+    bgImage: '/project_bg/gesture_bg.png',
   },
 ];
 
@@ -98,14 +119,19 @@ export default function Projects() {
               className={`${styles.projectRow} ${isEven ? styles.projectRowReverse : ''}`}
               id={`project-${project.id}`}
             >
+              {project.bgImage && (
+                <div
+                  className={styles.rowBg}
+                  style={{
+                    backgroundImage: `url(${project.bgImage})`,
+                    ...(project.bgOpacity !== undefined ? { opacity: project.bgOpacity } : {}),
+                  }}
+                  aria-hidden="true"
+                />
+              )}
+
               {/* ── Collage side ── */}
               <div className={`${styles.collage} ${isEven ? styles.collageReverse : ''}`}>
-                {/* Block A — large, bottom-left (or bottom-right when reversed) */}
-                <div className={styles.blockA} />
-                {/* Block B — smaller, top-right (or top-left when reversed) */}
-                <div className={styles.blockB} />
-                {/* Block C — tiny accent sliver */}
-                <div className={styles.blockC} />
                 {/* Main image — largest, front */}
                 <div className={styles.mainWrap}>
                   <Image

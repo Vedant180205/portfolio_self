@@ -62,8 +62,8 @@ export default function About() {
           <p className={styles.para}>
             <strong>Electronics and Computer Science</strong> student building engineering systems
             across software and hardware domains. My projects span{' '}
-            <strong>IoT systems</strong>, backend applications,{' '}
-            <strong>machine learning solutions</strong>, and data-driven applications — with a
+            <strong>IoT systems</strong>, <strong>backend applications</strong>,{' '}
+            <strong>machine learning solutions</strong>, and <strong>data-driven applications</strong> — with a
             focus on building practical systems that solve real-world problems.
           </p>
 
@@ -76,7 +76,7 @@ export default function About() {
 
           <p className={styles.para}>
             Currently strengthening foundations in{' '}
-            <strong>data structures, algorithms, embedded systems</strong>, and low-level
+            <strong>data structure and algorithms</strong>, <strong>embedded systems</strong>, and low-level
             programming while exploring system-oriented engineering domains.
           </p>
         </div>

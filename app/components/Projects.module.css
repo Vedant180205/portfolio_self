@@ -1,8 +1,8 @@
-/* ─── SECTION ─── */
 .section {
   background: var(--color-bg);
   padding: 8rem 0 12rem;
   position: relative;
+  overflow: hidden;
 }
 
 .section::before {
@@ -53,6 +53,29 @@
   display: flex;
   align-items: center;
   gap: 6rem;
+  position: relative;
+}
+
+.rowBg {
+  position: absolute;
+  top: -100px;
+  bottom: -100px;
+  left: -5rem;
+  width: calc(52% + 5rem);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1; /* Fully visible */
+  pointer-events: none;
+  z-index: 1;
+  /* Fade all 4 edges (top, bottom, left, right) smoothly using a single SVG mask with a blurred rect */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cfilter id='blur'%3E%3CfeGaussianBlur stdDeviation='2'/%3E%3C/filter%3E%3C/defs%3E%3Crect x='4' y='4' width='92' height='92' fill='black' filter='url(%23blur)'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cfilter id='blur'%3E%3CfeGaussianBlur stdDeviation='2'/%3E%3C/filter%3E%3C/defs%3E%3Crect x='4' y='4' width='92' height='92' fill='black' filter='url(%23blur)'/%3E%3C/svg%3E");
+}
+
+.projectRowReverse .rowBg {
+  left: auto;
+  right: -5rem;
 }
 
 /* Even rows: collage on right, text on left */
@@ -64,47 +87,14 @@
    COLLAGE
 ═══════════════════════════════════════ */
 .collage {
-  flex: 0 0 52%;
+  flex: 0 0 46%;
   position: relative;
   height: 480px;
   overflow: visible;
-}
-
-/* ── Block A ── */
-.blockA {
-  position: absolute;
-  bottom: -24px;
-  left: -24px;
-  width: 46%;
-  height: 52%;
-  background: linear-gradient(145deg, var(--color-block-a-1) 0%, var(--color-block-a-2) 100%);
-  z-index: 1;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-}
-
-/* ── Block B ── */
-.blockB {
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 32%;
-  height: 38%;
-  background: var(--color-block-b);
-  z-index: 2;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* ── Block C: tiny accent sliver ── */
-.blockC {
-  position: absolute;
-  bottom: 14%;
-  right: 4%;
-  width: 14%;
-  height: 18%;
-  background: var(--color-accent);
-  opacity: 0.25;
   z-index: 2;
 }
+
+
 
 /* ── Main image ── */
 .mainWrap {
@@ -163,6 +153,8 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  position: relative;
+  z-index: 2;
 }
 
 .projectRowReverse .textSide {
@@ -203,8 +195,13 @@
   font-size: 1.15rem;
   line-height: 1.85;
   color: var(--color-text-secondary);
-  max-width: 480px;
+  max-width: 650px;
   margin: 0;
+}
+
+.desc strong {
+  color: var(--color-text-primary);
+  font-weight: 500;
 }
 
 /* ─── TAGS ─── */
@@ -331,15 +328,16 @@
     border-radius: 8px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
-
-  .blockA,
-  .blockB,
-  .blockC {
-    display: none !important;
-  }
-
   .collageReverse .mainWrap  { right: auto; left: 0; }
-  .collageReverse .blockA    { display: none; }
-  .collageReverse .blockB    { display: none; }
-  .collageReverse .blockC    { display: none; }
+
+  .rowBg {
+    left: -1.5rem !important;
+    right: -1.5rem !important;
+    width: auto !important;
+    top: -40px !important;
+    height: 380px !important;
+    bottom: auto !important;
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 75%) !important;
+    mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 75%) !important;
+  }
 }
