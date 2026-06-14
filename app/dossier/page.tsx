@@ -188,6 +188,11 @@ const col3Photos: Photo[] = [
     id: 'C3_03',
     src: '/photography_sect/20230425_165853.jpg',
     aspectRatio: 3 / 4
+  },
+  {
+    id: 'C3_04',
+    src: '/photography_sect/20251220_174915.jpg',
+    aspectRatio: 4 / 3
   }
 ];
 
