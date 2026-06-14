@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
-import ThemeToggle from './ThemeToggle';
+
 
 const navLinks = [
   { label: 'HOME',               href: '#home' },
@@ -98,7 +98,6 @@ export default function Navbar() {
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </a>
-          <ThemeToggle />
 
           {/* Hamburger — mobile only */}
           <button

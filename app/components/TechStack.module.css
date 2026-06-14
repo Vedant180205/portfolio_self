@@ -116,11 +116,6 @@
   filter: invert(1);
 }
 
-[data-theme="light"] .invertDark img {
-  /* light mode — keep as-is (already black = visible) */
-  filter: none;
-}
-
 /* ─── CARD NAME ─── */
 .cardName {
   font-family: var(--font-body);
