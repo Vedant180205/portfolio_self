@@ -2,15 +2,9 @@
 
 ![Vedant Patil Portfolio Banner](public/banner.png)
 
-<br/>
+# Vedant Patil — Portfolio
 
-# ⚡ VP_SYSTEM_CORE // CLASSIFIED PORTFOLIO
-
-<br/>
-
-**VP_SYSTEM_CORE** is a premium, high-performance developer portfolio and encrypted agent dossier archive built with **Next.js 16 (App Router)**, **React 19**, and **TypeScript**. It features a modern dark-mode landing command center and a fully interactive, classified espionage-themed archive dossier at `/dossier` that runs local WebAudio synthesizers, real-time Canvas animations, and physics-based Soroban abacus calculators.
-
-<br/>
+### Full-stack developer portfolio & interactive dossier built with Next.js, React 19, and TypeScript.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16.2.7-black?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![React](https://img.shields.io/badge/React-19.2.4-blue?style=for-the-badge&logo=react&logoColor=white)
@@ -25,17 +19,10 @@
 
 ## Overview
 
-Traditional portfolios are static collections of templates, basic link trees, and plain CV PDFs. They fail to represent raw engineering capabilities, interactive system design, or multidisciplinary skillsets.
-
-**VP_SYSTEM_CORE takes an immersive, narrative-driven approach.** By framing the portfolio as an encrypted military dossier intelligence board, we turned a standard CV page into a secure command center. Field agents can decrypt certificate evidence, trigger localized WebAudio signals, and inspect actual physical systems, sketches, and lens data directly inside the browser.
-
-**Core Engineering Philosophy:**
-- **Zero-Dependency Animations** — Avoid fat JS animations libraries (`framer-motion`, `gsap`) that choke the main thread. All transitions and layout shifts are driven by raw CSS Modules with GPU promotion.
-- **Hardware Acceleration** — Forced layer promotion via hardware compositing promotes high-draw components (like the abacus, canvases, and collages) directly to the GPU.
-- **Client-Side Rendering Containment** — Deferred paints via modern CSS `content-visibility: auto` prevent page load lag and secure a perfect Lighthouse performance rating.
-- **Classified Espionage Aesthetic** — A curated, strict visual system using military grids, amber highlights, paper matting layouts, and typewriter interfaces.
+A personal developer portfolio with a dark-mode landing page and an espionage-themed interactive dossier at `/dossier`. Features real WebAudio synthesizers, HTML5 Canvas animations, a functional Soroban abacus, and a hackathon evidence pinboard — all rendered client-side with zero JS animation libraries.
 
 ---
+
 
 ## Key Features
 
