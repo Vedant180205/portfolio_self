@@ -16,7 +16,7 @@ const educationData = [
     highlight: '97.8% in SSC Board Examination',
     period: 'Completed 2021',
     description: 'Built the foundations of analytical thinking, problem solving, and academic discipline through a strong focus on mathematics and science. Consistently pursued excellence across technical activities, culminating in a 97.8% score in the SSC Board Examination. This established the curiosity and learning mindset that drove my interest in engineering and technology.',
-    image: '/vehs.jpg',
+    image: '/images/education/vehs.jpg',
     imageAlt: 'Vivekanand English High School Building',
   },
   {
@@ -30,7 +30,7 @@ const educationData = [
     highlight: 'Science Stream (PCM)',
     period: 'Completed 2023',
     description: 'Strengthened understanding of Physics, Chemistry, and Mathematics while preparing for competitive engineering entrance examinations. Developed a deeper appreciation for logical reasoning, quantitative analysis, and scientific problem-solving that became central to my engineering education. This phase transitioned from academic excellence to technical specialization.',
-    image: '/ruia.png',
+    image: '/images/education/ruia.png',
     imageAlt: 'Ramnivas Ruia Junior College Building',
   },
   {
@@ -44,7 +44,7 @@ const educationData = [
     highlight: 'Electronics & Computer Science (ECS)',
     period: 'Ongoing (2023 - 2028)',
     description: 'Pursuing a multidisciplinary engineering education spanning software, embedded systems, machine learning, computer networks, and hardware systems. Built and deployed projects across quantitative finance, AI, IoT, full-stack development, computer vision, and predictive analytics while participating in hackathons, technical initiatives, and research. Focused on transforming theoretical concepts into practical systems to solve real-world problems.',
-    image: '/sakec.png',
+    image: '/images/education/sakec.png',
     imageAlt: 'Shah and Anchor Kutchhi Engineering College Building',
   },
 ];

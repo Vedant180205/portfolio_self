@@ -1,6 +1,6 @@
 <div align="center">
 
-![Vedant Patil Portfolio Banner](public/banner.png)
+![Vedant Patil Portfolio Banner](public/ui/banner.png)
 
 # Vedant Patil — Portfolio
 

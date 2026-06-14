@@ -79,42 +79,42 @@ interface Sketch {
 const sketches: Sketch[] = [
   {
     id: 'EXHIBIT 01',
-    src: '/ved_sketch/20230926_232508.jpg',
+    src: '/images/sketches/20230926_232508.jpg',
     title: 'CHHATRAPATI SHIVAJI MAHARAJ',
     medium: 'Charcoal & Graphite on Art Paper',
     year: 'c. 2023'
   },
   {
     id: 'EXHIBIT 02',
-    src: '/ved_sketch/20230926_232747.jpg',
+    src: '/images/sketches/20230926_232747.jpg',
     title: 'SACHIN TENDULKAR',
     medium: 'Fine Pencil Drawing',
     year: 'c. 2023'
   },
   {
     id: 'EXHIBIT 03',
-    src: '/ved_sketch/20241202_222420.jpg',
+    src: '/images/sketches/20241202_222420.jpg',
     title: 'VIRAT KOHLI',
     medium: 'Detailed Graphite Sketch',
     year: 'c. 2024'
   },
   {
     id: 'EXHIBIT 04',
-    src: '/ved_sketch/20230926_232844.jpg',
+    src: '/images/sketches/20230926_232844.jpg',
     title: 'MICHAEL FARADAY',
     medium: 'Ink & Graphite Drawing',
     year: 'c. 2023'
   },
   {
     id: 'EXHIBIT 05',
-    src: '/ved_sketch/20230926_232914.jpg',
+    src: '/images/sketches/20230926_232914.jpg',
     title: 'LATA MANGESHKAR',
     medium: 'Fine Charcoal Blending',
     year: 'c. 2023'
   },
   {
     id: 'EXHIBIT 06',
-    src: '/ved_sketch/20230926_233120.jpg',
+    src: '/images/sketches/20230926_233120.jpg',
     title: 'KAPIL DEV',
     medium: 'Fine Line Pencil Sketch',
     year: 'c. 2023'
@@ -130,22 +130,22 @@ interface Photo {
 const col1Photos: Photo[] = [
   {
     id: 'C1_01',
-    src: '/photography_sect/20230530_190843.jpg',
+    src: '/images/photography/20230530_190843.jpg',
     aspectRatio: 3 / 4
   },
   {
     id: 'C1_02',
-    src: '/photography_sect/20230528_112806.jpg',
+    src: '/images/photography/20230528_112806.jpg',
     aspectRatio: 3 / 4
   },
   {
     id: 'C1_03',
-    src: '/photography_sect/20240223_171922.jpg',
+    src: '/images/photography/20240223_171922.jpg',
     aspectRatio: 3 / 4
   },
   {
     id: 'C1_04',
-    src: '/photography_sect/20230528_063251.jpg',
+    src: '/images/photography/20230528_063251.jpg',
     aspectRatio: 2296 / 4080
   }
 ];
@@ -153,22 +153,22 @@ const col1Photos: Photo[] = [
 const col2Photos: Photo[] = [
   {
     id: 'C2_01',
-    src: '/photography_sect/20230529_184440.jpg',
+    src: '/images/photography/20230529_184440.jpg',
     aspectRatio: 3 / 4
   },
   {
     id: 'C2_02',
-    src: '/photography_sect/20230528_063441.jpg',
+    src: '/images/photography/20230528_063441.jpg',
     aspectRatio: 2282 / 3761
   },
   {
     id: 'C2_03',
-    src: '/photography_sect/20240603_100635.jpg',
+    src: '/images/photography/20240603_100635.jpg',
     aspectRatio: 2576 / 3985
   },
   {
     id: 'C2_04',
-    src: '/photography_sect/20251217_071811.jpg',
+    src: '/images/photography/20251217_071811.jpg',
     aspectRatio: 4 / 3
   }
 ];
@@ -176,22 +176,22 @@ const col2Photos: Photo[] = [
 const col3Photos: Photo[] = [
   {
     id: 'C3_01',
-    src: '/photography_sect/20240603_183133.jpg',
+    src: '/images/photography/20240603_183133.jpg',
     aspectRatio: 1836 / 3398
   },
   {
     id: 'C3_02',
-    src: '/photography_sect/20240606_094433.jpg',
+    src: '/images/photography/20240606_094433.jpg',
     aspectRatio: 2448 / 3264
   },
   {
     id: 'C3_03',
-    src: '/photography_sect/20230425_165853.jpg',
+    src: '/images/photography/20230425_165853.jpg',
     aspectRatio: 3 / 4
   },
   {
     id: 'C3_04',
-    src: '/photography_sect/20251220_174915.jpg',
+    src: '/images/photography/20251220_174915.jpg',
     aspectRatio: 4 / 3
   }
 ];
@@ -857,7 +857,7 @@ export default function DossierPage() {
               <div className={styles.polaroidStamp}>CERTIFIED</div>
               <div className={styles.polaroidFrame}>
                 <Image
-                  src="/IMG20180211114741[1].jpg"
+                  src="/images/avatar/IMG20180211114741.jpg"
                   alt="Abacus Degree Certificate"
                   fill
                   sizes="(max-width: 768px) 100vw, 300px"

@@ -89,7 +89,7 @@ export default function Hero() {
       <div className={styles.imageWrapper} aria-hidden="true">
         <div className={styles.imageInner}>
           <Image
-            src="/vedant.png"
+            src="/images/avatar/vedant.png"
             alt="Vedant Patil"
             fill
             priority

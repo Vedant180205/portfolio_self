@@ -17,7 +17,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
       <header className={styles.sectionHeader}>
         <div className={styles.heroBg}>
           <Image
-            src="/music/A7R04326.JPG"
+            src="/images/music/A7R04326.JPG"
             alt="Vedant Patil Live On Stage"
             fill
             sizes="100vw"
@@ -44,7 +44,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
             <div className={styles.portraitFrameContainer}>
               <div className={styles.foundationPortraitFrame}>
                 <Image
-                  src="/music/Untitled design.png"
+                  src="/images/music/Untitled design.png"
                   alt="Hindustani Classical Riyaaz"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
@@ -89,7 +89,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
           {/* Photo 1 */}
           <div className={`${styles.photoCardCollage} ${styles.cardRot2}`}>
             <Image
-              src="/music/WhatsApp Image 2026-06-11 at 8.00.48 PM.jpeg"
+              src="/images/music/WhatsApp Image 2026-06-11 at 8.00.48 PM.jpeg"
               alt="Exploring New Music Genres"
               width={400}
               height={300}
@@ -112,7 +112,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
           {/* Photo 2 */}
           <div className={`${styles.photoCardCollage} ${styles.cardRot4}`}>
             <Image
-              src="/music/WhatsApp Image 2026-06-11 at 8.01.19 PM.jpeg"
+              src="/images/music/WhatsApp Image 2026-06-11 at 8.01.19 PM.jpeg"
               alt="Band Session"
               width={400}
               height={300}
@@ -135,7 +135,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
           {/* Photo 3 */}
           <div className={`${styles.photoCardCollage} ${styles.cardRot6}`}>
             <Image
-              src="/music/WhatsApp Image 2026-06-11 at 1.16.24 PM.jpeg"
+              src="/images/music/WhatsApp Image 2026-06-11 at 1.16.24 PM.jpeg"
               alt="Classical Practice"
               width={400}
               height={300}
@@ -158,7 +158,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
           {/* Photo 4 */}
           <div className={`${styles.photoCardCollage} ${styles.cardRot8}`}>
             <Image
-              src="/music/WhatsApp Image 2026-06-11 at 1.15.37 PM.jpeg"
+              src="/images/music/WhatsApp Image 2026-06-11 at 1.15.37 PM.jpeg"
               alt="Backstage Prep"
               width={400}
               height={300}
@@ -187,7 +187,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
           {/* Full Width Bass Guitar Image Background */}
           <div className={styles.bassGuitarImageWrapper}>
             <Image
-              src="/music/IMG_0280.JPG"
+              src="/images/music/IMG_0280.JPG"
               alt="Bass Guitar Practice and Structure"
               fill
               sizes="100vw"
@@ -212,7 +212,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
               <div className={styles.bassSingleCard}>
                 <div className={styles.tapeStrip}></div>
                 <Image
-                  src="/music/WhatsApp Image 2026-03-01 at 11.06.58 AM.jpeg"
+                  src="/images/music/WhatsApp Image 2026-03-01 at 11.06.58 AM.jpeg"
                   alt="Early Soundcheck Session"
                   width={300}
                   height={225}
@@ -244,7 +244,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
           {/* Photo 1 */}
           <div className={`${styles.leaderPhotoCard} ${styles.cardRot2}`}>
             <Image
-              src="/music/A7R04537.JPG"
+              src="/images/music/A7R04537.JPG"
               alt="Performer on Stage"
               width={400}
               height={300}
@@ -267,7 +267,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
           {/* Photo 2 */}
           <div className={`${styles.leaderPhotoCard} ${styles.cardRot4}`}>
             <Image
-              src="/music/WhatsApp Image 2026-06-11 at 11.09.56 PM.jpeg"
+              src="/images/music/WhatsApp Image 2026-06-11 at 11.09.56 PM.jpeg"
               alt="Stage Monitoring Setup"
               width={400}
               height={300}
@@ -290,7 +290,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
           {/* Photo 3 */}
           <div className={`${styles.leaderPhotoCard} ${styles.cardRot6}`}>
             <Image
-              src="/music/WhatsApp Image 2026-06-11 at 11.10.38 PM.jpeg"
+              src="/images/music/WhatsApp Image 2026-06-11 at 11.10.38 PM.jpeg"
               alt="Backstage Live Coordination"
               width={400}
               height={300}
@@ -319,7 +319,7 @@ export default function MusicianSection({ setActiveCert }: MusicianSectionProps)
       <section className={styles.endingSection}>
         <div className={styles.endingImageWrapper}>
           <Image
-            src="/music/A7R04326.JPG"
+            src="/images/music/A7R04326.JPG"
             alt="Spotlight Performance"
             fill
             sizes="100vw"

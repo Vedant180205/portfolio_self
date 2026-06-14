@@ -56,7 +56,7 @@ export default function Navbar() {
         <a href={pathname === '/' ? '#home' : '/'} className={styles.logo} id="nav-logo">
           <div className={styles.logoMark}>
             <Image
-              src="/logo.png"
+              src="/ui/logo.png"
               alt="VP Logo"
               width={80}
               height={80}

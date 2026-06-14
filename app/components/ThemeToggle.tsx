@@ -14,7 +14,7 @@ export default function ThemeToggle() {
     const saved = localStorage.getItem('theme');
     if (saved === 'light') setIsDark(false);
 
-    const audio = new Audio('/cowboy.mp3');
+    const audio = new Audio('/audio/cowboy.mp3');
     audio.loop = true;
     audio.volume = 0;
     audioRef.current = audio;
