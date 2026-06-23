@@ -217,6 +217,7 @@ export default function Hero() {
             alt="Vedant Patil"
             fill
             priority
+            quality={90}
             className={styles.portrait}
             sizes="(max-width: 768px) 100vw, 50vw"
           />

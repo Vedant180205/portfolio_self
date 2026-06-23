@@ -13,7 +13,7 @@ const navLinks = [
   { label: 'PROJECTS', href: '#projects' },
   { label: 'TECH STACK', href: '#techstack' },
   { label: 'CERTIFICATIONS', href: '#certifications' },
-  { label: 'EDUCATION', href: '#education' },
+  { label: 'EDUCATION', href: '/education' },
   { label: 'DOSSIER', href: '/dossier' },
 ];
 
@@ -33,6 +33,8 @@ export default function Navbar() {
   useEffect(() => {
     if (pathname === '/dossier') {
       setActive('DOSSIER');
+    } else if (pathname === '/education') {
+      setActive('EDUCATION');
     } else {
       setActive('HOME');
     }
@@ -56,7 +58,7 @@ export default function Navbar() {
         <a href={pathname === '/' ? '#home' : '/'} className={styles.logo} id="nav-logo">
           <div className={styles.logoMark}>
             <Image
-              src="/ui/logo-new.png"
+              src={pathname === '/education' ? "/ui/logo-education.png" : "/ui/logo-new.png"}
               alt="VP Logo"
               width={80}
               height={80}

@@ -1,0 +1,919 @@
+.mainContainer {
+  /* Dynamic Scoping: Map website properties to Light Japanese Poster theme values */
+  --color-accent: #cc2424;
+  --color-bg: #f7f7f5;
+  --color-surface: #ffffff;
+  --color-text-primary: #111111;
+  --color-text-secondary: rgba(17, 17, 17, 0.7);
+  --color-text-muted: rgba(17, 17, 17, 0.55);
+  --color-border: rgba(17, 17, 17, 0.15);
+  --color-border-subtle: rgba(17, 17, 17, 0.08);
+  --color-border-strong: #111111;
+
+  background-color: #f7f7f5; /* Off-white paper background */
+  color: #111111;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  font-family: var(--font-body), sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ─── STICKY NAVBAR LIGHT-THEME OVERRIDES ─── */
+.mainContainer [class*="navbar"] {
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.12) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+.mainContainer [class*="navLink"] {
+  color: rgba(17, 17, 17, 0.6) !important;
+  font-weight: 600 !important;
+  transition: color 0.25s ease;
+}
+
+.mainContainer [class*="navLink"]:hover {
+  color: #111111 !important;
+}
+
+.mainContainer [class*="navLink"]::after {
+  background: #111111 !important;
+}
+
+.mainContainer [class*="activeLink"] {
+  color: #cc2424 !important;
+}
+
+.mainContainer [class*="activeLink"]::after {
+  background: #cc2424 !important;
+}
+
+.mainContainer [class*="navbar"] > a {
+  background-color: transparent !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.mainContainer [class*="logoRole"] {
+  color: rgba(17, 17, 17, 0.65) !important;
+}
+
+.mainContainer [class*="ctaBtn"] {
+  background-color: #111111 !important;
+  color: #ffffff !important;
+  border: 1.5px solid #111111 !important;
+}
+
+.mainContainer [class*="ctaBtn"]:hover {
+  background-color: #cc2424 !important;
+  border-color: #cc2424 !important;
+  color: #ffffff !important;
+}
+
+.mainContainer [class*="hamburger"] span {
+  background-color: #111111 !important;
+}
+
+.mainContainer [class*="drawer"] {
+  background-color: #ffffff !important;
+}
+
+.mainContainer [class*="drawerLink"] {
+  color: #111111 !important;
+}
+
+.mainContainer [class*="drawerLinkActive"] {
+  color: #cc2424 !important;
+}
+
+/* ─── PAGE CONTENT CONTAINER ─── */
+.pageContent {
+  max-width: 1360px; /* Increased from 1200px to render everything larger on desktop viewports */
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem 6rem; /* Top padding reset to 0 since hero section is outside */
+  display: flex;
+  flex-direction: column;
+  gap: 7rem;
+}
+
+/* ─── HERO SECTION ─── */
+.heroSection {
+  margin-top: 80px; /* Offset to clear the fixed navbar height */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1320px;
+  width: calc(100% - 4rem);
+  display: flex;
+  position: relative;
+  background-color: #000000;
+}
+
+.heroVerticalStrip {
+  width: 54px;
+  background-color: #000000;
+  border-right: 1.5px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 5;
+}
+
+.heroVerticalStrip span {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-family: monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.45em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.heroGrid {
+  flex: 1;
+  position: relative;
+  width: 100%;
+}
+
+.heroImageWrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  aspect-ratio: 1920 / 1080;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 7, 7, 0.25) 0%, rgba(7, 7, 7, 0.75) 100%);
+  z-index: 2;
+}
+
+.heroTextContainer {
+  position: absolute;
+  bottom: 18rem; /* Space for intro block overlap */
+  left: 3.5rem;
+  right: 3.5rem;
+  z-index: 10;
+}
+
+.heroTitle {
+  font-family: var(--font-heading), 'Inter', sans-serif;
+  font-size: clamp(2.8rem, 6.8vw, 6.2rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.accentText {
+  color: #cc2424;
+}
+
+.whiteText {
+  color: #ffffff;
+}
+
+/* ─── INTRODUCTION BLOCKS (Overlaps bottom of Hero section) ─── */
+.introSection {
+  width: 100%;
+  position: relative;
+  margin-top: -11.5rem; /* Pulled up deeply to overlap the bottom of the hero background image */
+  margin-bottom: -4rem; /* Negative margin pulls Phase 1 upwards to remove the blank gap on desktop */
+  z-index: 15;
+}
+
+.introGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 1.35fr;
+  align-items: center;
+  gap: 4.5rem;
+  max-width: 1020px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.circleBlockWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-3.5rem); /* Shifted upwards relative to the rectangle block to match the reference */
+}
+
+.circleBlock {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background-color: #cc2424; /* Solid crimson red circle */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.2rem;
+  color: #ffffff;
+  box-shadow: 0 12px 36px rgba(204, 36, 36, 0.25);
+  position: relative;
+}
+
+.circleTitle {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.75rem; /* Reduced from 2.4rem to fit "A Journey of Learning" beautifully */
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.circleText {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+.circleDivider {
+  margin: 0.6rem 0;
+  color: rgba(255, 255, 255, 0.55);
+  display: flex;
+  justify-content: center;
+}
+
+.circleDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+  margin-top: 0.2rem;
+}
+
+.rectangleBlock {
+  background-color: #111111; /* Dark contrasting box */
+  padding: 3.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.rectJapanese {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.25em;
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+}
+
+.rectTitle {
+  font-family: var(--font-heading), 'Inter', sans-serif;
+  font-size: 2.3rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.2rem;
+  color: #ffffff;
+}
+
+.rectDescription {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 1.6rem;
+}
+
+.rectSolidBar {
+  width: 32px;
+  height: 3.5px;
+  background-color: #ffffff;
+}
+
+.floatingInfinityWrapper {
+  position: absolute;
+  right: -3.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.introFish {
+  width: 36px;
+  height: 18px;
+  opacity: 0.65;
+  transform: rotate(-10deg);
+}
+
+/* ─── TIMELINE PHASES ─── */
+.phaseSection {
+  width: 100%;
+  position: relative;
+}
+
+.phasesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Zero vertical gap between phases */
+  width: 100%;
+}
+
+.phaseGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 0; /* Zero horizontal gap between card and image columns */
+  align-items: stretch;
+}
+
+/* Staggered offsets: Shift Phase 1 & 3 to the left, and Phase 2 to the right */
+.phasesContainer > :nth-child(odd) > .phaseGrid {
+  margin-left: -3rem;
+  width: calc(100% + 3rem);
+}
+
+.phasesContainer > :nth-child(even) > .phaseGrid {
+  margin-left: 8rem; /* Increased from 3rem to compress the middle card more sideways */
+  width: calc(100% - 8rem);
+}
+
+/* Bordered card: pure white background, red border, black text */
+.borderedCard {
+  border: 2.5px solid #cc2424;
+  background-color: #ffffff;
+  padding: 3.5rem 3rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.borderedCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(204, 36, 36, 0.1);
+}
+
+.cardBadge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #cc2424;
+  color: #ffffff;
+  padding: 0.5rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.eyeIcon {
+  display: inline-block;
+}
+
+.cardIconWrapper {
+  color: #111111;
+  margin-bottom: 0.6rem;
+}
+
+.cardIcon {
+  display: block;
+}
+
+.institutionLogo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-family: var(--font-heading), 'Inter', sans-serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.3rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.8rem;
+  color: #111111;
+  text-transform: uppercase;
+}
+
+.cardSubtitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: rgba(17, 17, 17, 0.55);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.02em;
+}
+
+.cardDescription {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(17, 17, 17, 0.75);
+  margin-bottom: 2.2rem;
+  font-weight: 400;
+}
+
+.cardDividerLine {
+  width: 40px;
+  height: 3px;
+  background-color: #111111;
+}
+
+/* Plain text left column */
+.textOnlyBlock {
+  background-color: #d8d8d6; /* Deeper warm grey to clearly contrast with the page background and white cards */
+  padding: 3.5rem 3rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #111111;
+  border-left: 2.5px solid transparent; /* Match the border alignment of borderedCard */
+  border-right: 2.5px solid transparent;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.textOnlyBlock:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+/* Right column Image wrapper */
+.imageBlockWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+}
+
+.imageCornerYear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #cc2424;
+  color: #ffffff;
+  padding: 0.5rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  z-index: 10;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  overflow: hidden;
+  border: 1.5px solid rgba(17, 17, 17, 0.1);
+}
+
+.phaseImage {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imageContainer:hover .phaseImage {
+  transform: scale(1.03);
+}
+
+/* Image centered circular badge */
+.circularBadge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+  background-color: #cc2424;
+  border: 3.5px solid #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-align: center;
+  padding: 1.2rem;
+  z-index: 5;
+  box-shadow: 0 10px 25px rgba(204, 36, 36, 0.25);
+}
+
+.badgeLabel {
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.badgeIcon {
+  margin-top: 0.5rem;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+/* Floating fish column for Phase 2 */
+.fishOutlinesContainer {
+  position: absolute;
+  left: -4.5rem;
+  top: 10%;
+  bottom: 10%;
+  width: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.floatingFish1, .floatingFish2, .floatingFish3, .floatingFish4, .floatingFish5 {
+  width: 32px;
+  height: 16px;
+  opacity: 0.45;
+  transform: rotate(-15deg);
+}
+
+.floatingFish2 {
+  transform: rotate(12deg) scaleX(-1);
+  opacity: 0.75;
+}
+
+.floatingFish3 {
+  transform: rotate(-25deg);
+  opacity: 0.55;
+}
+
+.floatingFish4 {
+  transform: rotate(5deg) scaleX(-1);
+  opacity: 0.75;
+}
+
+.floatingFish5 {
+  transform: rotate(-8deg);
+  opacity: 0.5;
+}
+
+/* ─── BOTTOM SECTION ─── */
+.bottomSection {
+  width: 100%;
+  position: relative;
+  margin-top: -3rem;
+}
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 520px) auto;
+  gap: 0;
+  align-items: stretch;
+  margin-left: 8rem;
+  width: calc(100% - 8rem);
+  justify-content: start;
+}
+
+.endingRectangleBlock {
+  background-color: #111111;
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 520px;
+}
+
+.endingLabel {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.25em;
+  margin-bottom: 0.7rem;
+  text-transform: uppercase;
+}
+
+.endingTitle {
+  font-family: var(--font-heading), 'Inter', sans-serif;
+  font-size: 2.3rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+  line-height: 1.18;
+  color: #ffffff;
+}
+
+.endingDescription {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 1.8rem;
+}
+
+.artworkBlockWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  aspect-ratio: 1536 / 1024;
+}
+
+.journeyImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.artworkContainer {
+  width: 100%;
+  max-width: 480px;
+}
+
+.artworkSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.toriiGate, .person {
+  pointer-events: none;
+}
+
+/* Bottom Progress Bar */
+.bottomProgressIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.progressBarActive {
+  height: 3.5px;
+  width: 48px;
+  background-color: #cc2424;
+}
+
+.progressBarInactive {
+  height: 3.5px;
+  width: 48px;
+  background-color: #d1d1d1;
+}
+
+.progressText {
+  font-family: monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: 0.05em;
+}
+
+/* ─── RESPONSIVE LAYOUT ─── */
+@media (max-width: 992px) {
+  .introGrid, .phaseGrid, .bottomGrid {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageContent {
+    padding: 1rem 1rem 4rem;
+    gap: 3.5rem;
+  }
+
+  .heroSection {
+    margin-top: 70px; /* Offset to clear mobile navbar */
+    flex-direction: column;
+    min-height: auto;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .heroVerticalStrip {
+    display: none;
+  }
+
+  .heroImageWrapper {
+    height: 420px;
+    position: relative;
+  }
+
+  .heroImageWrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.75) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .heroImage {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  .heroTextContainer {
+    bottom: 7.5rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    z-index: 10;
+  }
+
+  .heroTitle {
+    font-size: clamp(2.8rem, 11vw, 3.6rem);
+    line-height: 0.95;
+  }
+
+  /* Reduce overlap on mobile */
+  .introSection {
+    margin-top: -3.5rem;
+    margin-bottom: 0;
+  }
+
+  .circleBlockWrapper {
+    transform: none; /* Reset upward offset on mobile */
+  }
+
+  .phasesContainer {
+    gap: 3rem; /* Restores vertical spacing between phase sections on mobile viewports */
+  }
+
+  .phasesContainer > :nth-child(odd) > .phaseGrid,
+  .phasesContainer > :nth-child(even) > .phaseGrid {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .introGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .circleBlock {
+    width: clamp(260px, 75vw, 300px);
+    height: clamp(260px, 75vw, 300px);
+    padding: 1.8rem;
+  }
+
+  .circleTitle {
+    font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .circleText {
+    font-size: 0.8rem;
+  }
+
+  .rectangleBlock {
+    padding: 2.2rem 1.5rem;
+  }
+
+  .rectTitle {
+    font-size: 1.75rem;
+  }
+
+  .rectDescription {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .floatingInfinityWrapper {
+    display: none;
+  }
+
+  .phaseGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .borderedCard, .textOnlyBlock {
+    padding: 2.2rem 1.5rem;
+  }
+
+  .institutionLogo {
+    width: 85px;
+    height: 85px;
+    margin-bottom: 0.6rem;
+  }
+
+  .cardTitle {
+    font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+    line-height: 1.15;
+  }
+
+  .cardSubtitle {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .cardDescription {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    margin-bottom: 1.6rem;
+  }
+
+  .imageBlockWrapper {
+    min-height: 240px;
+    order: -1;
+  }
+
+  .imageContainer {
+    min-height: 240px;
+  }
+
+  .circularBadge {
+    width: 110px;
+    height: 110px;
+    border-width: 2.5px;
+    padding: 0.8rem;
+  }
+
+  .badgeLabel {
+    font-size: 0.58rem;
+  }
+
+  .badgeIcon {
+    margin-top: 0.3rem;
+    width: 20px;
+    height: 20px;
+  }
+
+  .fishOutlinesContainer {
+    display: none;
+  }
+
+  .bottomGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .endingRectangleBlock {
+    padding: 2.2rem 1.5rem;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .endingTitle {
+    font-size: 1.75rem;
+  }
+
+  .endingDescription {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .artworkBlockWrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .artworkContainer {
+    max-width: 360px;
+  }
+
+  .bottomSection {
+    margin-top: -1.5rem;
+  }
+
+  .bottomProgressIndicator {
+    margin-top: 3rem;
+  }
+
+  /* Sticky Navbar Light theme overrides on mobile drawer */
+  .mainContainer [class*="drawerCta"] {
+    border-color: #111111 !important;
+    color: #111111 !important;
+  }
+
+  .mainContainer [class*="drawerCta"]:hover {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+  }
+
+  .mainContainer [class*="drawerNum"] {
+    color: #cc2424 !important;
+  }
+}
