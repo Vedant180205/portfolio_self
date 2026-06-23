@@ -59,23 +59,27 @@ export default function About() {
 
         {/* Main copy */}
         <div className={styles.body}>
-          <p className={styles.para}>
+          {/* Desktop Copy (Divided in two paragraphs) */}
+          <p className={`${styles.para} ${styles.desktopPara}`}>
             <strong>Electronics and Computer Science</strong> student building engineering systems
             across software and hardware domains. My projects span{' '}
             <strong>IoT systems</strong>, <strong>backend applications</strong>,{' '}
             <strong>machine learning solutions</strong>, and <strong>data-driven applications</strong> — with a
             focus on building practical systems that solve real-world problems.
           </p>
-
-          {/* Dot divider */}
-          <div className={styles.dots} aria-hidden="true">
-            <span className={styles.dot} />
-            <span className={styles.dot} />
-            <span className={styles.dot} />
-          </div>
-
-          <p className={styles.para}>
+          <p className={`${styles.para} ${styles.desktopPara}`}>
             Currently strengthening foundations in{' '}
+            <strong>data structure and algorithms</strong>, <strong>embedded systems</strong>, and low-level
+            programming while exploring system-oriented engineering domains.
+          </p>
+
+          {/* Mobile Copy (Single paragraph) */}
+          <p className={`${styles.para} ${styles.mobilePara}`}>
+            <strong>Electronics and Computer Science</strong> student building engineering systems
+            across software and hardware domains. My projects span{' '}
+            <strong>IoT systems</strong>, <strong>backend applications</strong>,{' '}
+            <strong>machine learning solutions</strong>, and <strong>data-driven applications</strong> — with a
+            focus on building practical systems that solve real-world problems. Currently strengthening foundations in{' '}
             <strong>data structure and algorithms</strong>, <strong>embedded systems</strong>, and low-level
             programming while exploring system-oriented engineering domains.
           </p>

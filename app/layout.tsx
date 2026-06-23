@@ -7,9 +7,10 @@ export const metadata: Metadata = {
     "Portfolio of Vedant Patil — I build real-world systems that combine embedded engineering, machine learning and software to solve meaningful problems.",
   keywords: ["Vedant Patil", "portfolio", "engineer", "builder", "embedded", "machine learning", "software"],
   icons: {
-    icon: "/ui/logo.png",
-    shortcut: "/ui/logo.png",
-    apple: "/ui/logo.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    other: [{ rel: "icon", url: "/icon-192.png", sizes: "192x192" }],
   },
   openGraph: {
     title: "Vedant Patil — Builder & Engineer",
@@ -25,6 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <style>{`@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Science+Gothic:wght@100..900&display=swap');`}</style>
+      </head>
       <body>
         {children}
       </body>

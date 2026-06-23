@@ -157,8 +157,8 @@ export default function Education() {
                         fill
                         className={styles.img}
                         sizes="(max-width: 768px) 100vw, 45vw"
-                        quality={95}
-                        priority={index === 0}
+                        quality={75}
+                        loading="lazy"
                       />
                     </div>
                   )}

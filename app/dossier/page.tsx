@@ -323,7 +323,10 @@ export default function DossierPage() {
   // Initialize first challenge on mount
   useEffect(() => {
     if (accessGranted) {
-      generateNewChallenge();
+      const timer = setTimeout(() => {
+        generateNewChallenge();
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [accessGranted]);
 
@@ -394,7 +397,7 @@ export default function DossierPage() {
       >
         <div className={styles.filmGrain} />
 
-        <MusicianSection setActiveCert={setActiveCert} />
+        <MusicianSection />
 
         {/* -------------------------------------------------------------
             SECTION 02: MISSION LOGS
@@ -593,10 +596,10 @@ export default function DossierPage() {
             ------------------------------------------------------------- */}
         <section ref={artistRef} className={styles.artistSection} id="artist">
           <div className={styles.artistWrapper}>
-            <div className={styles.sectionHeaderLeft}>
+            <div className={styles.sectionHeaderCentered}>
               <span className={styles.sectionCategoryLight}>ARCHIVE_CREATOR // OBSERVATIONS</span>
               <h2 className={styles.artistLargeTitle}>
-                A PENCIL,<br />A PAGE,<br />AND A THOUSAND OBSERVATIONS.
+                A PENCIL, A PAGE, AND A THOUSAND OBSERVATIONS.
               </h2>
             </div>
 
@@ -966,8 +969,7 @@ export default function DossierPage() {
 
           <div className={styles.endingContent}>
             <h2 className={styles.endingHeadline}>
-              THE ENGINEER YOU SAW<br />
-              IS ONLY ONE PART OF THE STORY.
+              THE ENGINEER YOU SAW IS ONLY ONE PART OF THE STORY.
             </h2>
 
             <div className={styles.rolesRow}>

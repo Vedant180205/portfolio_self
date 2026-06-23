@@ -1,11 +1,11 @@
 /* Workflow — flat icon grid, AI and productivity tools */
 const tools = [
-  { name: 'Antigravity',    icon: '/icons/antigravity.svg', invert: false },
-  { name: 'ChatGPT',        icon: '/icons/chatgpt.svg',     invert: false },
-  { name: 'Gemini',         icon: '/icons/gemini.svg',      invert: false },
-  { name: 'DeepSeek',       icon: '/icons/deepseek.svg',    invert: false },
-  { name: 'Perplexity',     icon: '/icons/perplexity.svg',  invert: false },
-  { name: 'GitHub Copilot', icon: '/icons/copilot.svg',     invert: false },
+  { name: 'Antigravity', icon: '/icons/antigravity.svg', invert: false },
+  { name: 'ChatGPT', icon: '/icons/chatgpt.svg', invert: false },
+  { name: 'Gemini', icon: '/icons/gemini.svg', invert: false },
+  { name: 'DeepSeek', icon: '/icons/deepseek.svg', invert: false },
+  { name: 'Perplexity', icon: '/icons/perplexity.svg', invert: false },
+  { name: 'GitHub Copilot', icon: '/icons/copilot.svg', invert: false },
 ];
 
 import styles from './Workflow.module.css';

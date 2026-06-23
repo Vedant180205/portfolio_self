@@ -84,7 +84,7 @@
 .inner {
   position: relative;
   z-index: 1;
-  max-width: 780px;
+  max-width: 1000px;
   width: 100%;
   padding: 0 2rem;
   display: flex;
@@ -133,7 +133,7 @@
 
 .metaLabel {
   font-family: var(--font-body);
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -142,7 +142,7 @@
 
 .metaValue {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--color-text-primary);
   letter-spacing: 0.02em;
@@ -151,7 +151,7 @@
 
 .metaLink {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--color-text-primary);
   letter-spacing: 0.02em;
@@ -202,16 +202,27 @@
 }
 
 .para {
-  font-family: var(--font-body);
-  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
-  line-height: 1.9;
+  font-family: "Science Gothic", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "slnt" 0, "wdth" 100, "CTRS" 0;
+  font-size: 1.3rem;
+  line-height: 1.75;
   color: var(--color-text-secondary);
-  font-weight: 300;
 }
 
 .para strong {
   color: var(--color-text-primary);
   font-weight: 500;
+}
+
+.desktopPara {
+  display: block;
+}
+
+.mobilePara {
+  display: none;
 }
 
 /* ─── DIVIDER DOT ROW ─── */
@@ -320,7 +331,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem 2rem;
+    gap: 1.2rem 2.8rem;
     width: 100%;
   }
 
@@ -336,5 +347,31 @@
   /* Email spans full width so it sits alone on its own row */
   .metaItem:last-child {
     flex: 1 1 100%;
+  }
+
+
+  .metaLabel {
+    font-size: 0.6rem;
+  }
+
+  .metaValue,
+  .metaLink {
+    font-size: 0.82rem;
+  }
+
+  .para {
+    font-size: 0.9rem;
+  }
+
+  .inner {
+    gap: 1.2rem;
+  }
+
+  .desktopPara {
+    display: none;
+  }
+
+  .mobilePara {
+    display: block;
   }
 }

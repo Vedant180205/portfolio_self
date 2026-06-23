@@ -1,6 +1,4 @@
-/* ─── SECTION ─── */
 .section {
-  background: var(--color-bg);
   position: relative;
   padding: 10rem 2rem;
   overflow: hidden;
@@ -314,12 +312,12 @@
   }
 }
 
-/* ─── IMAGE WRAPER (BRUTALIST OFFSET) ─── */
+/* ─── IMAGE WRAP (BRUTALIST OFFSET) ─── */
 .imageWrap {
   position: relative;
   width: 100%;
-  max-width: 520px; /* Increased width */
-  height: 340px;    /* Increased height */
+  max-width: 520px;
+  height: 340px;
   background: var(--color-surface);
   border: 3px solid var(--color-text-primary);
   box-shadow: 10px 10px 0px var(--color-border-strong);
@@ -331,11 +329,11 @@
 }
 
 .leftCol .imageWrap {
-  margin-right: -40px; /* Overlap the central spine */
+  margin-right: -40px;
 }
 
 .rightCol .imageWrap {
-  margin-left: -40px; /* Overlap the central spine */
+  margin-left: -40px;
 }
 
 .imageWrap:hover {

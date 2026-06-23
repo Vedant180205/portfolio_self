@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import styles from './Projects.module.css';
 
@@ -12,11 +15,12 @@ const projects = [
         Built a <strong>quantitative finance platform</strong> for pricing and analyzing stock options using industry-standard derivatives models. Implemented the <strong>Cox-Ross-Rubinstein (CRR) Binomial Tree Model</strong>, <strong>EWMA volatility forecasting</strong>, and <strong>risk-neutral valuation</strong> techniques to estimate option prices under varying market conditions. Integrated <strong>interactive visualizations</strong> and <strong>financial analytics</strong> to help users evaluate volatility, risk exposure, and potential trading opportunities.
       </>
     ),
+    mobileDescription: 'Quantitative finance platform for options pricing and risk analysis using CRR Binomial Tree, EWMA volatility, and risk-neutral valuation.',
     tags: ['Python', 'Binomial Tree', 'Black-Scholes', 'Finance'],
     github: 'https://github.com/Vedant180205/OptionsPricingModel_QuantDevs',
     image: '/images/projects/thumbs/project-quantdevs.jpg',
     imageAlt: 'QUANTDEVS — Options pricing and risk analysis CLI splash screen',
-    bgImage: '/images/projects/bg/options_bg.png',
+    bgImage: '/images/projects/bg/options_pricing_bg.png',
   },
   {
     id: 2,
@@ -28,6 +32,7 @@ const projects = [
         Built an <strong>AI-powered placement intelligence platform</strong> that predicts student placement readiness through automated resume analysis, GitHub portfolio evaluation, and skill-gap detection. Leveraged <strong>Groq Llama-3</strong>, <strong>PDFMiner</strong>, <strong>GitHub API integration</strong>, and a custom <strong>Placement Readiness Score (PRS)</strong> algorithm to generate real-time career insights and personalized improvement recommendations. Designed a <strong>Power BI-style analytics dashboard</strong> that enables administrators to identify at-risk students, track campus-wide skill trends, and take proactive interventions before placement season.
       </>
     ),
+    mobileDescription: 'AI-powered placement intelligence platform analyzing student resumes and portfolios to identify and bridge technical skill gaps.',
     tags: ['Next.js', 'Groq Llama-3', 'Node.js', 'MongoDB'],
     github: 'https://github.com/Vedant180205/CyberDevs_AMUHACKS5.0',
     image: '/images/projects/thumbs/project-campusiq.png',
@@ -45,11 +50,12 @@ const projects = [
         Developed a <strong>full-stack e-commerce intelligence system</strong> that automates cross-platform product discovery and price comparison across online marketplaces. Integrated <strong>large language models (Groq Llama 3.1)</strong>, <strong>web scraping infrastructure</strong>, and <strong>predictive analytics</strong> techniques to generate deal recommendations, estimate price-drop probabilities, and provide personalized shopping insights. Engineered a scalable architecture using <strong>FastAPI</strong>, <strong>Next.js</strong>, <strong>PostgreSQL</strong>, and <strong>asynchronous data processing</strong> to deliver real-time market intelligence for consumer purchasing decisions.
       </>
     ),
+    mobileDescription: 'E-commerce intelligence system using machine learning and web scraping to compare prices and predict price-drop probabilities.',
     tags: ['FastAPI', 'Next.js', 'PostgreSQL', 'Llama 3.1'],
     github: 'https://github.com/Vedant180205/PredictKart',
     image: '/images/projects/thumbs/project-predictkart.png',
     imageAlt: 'PredictKart — price history & tracker web app homepage',
-    bgImage: '/images/projects/bg/predict_bg.png',
+    bgImage: '/images/projects/bg/predictkart_bg.png',
   },
   {
     id: 4,
@@ -61,11 +67,12 @@ const projects = [
         Developed an <strong>AI-powered IoT health monitoring system</strong> that continuously tracks <strong>Heart Rate, SpO₂, and fatigue levels</strong> using <strong>ESP32 and MAX30102 sensors</strong>. Integrated <strong>Firebase Realtime Database</strong> for live health data streaming and <strong>Google Gemini</strong> to provide personalized wellness insights through an intelligent healthcare assistant. Implemented <strong>fatigue analysis</strong> using HRV patterns, oxygen saturation trends, and movement data, enabling <strong>real-time health monitoring</strong>, <strong>anomaly detection</strong>, and <strong>proactive wellness recommendations</strong>.
       </>
     ),
+    mobileDescription: 'AI-powered IoT health monitoring system tracking heart rate, SpO₂, and fatigue levels using ESP32 and Firebase.',
     tags: ['IoT', 'ESP32', 'Firebase', 'Gemini AI'],
     github: 'https://github.com/Vedant180205/VitalTracker',
     image: '/images/projects/thumbs/project-vital-tracker.jpg',
     imageAlt: 'Vital Tracker — IoT breadboard prototype with OLED display',
-    bgImage: '/images/projects/bg/vital_bg.png',
+    bgImage: '/images/projects/bg/vital_tracker_bg.png',
   },
   {
     id: 5,
@@ -77,11 +84,12 @@ const projects = [
         Built a <strong>privacy-first gesture-controlled browser interface</strong> that enables touchless navigation using real-time hand tracking and computer vision. Utilized <strong>Google MediaPipe Hand Landmarker</strong>, <strong>WebAssembly inference</strong>, <strong>21-point hand landmark detection</strong>, <strong>Euclidean-distance-based gesture classification</strong>, and temporal smoothing techniques to achieve low-latency gesture recognition directly in the browser. Engineered a <strong>Chrome Extension architecture</strong> with cross-context messaging, dynamic gesture pipelines, and <strong>local-first processing</strong> for real-time scrolling, tab management, and virtual cursor control without transmitting any user data.
       </>
     ),
+    mobileDescription: 'Privacy-first Chrome extension enabling touchless browser navigation using Google MediaPipe Hand Landmarker.',
     tags: ['MediaPipe', 'WebAssembly', 'Chrome Extension', 'CV'],
     github: 'https://github.com/Vedant180205/Gesture-based-control-system',
     image: '/images/projects/thumbs/project-gesture-control.png',
     imageAlt: 'Gesture Control System — Chrome extension overlay with hand landmark tracking',
-    bgImage: '/images/projects/bg/gesture_bg.png',
+    bgImage: '/images/projects/bg/gesture_control_bg.png',
   },
 ];
 
@@ -101,6 +109,8 @@ function GitHubIcon() {
 }
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
+
   return (
     <section className={styles.section} id="projects" aria-label="Projects">
       {/* Section header */}
@@ -113,10 +123,13 @@ export default function Projects() {
       <div className={styles.projectList}>
         {projects.map((project, index) => {
           const isEven = index % 2 === 1;
+          const isHiddenOnMobile = index >= 3 && !showAll;
           return (
             <article
               key={project.id}
-              className={`${styles.projectRow} ${isEven ? styles.projectRowReverse : ''}`}
+              className={`${styles.projectRow} ${isEven ? styles.projectRowReverse : ''} ${
+                isHiddenOnMobile ? styles.mobileHidden : ''
+              }`}
               id={`project-${project.id}`}
             >
               {project.bgImage && (
@@ -129,6 +142,12 @@ export default function Projects() {
                   aria-hidden="true"
                 />
               )}
+
+              {/* Mobile-only header (renders first in flex column) */}
+              <div className={styles.mobileHeader}>
+                <span className={styles.subtitle}>{project.subtitle}</span>
+                <h3 className={styles.title}>{project.title}</h3>
+              </div>
 
               {/* ── Collage side ── */}
               <div className={`${styles.collage} ${isEven ? styles.collageReverse : ''}`}>
@@ -149,9 +168,14 @@ export default function Projects() {
 
               {/* ── Text side ── */}
               <div className={styles.textSide}>
-                <p className={styles.subtitle}>{project.subtitle}</p>
-                <h3 className={styles.title}>{project.title}</h3>
+                {/* Desktop-only header */}
+                <div className={styles.desktopHeader}>
+                  <p className={styles.subtitle}>{project.subtitle}</p>
+                  <h3 className={styles.title}>{project.title}</h3>
+                </div>
+
                 <p className={styles.desc}>{project.description}</p>
+                <p className={styles.mobileDesc}>{project.mobileDescription}</p>
                 <div className={styles.tagList}>
                   {project.tags.map((tag) => (
                     <span key={tag} className={styles.tag}>{tag}</span>
@@ -173,6 +197,32 @@ export default function Projects() {
           );
         })}
       </div>
+
+      {showAll ? (
+        <button
+          className={styles.viewMoreBtn}
+          onClick={() => {
+            setShowAll(false);
+            const section = document.getElementById('projects');
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          aria-label="View less projects"
+          id="projects-view-less"
+        >
+          View Less Projects
+        </button>
+      ) : (
+        <button
+          className={styles.viewMoreBtn}
+          onClick={() => setShowAll(true)}
+          aria-label="View more projects"
+          id="projects-view-more"
+        >
+          View More Projects
+        </button>
+      )}
     </section>
   );
 }

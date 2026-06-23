@@ -56,7 +56,7 @@
   /* Fonts */
   --font-name:        'Protest Guerrilla', sans-serif; /* Hero name — VEDANT PATIL */
   --font-heading:     'Protest Guerrilla', sans-serif; /* Section headings */
-  --font-body:        'Inter', sans-serif;
+  --font-body:        'Science Gothic', sans-serif;
 }
 
 
@@ -71,6 +71,9 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text-primary);
   font-family: var(--font-body);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-variation-settings: "slnt" 0, "wdth" 100, "CTRS" 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

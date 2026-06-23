@@ -212,20 +212,20 @@
 /* ─── SHARED HEADERS ─── */
 .sectionHeader {
   max-width: 900px;
-  margin-bottom: 5rem;
+  margin-bottom: 3.5rem;
   padding: 0 4rem;
 }
 
 .sectionHeaderCentered {
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto 5rem;
+  max-width: 1100px;
+  margin: 0 auto 3.5rem;
   padding: 0 2rem;
 }
 
 .sectionHeaderLeft {
   max-width: 900px;
-  margin-bottom: 5rem;
+  margin-bottom: 3.5rem;
 }
 
 .sectionCategory {
@@ -251,8 +251,8 @@
 
 /* ─── SECTION 02: MISSION LOGS ─── */
 .missionLogsSection {
-  min-height: 110vh;
-  padding: 10rem 0 8rem;
+  min-height: auto;
+  padding: 6rem 0;
   position: relative;
   background-color: #070707;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -270,11 +270,12 @@
 
 .logsLargeTitle {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 6vw, 6rem);
+  font-size: 2.2rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   color: #ffffff;
   margin-bottom: 0.75rem;
+  text-align: center;
 }
 
 .logsSubtitle {
@@ -291,7 +292,7 @@
   grid-template-columns: 1.2fr 1fr;
   gap: 3.5rem;
   max-width: 1300px;
-  margin: 5rem auto 0;
+  margin: 3.5rem auto 0;
   padding: 0 4rem;
   align-items: stretch;
 }
@@ -715,8 +716,8 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 /* ─── SECTION 03: THE ARTIST ─── */
 .artistSection {
-  min-height: 120vh;
-  padding: 12rem 4rem 10rem;
+  min-height: auto;
+  padding: 6rem 4rem;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -731,18 +732,19 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .artistLargeTitle {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-size: 2.2rem;
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .museumGallery {
-  margin-top: 6rem;
+  margin-top: 3.5rem;
   display: flex;
   flex-direction: column;
-  gap: 8rem;
+  gap: 5rem;
 }
 
 .museumRow {
@@ -1013,7 +1015,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 .viewMoreContainer {
   display: flex;
   justify-content: center;
-  margin-top: 6rem;
+  margin-top: 3rem;
   width: 100%;
 }
 
@@ -1055,7 +1057,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 /* ─── SECTION 04: THROUGH MY LENS ─── */
 .photographySection {
-  padding: 6rem 4rem 8rem;
+  padding: 6rem 4rem;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1160,7 +1162,8 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
   box-sizing: border-box;
 }
 
@@ -1175,13 +1178,15 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .collageMainTitle {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-size: 2.2rem;
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.01em;
   text-transform: uppercase;
   color: #111111;
-  margin: 0.6rem 0 0;
+  margin: 0.6rem auto 0;
+  text-align: center;
+  width: 100%;
 }
 
 .collagePhotoItem {
@@ -1210,7 +1215,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 .collageFooter {
   width: 100%;
   max-width: 1350px;
-  margin-top: 6rem;
+  margin-top: 3.5rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -1222,7 +1227,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .footerLeftText {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
   line-height: 1.6;
   max-width: 600px;
@@ -1304,8 +1309,8 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 /* ─── SECTION 05: THE HUMAN CALCULATOR ─── */
 .calculatorSection {
-  min-height: 100vh;
-  padding: 12rem 4rem 10rem;
+  min-height: auto;
+  padding: 6rem 4rem;
   background-color: #060606;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -1324,18 +1329,19 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .calculatorTitle {
   font-family: var(--font-heading);
-  font-size: clamp(2rem, 4.5vw, 4.2rem);
+  font-size: 2.2rem;
   font-weight: 400;
   color: #ffffff;
   margin-bottom: 0.75rem;
   white-space: nowrap;
   position: relative;
   z-index: 5;
+  text-align: center;
 }
 
 .calculatorGrid {
   max-width: 1200px;
-  margin: 5rem auto 0;
+  margin: 3.5rem auto 0;
   display: grid;
   grid-template-columns: 1.35fr 0.65fr;
   gap: 3.5rem;
@@ -1414,7 +1420,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   overflow: hidden;
   border-radius: 4px;
   max-width: 1200px;
-  margin: 3.5rem auto 0;
+  margin: 2.5rem auto 0;
   z-index: 5;
 }
 
@@ -1807,14 +1813,14 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 /* ─── ENDING SECTION ─── */
 .endingSection {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   text-align: center;
   background-color: #060606;
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
 }
 
 .endingOverlay {
@@ -1827,17 +1833,18 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 .endingContent {
   position: relative;
   z-index: 10;
-  max-width: 900px;
+  max-width: 1100px;
 }
 
 .endingHeadline {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+  font-size: 2.2rem;
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.02em;
   color: #ffffff;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 .rolesRow {
@@ -1845,7 +1852,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.25rem 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
 .rolesRow span {
@@ -1861,7 +1868,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 }
 
 .endingClosing {
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   font-family: var(--font-body);
   font-size: 1.5rem;
   font-weight: 300;
@@ -2024,7 +2031,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 }
 
 .modalBullet p {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.6);
 }
@@ -2182,7 +2189,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 }
 
 .certModalDesc p {
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.6);
   margin: 0;
@@ -2302,8 +2309,9 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   }
 
   .calculatorTitle {
-    font-size: clamp(1.6rem, 5.5vw, 2.4rem);
+    font-size: 2.2rem;
     white-space: normal;
+    text-align: center;
   }
 
 
@@ -2375,17 +2383,19 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   }
 
   .missionLogsSection {
-    padding: 7rem 0;
+    padding: 4rem 0 3rem;
+    min-height: auto;
   }
 
   .sectionHeaderCentered {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
   }
 
   .intelDashboard {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
     padding: 0 1.5rem;
+    margin-top: 1.5rem;
   }
 
   .consoleCol {
@@ -2393,7 +2403,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   }
 
   .intelBoard {
-    height: 520px;
+    height: 440px;
   }
 
   .classifiedStampBg {
@@ -2439,11 +2449,13 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   }
 
   .artistSection {
-    padding: 8rem 1.5rem 6rem;
+    padding: 4rem 1.5rem 3rem;
+    min-height: auto;
   }
 
   .artistLargeTitle {
     font-size: 2.2rem;
+    text-align: center;
   }
 
   .museumGallery {
@@ -2456,17 +2468,18 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   }
 
   .photographySection {
-    padding: 6rem 1.5rem 5rem;
+    padding: 4rem 1.5rem 3rem;
     min-height: auto;
   }
 
   .calculatorSection {
-    padding: 8rem 1.5rem 6rem;
+    padding: 4rem 1.5rem 3rem;
+    min-height: auto;
   }
 
   .calculatorGrid {
-    margin-top: 4rem;
-    gap: 3rem;
+    margin-top: 2.5rem;
+    gap: 2rem;
   }
 
   .mathConsole {
@@ -2505,12 +2518,14 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   .lowerBead:nth-child(4) { top: 100px; }
 
   .endingSection {
-    padding: 6rem 1.5rem 4rem;
+    padding: 4rem 1.5rem 3rem;
+    min-height: auto;
   }
 
   .endingHeadline {
     font-size: 2.2rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
   }
 
   .rolesRow {
@@ -2540,13 +2555,13 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   }
 
   .modalBullet p {
-    font-size: 0.82rem;
+    font-size: 0.95rem;
   }
 }
 
 /* ─── SECTION 2.5: TOPPER SECTION STYLES ─── */
 .topperSection {
-  padding: 10rem 0 8rem;
+  padding: 6rem 0;
   position: relative;
   background-color: #080808;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -2683,11 +2698,12 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .topperHeadline {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5vw, 4.8rem);
+  font-size: 2.2rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   color: #ffffff;
   margin-bottom: 0.75rem;
+  text-align: center;
 }
 
 @media (max-width: 900px) {
@@ -2702,13 +2718,13 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 @media (max-width: 768px) {
   .topperSection {
-    padding: 7rem 0 5rem;
+    padding: 4rem 0 3rem;
   }
   .topperWrapper {
-    padding: 0 2rem;
+    padding: 0 1.5rem;
   }
   .topperBriefing {
-    padding: 1.8rem;
+    padding: 1.5rem;
   }
 }
 

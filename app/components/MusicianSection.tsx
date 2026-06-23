@@ -3,11 +3,7 @@
 import Image from 'next/image';
 import styles from './MusicianSection.module.css';
 
-interface MusicianSectionProps {
-  setActiveCert: (src: string | any) => void;
-}
-
-export default function MusicianSection({ setActiveCert }: MusicianSectionProps) {
+export default function MusicianSection() {
 
 
   return (

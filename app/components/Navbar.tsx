@@ -8,20 +8,20 @@ import styles from './Navbar.module.css';
 
 
 const navLinks = [
-  { label: 'HOME',               href: '#home' },
-  { label: 'ABOUT',              href: '#about' },
-  { label: 'PROJECTS',           href: '#projects' },
-  { label: 'TECH STACK',         href: '#techstack' },
-  { label: 'CERTIFICATIONS',     href: '#certifications' },
-  { label: 'EDUCATION',          href: '#education' },
-  { label: 'DOSSIER',            href: '/dossier' },
+  { label: 'HOME', href: '#home' },
+  { label: 'ABOUT', href: '#about' },
+  { label: 'PROJECTS', href: '#projects' },
+  { label: 'TECH STACK', href: '#techstack' },
+  { label: 'CERTIFICATIONS', href: '#certifications' },
+  { label: 'EDUCATION', href: '#education' },
+  { label: 'DOSSIER', href: '/dossier' },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [scrolled, setScrolled]   = useState(false);
-  const [active, setActive]       = useState('HOME');
-  const [menuOpen, setMenuOpen]   = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState('HOME');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -56,7 +56,7 @@ export default function Navbar() {
         <a href={pathname === '/' ? '#home' : '/'} className={styles.logo} id="nav-logo">
           <div className={styles.logoMark}>
             <Image
-              src="/ui/logo.png"
+              src="/ui/logo-new.png"
               alt="VP Logo"
               width={80}
               height={80}
@@ -74,7 +74,7 @@ export default function Navbar() {
           {navLinks.map((link) => {
             const isAnchor = link.href.startsWith('#');
             const href = isAnchor && pathname !== '/' ? `/${link.href}` : link.href;
-            
+
             return (
               <li key={link.label}>
                 <a
@@ -95,7 +95,7 @@ export default function Navbar() {
           <a href={pathname === '/' ? '#contact' : '/#contact'} id="nav-connect-btn" className={styles.ctaBtn}>
             LET&apos;S CONNECT
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
 

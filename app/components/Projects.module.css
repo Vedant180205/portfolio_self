@@ -18,17 +18,33 @@
 /* ─── HEADER ─── */
 .sectionHeader {
   display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  padding: 0 6rem 7rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 0 2rem 7rem;
 }
 
 .sectionEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
   font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.3em;
   color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.sectionEyebrow::before,
+.sectionEyebrow::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.5;
 }
 
 .sectionTitle {
@@ -76,10 +92,10 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right,  var(--color-bg) 0%, transparent 12%),
-    linear-gradient(to left,   var(--color-bg) 0%, transparent 12%),
+    linear-gradient(to right, var(--color-bg) 0%, transparent 12%),
+    linear-gradient(to left, var(--color-bg) 0%, transparent 12%),
     linear-gradient(to bottom, var(--color-bg) 0%, transparent 12%),
-    linear-gradient(to top,    var(--color-bg) 0%, transparent 12%);
+    linear-gradient(to top, var(--color-bg) 0%, transparent 12%);
   pointer-events: none;
   z-index: 2;
 }
@@ -210,6 +226,20 @@
   margin: 0;
 }
 
+.mobileDesc {
+  display: none;
+}
+
+.mobileHeader {
+  display: none;
+}
+
+.desktopHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
 .desc strong {
   color: var(--color-text-primary);
   font-weight: 500;
@@ -279,35 +309,80 @@
   border-color: var(--color-text-primary);
 }
 
-.viewBtn > * {
+.viewBtn>* {
   position: relative;
   z-index: 1;
 }
 
+.viewMoreBtn {
+  display: none;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1200px) {
-  .sectionHeader { padding: 0 3.5rem 6rem; }
-  .projectList   { padding: 0 3.5rem; gap: 8rem; }
-  .projectRow    { gap: 4rem; }
-  .collage       { flex: 0 0 50%; height: 420px; }
+  .sectionHeader {
+    padding: 0 3.5rem 6rem;
+  }
+
+  .projectList {
+    padding: 0 3.5rem;
+    gap: 8rem;
+  }
+
+  .projectRow {
+    gap: 4rem;
+  }
+
+  .collage {
+    flex: 0 0 50%;
+    height: 420px;
+  }
 }
 
 @media (max-width: 900px) {
-  .projectList { padding: 0 2rem; gap: 7rem; }
-  .projectRow  { gap: 3rem; }
-  .collage     { flex: 0 0 48%; height: 360px; }
-  .desc        { max-width: 100%; }
+  .projectList {
+    padding: 0 2rem;
+    gap: 7rem;
+  }
+
+  .projectRow {
+    gap: 3rem;
+  }
+
+  .collage {
+    flex: 0 0 48%;
+    height: 360px;
+  }
+
+  .desc {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 700px) {
-  .section { padding: 5rem 0 8rem; }
-  .sectionHeader { padding: 0 1.5rem 4rem; flex-direction: column; gap: 0.5rem; }
-  .projectList   { padding: 0 1.5rem; gap: 6rem; }
-  
+  .section {
+    padding: 5rem 0 8rem;
+  }
+
+  .sectionHeader {
+    padding: 0 1.5rem 4rem;
+  }
+
+  .projectList {
+    padding: 0 1.5rem;
+    gap: 2.5rem; /* tight gap for card stack */
+  }
+
   .projectRow,
-  .projectRowReverse { 
-    flex-direction: column; 
-    gap: 3.5rem;
+  .projectRowReverse {
+    flex-direction: column;
+    gap: 0; /* reset gap since card sections have paddings */
+    border: 1px solid var(--color-border-strong);
+    background: var(--color-surface);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   /* Reset alignment for reverse rows on mobile so they align left */
@@ -315,19 +390,19 @@
     align-items: flex-start;
     text-align: left;
   }
-  
+
   .projectRowReverse .tagList {
     justify-content: flex-start;
   }
-  
+
   .projectRowReverse .viewBtn {
     align-self: flex-start;
   }
 
-  .collage { 
-    width: 100%; 
-    flex: none; 
-    height: auto; 
+  .collage {
+    width: 100%;
+    flex: none;
+    height: auto;
   }
 
   .mainWrap {
@@ -335,18 +410,82 @@
     top: 0;
     left: 0;
     width: 100%;
-    border: 1.5px solid var(--color-border-strong);
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    border: none;
+    border-top: 1px solid var(--color-border-strong);
+    border-bottom: 1px solid var(--color-border-strong);
+    border-radius: 0;
+    box-shadow: none;
+    background: none !important;
   }
-  .collageReverse .mainWrap  { right: auto; left: 0; }
+
+  .collageReverse .mainWrap {
+    right: auto;
+    left: 0;
+  }
 
   .rowBg {
-    left: -1.5rem !important;
-    right: -1.5rem !important;
-    width: auto !important;
-    top: -40px !important;
-    height: 380px !important;
-    bottom: auto !important;
+    display: none !important;
+  }
+
+  .desc {
+    display: none !important;
+  }
+
+  .mobileDesc {
+    display: block !important;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .mobileHeader {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+    text-align: left;
+    padding: 1.5rem 1.5rem 1.25rem;
+    box-sizing: border-box;
+  }
+
+  .desktopHeader {
+    display: none !important;
+  }
+
+  .textSide {
+    padding: 1.25rem 1.5rem 1.5rem;
+    gap: 1rem;
+    box-sizing: border-box;
+  }
+
+  .mobileHidden {
+    display: none !important;
+  }
+
+  .viewMoreBtn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 3rem); /* Match card margin */
+    margin: 2rem auto 0;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--color-border-strong);
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .viewMoreBtn:active {
+    background: var(--color-surface-2);
+    border-color: var(--color-accent-border);
   }
 }
