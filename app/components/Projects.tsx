@@ -133,14 +133,19 @@ export default function Projects() {
               id={`project-${project.id}`}
             >
               {project.bgImage && (
-                <div
-                  className={styles.rowBg}
-                  style={{
-                    backgroundImage: `url(${project.bgImage})`,
-                    ...(project.bgOpacity !== undefined ? { opacity: project.bgOpacity } : {}),
-                  }}
-                  aria-hidden="true"
-                />
+                <div className={styles.rowBg} aria-hidden="true">
+                  <Image
+                    src={project.bgImage}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={50}
+                    style={{
+                      objectFit: 'cover',
+                      opacity: project.bgOpacity !== undefined ? project.bgOpacity : 1,
+                    }}
+                  />
+                </div>
               )}
 
               {/* Mobile-only header (renders first in flex column) */}
@@ -160,7 +165,7 @@ export default function Projects() {
                     height={800}
                     className={styles.mainImg}
                     sizes="(max-width: 768px) 100vw, 42vw"
-                    quality={88}
+                    quality={78}
                   />
                 </div>
 

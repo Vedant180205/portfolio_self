@@ -84,6 +84,7 @@
   opacity: 1;
   pointer-events: none;
   z-index: 1;
+  overflow: hidden;
 }
 
 /* Fade all 4 edges using a pseudo-element overlay approach for maximum browser compatibility */
