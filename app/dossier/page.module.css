@@ -270,7 +270,7 @@
 
 .logsLargeTitle {
   font-family: var(--font-heading);
-  font-size: 2.2rem;
+  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
   font-weight: 400;
   letter-spacing: 0.04em;
   color: #ffffff;
@@ -732,7 +732,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .artistLargeTitle {
   font-family: var(--font-heading);
-  font-size: 2.2rem;
+  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.02em;
@@ -1178,7 +1178,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .collageMainTitle {
   font-family: var(--font-heading);
-  font-size: 2.2rem;
+  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.01em;
@@ -1329,7 +1329,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .calculatorTitle {
   font-family: var(--font-heading);
-  font-size: 2.2rem;
+  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
   font-weight: 400;
   color: #ffffff;
   margin-bottom: 0.75rem;
@@ -1838,7 +1838,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .endingHeadline {
   font-family: var(--font-heading);
-  font-size: 2.2rem;
+  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.02em;
@@ -1877,7 +1877,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .endingClosing strong {
   display: block;
-  font-size: 2.2rem;
+  font-size: clamp(2rem, 4vw, 3.8rem);
   font-weight: 700;
   color: #ffffff;
   margin-top: 0.5rem;
@@ -2698,7 +2698,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .topperHeadline {
   font-family: var(--font-heading);
-  font-size: 2.2rem;
+  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
   font-weight: 400;
   letter-spacing: 0.04em;
   color: #ffffff;
