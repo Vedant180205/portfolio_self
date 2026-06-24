@@ -95,7 +95,7 @@
   max-width: 1360px; /* Increased from 1200px to render everything larger on desktop viewports */
   width: 100%;
   margin: 0 auto;
-  padding: 0 2rem 6rem; /* Top padding reset to 0 since hero section is outside */
+  padding: 0 64px 6rem; /* Top padding reset to 0 since hero section is outside */
   display: flex;
   flex-direction: column;
   gap: 7rem;
@@ -104,10 +104,9 @@
 /* ─── HERO SECTION ─── */
 .heroSection {
   margin-top: 80px; /* Offset to clear the fixed navbar height */
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1320px;
-  width: calc(100% - 4rem);
+  margin-left: 64px;
+  margin-right: 64px;
+  width: calc(100% - 128px);
   display: flex;
   position: relative;
   background-color: #000000;
@@ -361,10 +360,6 @@
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.borderedCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 36px rgba(204, 36, 36, 0.1);
-}
 
 .cardBadge {
   position: absolute;
@@ -449,10 +444,6 @@
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.textOnlyBlock:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
-}
 
 /* Right column Image wrapper */
 .imageBlockWrapper {
@@ -491,9 +482,6 @@
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.imageContainer:hover .phaseImage {
-  transform: scale(1.03);
-}
 
 /* Image centered circular badge */
 .circularBadge {
@@ -683,6 +671,31 @@
   font-weight: 700;
   color: #111111;
   letter-spacing: 0.05em;
+}
+
+/* ─── RAMNIVAS RUIA OVERRIDES (Desktop) ─── */
+@media (min-width: 769px) {
+  .ruiaCard {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .ruiaCard .institutionLogo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .ruiaCard .cardDescription {
+    margin-bottom: 1.2rem;
+  }
+
+  .ruiaImageWrapper {
+    min-height: 280px;
+  }
+
+  .ruiaImageContainer {
+    min-height: 280px !important;
+  }
 }
 
 /* ─── RESPONSIVE LAYOUT ─── */

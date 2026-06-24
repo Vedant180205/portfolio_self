@@ -309,13 +309,13 @@ export default function EducationPage() {
 
             <div className={styles.phaseGrid}>
               {/* Left Column: Plain Text Info */}
-              <div className={styles.textOnlyBlock}>
+              <div className={`${styles.textOnlyBlock} ${styles.ruiaCard}`}>
                 <div className={styles.cardIconWrapper}>
                   <Image
                     src="/images/education/ruia_logo.png"
                     alt="Ramnivas Ruia Junior College Logo"
-                    width={110}
-                    height={110}
+                    width={90}
+                    height={90}
                     className={styles.institutionLogo}
                   />
                 </div>
@@ -330,12 +330,12 @@ export default function EducationPage() {
               </div>
 
               {/* Right Column: Image */}
-              <div className={styles.imageBlockWrapper}>
+              <div className={`${styles.imageBlockWrapper} ${styles.ruiaImageWrapper}`}>
                 <div className={styles.imageCornerYear}>
                   <span>2023</span>
                   <EyeIcon />
                 </div>
-                <div className={styles.imageContainer}>
+                <div className={`${styles.imageContainer} ${styles.ruiaImageContainer}`}>
                   <Image
                     src="/images/education/ruia.png"
                     alt="Ramnivas Ruia Junior College"
