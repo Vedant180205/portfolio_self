@@ -366,15 +366,6 @@ export default function Projects() {
             aria-modal="true"
             aria-labelledby="modal-title"
           >
-            {/* Close button */}
-            <button
-              className={styles.modalCloseBtn}
-              onClick={() => setSelectedProject(null)}
-              aria-label="Close project modal"
-            >
-              &times;
-            </button>
-
             <div className={styles.modalBody}>
               {/* Left Column: text details & GitHub link */}
               <div className={styles.modalLeft}>
@@ -418,6 +409,15 @@ export default function Projects() {
                 </div>
               </div>
             </div>
+
+            {/* Close button */}
+            <button
+              className={styles.modalCloseBtn}
+              onClick={() => setSelectedProject(null)}
+              aria-label="Close project modal"
+            >
+              &times;
+            </button>
           </div>
         </div>
       )}

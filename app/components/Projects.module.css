@@ -438,9 +438,9 @@
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--color-text-primary);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
   font-size: 1.5rem;
   width: 38px;
   height: 38px;
@@ -453,6 +453,7 @@
   z-index: 100;
   line-height: 1;
   padding-bottom: 3px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .modalCloseBtn:hover {
