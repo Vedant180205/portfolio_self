@@ -441,7 +441,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 6rem 2.2rem 3rem;
+    padding: 6rem 2.2rem 1.5rem;
     min-height: 100vh;
     min-height: 100svh;
   }

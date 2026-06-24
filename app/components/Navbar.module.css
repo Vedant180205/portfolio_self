@@ -329,7 +329,7 @@
   .drawerLinks {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     list-style: none;
     padding: 0;
     margin: 0;

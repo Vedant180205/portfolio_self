@@ -307,7 +307,7 @@
 /* ─── RESPONSIVE ─── */
 @media (max-width: 767px) {
   .section {
-    padding: 7rem 0;
+    padding: 3rem 0;
   }
 
   .cornerTL,
