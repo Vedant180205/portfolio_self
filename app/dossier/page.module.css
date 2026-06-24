@@ -2289,7 +2289,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .entryScreen {
     padding: 1rem;
   }
@@ -2716,7 +2716,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .topperSection {
     padding: 4rem 0 3rem;
   }

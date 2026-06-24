@@ -1,6 +1,7 @@
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   background: var(--color-bg);
@@ -60,7 +61,7 @@
 .headlineLine,
 .headlineLastName {
   display: block;
-  font-size: clamp(4rem, 11.5vw, 14rem);
+  font-size: clamp(3.2rem, 10vw, 9rem);
   font-weight: 400;
   /* Protest Guerrilla is single-weight */
   line-height: 0.92;
@@ -230,8 +231,8 @@
   font-weight: 600;
   font-style: normal;
   font-variation-settings: "slnt" 0, "wdth" 100, "CTRS" 0;
-  font-size: 1.4rem;
-  line-height: 1.75;
+  font-size: clamp(1rem, 1.35vw, 1.4rem);
+  line-height: 1.6;
   color: var(--color-text-secondary);
   margin-bottom: 2.5rem;
   opacity: 0;
@@ -442,6 +443,7 @@
     align-items: flex-start;
     padding: 6rem 2.2rem 3rem;
     min-height: 100vh;
+    min-height: 100svh;
   }
 
   .content {

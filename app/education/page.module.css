@@ -289,8 +289,8 @@
 }
 
 .rectDescription {
-  font-size: 0.92rem;
-  line-height: 1.65;
+  font-size: clamp(0.85rem, 0.92vw, 0.92rem);
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: 1.6rem;
 }
@@ -417,8 +417,8 @@
 }
 
 .cardDescription {
-  font-size: 0.88rem;
-  line-height: 1.65;
+  font-size: clamp(0.82rem, 0.88vw, 0.88rem);
+  line-height: 1.6;
   color: rgba(17, 17, 17, 0.75);
   margin-bottom: 2.2rem;
   font-weight: 400;
@@ -607,8 +607,8 @@
 }
 
 .endingDescription {
-  font-size: 0.92rem;
-  line-height: 1.65;
+  font-size: clamp(0.85rem, 0.92vw, 0.92rem);
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: 1.8rem;
 }
@@ -674,7 +674,7 @@
 }
 
 /* ─── RAMNIVAS RUIA OVERRIDES (Desktop) ─── */
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .ruiaCard {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -705,7 +705,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .pageContent {
     padding: 1rem 1rem 4rem;
     gap: 3.5rem;
@@ -916,6 +916,22 @@
   }
 
   /* Sticky Navbar Light theme overrides on mobile drawer */
+  .mainContainer [class*="drawerCta"] {
+    border-color: #111111 !important;
+    color: #111111 !important;
+  }
+
+  .mainContainer [class*="drawerCta"]:hover {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+  }
+
+  .mainContainer [class*="drawerNum"] {
+    color: #cc2424 !important;
+  }
+}
+
+@media (max-width: 1149px) {
   .mainContainer [class*="drawerCta"] {
     border-color: #111111 !important;
     color: #111111 !important;
