@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import MusicianSection from '../components/MusicianSection';
 import styles from './page.module.css';
+import { useNearViewport } from '../hooks/useNearViewport';
 
 // -------------------------------------------------------------
 // TYPES & DATA DEFINITIONS
@@ -212,56 +213,10 @@ export default function DossierPage() {
   const [isArtistActive, setIsArtistActive] = useState(false);
   const artistRef = useRef<HTMLDivElement | null>(null);
 
+  const { ref: logsRef, isNearViewport: isLogsNear } = useNearViewport<HTMLElement>();
+
   // Sketch gallery visibility
   const [showAllSketches, setShowAllSketches] = useState(false);
-
-
-
-  // Interactive Soroban Abacus States
-  const [abacusVal, setAbacusVal] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
-  const [targetVal, setTargetVal] = useState<number[]>([0, 0, 0, 0, 0, 0, 0]);
-
-  const getArrayValue = (arr: number[]) => arr.reduce((acc, digit) => acc * 10 + digit, 0);
-
-  const formatValue = (arr: number[]) => {
-    const val = getArrayValue(arr);
-    return val.toString().padStart(7, '0').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  };
-
-  const generateNewChallenge = () => {
-    const newTarget = Array.from({ length: 7 }, () => Math.floor(Math.random() * 10));
-    setTargetVal(newTarget);
-  };
-
-  const toggleUpperBead = (colIdx: number) => {
-    setAbacusVal((prev) => {
-      const next = [...prev];
-      const currentVal = next[colIdx];
-      if (currentVal >= 5) {
-        next[colIdx] = currentVal - 5;
-      } else {
-        next[colIdx] = currentVal + 5;
-      }
-      return next;
-    });
-  };
-
-  const handleLowerBeadClick = (colIdx: number, clickedBeadNum: number) => {
-    setAbacusVal((prev) => {
-      const next = [...prev];
-      const currentVal = next[colIdx];
-      const hasUpper = currentVal >= 5;
-      const currentLowerCount = currentVal % 5;
-      let newLowerCount = 0;
-      if (clickedBeadNum <= currentLowerCount) {
-        newLowerCount = clickedBeadNum - 1;
-      } else {
-        newLowerCount = clickedBeadNum;
-      }
-      next[colIdx] = (hasUpper ? 5 : 0) + newLowerCount;
-      return next;
-    });
-  };
 
 
   // Terminal screen animation
@@ -320,15 +275,7 @@ export default function DossierPage() {
 
 
 
-  // Initialize first challenge on mount
-  useEffect(() => {
-    if (accessGranted) {
-      const timer = setTimeout(() => {
-        generateNewChallenge();
-      }, 0);
-      return () => clearTimeout(timer);
-    }
-  }, [accessGranted]);
+
 
 
 
@@ -402,7 +349,7 @@ export default function DossierPage() {
         {/* -------------------------------------------------------------
             SECTION 02: MISSION LOGS
             ------------------------------------------------------------- */}
-        <section className={styles.missionLogsSection} id="mission-logs">
+        <section ref={logsRef} className={`${styles.missionLogsSection} ${isLogsNear ? styles.isActive : styles.isPaused}`} id="mission-logs">
           <div className={styles.gridOverlay} />
 
           <div className={styles.sectionHeaderCentered}>
@@ -421,6 +368,13 @@ export default function DossierPage() {
 
                 {/* SVG Connecting threads (complex web of evidence) */}
                 <svg className={styles.connectionsSvg} aria-hidden="true">
+                  {/* Static glow lines */}
+                  <line x1="18%" y1="20%" x2="30%" y2="68%" className={styles.logLineGlow} />
+                  <line x1="30%" y1="68%" x2="82%" y2="70%" className={styles.logLineGlow} />
+                  <line x1="82%" y1="70%" x2="78%" y2="22%" className={styles.logLineGlow} />
+                  <line x1="78%" y1="22%" x2="18%" y2="20%" className={styles.logLineGlow} />
+
+                  {/* Animated paths */}
                   <line x1="18%" y1="20%" x2="30%" y2="68%" className={styles.logLine} />
                   <line x1="30%" y1="68%" x2="82%" y2="70%" className={styles.logLine} />
                   <line x1="82%" y1="70%" x2="78%" y2="22%" className={styles.logLine} />
@@ -870,92 +824,6 @@ export default function DossierPage() {
               <div className={styles.polaroidCaption}>
                 <span className={styles.polaroidTitle}>ABACUS CERTIFICATE HOLDER</span>
                 <span className={styles.polaroidDate}>CERTIFIED // FEB 2018</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Interactive Abacus Engine Console */}
-          <div className={styles.mathConsole}>
-            <div className={styles.crtScanline} />
-            <div className={styles.mathConsoleHeader}>
-              <span>COGNITIVE_SOROBAN_ENGINE // ONLINE</span>
-              <span className={styles.pulseActive}>●</span>
-            </div>
-
-            <div className={styles.abacusInterface}>
-              {/* Left Side: Readings and Controls */}
-              <div className={styles.abacusControlPanel}>
-                <div className={styles.abacusReadoutGroup}>
-                  <div className={styles.readoutLabel}>CURRENT LOGIC STATE</div>
-                  <div className={styles.readoutValue}>{formatValue(abacusVal)}</div>
-                </div>
-
-                <div className={styles.abacusReadoutGroup}>
-                  <div className={styles.readoutLabel}>COGNITIVE TARGET REGISTER</div>
-                  <div className={styles.readoutValue} style={{ color: '#00ff66', textShadow: '0 0 10px rgba(0,255,102,0.4)' }}>
-                    {formatValue(targetVal)}
-                  </div>
-                </div>
-
-                <div className={styles.abacusActions}>
-                  <button onClick={() => setAbacusVal([0, 0, 0, 0, 0, 0, 0])} className={styles.abacusButton}>
-                    RESET COGNITION
-                  </button>
-                  <button onClick={generateNewChallenge} className={styles.abacusButton} style={{ borderColor: '#00ff66', color: '#00ff66' }}>
-                    NEW TARGET
-                  </button>
-                </div>
-
-                {getArrayValue(abacusVal) === getArrayValue(targetVal) ? (
-                  <div className={styles.matchAlert}>
-                    <span className={styles.matchCheck}>✓</span>
-                    <span>COGNITIVE ALIGNMENT SECURED</span>
-                  </div>
-                ) : (
-                  <div className={styles.matchPending}>
-                    <span className={styles.pendingDot}>●</span>
-                    <span>AWAITING INPUT SYNC...</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Right Side: The Abacus */}
-              <div className={styles.sorobanAbacus}>
-                <div className={styles.abacusInnerFrame}>
-                  {/* The Beam (Divider Bar) */}
-                  <div className={styles.abacusBeam} />
-
-                  {/* 7 rods */}
-                  {Array.from({ length: 7 }).map((_, colIdx) => {
-                    const digit = abacusVal[colIdx];
-                    const upperActive = digit >= 5;
-                    const lowerActiveCount = digit % 5;
-
-                    return (
-                      <div key={colIdx} className={styles.abacusRod}>
-                        {/* Upper deck bead (index 5) */}
-                        <div
-                          className={`${styles.abacusBead} ${styles.upperBead} ${upperActive ? styles.beadActive : ''} ${upperActive ? styles.upperBeadActive : ''}`}
-                          onClick={() => toggleUpperBead(colIdx)}
-                        />
-
-                        {/* Lower deck beads (index 1 to 4) */}
-                        <div className={styles.lowerDeck}>
-                          {[1, 2, 3, 4].map((beadNum) => {
-                            const isBeadActive = beadNum <= lowerActiveCount;
-                            return (
-                              <div
-                                key={beadNum}
-                                className={`${styles.abacusBead} ${styles.lowerBead} ${isBeadActive ? styles.beadActive : ''} ${isBeadActive ? styles.lowerBeadActive : ''}`}
-                                onClick={() => handleLowerBeadClick(colIdx, beadNum)}
-                              />
-                            );
-                          })}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
               </div>
             </div>
           </div>

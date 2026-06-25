@@ -204,8 +204,12 @@
   background-repeat: repeat;
   pointer-events: none;
   opacity: 0.15;
-  transform: translateZ(0);
-  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .filmGrain {
+    display: none;
+  }
 }
 
 
@@ -350,18 +354,23 @@
 
 /* Crimson Red Thread Lines (Investigation board look) */
 .logLine {
-  stroke: rgba(230, 57, 70, 0.35);
-  stroke-width: 2;
+  stroke: rgba(230, 57, 70, 0.65);
+  stroke-width: 1.5;
   stroke-dasharray: 6 4;
   animation: lineFlow 20s linear infinite;
-  filter: drop-shadow(0 0 3px rgba(230, 57, 70, 0.4));
 }
 
 .logLineCross {
-  stroke: rgba(230, 57, 70, 0.12);
-  stroke-width: 1.5;
+  stroke: rgba(230, 57, 70, 0.2);
+  stroke-width: 1.25;
   stroke-dasharray: 4 6;
   animation: lineFlow 35s linear reverse infinite;
+}
+
+.logLineGlow {
+  stroke: rgba(230, 57, 70, 0.16);
+  stroke-width: 5;
+  fill: none;
 }
 
 @keyframes lineFlow {
@@ -433,7 +442,7 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 0.75rem 0.75rem 1rem;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 20;
 }
 
@@ -552,7 +561,6 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-top: 2px solid #D4A017;
   padding: 2.4rem;
-  backdrop-filter: blur(10px);
   z-index: 15;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
   display: flex;
@@ -702,7 +710,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   letter-spacing: 0.12em;
   padding: 0.85rem 1.2rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
 }
 
@@ -809,7 +817,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
     /* Depth inside the wood frame */
     0 20px 45px rgba(0, 0, 0, 0.45);
   /* Wall shadow */
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -826,7 +834,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
     /* Depth inside the wood frame */
     0 25px 55px rgba(0, 0, 0, 0.5);
   /* Wall shadow */
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -1030,7 +1038,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   cursor: pointer;
   position: relative;
   z-index: 10;
-  transition: all 0.4s ease;
+  transition: color 0.4s ease, border-color 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
   text-transform: uppercase;
 }
 
@@ -1490,7 +1498,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .abacusButton:hover {
@@ -1517,9 +1525,20 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 }
 
 @keyframes matchGlow {
+  from {
+    opacity: 0.75;
+  }
   to {
-    box-shadow: 0 0 25px rgba(0, 255, 102, 0.15);
-    border-color: rgba(0, 255, 102, 0.35);
+    opacity: 1;
+  }
+}
+
+@keyframes blinkSlow {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
   }
 }
 
@@ -1695,14 +1714,13 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background: rgba(15, 15, 15, 0.55);
+  background: rgba(15, 15, 15, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-left: 3px solid #D4A017;
   padding: 2.2rem;
   position: relative;
   border-radius: 4px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
 }
 
 .cardCornerTopLeft,
@@ -2658,7 +2676,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .topperCertFrame:hover {
@@ -2725,6 +2743,47 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   }
   .topperBriefing {
     padding: 1.5rem;
+  }
+}
+
+/* Pause off-screen continuous animations on desktop */
+.isPaused .logLine,
+.isPaused .logLineCross,
+.isPaused .pinPulse,
+.isPaused .matchAlert,
+.isPaused .pendingDot,
+.isPaused .blinkText {
+  animation-play-state: paused;
+}
+
+/* Mobile Animation Budget */
+@media (max-width: 767px) {
+  .logLine,
+  .logLineCross,
+  .pinPulse,
+  .matchAlert,
+  .pendingDot,
+  .blinkText {
+    animation: none !important;
+  }
+  
+  .logLine {
+    stroke-dashoffset: 0;
+  }
+
+  .logLineCross {
+    stroke-dashoffset: 0;
+  }
+
+  .pinPulse {
+    transform: scale(1.1);
+    opacity: 0.35;
+  }
+
+  .modalOverlay,
+  .certModalOverlay {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 }
 

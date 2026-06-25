@@ -318,6 +318,10 @@
   animation: rotateSlow 12s linear infinite;
 }
 
+.isPaused .scrollCircle {
+  animation-play-state: paused;
+}
+
 .scrollCircleText {
   font-family: var(--font-body);
   font-size: 10.5px;
@@ -509,13 +513,17 @@
     margin: 0;
   }
 
+  .grain {
+    display: none;
+  }
+
   .portrait {
     width: 100% !important;
     height: 100% !important;
     left: 0 !important;
     object-fit: contain;
     object-position: center center;
-    filter: brightness(0.8) contrast(1.1) blur(2px);
+    filter: brightness(0.8) contrast(1.1);
   }
 
   .imageFade {

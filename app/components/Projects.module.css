@@ -832,4 +832,9 @@
     opacity: 1 !important;
     filter: none !important;
   }
+
+  .modalBackdrop {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
 }

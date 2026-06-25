@@ -285,16 +285,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgba(15, 15, 15, 0.7);
+  background: rgba(15, 15, 15, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.06);
   padding: 3rem;
   border-radius: 8px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
 }
 
 .introCardCollage:hover {
@@ -323,9 +319,6 @@
   transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease;
   z-index: 10;
   position: relative;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
 }
 
 .photoCardCollage:hover {
@@ -349,17 +342,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgba(15, 15, 15, 0.7);
+  background: rgba(15, 15, 15, 0.95);
   border: 1px dashed rgba(212, 160, 23, 0.2);
   padding: 2.5rem;
   border-radius: 8px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(10px);
   position: relative;
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
 }
 
 .infoCardCollage:hover {
@@ -374,16 +363,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgba(15, 15, 15, 0.7);
+  background: rgba(15, 15, 15, 0.95);
   border: 1px dashed rgba(212, 160, 23, 0.25);
   padding: 3rem;
   border-radius: 8px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(10px);
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
 }
 
 .infoCardCollageFullWidth:hover {
@@ -536,8 +521,7 @@
   transform: translateX(-50%) rotate(-1.5deg);
   width: 80px;
   height: 22px;
-  background-color: rgba(225, 215, 190, 0.45);
-  backdrop-filter: blur(1px);
+  background-color: rgba(225, 215, 190, 0.75);
   border-left: 1px dashed rgba(255, 255, 255, 0.2);
   border-right: 1px dashed rgba(255, 255, 255, 0.2);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -569,9 +553,6 @@
   overflow: hidden;
   z-index: 10;
   position: relative;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
 }
 
 .leaderPhotoImg {
@@ -587,17 +568,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgba(15, 15, 15, 0.7);
+  background: rgba(15, 15, 15, 0.95);
   border: 1px dashed rgba(212, 160, 23, 0.2);
   padding: 2.5rem;
   border-radius: 8px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(10px);
   position: relative;
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
 }
 
 .leaderInfoCard:hover {
@@ -610,16 +587,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgba(15, 15, 15, 0.7);
+  background: rgba(15, 15, 15, 0.95);
   border: 1px dashed rgba(212, 160, 23, 0.25);
   padding: 3rem;
   border-radius: 8px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(10px);
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
 }
 
 .leaderInfoCardFullWidth:hover {

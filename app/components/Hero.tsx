@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import styles from './Hero.module.css';
+import { useNearViewport } from '../hooks/useNearViewport';
 
 const roles = ['Web Developer', 'Embedded Systems', 'AI/ML Engineer', 'IoT Builder'];
 
@@ -47,6 +48,7 @@ const socialLinks = [
 ];
 
 export default function Hero() {
+  const { ref: sectionRef, isNearViewport } = useNearViewport<HTMLElement>();
   const [displayed, setDisplayed] = useState('');
   const stateRef = useRef<'typing' | 'pausing' | 'deleting'>('typing');
   const charRef = useRef(0);
@@ -103,7 +105,7 @@ export default function Hero() {
   };
 
   return (
-    <section className={styles.hero} id="home" aria-label="Hero section">
+    <section ref={sectionRef} className={`${styles.hero} ${isNearViewport ? styles.isActive : styles.isPaused}`} id="home" aria-label="Hero section">
       {/* Background grain overlay */}
       <div className={styles.grain} aria-hidden="true" />
 

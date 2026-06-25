@@ -203,7 +203,6 @@ export default function Projects() {
                 alt={project.imageAlt}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                priority={project.id <= 2}
                 style={{ objectPosition: project.imagePosition }}
                 className={styles.image}
               />
@@ -274,7 +273,6 @@ export default function Projects() {
                 alt={project.imageAlt}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                priority={project.id <= 2}
                 style={{ objectPosition: project.imagePosition }}
                 className={styles.image}
               />
