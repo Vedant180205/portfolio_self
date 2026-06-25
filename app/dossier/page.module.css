@@ -911,7 +911,8 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   height: 100% !important;
   object-fit: cover;
   z-index: 1;
-  border: 8px solid #ffffff; /* white border directly to the images */
+  border: 8px solid #ffffff;
+  /* white border directly to the images */
   box-sizing: border-box;
 }
 
@@ -1315,6 +1316,119 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 }
 
 
+/* ─── SECTION 06: SCOUT RECOGNITION ─── */
+.scoutSection {
+  min-height: auto;
+  padding: 6rem 4rem;
+  background-color: #060606;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.scoutBgWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.scoutBgImage {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.scoutBgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(6, 6, 6, 0.55), rgba(6, 6, 6, 0.7));
+  z-index: 1;
+}
+
+.scoutTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5.5vw, 5.5rem);
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  white-space: nowrap;
+  position: relative;
+  z-index: 5;
+  text-align: center;
+}
+
+.scoutGrid {
+  max-width: 1400px;
+  margin: 3.5rem auto 0;
+  display: grid;
+  grid-template-columns: 0.85fr 1.4fr 1.2fr;
+  gap: 3.5rem;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.scoutImageFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.scoutImg {
+  object-fit: cover;
+  filter: grayscale(10%) contrast(110%);
+}
+
+.scoutCertContainer {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  border: 12px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+}
+
+.scoutCertContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8);
+}
+
+.scoutCertImg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+  .scoutGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .scoutSection {
+    padding: 4rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .scoutImageFrame {
+    display: none;
+  }
+
+  .scoutTitle {
+    white-space: normal;
+    font-size: clamp(1.8rem, 10vw, 2.5rem);
+  }
+}
+
 /* ─── SECTION 05: THE HUMAN CALCULATOR ─── */
 .calculatorSection {
   min-height: auto;
@@ -1528,15 +1642,19 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   from {
     opacity: 0.75;
   }
+
   to {
     opacity: 1;
   }
 }
 
 @keyframes blinkSlow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.35;
   }
+
   50% {
     opacity: 1;
   }
@@ -1572,7 +1690,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   border: 6px solid #D4A017;
   border-radius: 8px;
   padding: 1.8rem 1.2rem;
-  box-shadow: 
+  box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.8),
     inset 0 0 20px rgba(0, 0, 0, 0.9),
     0 0 30px rgba(212, 160, 23, 0.08);
@@ -1598,7 +1716,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   right: 0;
   height: 8px;
   background: linear-gradient(180deg, #D4A017 0%, #9C720D 100%);
-  box-shadow: 
+  box-shadow:
     0 2px 4px rgba(0, 0, 0, 0.8),
     0 -1px 0 rgba(255, 255, 255, 0.1);
   z-index: 10;
@@ -1612,7 +1730,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   height: 100%;
   left: 0;
   top: 0;
-  background-image: 
+  background-image:
     radial-gradient(circle at 21.4% 50%, #ffffff 2px, transparent 3px),
     radial-gradient(circle at 50% 50%, #ffffff 2px, transparent 3px),
     radial-gradient(circle at 78.5% 50%, #ffffff 2px, transparent 3px);
@@ -1642,15 +1760,17 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .abacusBead {
   position: absolute;
-  left: calc(50% - 18px); /* center a 36px wide bead */
+  left: calc(50% - 18px);
+  /* center a 36px wide bead */
   width: 36px;
   height: 14px;
   cursor: pointer;
   z-index: 5;
   background: linear-gradient(180deg, #3a3a3a 0%, #1f1f1f 100%);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 6px / 3px; /* bi-conical diamond-ish shape */
-  box-shadow: 
+  border-radius: 6px / 3px;
+  /* bi-conical diamond-ish shape */
+  box-shadow:
     0 3px 5px rgba(0, 0, 0, 0.7),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -1658,7 +1778,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .abacusBead:hover {
   border-color: rgba(212, 160, 23, 0.3);
-  box-shadow: 
+  box-shadow:
     0 3px 8px rgba(0, 0, 0, 0.8),
     0 0 5px rgba(212, 160, 23, 0.2);
 }
@@ -1673,7 +1793,8 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .lowerDeck {
   position: absolute;
-  top: 68px; /* start below the 8px beam */
+  top: 68px;
+  /* start below the 8px beam */
   bottom: 0;
   left: 0;
   right: 0;
@@ -1684,10 +1805,21 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 }
 
 /* Individual bead base positions in lower deck */
-.lowerBead:nth-child(1) { top: 60px; }
-.lowerBead:nth-child(2) { top: 76px; }
-.lowerBead:nth-child(3) { top: 92px; }
-.lowerBead:nth-child(4) { top: 108px; }
+.lowerBead:nth-child(1) {
+  top: 60px;
+}
+
+.lowerBead:nth-child(2) {
+  top: 76px;
+}
+
+.lowerBead:nth-child(3) {
+  top: 92px;
+}
+
+.lowerBead:nth-child(4) {
+  top: 108px;
+}
 
 .lowerBeadActive {
   transform: translateY(var(--lower-bead-translate, -55px));
@@ -1697,14 +1829,14 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 .beadActive {
   background: linear-gradient(180deg, #E5B23C 0%, #AA7B0D 100%);
   border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 
+  box-shadow:
     0 3px 6px rgba(0, 0, 0, 0.6),
     0 0 8px rgba(212, 160, 23, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .beadActive:hover {
-  box-shadow: 
+  box-shadow:
     0 3px 8px rgba(0, 0, 0, 0.7),
     0 0 12px rgba(212, 160, 23, 0.6);
 }
@@ -1801,12 +1933,43 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   position: absolute;
 }
 
-.mathBackdrop span:nth-child(1) { top: 15%; left: 10%; transform: rotate(-15deg); }
-.mathBackdrop span:nth-child(2) { top: 45%; left: 25%; transform: rotate(10deg); font-size: 8rem; }
-.mathBackdrop span:nth-child(3) { top: 20%; right: 20%; transform: rotate(25deg); }
-.mathBackdrop span:nth-child(4) { bottom: 20%; left: 15%; transform: rotate(-20deg); }
-.mathBackdrop span:nth-child(5) { bottom: 15%; right: 15%; transform: rotate(-5deg); }
-.mathBackdrop span:nth-child(6) { top: 70%; right: 30%; transform: rotate(15deg); font-size: 7rem; }
+.mathBackdrop span:nth-child(1) {
+  top: 15%;
+  left: 10%;
+  transform: rotate(-15deg);
+}
+
+.mathBackdrop span:nth-child(2) {
+  top: 45%;
+  left: 25%;
+  transform: rotate(10deg);
+  font-size: 8rem;
+}
+
+.mathBackdrop span:nth-child(3) {
+  top: 20%;
+  right: 20%;
+  transform: rotate(25deg);
+}
+
+.mathBackdrop span:nth-child(4) {
+  bottom: 20%;
+  left: 15%;
+  transform: rotate(-20deg);
+}
+
+.mathBackdrop span:nth-child(5) {
+  bottom: 15%;
+  right: 15%;
+  transform: rotate(-5deg);
+}
+
+.mathBackdrop span:nth-child(6) {
+  top: 70%;
+  right: 30%;
+  transform: rotate(15deg);
+  font-size: 7rem;
+}
 
 .polaroidStamp {
   position: absolute;
@@ -2093,7 +2256,8 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 .certModalContent {
   width: 100%;
-  max-width: 1100px; /* Slightly wider to accommodate side info panel */
+  max-width: 1100px;
+  /* Slightly wider to accommodate side info panel */
   background-color: #0c0c0c;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-top: 3px solid #D4A017;
@@ -2161,6 +2325,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 .certModalDetails::-webkit-scrollbar {
   width: 4px;
 }
+
 .certModalDetails::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 2px;
@@ -2530,10 +2695,21 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
     top: 58px;
   }
 
-  .lowerBead:nth-child(1) { top: 55px; }
-  .lowerBead:nth-child(2) { top: 70px; }
-  .lowerBead:nth-child(3) { top: 85px; }
-  .lowerBead:nth-child(4) { top: 100px; }
+  .lowerBead:nth-child(1) {
+    top: 55px;
+  }
+
+  .lowerBead:nth-child(2) {
+    top: 70px;
+  }
+
+  .lowerBead:nth-child(3) {
+    top: 85px;
+  }
+
+  .lowerBead:nth-child(4) {
+    top: 100px;
+  }
 
   .endingSection {
     padding: 4rem 1.5rem 3rem;
@@ -2729,6 +2905,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
+
   .topperCertFrame {
     aspect-ratio: 16/11;
   }
@@ -2738,9 +2915,11 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   .topperSection {
     padding: 4rem 0 3rem;
   }
+
   .topperWrapper {
     padding: 0 1.5rem;
   }
+
   .topperBriefing {
     padding: 1.5rem;
   }
@@ -2758,6 +2937,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 
 /* Mobile Animation Budget */
 @media (max-width: 767px) {
+
   .logLine,
   .logLineCross,
   .pinPulse,
@@ -2766,7 +2946,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   .blinkText {
     animation: none !important;
   }
-  
+
   .logLine {
     stroke-dashoffset: 0;
   }
@@ -2786,5 +2966,3 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
     -webkit-backdrop-filter: none !important;
   }
 }
-
-

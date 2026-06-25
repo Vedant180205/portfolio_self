@@ -830,6 +830,76 @@ export default function DossierPage() {
         </section>
 
         {/* -------------------------------------------------------------
+            SECTION 06: SCOUT RECOGNITION
+            ------------------------------------------------------------- */}
+        <section className={styles.scoutSection} id="scout">
+          {/* Optimized Next.js Background */}
+          <div className={styles.scoutBgWrapper}>
+            <Image
+              src="/images/avatar/487bfac8885504aa1ed6bab2cf15012c.jpg"
+              alt="Scout Background"
+              fill
+              quality={85}
+              sizes="100vw"
+              className={styles.scoutBgImage}
+            />
+            <div className={styles.scoutBgOverlay} />
+          </div>
+
+          <div className={styles.sectionHeaderCentered}>
+            <span className={styles.sectionCategory}>LEADERSHIP // SERVICE</span>
+            <h2 className={styles.scoutTitle}>RAJYAPURASKAR AWARD</h2>
+            <p className={styles.logsSubtitle}>Maharashtra State Bharat Scouts and Guides</p>
+          </div>
+
+          <div className={styles.scoutGrid}>
+            {/* Left Image */}
+            <div className={styles.scoutImageFrame}>
+              <Image
+                src="/images/avatar/2b241dbf5e952c772351e0a5e702b4b8.jpg"
+                alt="Vedant Scout"
+                fill
+                quality={85}
+                sizes="(max-width: 768px) 100vw, 400px"
+                className={styles.scoutImg}
+              />
+            </div>
+
+            {/* Middle Description */}
+            <div className={styles.calculatorStoryCard}>
+              <div className={styles.storyTag}>RECOGNITION_RECORD // 2020–2021</div>
+              <p className={styles.storyBody}>
+                Awarded the Rajyapuraskar by the Bharat Scouts and Guides, Maharashtra State for successful completion of the 2020–2021 state-level proficiency requirements.
+              </p>
+              <p className={styles.storyBody}>
+                The recognition reflects demonstrated discipline, community service, leadership, outdoor skills, and commitment to the values of Scouting and Guiding.
+              </p>
+              <div className={styles.cardCornerTopLeft} />
+              <div className={styles.cardCornerBottomRight} />
+            </div>
+
+            {/* Right Certificate */}
+            <div 
+              className={styles.scoutCertContainer} 
+              onClick={() => setActiveCert('/certs/scout_cert.png')}
+              role="button"
+              tabIndex={0}
+              aria-label="View Scout Certificate"
+            >
+              <Image
+                src="/certs/scout_cert.png"
+                alt="Rajyapuraskar Certificate"
+                width={800}
+                height={1131}
+                quality={85}
+                sizes="(max-width: 768px) 100vw, 500px"
+                className={styles.scoutCertImg}
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* -------------------------------------------------------------
             ENDING SECTION
             ------------------------------------------------------------- */}
         <section className={styles.endingSection} id="ending">
