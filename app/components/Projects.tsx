@@ -91,7 +91,7 @@ const projects = [
     mobileDescription: 'Privacy-first Chrome extension enabling touchless browser navigation using Google MediaPipe Hand Landmarker.',
     tags: ['MediaPipe', 'WebAssembly', 'Chrome Extension', 'CV'],
     github: 'https://github.com/Vedant180205/Gesture-based-control-system',
-    image: '/images/projects/thumbs/gesture_bg.webp',
+    image: '/images/projects/thumbs/f6aa9235-b84f-42b1-b577-e234a603db72.webp',
     imageAlt: 'Gesture Control System — Chrome extension overlay with hand landmark tracking',
     imagePosition: 'center center',
   },
