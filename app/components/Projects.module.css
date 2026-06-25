@@ -1,7 +1,7 @@
 /* ─── SECTION ─── */
 .section {
   background: var(--color-bg);
-  padding: 6.5rem 0 8rem;
+  padding: 5.5rem 0 5.5rem;
   position: relative;
   overflow: hidden;
 }

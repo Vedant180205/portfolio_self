@@ -2,7 +2,7 @@
 .section {
   background: var(--color-bg);
   position: relative;
-  padding: 6.5rem 0;
+  padding: 5.5rem 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
