@@ -136,7 +136,11 @@ export default function Hero() {
         </div>
 
         <p className={styles.description}>
-          Building intelligent software, hardware projects, and AI-powered solutions that solve real-world problems.
+          Building intelligent software, hardware projects,{' '}
+          <br className={styles.desktopBr} />
+          and AI-powered solutions that solve{' '}
+          <br className={styles.desktopBr} />
+          real-world problems.
         </p>
 
         <div className={styles.actions}>

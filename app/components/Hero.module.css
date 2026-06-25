@@ -245,7 +245,11 @@
   opacity: 0;
   animation: fadeSlideUp 0.65s ease forwards;
   animation-delay: 0.7s;
-  max-width: 380px;
+  max-width: 550px;
+}
+
+.desktopBr {
+  display: inline;
 }
 
 /* ─── ACTIONS ROW ─── */
@@ -611,5 +615,9 @@
     gap: 0.85rem;
     margin-top: 1.5rem;
     flex-wrap: wrap;
+  }
+
+  .desktopBr {
+    display: none;
   }
 }
