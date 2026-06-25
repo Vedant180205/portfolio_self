@@ -26,9 +26,9 @@
 .content {
   position: relative;
   z-index: 2;
-  flex: 0 0 52%;
-  max-width: 52%;
-  padding-right: 0;
+  flex: 0 0 46%;
+  max-width: 46%;
+  padding-right: 1rem;
   padding-left: 3rem;
 }
 
@@ -245,7 +245,7 @@
   opacity: 0;
   animation: fadeSlideUp 0.65s ease forwards;
   animation-delay: 0.7s;
-  max-width: 550px;
+  max-width: 100%;
 }
 
 .desktopBr {

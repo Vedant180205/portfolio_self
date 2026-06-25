@@ -9,7 +9,6 @@ import styles from './Navbar.module.css';
 
 const navLinks = [
   { label: 'HOME', href: '#home' },
-  { label: 'ABOUT', href: '#about' },
   { label: 'PROJECTS', href: '#projects' },
   { label: 'TECH STACK', href: '#techstack' },
   { label: 'CERTIFICATIONS', href: '#certifications' },
@@ -78,7 +77,7 @@ export default function Navbar() {
             />
           </div>
           <div className={styles.logoText}>
-            <span className={styles.logoRole}>ENGINEERING THE IMPOSSIBLE.</span>
+            <span className={`${styles.logoRole} ${styles.hiddenOnDesktop}`}>ENGINEERING THE IMPOSSIBLE.</span>
           </div>
         </a>
 
