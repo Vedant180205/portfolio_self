@@ -849,7 +849,7 @@ export default function DossierPage() {
           <div className={styles.sectionHeaderCentered}>
             <span className={styles.sectionCategory}>LEADERSHIP // SERVICE</span>
             <h2 className={styles.scoutTitle}>RAJYAPURASKAR AWARD</h2>
-            <p className={styles.logsSubtitle}>Maharashtra State Bharat Scouts and Guides</p>
+            <p className={styles.scoutSubtitle}>Maharashtra State Bharat Scouts and Guides</p>
           </div>
 
           <div className={styles.scoutGrid}>

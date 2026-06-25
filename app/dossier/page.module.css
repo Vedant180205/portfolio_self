@@ -1357,6 +1357,16 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
   text-align: center;
 }
 
+.scoutSubtitle {
+  font-family: monospace, sans-serif;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  color: #d1d1d1;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  margin-bottom: 2rem;
+}
+
 .scoutGrid {
   max-width: 1400px;
   margin: 3.5rem auto 0;

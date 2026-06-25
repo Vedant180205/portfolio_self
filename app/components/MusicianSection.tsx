@@ -8,30 +8,43 @@ export default function MusicianSection() {
 
   return (
     <div className={styles.editorialContainer}>
-      
+
       {/* SECTION TITLE */}
-      <header className={styles.sectionHeader}>
+      <section className={styles.musicSection}>
         <div className={styles.heroBg}>
           <Image
-            src="/images/music/A7R04326.JPG"
+            src="/images/music/9600f8df-e754-45b1-815b-6ddcba877140.png"
             alt="Vedant Patil Live On Stage"
-            fill
+            width={0}
+            height={0}
             sizes="100vw"
             priority
-            quality={75}
-            className={styles.editorialHeroImg}
+            quality={85}
+            className={`${styles.editorialHeroImg} ${styles.desktopHeroImg}`}
+          />
+          <Image
+            src="/images/music/ChatGPT Image Jun 25, 2026, 11_45_12 PM.png"
+            alt="Vedant Patil Live On Stage Mobile"
+            width={0}
+            height={0}
+            sizes="100vw"
+            priority
+            quality={85}
+            className={`${styles.editorialHeroImg} ${styles.mobileHeroImg}`}
           />
           <div className={styles.heroOverlay} />
         </div>
         
-        <div className={styles.headerContent}>
-          <span className={styles.sectionCategory}>MUSIC // CHRONICLE</span>
-          <h1 className={styles.massiveTitle}>10+ YEARS OF MUSIC.</h1>
-          <p className={styles.sectionSubtitle}>
+        <div className={styles.content}>
+          <p className={styles.eyebrow}>MUSIC // CHRONICLE</p>
+
+          <h2 className={styles.heading}>10+ YEARS OF MUSIC.</h2>
+
+          <p className={styles.description}>
             From Hindustani Classical Vocals to Live Performances, Bass Guitar and Leadership.
           </p>
         </div>
-      </header>
+      </section>
 
       {/* THE FOUNDATION */}
       <section className={styles.chapterSection}>
@@ -71,7 +84,7 @@ export default function MusicianSection() {
       {/* EXPANSION / TRANSITION */}
       <section className={styles.chapterSection}>
         <div className={styles.transitionCollageGrid}>
-          
+
           {/* Intro / Title Card */}
           <div className={`${styles.introCardCollage} ${styles.cardRot1}`}>
             <span className={styles.chapterTag}>THE TRANSITION</span>
@@ -193,7 +206,7 @@ export default function MusicianSection() {
             {/* Gradient Mask for Legibility */}
             <div className={styles.bassOverlayMask}></div>
           </div>
-          
+
           <div className={styles.bassContentGrid}>
             <div className={styles.bassTextOverlay}>
               <span className={styles.chapterTag}>THE BASS PLAYER</span>
@@ -226,7 +239,7 @@ export default function MusicianSection() {
       {/* THE LEADER */}
       <section className={styles.chapterSection}>
         <div className={styles.leaderCollageGrid}>
-          
+
           {/* Intro / Title Card */}
           <div className={`${styles.leaderInfoCard} ${styles.cardRot1}`} style={{ gridColumn: 'span 2' }}>
             <span className={styles.chapterTag}>MANAGEMENT & EVOLUTION</span>
@@ -324,11 +337,11 @@ export default function MusicianSection() {
           />
         </div>
         <div className={styles.endingVignette} />
-        
+
         <div className={styles.endingContent}>
           <h2 className={styles.endingQuoteMain}>MUSIC WAS NEVER A HOBBY.</h2>
           <h2 className={styles.endingQuoteSub}>IT BECAME PART OF WHO I AM.</h2>
-          
+
         </div>
       </section>
 
