@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Education from './components/Education';
+
 import TechStack from './components/TechStack';
 import Certifications from './components/Certifications';
 import Workflow from './components/Workflow';
@@ -18,7 +18,7 @@ export default function Home() {
       <TechStack />
       <Workflow />
       <Certifications />
-      <Education />
+
       <Footer />
     </main>
   );
