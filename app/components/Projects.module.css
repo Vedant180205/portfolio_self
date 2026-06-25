@@ -706,6 +706,7 @@
   .card {
     height: auto;
     min-height: 380px;
+    cursor: default;
   }
 
   .featured {
@@ -788,6 +789,41 @@
     background-color: var(--color-accent);
     border-color: var(--color-accent);
     color: var(--color-btn-hover-text);
+  }
+
+  /* Disable hover blur and View in Detail button on mobile */
+  .hoverOverlay {
+    display: none !important;
+  }
+
+  .card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: var(--color-border) !important;
+  }
+
+  .featured:hover {
+    border-color: var(--color-accent-border) !important;
+  }
+
+  .card:hover .imageWrapper,
+  .card:hover .contentWrapper {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  .card:hover .image {
+    transform: scale(1) !important;
+  }
+
+  .card:hover .tag {
+    border-color: var(--color-border) !important;
+    color: var(--color-text-muted) !important;
+  }
+
+  .featured:hover .tag {
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
   }
 }
 
