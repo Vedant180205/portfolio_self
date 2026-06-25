@@ -104,9 +104,9 @@
 /* ─── HERO SECTION ─── */
 .heroSection {
   margin-top: 80px; /* Offset to clear the fixed navbar height */
-  margin-left: 64px;
-  margin-right: 64px;
-  width: calc(100% - 128px);
+  margin-left: 7rem;
+  margin-right: 7rem;
+  width: calc(100% - 14rem);
   display: flex;
   position: relative;
   background-color: #000000;
