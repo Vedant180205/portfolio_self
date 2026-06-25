@@ -82,8 +82,6 @@
   justify-content: flex-start;
   overflow: hidden;
   box-sizing: border-box;
-  content-visibility: auto;
-  contain-intrinsic-size: 800px;
 }
 
 .heroBg {
