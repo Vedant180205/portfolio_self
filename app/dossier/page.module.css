@@ -1319,7 +1319,7 @@ div[id="intel-pin-log-05"] .evidencePolaroid {
 /* ─── SECTION 06: SCOUT RECOGNITION ─── */
 .scoutSection {
   min-height: auto;
-  padding: 6rem 4rem;
+  padding: 3rem 4rem;
   background-color: #060606;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   position: relative;
