@@ -221,7 +221,7 @@ export default function Hero() {
             priority
             quality={90}
             className={styles.portrait}
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           {/* Bottom fade into background */}
           <div className={styles.imageFade} />

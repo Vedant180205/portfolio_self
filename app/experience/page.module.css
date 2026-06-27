@@ -1,0 +1,624 @@
+/* ─────────────────────────────────────────────
+   HERO SECTION
+   Position-based layout (no grid for overall split).
+   The right panel is absolute, bleeding to the right edge.
+   The heading is absolute, bleeding across both panels.
+───────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: visible; /* allow bottom cards to overflow below the hero */
+  isolation: isolate;
+  background-color: var(--color-bg);
+}
+
+/* ─── Right panel: full-height image ─── */
+.rightPanel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 57%;          /* ~58% of viewport */
+  height: 100%;
+  z-index: 1;
+}
+
+.rightPanelImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Blue tint overlay — matches portfolio accent color */
+.rightPanelOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 20, 80, 0.75); /* stronger blue-purple tint */
+  mix-blend-mode: multiply;
+  z-index: 2;
+}
+
+/* ─── Social sidebar ─── */
+.sidebar {
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+}
+
+/* ─── Heading: spans across both panels ─── */
+.heading {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-55%);
+  left: 7rem;
+  z-index: 20;
+  width: 85%;
+  font-family: var(--font-heading);
+  font-size: clamp(5rem, 8.5vw, 11rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+/* ─── Bottom-left: accent line + copy + CTA ─── */
+.bottomLeft {
+  position: absolute;
+  bottom: 8%;
+  left: 7rem;
+  width: 26rem;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.accentLine {
+  width: 2.5rem;
+  height: 2px;
+  background-color: var(--color-accent);
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 24rem;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--color-accent);
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.65rem 1.5rem;
+  width: fit-content;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.ctaLink:hover {
+  background: var(--color-accent);
+  color: #000;
+}
+
+/* ─── Bottom-right: two small supporting cards ─── */
+.bottomCards {
+  position: absolute;
+  bottom: 0;
+  right: 2rem;
+  z-index: 25;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-end;
+  transform: translateY(50%); /* upper half overlaps the hero, lower half below it */
+}
+
+.card {
+  position: relative;
+  width: clamp(24rem, 30vw, 36rem);
+  height: clamp(17rem, 22vw, 26rem);
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+/* Both cards identical */
+.card:first-child {
+  width: clamp(24rem, 30vw, 36rem);
+  height: clamp(17rem, 22vw, 26rem);
+}
+
+.card:last-child {
+  width: clamp(24rem, 30vw, 36rem);
+  height: clamp(17rem, 22vw, 26rem);
+  margin-bottom: 0;
+}
+
+.cardImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ─── Decorative background text ─── */
+.bgText {
+  position: absolute;
+  bottom: 0;
+  right: -4%;             /* partially off-screen to the right */
+  font-family: var(--font-heading);
+  font-size: clamp(6rem, 10vw, 12rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.06;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
+}
+
+/* ─────────────────────────────────────────────
+   TIMELINE SECTION
+───────────────────────────────────────────── */
+
+.timeline {
+  /* Wide, left-aligned — not centered */
+  max-width: 90rem;
+  margin: 18rem 0 8rem;
+  padding: 0 6rem 0 8rem; /* matches hero left padding */
+}
+
+/* Header: left-aligned, editorial */
+.timelineHeader {
+  margin-bottom: 4rem;
+}
+
+.timelineLabel {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.timelineTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 900;
+  color: var(--color-text-primary);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin: 0 0 1rem;
+}
+
+.timelineSubtitle {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 36rem;
+}
+
+/* ─── Entry layout: track left + content right ─── */
+.entry {
+  display: flex;
+  gap: 2.5rem;
+  margin-bottom: 0;
+}
+
+/* Left: dot + vertical line */
+.entryTrack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 1rem;
+  padding-top: 0.15rem; /* aligns dot with nodeLabel */
+}
+
+.nodeDotActive {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
+  flex-shrink: 0;
+}
+
+.nodeDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.trackLine {
+  width: 1px;
+  flex: 1;
+  min-height: 3rem;
+  background: linear-gradient(to bottom, rgba(124,58,237,0.4), rgba(255,255,255,0.06));
+  margin: 0.5rem 0;
+}
+
+/* Right: label + card */
+.entryContent {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 3rem;
+}
+
+.nodeLabel {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+/* ─── Experience Card ─── */
+.expCard {
+  width: 100%;
+  max-width: 65rem;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #0e0e12;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.expCard:hover {
+  border-color: rgba(124, 58, 237, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(124, 58, 237, 0.1);
+}
+
+/* Banner */
+.bannerWrapper {
+  position: relative;
+  width: 100%;
+  height: 11rem;
+  overflow: hidden;
+}
+
+.bannerImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Card Body */
+.cardBody {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Role section */
+.roleSection {
+  padding-bottom: 2rem;
+}
+
+.roleTitle {
+  font-family: var(--font-heading);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.035em;
+  margin: 0 0 0.4rem;
+}
+
+.companyName {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  margin: 0 0 0.75rem;
+}
+
+.metaText {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.duration {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Dividers */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 0 0 2rem;
+}
+
+/* Bullets */
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bullets li {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.bullets li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+/* Tech Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0.3rem 0.75rem;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.expCard:hover .tag {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.2);
+  color: var(--color-text-primary);
+}
+
+/* ─── Future Entry ─── */
+.futurePlaceholder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.5rem 0;
+}
+
+.futureTitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.045em;
+}
+
+.futureSubtitle {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Footer ─── */
+.timelineFooter {
+  margin-top: 3rem;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Small Laptops (≤1280px, ≥1025px)
+   14-inch laptops, small desktop screens
+═══════════════════════════════════════════════ */
+@media (max-width: 1280px) and (min-width: 1025px) {
+  /* Hero */
+  .heading {
+    font-size: clamp(4rem, 7vw, 8rem);
+    left: 5rem;
+  }
+
+  .bottomLeft {
+    left: 5rem;
+    width: 22rem;
+  }
+
+  .card {
+    width: clamp(18rem, 24vw, 26rem);
+    height: clamp(13rem, 18vw, 20rem);
+  }
+
+  .card:first-child,
+  .card:last-child {
+    width: clamp(18rem, 24vw, 26rem);
+    height: clamp(13rem, 18vw, 20rem);
+  }
+
+  /* Timeline */
+  .timeline {
+    padding: 0 4rem 0 5rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Tablet (≤1024px, ≥768px)
+   iPad, tablet landscape
+═══════════════════════════════════════════════ */
+@media (max-width: 1024px) and (min-width: 768px) {
+  /* Hero */
+  .rightPanel {
+    width: 52%;
+  }
+
+  .heading {
+    font-size: clamp(3.2rem, 6vw, 6rem);
+    left: 3.5rem;
+    width: 90%;
+  }
+
+  .bottomLeft {
+    left: 3.5rem;
+    bottom: 10%;
+    width: 20rem;
+  }
+
+  /* Hide bottom cards on tablet — not enough horizontal room */
+  .bottomCards {
+    display: none;
+  }
+
+  /* Timeline */
+  .timeline {
+    padding: 0 3rem 0 3.5rem;
+    margin-top: 10rem;
+  }
+
+  .expCard {
+    max-width: 100%;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE — Mobile (≤767px)
+   Phone portrait, small screens
+═══════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  /* Hero: stack layout — image becomes full-viewport background */
+  .hero {
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  .rightPanel {
+    width: 100%;
+    opacity: 0.55; /* more visible on mobile */
+  }
+
+  .rightPanelOverlay {
+    background: rgba(10, 6, 30, 0.55); /* lighter overlay so image shows through */
+  }
+
+  .heading {
+    font-size: clamp(3rem, 11vw, 5rem);
+    left: 1.5rem;
+    width: 95%;
+    top: 32%;              /* sit higher so description fits beneath */
+    transform: translateY(-50%);
+    letter-spacing: 0.01em;
+  }
+
+  .bottomLeft {
+    left: 1.5rem;
+    bottom: auto;
+    top: 48%;              /* moved up to close the gap */
+    width: calc(100% - 3rem);
+  }
+
+  .description {
+    max-width: 100%;
+    font-size: 0.88rem;
+  }
+
+  /* Hide bottom image cards on mobile */
+  .bottomCards {
+    display: none;
+  }
+
+  .bgText {
+    display: none;
+  }
+
+  /* Timeline */
+  .timeline {
+    padding: 0 1.5rem;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+  }
+
+  .timelineTitle {
+    font-size: 2rem;
+  }
+
+  .timelineSubtitle {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+
+  .entry {
+    gap: 1.25rem;
+  }
+
+  .expCard {
+    border-radius: 12px;
+    max-width: 100%;
+  }
+
+  .bannerWrapper {
+    height: 9rem;
+    background: #fff; /* white bg so contain doesn't show dark gaps */
+  }
+
+  .bannerImage {
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .cardBody {
+    padding: 1.5rem;
+  }
+
+  .roleTitle {
+    font-size: 1.5rem;
+    letter-spacing: 0.01em;
+  }
+
+  .bullets li {
+    font-size: 0.85rem;
+  }
+
+  /* Disable hover states on mobile (touch) */
+  .expCard:hover {
+    transform: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.07);
+  }
+
+  .expCard:hover .tag {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-secondary);
+  }
+}

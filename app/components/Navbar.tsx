@@ -9,17 +9,23 @@ import styles from './Navbar.module.css';
 
 const navLinks = [
   { label: 'HOME', href: '#home' },
-  { label: 'PROJECTS', href: '#projects' },
-  { label: 'TECH STACK', href: '#techstack' },
-  { label: 'CERTIFICATIONS', href: '#certifications' },
   { label: 'EDUCATION', href: '/education' },
+  { label: 'EXPERIENCE', href: '/experience' },
   { label: 'DOSSIER', href: '/dossier' },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
+
+  const getInitialActive = () => {
+    if (pathname === '/dossier') return 'DOSSIER';
+    if (pathname === '/education') return 'EDUCATION';
+    if (pathname === '/experience') return 'EXPERIENCE';
+    return 'HOME';
+  };
+
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState('HOME');
+  const [active, setActive] = useState(getInitialActive);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -31,7 +37,7 @@ export default function Navbar() {
         setScrolled(isScrolled);
       }
     };
-    
+
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
@@ -45,6 +51,8 @@ export default function Navbar() {
       setActive('DOSSIER');
     } else if (pathname === '/education') {
       setActive('EDUCATION');
+    } else if (pathname === '/experience') {
+      setActive('EXPERIENCE');
     } else {
       setActive('HOME');
     }
