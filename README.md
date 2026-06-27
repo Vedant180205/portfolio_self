@@ -27,8 +27,8 @@ A personal developer portfolio designed to **wow** at first glance. Featuring a 
 
 | Module | Description | Status |
 |---|---|---|
-| **Terminal Hero Header** | Amber-accented, grid-aligned intro command board mimicking server diagnostic outputs. | ✅ Live |
-| **Interactive Timeline** | Chronological academic pathway with animated spine ticks, vertical lines, and scroll reveals. | ✅ Live |
+| **Editorial Hero Interface** | Heavy typography-driven intro layout featuring dynamic filtering, parallax layers, and hardware-accelerated animations. | ✅ Live |
+| **Experience Timeline** | Modern professional journey timeline with responsive card layouts, WebP/AVIF optimized assets, and clean editorial UI. | ✅ Live |
 | **Tactile Theme Switch** | Sound-faded pull-cord toggle utilizing local WebAudio elements and localStorage persistence. | ✅ Live |
 | **SYS_INIT Decryptor** | Espionage terminal interface locking content behind network handshakes, key logging, and bypass loops. | ✅ Live |
 | **Audio-Wave Synthesizer** | HTML5 Canvas wave generator compiling floating trigonometric sine values and sound-notation overlays. | ✅ Live |
@@ -60,6 +60,9 @@ Standard browsers run transitions on the CPU, causing full repaints. We promote 
 
 ### 3. CSS Paint Containment
 Implemented `content-visibility: auto` with `contain-intrinsic-size` on heavy sections, instructing the browser to skip layout and paint calculations for deep-fold content until it enters the viewport.
+
+### 4. Next.js Native Image Optimization
+Configured native Next.js `<Image />` components with aggressive AVIF/WebP generation, strict `sizes` definitions mapping precisely to CSS media queries, and `priority` fetching for LCP assets to achieve near-instant above-the-fold paint times.
 
 ---
 
