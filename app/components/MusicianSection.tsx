@@ -15,8 +15,8 @@ export default function MusicianSection() {
           <Image
             src="/images/music/9600f8df-e754-45b1-815b-6ddcba877140.png"
             alt="Vedant Patil Live On Stage"
-            width={0}
-            height={0}
+            width={1635}
+            height={962}
             sizes="100vw"
             priority
             quality={85}
@@ -25,8 +25,8 @@ export default function MusicianSection() {
           <Image
             src="/images/music/ChatGPT Image Jun 25, 2026, 11_45_12 PM.png"
             alt="Vedant Patil Live On Stage Mobile"
-            width={0}
-            height={0}
+            width={864}
+            height={1547}
             sizes="100vw"
             priority
             quality={85}
