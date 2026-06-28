@@ -1,8 +1,12 @@
-'use client';
-
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import styles from './page.module.css';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Education — Vedant Patil',
+  description: 'Academic journey and institutions',
+};
 
 // SVG Icons matching the visual theme
 const EyeIcon = () => (

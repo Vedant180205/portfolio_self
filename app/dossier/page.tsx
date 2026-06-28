@@ -126,28 +126,33 @@ interface Photo {
   id: string;
   src: string;
   aspectRatio: number;
+  alt: string;
 }
 
 const col1Photos: Photo[] = [
   {
     id: 'C1_01',
     src: '/images/photography/20230530_190843.jpg',
-    aspectRatio: 3 / 4
+    aspectRatio: 3 / 4,
+    alt: 'Black and white portrait of a musician in studio'
   },
   {
     id: 'C1_02',
     src: '/images/photography/20230528_112806.jpg',
-    aspectRatio: 3 / 4
+    aspectRatio: 3 / 4,
+    alt: 'Close-up of vintage camera on wooden table'
   },
   {
     id: 'C1_03',
     src: '/images/photography/20240223_171922.jpg',
-    aspectRatio: 3 / 4
+    aspectRatio: 3 / 4,
+    alt: 'Street photography - rainy night'
   },
   {
     id: 'C1_04',
     src: '/images/photography/20230528_063251.jpg',
-    aspectRatio: 2296 / 4080
+    aspectRatio: 2296 / 4080,
+    alt: 'Architectural detail - iron gate'
   }
 ];
 
@@ -155,22 +160,26 @@ const col2Photos: Photo[] = [
   {
     id: 'C2_01',
     src: '/images/photography/20230529_184440.jpg',
-    aspectRatio: 3 / 4
+    aspectRatio: 3 / 4,
+    alt: 'Urban landscape with dramatic sky'
   },
   {
     id: 'C2_02',
     src: '/images/photography/20230528_063441.jpg',
-    aspectRatio: 2282 / 3761
+    aspectRatio: 2282 / 3761,
+    alt: 'Candid shot of a street vendor'
   },
   {
     id: 'C2_03',
     src: '/images/photography/20240603_100635.jpg',
-    aspectRatio: 2576 / 3985
+    aspectRatio: 2576 / 3985,
+    alt: 'Abstract shadows on concrete wall'
   },
   {
     id: 'C2_04',
     src: '/images/photography/20251217_071811.jpg',
-    aspectRatio: 4 / 3
+    aspectRatio: 4 / 3,
+    alt: 'Golden hour silhouette against the horizon'
   }
 ];
 
@@ -178,22 +187,26 @@ const col3Photos: Photo[] = [
   {
     id: 'C3_01',
     src: '/images/photography/20240603_183133.jpg',
-    aspectRatio: 1836 / 3398
+    aspectRatio: 1836 / 3398,
+    alt: 'Macro photography of autumn leaves'
   },
   {
     id: 'C3_02',
     src: '/images/photography/20240606_094433.jpg',
-    aspectRatio: 2448 / 3264
+    aspectRatio: 2448 / 3264,
+    alt: 'Minimalist composition with negative space'
   },
   {
     id: 'C3_03',
     src: '/images/photography/20230425_165853.jpg',
-    aspectRatio: 3 / 4
+    aspectRatio: 3 / 4,
+    alt: 'Historical monument viewed from an angle'
   },
   {
     id: 'C3_04',
     src: '/images/photography/20251220_174915.jpg',
-    aspectRatio: 4 / 3
+    aspectRatio: 4 / 3,
+    alt: 'Low light evening scene in the city'
   }
 ];
 
@@ -707,7 +720,7 @@ export default function DossierPage() {
                 >
                   <Image
                     src={item.src}
-                    alt="Editorial archive photography"
+                    alt={item.alt}
                     fill
                     className={styles.collageImg}
                     sizes="(max-width: 768px) 100vw, 33vw"
@@ -727,7 +740,7 @@ export default function DossierPage() {
                 >
                   <Image
                     src={item.src}
-                    alt="Editorial archive photography"
+                    alt={item.alt}
                     fill
                     className={styles.collageImg}
                     sizes="(max-width: 768px) 100vw, 33vw"
@@ -747,7 +760,7 @@ export default function DossierPage() {
                 >
                   <Image
                     src={item.src}
-                    alt="Editorial archive photography"
+                    alt={item.alt}
                     fill
                     className={styles.collageImg}
                     sizes="(max-width: 768px) 100vw, 33vw"
