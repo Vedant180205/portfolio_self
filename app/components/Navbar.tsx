@@ -66,7 +66,7 @@ export default function Navbar() {
         <a href={pathname === '/' ? '#home' : '/'} className={styles.logo} id="nav-logo">
           <div className={styles.logoMark}>
             <Image
-              src={pathname === '/education' ? "/ui/logo-education.webp" : "/ui/logo-new.webp"}
+              src={pathname === '/education' && !scrolled ? "/ui/logo-education.webp" : "/ui/logo-new.webp"}
               alt="VP Logo"
               width={80}
               height={80}
