@@ -1,4 +1,5 @@
 import { DossierClientWrapper } from '@/app/components/dossier/DossierClientWrapper';
+import { CollapsibleSketches } from '@/app/components/dossier/CollapsibleSketches';
 import { MissionLogBoard } from '@/app/components/dossier/MissionLogBoard';
 import MusicianSection from '@/app/components/MusicianSection';
 import Image from 'next/image';
@@ -340,54 +341,7 @@ export default function DossierPage() {
               )}
 
               {/* Collapsible/Expandable Sketches */}
-              
-                <>
-                  <div className={styles.museumRow}>
-                    {sketches.slice(3, 5).map((sketch, index) => (
-                      <div className={styles.exhibitionFrame} id={`artwork-${index + 4}`} key={sketch.id}>
-                        <div className={styles.artworkContainer}>
-                          <div className={styles.canvasTexture} />
-                          <Image
-                            src={sketch.src}
-                            alt={sketch.title}
-                            fill
-                            className={styles.sketchImage}
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                          />
-                        </div>
-                        <div className={styles.museumTag}>
-                          <span className={styles.tagNum}>{sketch.id}</span>
-                          <h4 className={styles.tagTitle}>{sketch.title}</h4>
-                          <p className={styles.tagMedium}>{sketch.medium}</p>
-                          <p className={styles.tagYear}>{sketch.year}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {sketches[5] && (
-                    <div className={styles.museumRowSingle}>
-                      <div className={styles.exhibitionFrameLarge} id="artwork-6">
-                        <div className={styles.artworkContainerLarge}>
-                          <div className={styles.canvasTexture} />
-                          <Image
-                            src={sketches[5].src}
-                            alt={sketches[5].title}
-                            fill
-                            className={styles.sketchImage}
-                            sizes="(max-width: 1024px) 100vw, 80vw"
-                          />
-                        </div>
-                        <div className={styles.museumTag}>
-                          <span className={styles.tagNum}>{sketches[5].id}</span>
-                          <h4 className={styles.tagTitle}>{sketches[5].title}</h4>
-                          <p className={styles.tagMedium}>{sketches[5].medium}</p>
-                          <p className={styles.tagYear}>{sketches[5].year}</p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </>
+              <CollapsibleSketches sketches={sketches} />
             </div>
           </div>
         </section>
