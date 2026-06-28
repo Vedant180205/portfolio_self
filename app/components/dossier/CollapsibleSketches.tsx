@@ -15,6 +15,14 @@ interface Sketch {
 export function CollapsibleSketches({ sketches }: { sketches: Sketch[] }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleViewLess = () => {
+    setIsOpen(false);
+    const element = document.getElementById('artwork-3');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
   // We assume the first 3 sketches are rendered by the parent Server Component.
   // This component manages sketches starting from index 3.
   const extraSketches = sketches.slice(3);
@@ -81,7 +89,7 @@ export function CollapsibleSketches({ sketches }: { sketches: Sketch[] }) {
 
       {/* View Less Button */}
       <div style={{ display: 'flex', justifyContent: 'center', margin: '4rem 0' }}>
-        <button className={styles.viewMoreBtn} onClick={() => setIsOpen(false)}>
+        <button className={styles.viewMoreBtn} onClick={handleViewLess}>
           VIEW LESS
         </button>
       </div>
