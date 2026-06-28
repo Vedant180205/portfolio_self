@@ -17,15 +17,8 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
 
-  const getInitialActive = () => {
-    if (pathname === '/dossier') return 'DOSSIER';
-    if (pathname === '/education') return 'EDUCATION';
-    if (pathname === '/experience') return 'EXPERIENCE';
-    return 'HOME';
-  };
-
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState(getInitialActive);
+  const active = pathname === '/' ? 'HOME' : pathname.slice(1).toUpperCase() || 'HOME';
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -44,19 +37,6 @@ export default function Navbar() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  // Sync active nav item with path
-  useEffect(() => {
-    if (pathname === '/dossier') {
-      setActive('DOSSIER');
-    } else if (pathname === '/education') {
-      setActive('EDUCATION');
-    } else if (pathname === '/experience') {
-      setActive('EXPERIENCE');
-    } else {
-      setActive('HOME');
-    }
-  }, [pathname]);
 
   // Lock body scroll when drawer is open (iOS compliant)
   useEffect(() => {
@@ -77,7 +57,6 @@ export default function Navbar() {
   }, [menuOpen]);
 
   const handleLinkClick = (label: string) => {
-    setActive(label);
     setMenuOpen(false);
   };
 
@@ -153,7 +132,8 @@ export default function Navbar() {
       />
 
       {/* Mobile drawer */}
-      <div className={`${styles.drawer} ${menuOpen ? styles.drawerOpen : ''}`} role="dialog" aria-label="Navigation menu">
+      <div className={`${styles.drawer} ${menuOpen ? styles.drawerOpen : ''}`} role="dialog" aria-labelledby="drawer-heading">
+        <h2 id="drawer-heading" className={styles.visuallyHidden}>Navigation Menu</h2>
         <ul className={styles.drawerLinks}>
           {navLinks.map((link, i) => {
             const isAnchor = link.href.startsWith('#');

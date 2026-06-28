@@ -382,17 +382,6 @@ export default function DossierPage() {
                     </div>
                   )}
                 </>
-              )}
-
-              {/* View More Trigger */}
-              <div className={styles.viewMoreContainer}>
-                <button
-                  className={styles.viewMoreBtn}
-                  
-                >
-                  {showAllSketches ? 'RESTRICT ARCHIVE VIEW [ -3 SCHEMES ]' : 'DECRYPT ALL EXHIBITS [ +3 SCHEMES ]'}
-                </button>
-              </div>
             </div>
           </div>
         </section>

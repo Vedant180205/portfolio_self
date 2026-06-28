@@ -59,27 +59,15 @@ export default function About() {
 
         {/* Main copy */}
         <div className={styles.body}>
-          {/* Desktop Copy (Divided in two paragraphs) */}
-          <p className={`${styles.para} ${styles.desktopPara}`}>
+          <p className={styles.para}>
             <strong>Electronics and Computer Science</strong> student building engineering systems
             across software and hardware domains. My projects span{' '}
             <strong>IoT systems</strong>, <strong>backend applications</strong>,{' '}
             <strong>machine learning solutions</strong>, and <strong>data-driven applications</strong> — with a
             focus on building practical systems that solve real-world problems.
           </p>
-          <p className={`${styles.para} ${styles.desktopPara}`}>
+          <p className={styles.para}>
             Currently strengthening foundations in{' '}
-            <strong>data structure and algorithms</strong>, <strong>embedded systems</strong>, and low-level
-            programming while exploring system-oriented engineering domains.
-          </p>
-
-          {/* Mobile Copy (Single paragraph) */}
-          <p className={`${styles.para} ${styles.mobilePara}`}>
-            <strong>Electronics and Computer Science</strong> student building engineering systems
-            across software and hardware domains. My projects span{' '}
-            <strong>IoT systems</strong>, <strong>backend applications</strong>,{' '}
-            <strong>machine learning solutions</strong>, and <strong>data-driven applications</strong> — with a
-            focus on building practical systems that solve real-world problems. Currently strengthening foundations in{' '}
             <strong>data structure and algorithms</strong>, <strong>embedded systems</strong>, and low-level
             programming while exploring system-oriented engineering domains.
           </p>

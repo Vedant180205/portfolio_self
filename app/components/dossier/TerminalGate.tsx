@@ -56,7 +56,7 @@ export function TerminalGate({ onAccessGranted }: TerminalGateProps) {
     <div className={styles.terminalContainer}>
       <div className={styles.terminalWindow}>
         {terminalText.map((line, idx) => (
-          <p key={idx} className={styles.terminalLine}>
+          <p key={`line-${idx}`} className={styles.terminalLine}>
             {line}
             {idx === terminalText.length - 1 && !accessGranted && (
               <span className={styles.cursor}>█</span>

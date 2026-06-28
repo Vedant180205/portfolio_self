@@ -64,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${protestGuerrilla.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${protestGuerrilla.variable} ${inter.variable}`}>
       <head>
         <script
           type="application/ld+json"
