@@ -1,3 +1,6 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
 import styles from './Footer.module.css';
 
 function LinkedInIcon() {
@@ -27,65 +30,70 @@ function MailIcon() {
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+  
+  const hideConnect = pathname === '/education' || pathname === '/experience';
+
+  if (hideConnect) return null;
 
   return (
     <footer className={styles.section} id="contact" aria-label="Contact">
       <div className={styles.glow} aria-hidden="true" />
 
       <div className={styles.inner}>
-        {/* Top */}
-        <div className={styles.top}>
-          <span className={styles.eyebrow}>Get In Touch</span>
-          <h2 className={styles.heading}>Let&apos;s Connect</h2>
-          <p className={styles.subtext}>
-            Open to collaborations, internships, and interesting projects.
-            Reach out and let&apos;s build something great.
-          </p>
+          {/* Top */}
+          <div className={styles.top}>
+            <span className={styles.eyebrow}>Get In Touch</span>
+            <h2 className={styles.heading}>Let&apos;s Connect</h2>
+            <p className={styles.subtext}>
+              Open to collaborations, internships, and interesting projects.
+              Reach out and let&apos;s build something great.
+            </p>
+          </div>
+
+          {/* Links */}
+          <div className={styles.links} role="list">
+            <a
+              href="https://www.linkedin.com/in/vedant-patil-933190330/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.linkItem}
+              id="footer-linkedin"
+              aria-label="LinkedIn profile"
+              role="listitem"
+            >
+              <span className={styles.linkIcon}><LinkedInIcon /></span>
+              <span className={styles.linkLabel}>LinkedIn</span>
+              <span className={styles.linkValue}>vedant-patil</span>
+            </a>
+
+            <a
+              href="https://github.com/Vedant180205"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.linkItem}
+              id="footer-github"
+              aria-label="GitHub profile"
+              role="listitem"
+            >
+              <span className={styles.linkIcon}><GitHubIcon /></span>
+              <span className={styles.linkLabel}>GitHub</span>
+              <span className={styles.linkValue}>Vedant180205</span>
+            </a>
+
+            <a
+              href="mailto:vedbhumi123@gmail.com"
+              className={styles.linkItem}
+              id="footer-email"
+              aria-label="Send email"
+              role="listitem"
+            >
+              <span className={styles.linkIcon}><MailIcon /></span>
+              <span className={styles.linkLabel}>Email</span>
+              <span className={styles.linkValue}>vedbhumi123@gmail.com</span>
+            </a>
+          </div>
         </div>
-
-        {/* Links */}
-        <div className={styles.links} role="list">
-          <a
-            href="https://www.linkedin.com/in/vedant-patil-933190330/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.linkItem}
-            id="footer-linkedin"
-            aria-label="LinkedIn profile"
-            role="listitem"
-          >
-            <span className={styles.linkIcon}><LinkedInIcon /></span>
-            <span className={styles.linkLabel}>LinkedIn</span>
-            <span className={styles.linkValue}>vedant-patil</span>
-          </a>
-
-          <a
-            href="https://github.com/Vedant180205"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.linkItem}
-            id="footer-github"
-            aria-label="GitHub profile"
-            role="listitem"
-          >
-            <span className={styles.linkIcon}><GitHubIcon /></span>
-            <span className={styles.linkLabel}>GitHub</span>
-            <span className={styles.linkValue}>Vedant180205</span>
-          </a>
-
-          <a
-            href="mailto:vedbhumi123@gmail.com"
-            className={styles.linkItem}
-            id="footer-email"
-            aria-label="Send email"
-            role="listitem"
-          >
-            <span className={styles.linkIcon}><MailIcon /></span>
-            <span className={styles.linkLabel}>Email</span>
-            <span className={styles.linkValue}>vedbhumi123@gmail.com</span>
-          </a>
-        </div>
-      </div>
 
       {/* Bottom bar */}
       <div className={styles.bottom}>
