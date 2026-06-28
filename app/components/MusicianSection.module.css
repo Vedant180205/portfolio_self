@@ -389,7 +389,7 @@
   border-radius: 8px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
+
 }
 
 .introCardCollage:hover {
@@ -416,7 +416,7 @@
   justify-content: center;
   overflow: hidden;
   transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease;
-  will-change: transform;
+
   z-index: 10;
   position: relative;
 }
@@ -449,7 +449,7 @@
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
   position: relative;
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
+
 }
 
 .infoCardCollage:hover {
@@ -470,7 +470,7 @@
   border-radius: 8px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55);
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
+
 }
 
 .infoCardCollageFullWidth:hover {

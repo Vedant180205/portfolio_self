@@ -250,19 +250,11 @@ export default function DossierPage() {
       } else {
         clearInterval(interval);
 
-        // Progress bar simulation
-        let currentProgress = 0;
-        const progressInterval = setInterval(() => {
-          if (currentProgress < 100) {
-            currentProgress += 5;
-            setProgress(currentProgress);
-          } else {
-            clearInterval(progressInterval);
-            setTimeout(() => {
-              setAccessGranted(true);
-            }, 600);
-          }
-        }, 50);
+        // Progress bar simulation using CSS transition
+        setProgress(100);
+        setTimeout(() => {
+          setAccessGranted(true);
+        }, 1200);
       }
     }, 450);
 
@@ -540,13 +532,13 @@ export default function DossierPage() {
               {/* Right Column: Pinned Certificate Polaroid Frame */}
               <div 
                 className={styles.topperCertFrame} 
-                onClick={() => setActiveCert('/certs/Untitled design (1).png')}
+                onClick={() => setActiveCert('/certs/Untitled design (1).webp')}
                 role="button"
                 tabIndex={0}
                 aria-label="View First Year Topper Certificate"
               >
                 <Image
-                  src="/certs/Untitled design (1).png"
+                  src="/certs/Untitled design (1).webp"
                   alt="First Year Topper 10 SGPA Certificate"
                   fill
                   sizes="(max-width: 768px) 100vw, 550px"
@@ -894,13 +886,13 @@ export default function DossierPage() {
             {/* Right Certificate */}
             <div 
               className={styles.scoutCertContainer} 
-              onClick={() => setActiveCert('/certs/scout_cert.png')}
+              onClick={() => setActiveCert('/certs/scout_cert.webp')}
               role="button"
               tabIndex={0}
               aria-label="View Scout Certificate"
             >
               <Image
-                src="/certs/scout_cert.png"
+                src="/certs/scout_cert.webp"
                 alt="Rajyapuraskar Certificate"
                 width={800}
                 height={1131}

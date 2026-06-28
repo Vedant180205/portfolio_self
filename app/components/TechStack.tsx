@@ -1,40 +1,40 @@
 /* TechStack — flat icon grid, no categories */
 const techs = [
   // Languages
-  { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', invert: false },
-  { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg', invert: false },
-  { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg', invert: false },
-  { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg', invert: false },
-  { name: 'C', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg', invert: false },
-  { name: 'C++', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg', invert: false },
+  { name: 'Python', icon: '/icons/tech/python.svg', invert: false },
+  { name: 'TypeScript', icon: '/icons/tech/typescript.svg', invert: false },
+  { name: 'JavaScript', icon: '/icons/tech/javascript.svg', invert: false },
+  { name: 'Java', icon: '/icons/tech/java.svg', invert: false },
+  { name: 'C', icon: '/icons/tech/c.svg', invert: false },
+  { name: 'C++', icon: '/icons/tech/cplusplus.svg', invert: false },
 
   // Web & Frontend
-  { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', invert: false },
-  { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg', invert: true },
-  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg', invert: false },
-  { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg', invert: false },
-  { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg', invert: false },
+  { name: 'React', icon: '/icons/tech/react.svg', invert: false },
+  { name: 'Next.js', icon: '/icons/tech/nextjs.svg', invert: true },
+  { name: 'HTML5', icon: '/icons/tech/html5.svg', invert: false },
+  { name: 'CSS3', icon: '/icons/tech/css3.svg', invert: false },
+  { name: 'Node.js', icon: '/icons/tech/nodejs.svg', invert: false },
 
   // Databases
-  { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg', invert: false },
-  { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg', invert: false },
-  { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg', invert: false },
-  { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg', invert: false },
-  { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg', invert: false },
+  { name: 'PostgreSQL', icon: '/icons/tech/postgresql.svg', invert: false },
+  { name: 'MySQL', icon: '/icons/tech/mysql.svg', invert: false },
+  { name: 'MongoDB', icon: '/icons/tech/mongodb.svg', invert: false },
+  { name: 'Supabase', icon: '/icons/tech/supabase.svg', invert: false },
+  { name: 'Firebase', icon: '/icons/tech/firebase.svg', invert: false },
 
   // Machine Learning & Data
-  { name: 'NumPy', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg', invert: false },
-  { name: 'Pandas', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg', invert: false },
-  { name: 'scikit-learn', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg', invert: false },
+  { name: 'NumPy', icon: '/icons/tech/numpy.svg', invert: false },
+  { name: 'Pandas', icon: '/icons/tech/pandas.svg', invert: false },
+  { name: 'scikit-learn', icon: '/icons/tech/scikitlearn.svg', invert: false },
 
   // Tools & Hardware & Others
-  { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg', invert: false },
-  { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg', invert: true },
-  { name: 'Canva', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg', invert: false },
-  { name: 'CapCut', icon: 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Capcut-icon.svg', invert: false },
-  { name: 'Arduino', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg', invert: false },
-  { name: 'MediaPipe', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg', invert: false },
-  { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg', invert: true },
+  { name: 'Git', icon: '/icons/tech/git.svg', invert: false },
+  { name: 'GitHub', icon: '/icons/tech/github.svg', invert: true },
+  { name: 'Canva', icon: '/icons/tech/canva.svg', invert: false },
+  { name: 'CapCut', icon: '/icons/tech/capcut.svg', invert: false },
+  { name: 'Arduino', icon: '/icons/tech/arduino.svg', invert: false },
+  { name: 'MediaPipe', icon: '/icons/tech/google.svg', invert: false },
+  { name: 'Vercel', icon: '/icons/tech/vercel.svg', invert: true },
 ];
 
 import styles from './TechStack.module.css';

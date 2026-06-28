@@ -178,7 +178,7 @@ export default function EducationPage() {
         <div className={styles.heroGrid}>
           <div className={styles.heroImageWrapper}>
             <Image
-              src="/images/education/hero_bg_custom.png"
+              src="/images/education/hero_bg_custom.webp"
               alt="Engineering evolution backdrop"
               width={1920}
               height={1080}
@@ -388,7 +388,7 @@ export default function EducationPage() {
                 </div>
                 <div className={styles.imageContainer}>
                   <Image
-                    src="/images/education/sakec-v2.png"
+                    src="/images/education/sakec-v2.webp"
                     alt="Shah & Anchor Kutchhi Engineering College"
                     fill
                     sizes="(max-width: 768px) 100vw, 55vw"
@@ -426,7 +426,7 @@ export default function EducationPage() {
             {/* Right Column: Image */}
             <div className={styles.artworkBlockWrapper}>
               <Image
-                src="/images/education/journey_continues.png"
+                src="/images/education/journey_continues.webp"
                 alt="The journey continues"
                 width={1536}
                 height={1024}

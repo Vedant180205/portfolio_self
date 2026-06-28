@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Removed Google Fonts @import for performance */
 
 html {
   scroll-behavior: smooth;
@@ -32,9 +32,9 @@ html {
 
   /* Text */
   --color-text-primary:   #ffffff;
-  --color-text-secondary: rgba(255, 255, 255, 0.55);
-  --color-text-muted:     rgba(255, 255, 255, 0.40);
-  --color-text-faint:     rgba(255, 255, 255, 0.20);
+  --color-text-secondary: rgba(255, 255, 255, 0.70);
+  --color-text-muted:     rgba(255, 255, 255, 0.60);
+  --color-text-faint:     rgba(255, 255, 255, 0.40);
 
   /* Borders */
   --color-border:        rgba(255, 255, 255, 0.12);
@@ -43,7 +43,7 @@ html {
   --color-border-logo:   rgba(255, 255, 255, 0.90);
 
   /* Nav */
-  --color-nav-scrolled:   rgba(10, 10, 10, 0.88);
+  --color-nav-scrolled:   rgba(10, 10, 10, 0.95);
   --color-cta-bg-hover:   #ffffff;
   --color-cta-text-hover: #0a0a0a;
   --color-cta-border:     rgba(255, 255, 255, 0.75);

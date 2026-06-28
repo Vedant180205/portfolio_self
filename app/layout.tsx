@@ -1,5 +1,19 @@
 import type { Metadata } from "next";
+import { Protest_Guerrilla, Inter } from 'next/font/google';
 import "./globals.css";
+
+const protestGuerrilla = Protest_Guerrilla({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-name',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-body',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://vedantpatil.dev'),
@@ -16,6 +30,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vedant Patil — Builder & Engineer",
     description: "I build real-world systems that combine embedded engineering, machine learning and software to solve meaningful problems.",
+    url: 'https://vedantpatil.dev',
+    siteName: 'Vedant Patil Portfolio',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+      }
+    ],
+    locale: 'en_US',
     type: "website",
   },
 };
@@ -26,12 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <style>{`@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Science+Gothic:wght@100..900&display=swap');`}</style>
-      </head>
+    <html lang="en" className={`${protestGuerrilla.variable} ${inter.variable}`} suppressHydrationWarning>
       <body>
         {children}
       </body>
