@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export const metadata: Metadata = {
   title: 'Dossier — Vedant Patil',
@@ -10,5 +12,11 @@ export default function DossierLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <Navbar />
+      {children}
+      <Footer />
+    </>
+  );
 }

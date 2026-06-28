@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
+
 /* Removed Google Fonts @import for performance */
 
 html {
@@ -58,9 +60,12 @@ html {
   --color-btn-hover-text: #0a0a0a;
 
   /* Fonts */
-  --font-name:        'Protest Guerrilla', sans-serif; /* Hero name — VEDANT PATIL */
-  --font-heading:     'Protest Guerrilla', sans-serif; /* Section headings */
+  --font-name:        var(--font-protest-guerrilla);
+  --font-heading:     var(--font-protest-guerrilla);
   --font-body:        'Science Gothic', sans-serif;
+  
+  --font-russo:       var(--font-russo-one);
+  --font-goldman:     var(--font-goldman);
 }
 
 

@@ -170,7 +170,7 @@
 }
 
 .heroTitle {
-  font-family: var(--font-heading), 'Inter', sans-serif;
+  font-family: var(--font-heading), var(--font-body);
   font-size: clamp(2.8rem, 6.8vw, 6.2rem);
   font-weight: 900;
   line-height: 0.92;
@@ -280,7 +280,7 @@
 }
 
 .rectTitle {
-  font-family: var(--font-heading), 'Inter', sans-serif;
+  font-family: var(--font-heading), var(--font-body);
   font-size: 2.3rem;
   font-weight: 900;
   letter-spacing: 0.02em;
@@ -398,7 +398,7 @@
 }
 
 .cardTitle {
-  font-family: var(--font-heading), 'Inter', sans-serif;
+  font-family: var(--font-heading), var(--font-body);
   font-size: clamp(1.8rem, 3.2vw, 2.3rem);
   font-weight: 900;
   line-height: 1.12;
@@ -597,7 +597,7 @@
 }
 
 .endingTitle {
-  font-family: var(--font-heading), 'Inter', sans-serif;
+  font-family: var(--font-heading), var(--font-body);
   font-size: 2.3rem;
   font-weight: 900;
   letter-spacing: 0.02em;

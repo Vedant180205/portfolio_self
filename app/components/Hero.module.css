@@ -176,7 +176,7 @@
 
 .roleText {
   color: var(--color-accent-gold);
-  font-family: "Science Gothic", sans-serif;
+  font-family: var(--font-body);
   font-optical-sizing: auto;
   font-weight: 600;
   font-variation-settings: "slnt" 0, "wdth" 100, "CTRS" 0;
@@ -233,7 +233,7 @@
 
 
 .description {
-  font-family: "Science Gothic", sans-serif;
+  font-family: var(--font-body);
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
@@ -268,7 +268,7 @@
   gap: 0.75rem;
   padding: 1rem 2rem;
   border: 1.5px solid var(--color-border-logo);
-  font-family: "Science Gothic", sans-serif;
+  font-family: var(--font-body);
   font-optical-sizing: auto;
   font-weight: 600;
   font-variation-settings: "slnt" 0, "wdth" 100, "CTRS" 0;
@@ -522,7 +522,7 @@
   }
 
   .description {
-    font-family: "Science Gothic", sans-serif;
+    font-family: var(--font-body);
     font-optical-sizing: auto;
     font-weight: 600;
     font-variation-settings: "slnt" 0, "wdth" 100, "CTRS" 0;

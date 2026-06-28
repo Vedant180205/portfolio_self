@@ -143,6 +143,38 @@
   gap: 1.4rem;
 }
 
+/* Light Mode Overrides for Education Page */
+.lightMode .navLink,
+.lightMode .logoRole,
+.lightMode .logoName,
+.lightMode .logoLetters {
+  color: #000;
+}
+
+.lightMode .navLink::after {
+  background: #000;
+}
+
+.lightMode .activeLink {
+  color: #000;
+}
+
+.lightMode .ctaBtn {
+  color: #000;
+  border-color: #000;
+}
+
+.lightMode .ctaBtn:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.lightMode .bar {
+  background-color: #000;
+}
+
+
 /* CTA */
 .ctaBtn {
   display: flex;

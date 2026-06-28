@@ -1,28 +1,25 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface ArtistObserverProps {
-  children: React.ReactNode;
-  onActiveChange?: (active: boolean) => void;
+  onActiveChange: (active: boolean) => void;
 }
 
-export function ArtistObserver({ children, onActiveChange }: ArtistObserverProps) {
-  const [isActive, setIsActive] = useState(false);
+export function ArtistObserver({ onActiveChange }: ArtistObserverProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const active = entry.isIntersecting;
-        setIsActive(active);
-        onActiveChange?.(active);
+        onActiveChange(entry.isIntersecting);
       },
-      { threshold: 0.3 }
+      { threshold: 0.2, rootMargin: '-10% 0px -10% 0px' }
     );
+
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, [onActiveChange]);
 
-  return <div ref={ref}>{children}</div>;
+  return <div ref={ref} />;
 }

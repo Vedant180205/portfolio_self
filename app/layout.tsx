@@ -1,18 +1,26 @@
 import type { Metadata } from "next";
-import { Protest_Guerrilla, Inter } from 'next/font/google';
+import { Protest_Guerrilla, Russo_One, Goldman } from 'next/font/google';
 import Script from 'next/script';
 import "./globals.css";
 
 const protestGuerrilla = Protest_Guerrilla({
   weight: '400',
   subsets: ['latin'],
-  variable: '--font-name',
+  variable: '--font-protest-guerrilla',
   display: 'swap',
 });
 
-const inter = Inter({
+const russoOne = Russo_One({
+  weight: '400',
   subsets: ['latin'],
-  variable: '--font-body',
+  variable: '--font-russo-one',
+  display: 'swap',
+});
+
+const goldman = Goldman({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-goldman',
   display: 'swap',
 });
 
@@ -64,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${protestGuerrilla.variable} ${inter.variable}`}>
+    <html lang="en" className={`${protestGuerrilla.variable} ${russoOne.variable} ${goldman.variable}`}>
       <head>
         <script
           type="application/ld+json"

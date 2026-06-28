@@ -21,6 +21,7 @@ function GitHubIcon() {
 
 // We type project as any to avoid redefining the whole structure since we're reusing it directly from Projects.tsx
 interface ProjectModalProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   project: any | null;
   onClose: () => void;
 }

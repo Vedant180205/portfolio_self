@@ -3,13 +3,6 @@
 import { useState, useEffect } from 'react';
 import styles from '@/app/dossier/page.module.css';
 
-const TERMINAL_LINES = [
-  '> INITIALIZING SECURE CONNECTION...',
-  '> ACCESSING CLASSIFIED ARCHIVE...',
-  '> VERIFYING CREDENTIALS...',
-  '> ACCESS GRANTED.',
-];
-
 interface TerminalGateProps {
   onAccessGranted: () => void;
 }
@@ -17,60 +10,80 @@ interface TerminalGateProps {
 export function TerminalGate({ onAccessGranted }: TerminalGateProps) {
   const [terminalText, setTerminalText] = useState<string[]>([]);
   const [progress, setProgress] = useState(0);
-  const [accessGranted, setAccessGranted] = useState(false);
 
   useEffect(() => {
-    let lineIndex = 0;
-    let charIndex = 0;
-    let currentLine = '';
+    const lines = [
+      'SYS_INIT: RETRIEVING CLASSIFIED RECORDS...',
+      'ESTABLISHING ENCRYPTED SECURE LINK...',
+      'ACCESS LEVEL: UNRESTRICTED // PATIL_V',
+      'STATUS: ACCESS GRANTED'
+    ];
+
+    let currentLineIdx = 0;
     const interval = setInterval(() => {
-      if (lineIndex < TERMINAL_LINES.length) {
-        const fullLine = TERMINAL_LINES[lineIndex];
-        if (charIndex < fullLine.length) {
-          currentLine += fullLine[charIndex];
-          charIndex++;
-          setTerminalText((prev) => {
-            const newLines = [...prev];
-            newLines[lineIndex] = currentLine;
-            return newLines;
-          });
-        } else {
-          lineIndex++;
-          charIndex = 0;
-          currentLine = '';
-          setTerminalText((prev) => [...prev, '']);
-        }
+      if (currentLineIdx < lines.length) {
+        const lineVal = lines[currentLineIdx];
+        setTerminalText((prev) => [...prev, lineVal]);
+        currentLineIdx++;
       } else {
         clearInterval(interval);
-        setAccessGranted(true);
-        // trigger progress animation
-        setProgress(100);
-        setTimeout(onAccessGranted, 800);
+
+        // Progress bar simulation
+        let currentProgress = 0;
+        const progressInterval = setInterval(() => {
+          if (currentProgress < 100) {
+            currentProgress += 5;
+            setProgress(currentProgress);
+          } else {
+            clearInterval(progressInterval);
+            setTimeout(() => {
+              onAccessGranted();
+            }, 600);
+          }
+        }, 50);
       }
-    }, 30);
+    }, 450);
 
     return () => clearInterval(interval);
   }, [onAccessGranted]);
 
+  const skipEntry = () => onAccessGranted();
+
   return (
-    <div className={styles.terminalContainer}>
-      <div className={styles.terminalWindow}>
-        {terminalText.map((line, idx) => (
-          <p key={`line-${idx}`} className={styles.terminalLine}>
-            {line}
-            {idx === terminalText.length - 1 && !accessGranted && (
-              <span className={styles.cursor}>█</span>
-            )}
-          </p>
-        ))}
-        {!accessGranted && (
-          <div className={styles.progressBar}>
-            <div
-              className={styles.progressFill}
-              style={{ width: `${progress}%`, transition: 'width 1.5s linear' }}
-            />
-          </div>
-        )}
+    <div className={styles.entryScreen}>
+      <div className={styles.entryScanline} />
+      <div className={styles.terminal}>
+        <div className={styles.terminalHeader}>
+          <span className={styles.terminalDot} />
+          <span className={styles.terminalDot} />
+          <span className={styles.terminalDot} />
+          <span className={styles.terminalTitle}>SECURE CLIENT SHELL</span>
+        </div>
+        <div className={styles.terminalContent}>
+          {terminalText.map((line, idx) => (
+            <p
+              key={`line-${idx}`} // stable prefix
+              className={line.includes('GRANTED') ? styles.textGranted : styles.textCommand}
+            >
+              {line}
+            </p>
+          ))}
+
+          {terminalText.length >= 4 && (
+            <div className={styles.progressContainer}>
+              <div className={styles.progressBar} style={{ width: `${progress}%` }} />
+              <span className={styles.progressPct}>{progress}%</span>
+            </div>
+          )}
+
+          {terminalText.length >= 4 && progress >= 100 && (
+            <p className={styles.textLoading}>DECRYPTING ARCHIVE AND INITIALIZING INTERFACE...</p>
+          )}
+
+          <button onClick={skipEntry} className={styles.skipBtn}>
+            [ BYPASS PROTOCOL ]
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -56,13 +55,13 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
-  const handleLinkClick = (label: string) => {
+  const handleLinkClick = () => {
     setMenuOpen(false);
   };
 
   return (
     <>
-      <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+      <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${pathname === '/education' && !scrolled ? styles.lightMode : ''}`}>
         {/* Logo */}
         <a href={pathname === '/' ? '#home' : '/'} className={styles.logo} id="nav-logo">
           <div className={styles.logoMark}>
@@ -92,7 +91,7 @@ export default function Navbar() {
                   href={href}
                   id={`nav-${link.label.toLowerCase().replace(' ', '-')}`}
                   className={`${styles.navLink} ${active === link.label ? styles.activeLink : ''}`}
-                  onClick={() => handleLinkClick(link.label)}
+                  onClick={() => handleLinkClick()}
                 >
                   {link.label}
                 </a>
@@ -144,7 +143,7 @@ export default function Navbar() {
                 <a
                   href={href}
                   className={`${styles.drawerLink} ${active === link.label ? styles.drawerLinkActive : ''}`}
-                  onClick={() => handleLinkClick(link.label)}
+                  onClick={() => handleLinkClick()}
                 >
                   <span className={styles.drawerNum}>0{i + 1}</span>
                   {link.label}

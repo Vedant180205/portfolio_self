@@ -1,16 +1,11 @@
-import { DossierClientWrapper } from '../components/dossier/DossierClientWrapper';
+import { DossierClientWrapper } from '@/app/components/dossier/DossierClientWrapper';
+import { MissionLogBoard } from '@/app/components/dossier/MissionLogBoard';
+import MusicianSection from '@/app/components/MusicianSection';
 import Image from 'next/image';
 import Link from 'next/link';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import MusicianSection from '../components/MusicianSection';
 import styles from './page.module.css';
-// -------------------------------------------------------------
-// TYPES & DATA DEFINITIONS
-// -------------------------------------------------------------
 
-
-
+// ---------- Data ----------
 interface MissionLog {
   id: string;
   name: string;
@@ -207,11 +202,22 @@ const col3Photos: Photo[] = [
 ];
 
 export default function DossierPage() {
-  const showAllSketches = true;
   return (
-    <DossierClientWrapper missionLogs={missionLogs}>
-      <div className={styles.dossierContent}>
-        <section className={styles.topperSection} id="topper">
+    <DossierClientWrapper>
+      <MusicianSection />
+      
+      {/* Interactive parts */}
+      <section className={styles.missionLogsSection} id="mission-logs">
+        <div className={styles.gridOverlay} />
+        <div className={styles.sectionHeaderCentered}>
+          <span className={styles.sectionCategory}>INTEL_LOGS // REPOSITORY</span>
+          <h2 className={styles.logsLargeTitle}>MISSION LOGS</h2>
+          <p className={styles.logsSubtitle}>Problems. Pressure. Deadlines.</p>
+        </div>
+        <MissionLogBoard logs={missionLogs} />
+      </section>
+
+      <section className={styles.topperSection} id="topper">
           <div className={styles.gridOverlay} />
           <div className={styles.topperWrapper}>
             <div className={styles.sectionHeaderCentered}>
@@ -646,10 +652,7 @@ export default function DossierPage() {
             </Link>
           </div>
         </section>
-      </div>
-
-
-
-          </DossierClientWrapper>
+      
+    </DossierClientWrapper>
   );
 }
