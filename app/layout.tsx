@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Protest_Guerrilla, Inter } from 'next/font/google';
+import Script from 'next/script';
 import "./globals.css";
 
 const protestGuerrilla = Protest_Guerrilla({
@@ -44,6 +45,19 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vedant Patil",
+  "url": "https://vedantpatil.dev",
+  "jobTitle": "Electronics & Computer Science Engineer",
+  "sameAs": [
+    "https://github.com/Vedant180205",
+    "https://www.linkedin.com/in/vedant-patil-933190330/",
+    "https://leetcode.com/u/vedant180205/"
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -51,8 +65,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${protestGuerrilla.variable} ${inter.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>
         {children}
+        <Script src="/scripts/animate-pause.js" strategy="afterInteractive" />
       </body>
     </html>
   );

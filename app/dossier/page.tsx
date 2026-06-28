@@ -1,14 +1,10 @@
-'use client';
-
-import { useState, useEffect, useRef } from 'react';
+import { DossierClientWrapper } from '../components/dossier/DossierClientWrapper';
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import MusicianSection from '../components/MusicianSection';
 import styles from './page.module.css';
-import { useNearViewport } from '../hooks/useNearViewport';
-
 // -------------------------------------------------------------
 // TYPES & DATA DEFINITIONS
 // -------------------------------------------------------------
@@ -211,283 +207,10 @@ const col3Photos: Photo[] = [
 ];
 
 export default function DossierPage() {
-  // Page entry states
-  const [accessGranted, setAccessGranted] = useState(false);
-  const [terminalText, setTerminalText] = useState<string[]>([]);
-  const [progress, setProgress] = useState(0);
-
-
-
-  // Mission logs state
-  const [hoveredLog, setHoveredLog] = useState<MissionLog | null>(null);
-  const [activeCert, setActiveCert] = useState<MissionLog | string | null>(null);
-
-  // Section backgrounds & scrolling
-  const [isArtistActive, setIsArtistActive] = useState(false);
-  const artistRef = useRef<HTMLDivElement | null>(null);
-
-  const { ref: logsRef, isNearViewport: isLogsNear } = useNearViewport<HTMLElement>();
-
-  // Sketch gallery visibility
-  const [showAllSketches, setShowAllSketches] = useState(false);
-
-
-  // Terminal screen animation
-  useEffect(() => {
-    const lines = [
-      'SYS_INIT: RETRIEVING CLASSIFIED RECORDS...',
-      'ESTABLISHING ENCRYPTED SECURE LINK...',
-      'ACCESS LEVEL: UNRESTRICTED // PATIL_V',
-      'STATUS: ACCESS GRANTED'
-    ];
-
-    let currentLineIdx = 0;
-    const interval = setInterval(() => {
-      if (currentLineIdx < lines.length) {
-        const lineVal = lines[currentLineIdx];
-        setTerminalText((prev) => [...prev, lineVal]);
-        currentLineIdx++;
-      } else {
-        clearInterval(interval);
-
-        // Progress bar simulation using CSS transition
-        setProgress(100);
-        setTimeout(() => {
-          setAccessGranted(true);
-        }, 1200);
-      }
-    }, 450);
-
-    return () => clearInterval(interval);
-  }, []);
-
-
-
-  // Artist section theme transition observer
-  useEffect(() => {
-    if (!accessGranted) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsArtistActive(entry.isIntersecting);
-      },
-      { threshold: 0.2, rootMargin: '-10% 0px -10% 0px' }
-    );
-
-    if (artistRef.current) observer.observe(artistRef.current);
-
-    return () => observer.disconnect();
-  }, [accessGranted]);
-
-
-
-
-
-
-
-
-  // Handle clicking escape to close modals
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setActiveCert(null);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  const skipEntry = () => setAccessGranted(true);
-
-  // Render entry gate
-  if (!accessGranted) {
-    return (
-      <div className={styles.entryScreen}>
-        <div className={styles.entryScanline} />
-        <div className={styles.terminal}>
-          <div className={styles.terminalHeader}>
-            <span className={styles.terminalDot} />
-            <span className={styles.terminalDot} />
-            <span className={styles.terminalDot} />
-            <span className={styles.terminalTitle}>SECURE CLIENT SHELL</span>
-          </div>
-          <div className={styles.terminalContent}>
-            {terminalText.map((line, idx) => (
-              <p
-                key={idx}
-                className={line.includes('GRANTED') ? styles.textGranted : styles.textCommand}
-              >
-                {line}
-              </p>
-            ))}
-
-            {terminalText.length >= 4 && (
-              <div className={styles.progressContainer}>
-                <div className={styles.progressBar} style={{ width: `${progress}%` }} />
-                <span className={styles.progressPct}>{progress}%</span>
-              </div>
-            )}
-
-            {terminalText.length >= 4 && progress >= 100 && (
-              <p className={styles.textLoading}>DECRYPTING ARCHIVE AND INITIALIZING INTERFACE...</p>
-            )}
-
-            <button onClick={skipEntry} className={styles.skipBtn}>
-              [ BYPASS PROTOCOL ]
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
+  const showAllSketches = true;
   return (
-    <>
-      <Navbar />
-      <div
-        className={`${styles.dossierContainer} ${isArtistActive ? styles.artistMode : ''}`}
-        id="dossier-root"
-      >
-        <div className={styles.filmGrain} />
-
-        <MusicianSection />
-
-        {/* -------------------------------------------------------------
-            SECTION 02: MISSION LOGS
-            ------------------------------------------------------------- */}
-        <section ref={logsRef} className={`${styles.missionLogsSection} ${isLogsNear ? styles.isActive : styles.isPaused}`} id="mission-logs">
-          <div className={styles.gridOverlay} />
-
-          <div className={styles.sectionHeaderCentered}>
-            <span className={styles.sectionCategory}>INTEL_LOGS // REPOSITORY</span>
-            <h2 className={styles.logsLargeTitle}>MISSION LOGS</h2>
-            <p className={styles.logsSubtitle}>Problems. Pressure. Deadlines.</p>
-          </div>
-
-          {/* 2-Column Split Dashboard */}
-          <div className={styles.intelDashboard}>
-            {/* Column 1: Pinned Evidence Board */}
-            <div className={styles.boardCol}>
-              <div className={styles.intelBoard}>
-                {/* Background Classified Stamp */}
-                <div className={styles.classifiedStampBg}>CLASSIFIED // TOP SECRET</div>
-
-                {/* SVG Connecting threads (complex web of evidence) */}
-                <svg className={styles.connectionsSvg} aria-hidden="true">
-                  {/* Static glow lines */}
-                  <line x1="18%" y1="20%" x2="30%" y2="68%" className={styles.logLineGlow} />
-                  <line x1="30%" y1="68%" x2="82%" y2="70%" className={styles.logLineGlow} />
-                  <line x1="82%" y1="70%" x2="78%" y2="22%" className={styles.logLineGlow} />
-                  <line x1="78%" y1="22%" x2="18%" y2="20%" className={styles.logLineGlow} />
-
-                  {/* Animated paths */}
-                  <line x1="18%" y1="20%" x2="30%" y2="68%" className={styles.logLine} />
-                  <line x1="30%" y1="68%" x2="82%" y2="70%" className={styles.logLine} />
-                  <line x1="82%" y1="70%" x2="78%" y2="22%" className={styles.logLine} />
-                  <line x1="78%" y1="22%" x2="18%" y2="20%" className={styles.logLine} />
-                  {/* Cross connections */}
-                  <line x1="18%" y1="20%" x2="82%" y2="70%" className={styles.logLineCross} />
-                  <line x1="30%" y1="68%" x2="78%" y2="22%" className={styles.logLineCross} />
-                </svg>
-
-                {missionLogs.map((log) => (
-                  <div
-                    key={log.id}
-                    className={`${styles.pinNode} ${hoveredLog?.id === log.id ? styles.pinNodeActive : ''}`}
-                    style={{ left: log.coordinates.x, top: log.coordinates.y }}
-                    onMouseEnter={() => setHoveredLog(log)}
-                    onMouseLeave={() => setHoveredLog(null)}
-                    onClick={() => setActiveCert(log)}
-                    role="button"
-                    tabIndex={0}
-                    aria-label={`View log details for ${log.name}`}
-                    id={`intel-pin-${log.id.toLowerCase()}`}
-                  >
-                    <div className={styles.pinDot} />
-                    <div className={styles.pinPulse} />
-
-                    <div className={styles.evidencePolaroid}>
-                      <div className={styles.polaroidPin} />
-                      <div className={styles.polaroidStamp}>
-                        {log.achievement.includes('RANK 1') || log.achievement.includes('1ST') ? '1ST PLACE' : 'WINNER'}
-                      </div>
-
-                      <div className={styles.polaroidImageMock}>
-                        <Image
-                          src={log.image}
-                          alt={log.name}
-                          fill
-                          sizes="180px"
-                          className={styles.polaroidImg}
-                        />
-                      </div>
-
-                      <div className={styles.polaroidCaption}>
-                        <span className={styles.polaroidId}>{log.id}</span>
-                        <strong className={styles.polaroidName}>{log.name}</strong>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Column 2: Dashboard Terminal Briefing Reader */}
-            <div className={styles.consoleCol}>
-              <div className={styles.intelligenceReport}>
-                <div className={styles.reportHeader}>
-                  <span className={styles.reportStatus}>INTEL REPORT : ACTIVE</span>
-                  <span className={styles.reportConsoleLine}>CONSOLE_SYS_v2.0</span>
-                </div>
-                <div className={styles.reportContent}>
-                  {hoveredLog ? (
-                    <div className={styles.reportDetails}>
-                      <div className={styles.reportTitleRow}>
-                        <span className={styles.reportLabel}>EVENT:</span>
-                        <h4 className={styles.reportTitle}>{hoveredLog.name}</h4>
-                      </div>
-
-                      <div className={styles.reportAchievementRow}>
-                        <span className={styles.reportLabel}>CLASSIFICATION / OUTCOME:</span>
-                        <div className={styles.reportAchievementVal}>{hoveredLog.achievement}</div>
-                      </div>
-
-                      <div className={styles.reportMetaRow}>
-                        <div>
-                          <span className={styles.reportLabel}>YEAR:</span>
-                          <span className={styles.reportVal}>{hoveredLog.year}</span>
-                        </div>
-                        <div>
-                          <span className={styles.reportLabel}>ROLE:</span>
-                          <span className={styles.reportVal}>{hoveredLog.role}</span>
-                        </div>
-                      </div>
-
-                      <div className={styles.reportDescBlock}>
-                        <span className={styles.reportLabel}>BRIEFING:</span>
-                        <p className={styles.reportDesc}>{hoveredLog.description}</p>
-                        <button
-                          className={styles.decryptEvidenceBtn}
-                          onClick={() => setActiveCert(hoveredLog)}
-                        >
-                          DECRYPT CERTIFICATE EVIDENCE →
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className={styles.reportIdle}>
-                      <p className={styles.blinkText}>AWAITING TARGET PIN HOVER...</p>
-                      <p className={styles.idleHint}>Hover over nodes to extract mission data logs. Click nodes to view certificates.</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* -------------------------------------------------------------
-            SECTION 2.5: FIRST YEAR TOPPER ACROSS ALL BRANCHES
-            ------------------------------------------------------------- */}
+    <DossierClientWrapper missionLogs={missionLogs}>
+      <div className={styles.dossierContent}>
         <section className={styles.topperSection} id="topper">
           <div className={styles.gridOverlay} />
           <div className={styles.topperWrapper}>
@@ -532,10 +255,10 @@ export default function DossierPage() {
               {/* Right Column: Pinned Certificate Polaroid Frame */}
               <div 
                 className={styles.topperCertFrame} 
-                onClick={() => setActiveCert('/certs/Untitled design (1).webp')}
-                role="button"
-                tabIndex={0}
-                aria-label="View First Year Topper Certificate"
+                
+                
+                
+                
               >
                 <Image
                   src="/certs/Untitled design (1).webp"
@@ -553,7 +276,7 @@ export default function DossierPage() {
         {/* -------------------------------------------------------------
             SECTION 03: THE ARTIST
             ------------------------------------------------------------- */}
-        <section ref={artistRef} className={styles.artistSection} id="artist">
+        <section  className={styles.artistSection} id="artist">
           <div className={styles.artistWrapper}>
             <div className={styles.sectionHeaderCentered}>
               <span className={styles.sectionCategoryLight}>ARCHIVE_CREATOR // OBSERVATIONS</span>
@@ -611,7 +334,7 @@ export default function DossierPage() {
               )}
 
               {/* Collapsible/Expandable Sketches */}
-              {showAllSketches && (
+              
                 <>
                   <div className={styles.museumRow}>
                     {sketches.slice(3, 5).map((sketch, index) => (
@@ -665,7 +388,7 @@ export default function DossierPage() {
               <div className={styles.viewMoreContainer}>
                 <button
                   className={styles.viewMoreBtn}
-                  onClick={() => setShowAllSketches(!showAllSketches)}
+                  
                 >
                   {showAllSketches ? 'RESTRICT ARCHIVE VIEW [ -3 SCHEMES ]' : 'DECRYPT ALL EXHIBITS [ +3 SCHEMES ]'}
                 </button>
@@ -687,11 +410,11 @@ export default function DossierPage() {
 
           {/* Swatches Container */}
           <div className={styles.swatchesContainer}>
-            <span className={`${styles.swatch} ${styles.swatchOlive}`} />
-            <span className={`${styles.swatch} ${styles.swatchCharcoal}`} />
-            <span className={`${styles.swatch} ${styles.swatchGrey}`} />
-            <span className={`${styles.swatch} ${styles.swatchBlue}`} />
-            <span className={`${styles.swatch} ${styles.swatchRust}`} />
+            <span className="${styles.swatch} ${styles.swatchOlive}" />
+            <span className="${styles.swatch} ${styles.swatchCharcoal}" />
+            <span className="${styles.swatch} ${styles.swatchGrey}" />
+            <span className="${styles.swatch} ${styles.swatchBlue}" />
+            <span className="${styles.swatch} ${styles.swatchRust}" />
           </div>
 
           {/* Archive Title Block */}
@@ -708,7 +431,7 @@ export default function DossierPage() {
                   key={item.id}
                   className={styles.collagePhotoItem}
                   style={{ aspectRatio: item.aspectRatio }}
-                  onClick={() => setActiveCert(item.src)}
+                  
                 >
                   <Image
                     src={item.src}
@@ -728,7 +451,7 @@ export default function DossierPage() {
                   key={item.id}
                   className={styles.collagePhotoItem}
                   style={{ aspectRatio: item.aspectRatio }}
-                  onClick={() => setActiveCert(item.src)}
+                  
                 >
                   <Image
                     src={item.src}
@@ -748,7 +471,7 @@ export default function DossierPage() {
                   key={item.id}
                   className={styles.collagePhotoItem}
                   style={{ aspectRatio: item.aspectRatio }}
-                  onClick={() => setActiveCert(item.src)}
+                  
                 >
                   <Image
                     src={item.src}
@@ -886,9 +609,9 @@ export default function DossierPage() {
             {/* Right Certificate */}
             <div 
               className={styles.scoutCertContainer} 
-              onClick={() => setActiveCert('/certs/scout_cert.webp')}
-              role="button"
-              tabIndex={0}
+              
+              
+              
               aria-label="View Scout Certificate"
             >
               <Image
@@ -938,89 +661,6 @@ export default function DossierPage() {
 
 
 
-      {activeCert && (
-        <div
-          className={styles.certModalOverlay}
-          onClick={() => setActiveCert(null)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div
-            className={styles.certModalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className={styles.certModalClose}
-              onClick={() => setActiveCert(null)}
-              aria-label="Close certificate"
-            >
-              [ CLOSE EVIDENCE × ]
-            </button>
-
-            {typeof activeCert !== 'string' ? (
-              /* Split Layout for Certificates / Mission Logs (Responsive) */
-              <div className={styles.certModalBody}>
-                <div className={styles.certModalImageWrapper}>
-                  <Image
-                    src={activeCert.image}
-                    alt={activeCert.name}
-                    width={1000}
-                    height={700}
-                    className={styles.certFullImg}
-                    priority
-                  />
-                </div>
-                <div className={styles.certModalDetails}>
-                  <div className={styles.certModalHeader}>
-                    <span className={styles.certModalLabel}>LOG REPORT:</span>
-                    <h3 className={styles.certModalTitle}>{activeCert.name}</h3>
-                  </div>
-
-                  <div className={styles.certModalMeta}>
-                    <div>
-                      <span className={styles.certModalLabel}>CLASSIFICATION / OUTCOME:</span>
-                      <div className={styles.certModalVal} style={{ color: '#D4A017' }}>{activeCert.achievement}</div>
-                    </div>
-                    <div className={styles.certModalMetaRow}>
-                      <div>
-                        <span className={styles.certModalLabel}>YEAR:</span>
-                        <span className={styles.certModalVal}>{activeCert.year}</span>
-                      </div>
-                      <div>
-                        <span className={styles.certModalLabel}>ROLE:</span>
-                        <span className={styles.certModalVal}>{activeCert.role}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className={styles.certModalDesc}>
-                    <span className={styles.certModalLabel}>BRIEFING ANALYSIS:</span>
-                    <p>{activeCert.description}</p>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              /* Simple Image-Only Layout (for other sections like drawings/photos) */
-              <div className={styles.certModalImageWrapper}>
-                <Image
-                  src={activeCert}
-                  alt="Archive Asset Preview"
-                  width={1000}
-                  height={700}
-                  className={styles.certFullImg}
-                  priority
-                />
-              </div>
-            )}
-
-            <div className={styles.certModalFooter}>
-              <span>ENCRYPTED_FILE_DECRYPTED</span>
-              <span>VP_SYS_INTEL_BOARD</span>
-            </div>
-          </div>
-        </div>
-      )}
-      <Footer />
-    </>
+          </DossierClientWrapper>
   );
 }

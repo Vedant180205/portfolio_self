@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Navbar from '../components/Navbar';
 import styles from './page.module.css';
 import type { Metadata } from 'next';
 
@@ -165,7 +164,6 @@ const JapaneseArtwork = () => (
 export default function EducationPage() {
   return (
     <main className={styles.mainContainer}>
-      <Navbar />
 
       {/* HERO SECTION */}
       <section className={styles.heroSection} aria-label="Hero Title">

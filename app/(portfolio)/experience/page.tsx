@@ -1,5 +1,9 @@
-import Navbar from '../components/Navbar';
+import type { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Experience — Vedant Patil',
+  description: 'Professional experience and roles',
+};
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './page.module.css';
@@ -7,8 +11,6 @@ import styles from './page.module.css';
 export default function ExperiencePage() {
   return (
     <>
-      <Navbar />
-
       <main>
         <section className={styles.hero} aria-label="Experience">
 

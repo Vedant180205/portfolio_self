@@ -1,5 +1,3 @@
-'use client';
-
 /* Workflow — flat icon grid, AI and productivity tools */
 const tools = [
   { name: 'Antigravity', icon: '/icons/antigravity.svg', invert: false },
@@ -10,13 +8,11 @@ const tools = [
   { name: 'GitHub Copilot', icon: '/icons/copilot.svg', invert: false },
 ];
 
-import { useNearViewport } from '../hooks/useNearViewport';
 import styles from './Workflow.module.css';
 
 export default function Workflow() {
-  const { ref, isNearViewport } = useNearViewport<HTMLElement>();
   return (
-    <section ref={ref} className={`${styles.section} ${isNearViewport ? styles.isActive : styles.isPaused}`} id="workflow" aria-label="Workflow tools">
+    <section className={`${styles.section} paused`} data-animate-pause id="workflow" aria-label="Workflow tools">
       {/* Header */}
       <div className={styles.header}>
         <span className={styles.eyebrow}>AI & UTILITIES</span>

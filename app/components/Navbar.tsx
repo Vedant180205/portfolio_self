@@ -58,10 +58,22 @@ export default function Navbar() {
     }
   }, [pathname]);
 
-  // Lock body scroll when drawer is open
+  // Lock body scroll when drawer is open (iOS compliant)
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (menuOpen) {
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.overscrollBehavior = 'none';
+    } else {
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.overscrollBehavior = '';
+    }
+    return () => {
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.overscrollBehavior = '';
+    };
   }, [menuOpen]);
 
   const handleLinkClick = (label: string) => {

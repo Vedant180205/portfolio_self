@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './Projects.module.css';
+import { ProjectModal } from './ProjectModal';
 
 const projects = [
   {
@@ -143,21 +144,7 @@ export default function Projects() {
   const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setSelectedProject(null);
-      }
-    };
-    if (selectedProject) {
-      window.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-    };
-  }, [selectedProject]);
+  
 
   const firstRowProjects = projects.slice(0, 3);
   const secondRowProjects = projects.slice(3, 6);
@@ -355,70 +342,8 @@ export default function Projects() {
       </div>
 
       {/* Modal Popup Details */}
-      {selectedProject && (
-        <div className={styles.modalBackdrop} onClick={() => setSelectedProject(null)}>
-          <div
-            className={styles.modalContainer}
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="modal-title"
-          >
-            <div className={styles.modalBody}>
-              {/* Left Column: text details & GitHub link */}
-              <div className={styles.modalLeft}>
-                <span className={styles.modalNumber}>
-                  {selectedProject.number} / {selectedProject.subtitle.toUpperCase()}
-                </span>
-                <h3 id="modal-title" className={styles.modalTitle}>
-                  {selectedProject.title}
-                </h3>
-                <div className={styles.modalDesc}>{selectedProject.description}</div>
-                <div className={styles.modalTags}>
-                  {selectedProject.tags.map((tag) => (
-                    <span key={tag} className={styles.modalTag}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <a
-                  href={selectedProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.modalGithubBtn}
-                  aria-label={`View ${selectedProject.title} repository on GitHub`}
-                >
-                  <GitHubIcon />
-                  <span>VIEW REPOSITORY</span>
-                </a>
-              </div>
-
-              {/* Right Column: high-res image */}
-              <div className={styles.modalRight}>
-                <div className={styles.modalImageWrapper}>
-                  <Image
-                    src={selectedProject.image}
-                    alt={selectedProject.imageAlt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    style={{ objectPosition: selectedProject.imagePosition, objectFit: 'cover' }}
-                    className={styles.modalImage}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Close button */}
-            <button
-              className={styles.modalCloseBtn}
-              onClick={() => setSelectedProject(null)}
-              aria-label="Close project modal"
-            >
-              &times;
-            </button>
-          </div>
-        </div>
-      )}
+      
+      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
   );
 }
