@@ -1,238 +1,280 @@
 <div align="center">
 
-![Vedant Patil Portfolio Banner](public/ui/banner.png)
+# ⚡ Vedant Patil — Portfolio
 
-# 🚀 Vedant Patil — Premium Developer Portfolio & Interactive Dossier
+### Next.js 16 · React 19 · TypeScript · CSS Modules · 60 FPS
 
-### A next-generation full-stack developer portfolio built with Next.js 16, React 19, and TypeScript, featuring a high-performance interactive espionage dossier, 60fps hardware-accelerated animations, and zero-JS-library custom engines.
-
-![Next.js](https://img.shields.io/badge/Next.js-16.2.7-black?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/React-19.2.4-blue?style=for-the-badge&logo=react&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript&logoColor=white)
-![CSS Modules](https://img.shields.io/badge/CSS--Modules-scoped-00C5FF?style=for-the-badge&logo=css3&logoColor=white)
-![Performance](https://img.shields.io/badge/Performance-60_FPS-success?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Performance](https://img.shields.io/badge/Perf-60_FPS_Locked-00C896?style=for-the-badge)
+![SEO](https://img.shields.io/badge/SEO-Schema_%2B_OG_%2B_Sitemap-FF6B35?style=for-the-badge)
 
 </div>
 
 ---
 
-## 🌟 The Vision
+## 🔥 What This Is
 
-A personal developer portfolio designed to **wow** at first glance. Featuring a dark-mode landing page and an espionage-themed interactive dossier at `/dossier`. Every animation, scroll effect, and component is hand-crafted and highly optimized for maximum rendering performance, utilizing real WebAudio synthesizers, HTML5 Canvas animations, a functional Soroban abacus, and a hackathon evidence pinboard — **all rendered client-side with zero external JS animation libraries.**
+A personal developer portfolio built to be **fast, accessible, and deeply engineered** — not just pretty. The codebase recently went through a full **4-stage performance & architecture overhaul**, eliminating scroll jank, slashing GPU overhead, restructuring the routing, and locking in proper SEO. Every optimization is documented below.
 
 ---
 
-## 🔥 Key Features & Modules
+## 🏗️ Architecture
 
-| Module | Description | Status |
+```
+app/
+├── layout.tsx                   # Root shell — fonts, metadata, JSON-LD, Script injection
+├── globals.css                  # Design tokens, dark/light mode, base resets
+├── (portfolio)/                 # Route group — shared portfolio layout
+│   ├── layout.tsx               # Portfolio-scoped layout (Navbar + Footer)
+│   ├── page.tsx                 # Homepage (Hero → Projects → TechStack → Workflow → Certs)
+│   ├── education/               # Education timeline page
+│   └── experience/              # Experience page
+├── dossier/                     # Espionage-themed interactive dossier (/dossier)
+│   ├── layout.tsx               # Dossier-scoped layout
+│   ├── page.tsx                 # State controller (cleaned from 800+ lines → modular)
+│   └── page.module.css
+├── components/
+│   ├── Navbar.tsx / .module.css # Hardware-accelerated fixed navbar w/ passive scroll
+│   ├── Hero.tsx                 # Viewport-locked landing screen
+│   ├── Projects.tsx             # Project cards + ProjectModal.tsx (native dialog)
+│   ├── Footer.tsx               # Conditional footer (excluded from sub-pages)
+│   ├── dossier/
+│   │   ├── TerminalGate.tsx     # SYS_INIT decryption terminal
+│   │   ├── DossierClientWrapper.tsx
+│   │   ├── MissionLogBoard.tsx  # Hackathon pinboard (extracted from page.tsx)
+│   │   └── ArtistObserver.tsx   # IntersectionObserver isolation
+│   └── ...
+├── hooks/
+│   └── useNearViewport.ts       # Viewport-proximity hook for deferred renders
+├── robots.ts                    # Auto-generated robots.txt
+└── sitemap.ts                   # Auto-generated sitemap.xml
+```
+
+---
+
+## 🚀 The 4-Stage Optimization Sprint
+
+This repo went through a structured, staged overhaul. Here's exactly what changed and why.
+
+---
+
+### Stage 1 — Quick Wins: `use client` Fixes, CSS Cleanup & Metadata
+**Commit:** `25df1c3`
+
+| Fix | What Happened |
+|---|---|
+| `"use client"` directives | Added missing directives to `Certifications.tsx` and `Education.tsx` to stop them being incorrectly treated as Server Components |
+| Dossier state cleanup | Removed redundant `useState` initialisations and restructured conditional rendering in `dossier/page.tsx` |
+| Metadata baseline | Added `<meta>` viewport, charset, and basic title/description to `app/layout.tsx` |
+| Education page SEO | Added per-page `export const metadata` to `education/page.tsx` |
+
+---
+
+### Stage 2 — Fonts, Assets & SEO
+**Commit:** `64c09f2`
+
+#### 🔤 Font Loading: CDN → `next/font/google`
+Replaced every `@import url('https://fonts.googleapis.com/...')` in CSS with Next.js native font loading — **zero render-blocking font requests**:
+
+```ts
+// app/layout.tsx
+import { Protest_Guerrilla, Russo_One, Goldman } from 'next/font/google';
+
+const protestGuerrilla = Protest_Guerrilla({
+  weight: '400', subsets: ['latin'],
+  variable: '--font-protest-guerrilla',
+  display: 'swap',   // prevents FOIT
+});
+```
+
+All three font families (`Protest Guerrilla`, `Russo One`, `Goldman`) are now self-hosted via Next.js font infrastructure with `display: swap`.
+
+#### 🖼️ Image Asset Pipeline
+- Converted all portfolio images to **WebP** format (`scripts/compress-images.js`)
+- Converted all certification images to WebP (`public/certs/*.webp`)
+- Replaced `public/ui/logo.png` (709 KB PNG) with `logo-new.webp` (2.2 KB) — **99.7% size reduction**
+- Downloaded all tech stack icons as local SVGs (`scripts/download-icons.js`) — eliminates external CDN calls to `skillicons.dev` at runtime
+
+#### 🤖 SEO Infrastructure
+Added auto-generated files:
+```ts
+// app/robots.ts
+export default function robots(): MetadataRoute.Robots { ... }
+
+// app/sitemap.ts
+export default function sitemap(): MetadataRoute.Sitemap { ... }
+```
+
+Added full Open Graph, Twitter card metadata, and **JSON-LD `Person` schema** to root layout:
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vedant Patil",
+  "url": "https://vedantpatil.dev",
+  "jobTitle": "Electronics & Computer Science Engineer"
+}
+```
+
+---
+
+### Stage 3 — Component Separation & Native Dialogs
+**Commit:** `17e2a86`
+
+The biggest structural refactor. `dossier/page.tsx` was a 800+ line God Component. It got dismembered.
+
+#### Route Group Restructuring
+Moved education and experience pages into an `(portfolio)` route group with a **shared layout** (`Navbar` + `Footer`) — eliminating redundant layout code copy-pasted into every page:
+
+```
+Before:  app/education/page.tsx  (manual Navbar import)
+After:   app/(portfolio)/education/page.tsx  (inherits from group layout)
+```
+
+#### Dossier Decomposition
+
+| New Component | Extracted From | Responsibility |
 |---|---|---|
-| **Editorial Hero Interface** | Heavy typography-driven intro layout featuring dynamic filtering, parallax layers, and hardware-accelerated animations. | ✅ Live |
-| **Experience Timeline** | Modern professional journey timeline with responsive card layouts, WebP/AVIF optimized assets, and clean editorial UI. | ✅ Live |
-| **Tactile Theme Switch** | Sound-faded pull-cord toggle utilizing local WebAudio elements and localStorage persistence. | ✅ Live |
-| **SYS_INIT Decryptor** | Espionage terminal interface locking content behind network handshakes, key logging, and bypass loops. | ✅ Live |
-| **Audio-Wave Synthesizer** | HTML5 Canvas wave generator compiling floating trigonometric sine values and sound-notation overlays. | ✅ Live |
-| **Mission Log Pinboard** | Glowing red threads mapping hackathon nodes with interactive coordinate terminals. | ✅ Live |
-| **Soroban Abacus** | Fully functional Japanese abacus simulator compiling active bead binary grids. | ✅ Live |
-| **Musician Collage** | Alternating performance scrapbook grids featuring carefully tuned padding, drop shadows, and static layouts. | ✅ Live |
+| `TerminalGate.tsx` | `dossier/page.tsx` | SYS_INIT decryption terminal UI |
+| `DossierClientWrapper.tsx` | `dossier/page.tsx` | Client boundary + mount orchestration |
+| `MissionLogBoard.tsx` | `dossier/page.tsx` | Hackathon canvas pinboard (139 lines) |
+| `ArtistObserver.tsx` | `dossier/page.tsx` | Isolated IntersectionObserver logic |
+
+**`dossier/page.tsx` went from ~800 lines → ~150 lines.**
+
+#### Projects Modal: `div` → Native `<dialog>`
+Replaced the custom overlay div in `Projects.tsx` with a native HTML `<dialog>` element extracted to `ProjectModal.tsx`:
+
+```tsx
+// ProjectModal.tsx — uses native <dialog> with showModal() / close()
+<dialog ref={dialogRef} className={styles.modal}>
+  ...
+</dialog>
+```
+
+Benefits: native focus trapping, ESC to close, accessibility semantics, no z-index wars.
+
+#### Deferred Rendering Hook
+Added `app/hooks/useNearViewport.ts` — a lightweight `IntersectionObserver` hook that defers rendering of below-fold sections until they approach the viewport:
+
+```ts
+export function useNearViewport(ref, rootMargin = '200px') {
+  // Returns `isNear: boolean` — components only render when close to viewport
+}
+```
+
+#### Animation Pause Script
+Added `public/scripts/animate-pause.js` — loaded via `<Script strategy="afterInteractive">` — automatically pauses CSS animations on elements outside the viewport to stop wasted GPU cycles on hidden content.
 
 ---
 
-## ⚡ Performance Optimizations & Scroll Jank Fixes
+### Stage 4 — Final Polish, Accessibility & Dead Code Removal
+**Commit:** `ab48fb8`
 
-To achieve a flawless **60 FPS** scroll experience across both desktop and mobile, deep rendering pipeline optimizations were implemented:
+| Action | File | Detail |
+|---|---|---|
+| Dead code purge | `About.tsx` | Removed unused state variables and commented-out JSX blocks |
+| Navbar cleanup | `Navbar.tsx` | Stripped 20+ lines of redundant inline style overrides, now fully driven by CSS module |
+| Accessibility | `Navbar.module.css` | Added `focus-visible` ring styles to all interactive nav elements |
+| Terminal fix | `TerminalGate.tsx` | Fixed console log timing bug causing terminal to freeze on slow connections |
+| Dossier cleanup | `dossier/page.tsx` | Removed 11 lines of stale event handlers left over from the monolith |
+| Layout consolidation | `layout.tsx` | Removed duplicate `<head>` tag remnants |
 
-### 1. Eliminating Scroll Jank & Mobile Touch Inertia Jitter
-We conducted a deep root-cause investigation into a 300–500ms scroll micro-jump. We identified and fixed the following:
-*   **Mobile Scroll-Snap Engine:** Removed redundant `scroll-snap-type: y proximity` on the HTML root which was causing the browser to constantly evaluate scroll frames for snap targets (even when none existed), leading to touch scroll inertia stutter.
-*   **Desktop Compositor Paint Lag:** Optimized `backdrop-filter: blur(16px)` on the fixed `.navbar.scrolled`. Real-time GPU blur processing of heavy under-scroll layers (like the SVG `.filmGrain`) was causing composite thread bottlenecks. We implemented selective opacity and solid backgrounds to keep paint tasks under 16.7ms.
-*   **Hardware Compositing Layer Management:** Reduced GPU layer explosion by removing excessive `will-change: transform` tags, preventing graphics memory saturation while scrolling the Dossier.
+---
 
-### 2. GPU Compositor Layer Promotion
-Standard browsers run transitions on the CPU, causing full repaints. We promote active cards to their own **GPU Compositing Layer**:
+## 🛠️ Scroll Jank Elimination
+
+Before the optimization sprint, users experienced a **300–500ms scroll micro-jump** on `/` and `/dossier`. A full root-cause investigation was conducted — see [`docs/scroll-jank-root-cause-report.md`](docs/scroll-jank-root-cause-report.md).
+
+### Root Causes Found & Fixed
+
+**1. Orphaned `scroll-snap-type` on `<html>` (Mobile)**
+
+`scroll-snap-type: y proximity` was set on the root HTML element with **no child elements defining `scroll-snap-align`**. The browser's snap engine was constantly evaluating snap points on layout boundaries during touch-inertia scroll — causing jitter.
+
 ```css
-.photoCardCollage, .leaderInfoCard {
-  will-change: transform; /* Used sparingly to prevent memory leaks */
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0); /* Forces GPU hardware acceleration */
+/* REMOVED from globals.css */
+html {
+  scroll-snap-type: y proximity;  /* caused mobile touch scroll stutter */
+  scroll-padding-top: 80px;
 }
 ```
 
-### 3. CSS Paint Containment
-Implemented `content-visibility: auto` with `contain-intrinsic-size` on heavy sections, instructing the browser to skip layout and paint calculations for deep-fold content until it enters the viewport.
+**2. `backdrop-filter: blur(16px)` on Fixed Navbar (Desktop)**
 
-### 4. Next.js Native Image Optimization
-Configured native Next.js `<Image />` components with aggressive AVIF/WebP generation, strict `sizes` definitions mapping precisely to CSS media queries, and `priority` fetching for LCP assets to achieve near-instant above-the-fold paint times.
+Real-time GPU blur of complex under-scroll layers (film grain SVG overlay, dense grid layouts) was hitting the compositor thread. Fixed by tightening the blur trigger threshold and using solid `rgba` backgrounds on scroll state instead.
 
----
+**3. Passive Scroll Listener in Navbar**
 
-## 🏛️ System Architecture
+`Navbar.tsx` was registering a synchronous scroll event listener, blocking the browser's ability to optimise scroll behaviour:
 
-The project is structured into modular context layouts, timeline segments, and secure dossier modules:
+```ts
+// BEFORE — blocks scroll thread
+window.addEventListener('scroll', handleScroll);
 
-```mermaid
-graph TD
-    subgraph Browser["🖥️ Client Viewport"]
-        Layout["app/layout.tsx\n(HTML Shell & HSL Tokens)"]
-        Nav["Navbar Component\n(Hardware Accelerated)"]
-        Cord["ThemeToggle.tsx\n(Tactile Pull-Cord Audio)"]
-    end
-
-    subgraph Dossier["📁 Decrypted Dossier (/dossier)"]
-        Page["dossier/page.tsx\n(State Controller)"]
-        Canvas["Canvas Waveform\n(HTML5 Sine Engine)"]
-        Pinboard["Log Pinboard\n(Vector Pathing)"]
-        Abacus["Soroban Calculator\n(Binary state arrays)"]
-    end
-
-    subgraph Timeline["⏱️ Academic Timeline"]
-        Ed["Education.tsx\n(Timeline Spine)"]
-    end
-
-    Layout --> Nav
-    Layout --> Cord
-    Layout --> Page
-    Page --> Canvas
-    Page --> Pinboard
-    Page --> Abacus
-    Layout --> Ed
+// AFTER — passive + state gating to skip redundant setState
+window.addEventListener('scroll', handleScroll, { passive: true });
 ```
 
+**4. Excessive `will-change: transform` on Dossier**
+
+Multiple elements in `dossier/page.module.css` and `MusicianSection.module.css` were tagged with `will-change: transform` even when static. This forced each element onto its own GPU compositing layer, saturating graphics memory during scroll.
+
+**5. `useNearViewport` Deferred Rendering**
+
+Heavy dossier sections (Abacus, MissionLog, ArtistCollage) now only mount when they're within 200px of the viewport, preventing unnecessary DOM and paint work for content the user hasn't scrolled to.
+
 ---
 
-## 🔐 Decryption & Initialization Pipeline
+## 🏎️ Next.js Config
 
-Content in the secure dossier is protected by a multi-stage initial handshake process before compiling DOM grids:
-
-```mermaid
-flowchart TD
-    A["HTTP Request /dossier"] --> B["SYS_INIT Decryptor Mounts"]
-    B --> C["Pre-load decryption sound alerts"]
-    C --> D["Execute simulation logs"]
-    D --> E{"Bypass protocol clicked?"}
-    E -->|"Yes"| F["Bypass auth checks & Mount Dossier UI"]
-    E -->|"No"| G{"Logs reach 100%?"}
-    G -->|"Yes"| F
-    G -->|"No"| H["Render network handshakes & loops"]
-    H --> D
-
-    F --> I["Initialize Canvas Sine Waves"]
-    F --> J["Map Hackathon Vector Nodes"]
-    F --> K["Bind Abacus Bead Coordinates"]
-    F --> L["Render Scrapbook Collages"]
+```ts
+// next.config.ts
+const nextConfig: NextConfig = {
+  images: {
+    formats: ['image/avif', 'image/webp'],          // AVIF-first, WebP fallback
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+};
 ```
 
----
-
-## 🛠️ Tech Stack & Tooling
-
-<div align="center">
-
-<table>
-  <tr>
-    <td align="center" width="120">
-      <img src="https://skillicons.dev/icons?i=nextjs" height="50" alt="Next.js"/><br/>
-      <sub><b>Next.js 16</b></sub>
-    </td>
-    <td align="center" width="120">
-      <img src="https://skillicons.dev/icons?i=react" height="50" alt="React 19"/><br/>
-      <sub><b>React 19</b></sub>
-    </td>
-    <td align="center" width="120">
-      <img src="https://skillicons.dev/icons?i=ts" height="50" alt="TypeScript"/><br/>
-      <sub><b>TypeScript</b></sub>
-    </td>
-    <td align="center" width="120">
-      <img src="https://skillicons.dev/icons?i=css" height="50" alt="CSS Modules"/><br/>
-      <sub><b>CSS Modules</b></sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="120">
-      <img src="https://skillicons.dev/icons?i=html" height="50" alt="HTML5 Canvas"/><br/>
-      <sub><b>HTML5 Canvas</b></sub>
-    </td>
-    <td align="center" width="120">
-      <img src="https://skillicons.dev/icons?i=vite" height="50" alt="Vite"/><br/>
-      <sub><b>Dev Server</b></sub>
-    </td>
-    <td align="center" width="120">
-      <img src="https://skillicons.dev/icons?i=github" height="50" alt="GitHub"/><br/>
-      <sub><b>Version Control</b></sub>
-    </td>
-    <td align="center" width="120">
-      <img src="https://skillicons.dev/icons?i=vscode" height="50" alt="VS Code"/><br/>
-      <sub><b>Development IDE</b></sub>
-    </td>
-  </tr>
-</table>
-
-<br/>
-
-<!-- Secondary Badges -->
-<img src="https://img.shields.io/badge/HTML5%20Audio%20Engine-654FF0?style=flat-square&logo=html5&logoColor=white" />
-<img src="https://img.shields.io/badge/Canvas%202D%20Context-00C5FF?style=flat-square&logo=canvas&logoColor=white" />
-<img src="https://img.shields.io/badge/Next.js%20App%20Router-000000?style=flat-square&logo=nextdotjs&logoColor=white" />
-<img src="https://img.shields.io/badge/Performance%20Optimized-34A853?style=flat-square&logo=google-chrome&logoColor=white" />
-
-</div>
+All images use `<Image />` from `next/image` with explicit `sizes` props and `priority` on LCP assets.
 
 ---
 
-## 📐 Detailed Engineering Deep-Dives
+## 🧑‍💻 Local Development
 
-<details>
-<summary><strong>🌊 Canvas Trigonometric Sine Wave Engine</strong></summary>
-
-The audio wave visualization engine in the Musician section maps classical vocals using HTML5 Canvas 2D math. We plot multiple overlapping sine waves using a dynamic time phase offset ($\phi$) to simulate harmonics:
-
-$$y(x) = A \cdot \sin\left(\frac{2\pi \cdot x}{\lambda} + \phi\right)$$
-
-We compile three distinct layers with variable transparency values, contrasting phase increments, and different frequencies to create a natural, organic acoustic ripple.
-</details>
-
-<details>
-<summary><strong>🧮 Soroban Abacus Column Matrix</strong></summary>
-
-Calculates active mathematical states across columns using a binary alignment array:
-```json
-{
-  "column": 0,
-  "upperBead": 0,
-  "lowerBeads": [1, 1, 0, 0]
-}
+```bash
+npm install
+npm run dev
 ```
-*Note: `upperBead` values (0: active/down) and `lowerBeads` indices (1: active/up) determine column value summation.*
-</details>
 
-<details>
-<summary><strong>📍 Hackathon Node Object</strong></summary>
-
-Used by the dynamic canvas log pin-board to map node locations and trigger encrypted modal payloads:
-```json
-{
-  "id": "log-01",
-  "name": "IO Hackathon 2026",
-  "achievement": "1st Place Winner",
-  "coordinates": { "x": 120, "y": 340 }
-}
-```
-</details>
+Runs on `http://localhost:3000`.
 
 ---
 
-## 🔮 Future Roadmap
+## 📦 Tech Stack
 
-1. **Localized WebGL Audio Spectrogram** — Implement live microphone diagnostics that map voice frequencies directly to the Canvas audio wave generator.
-2. **Interactive Decryption Keys** — Add custom key-matching inputs inside the `SYS_INIT` console instead of a single bypass button.
-3. **Parchment Overlay Shaders** — Integrate lightweight WebGL noise shaders over the Artist mode background to simulate real organic paper fiber textures.
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| UI | React 19 |
+| Language | TypeScript 5.x |
+| Styling | CSS Modules (zero Tailwind) |
+| Fonts | `next/font/google` (self-hosted, no CDN) |
+| Images | `next/image` (AVIF/WebP pipeline) |
+| Canvas | HTML5 Canvas 2D |
+| Audio | Web Audio API |
+| SEO | Open Graph + JSON-LD Schema + Sitemap |
+| Dialogs | Native HTML `<dialog>` |
 
 ---
 
 <div align="center">
 
-Built with **Next.js 16** • **React 19** • **TypeScript** • **Pure CSS Modules** • **100% Client-Side WebAudio & Canvas**
-
-*"Where Performance Meets Aesthetics."* 🚀
+*Built by Vedant Patil — Performance isn't optional.*
 
 </div>
