@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: 'Vedant Patil Portfolio',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/apple-touch-icon.png',
         width: 1200,
         height: 630,
       }
