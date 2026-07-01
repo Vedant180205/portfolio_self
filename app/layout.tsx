@@ -26,7 +26,7 @@ const goldman = Goldman({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://vedantpatil.dev'),
-  title: "Vedant Patil — Builder & Engineer",
+  title: "Vedant Patil | Creator, Innovator & Engineer",
   description:
     "Portfolio of Vedant Patil — I build real-world systems that combine embedded engineering, machine learning and software to solve meaningful problems.",
   keywords: ["Vedant Patil", "portfolio", "engineer", "builder", "embedded", "machine learning", "software"],
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     other: [{ rel: "icon", url: "/icon-192.png", sizes: "192x192" }],
   },
   openGraph: {
-    title: "Vedant Patil — Builder & Engineer",
+    title: "Vedant Patil | Creator, Innovator & Engineer",
     description: "I build real-world systems that combine embedded engineering, machine learning and software to solve meaningful problems.",
     url: 'https://vedantpatil.dev',
     siteName: 'Vedant Patil Portfolio',
