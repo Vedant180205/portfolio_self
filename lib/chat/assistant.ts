@@ -43,8 +43,15 @@ export const sendMessage = async (
     // BM25 retrieval — top 3 relevant chunks
     let context = '';
     if (searchEngine) {
-      const results = searchEngine.search(question, { fuzzy: 0.2 }).slice(0, 3);
+      // Take top 2 results instead of 3 to save tokens
+      const results = searchEngine.search(question, { fuzzy: 0.2 }).slice(0, 2);
       context = results.map((r) => r.text as string).join('\n\n');
+      
+      // Hard cap the context at ~8000 characters (approx 2000 tokens) 
+      // to ensure we never exceed Groq's 6000 TPM free tier limit
+      if (context.length > 8000) {
+        context = context.substring(0, 8000) + '\n...[Context Truncated]';
+      }
     }
 
     // Trim history to last N turns to control token usage
