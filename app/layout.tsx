@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Protest_Guerrilla, Russo_One, Goldman } from 'next/font/google';
 import Script from 'next/script';
 import "./globals.css";
+import { GlobalChatAssistant } from '@/components/chat';
 
 const protestGuerrilla = Protest_Guerrilla({
   weight: '400',
@@ -82,6 +83,7 @@ export default function RootLayout({
       <body>
         {children}
         <Script src="/scripts/animate-pause.js" strategy="afterInteractive" />
+        <GlobalChatAssistant />
       </body>
     </html>
   );
