@@ -151,9 +151,12 @@ ${context || 'No context available.'}`;
         'Connection':    'keep-alive',
       },
     });
-  } catch (err) {
+  } catch (err: any) {
     console.error('[Chat API]', err);
-    return new Response(JSON.stringify({ error: 'Internal server error' }), {
+    return new Response(JSON.stringify({ 
+      error: 'Internal server error', 
+      details: err?.message || String(err) 
+    }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
