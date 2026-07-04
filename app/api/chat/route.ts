@@ -1,8 +1,8 @@
 import { Groq } from 'groq-sdk';
 import { NextRequest } from 'next/server';
 
-// ── Groq client (module-level singleton) ────────────────────────────────────
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+// Groq client initialized lazily inside POST to avoid top-level crashes if API key is missing
+let groq: Groq | null = null;
 
 // ── In-memory rate limiter ───────────────────────────────────────────────────
 // Tracks request timestamps per IP within a sliding window.
@@ -53,6 +53,17 @@ interface ChatBody {
 // ── Route handler ─────────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
   try {
+    if (!process.env.GROQ_API_KEY) {
+      return new Response(JSON.stringify({ error: 'Server misconfiguration: GROQ_API_KEY is missing.' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (!groq) {
+      groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+    }
+
     // Resolve client IP (works behind Vercel / Cloudflare)
     const ip =
       req.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
