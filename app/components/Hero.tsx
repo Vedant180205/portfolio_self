@@ -214,13 +214,13 @@ export default function Hero() {
       <div className={styles.imageWrapper} aria-hidden="true">
         <div className={styles.imageInner}>
           <Image
-            src="/images/avatar/vedant.webp"
+            src="/images/avatar/vedant-hero.webp"
             alt="Vedant Patil"
             fill
             priority
-            quality={90}
+            quality={95}
             className={styles.portrait}
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
           />
           {/* Bottom fade into background */}
           <div className={styles.imageFade} />
