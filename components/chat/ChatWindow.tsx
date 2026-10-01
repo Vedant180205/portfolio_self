@@ -47,6 +47,7 @@ export const ChatWindow = () => {
               role="dialog"
               aria-modal="true"
               aria-label="AI Assistant Chat"
+              data-lenis-prevent
               className="chat-window-scrollbar"
               style={{
                 width: '100%',

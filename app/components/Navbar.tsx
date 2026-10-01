@@ -22,11 +22,19 @@ export default function Navbar() {
 
   useEffect(() => {
     let lastScrolled = false;
+    let ticking = false;
+
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      if (isScrolled !== lastScrolled) {
-        lastScrolled = isScrolled;
-        setScrolled(isScrolled);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isScrolled = window.scrollY > 20;
+          if (isScrolled !== lastScrolled) {
+            lastScrolled = isScrolled;
+            setScrolled(isScrolled);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

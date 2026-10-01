@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
+@import "lenis/dist/lenis.css";
 
 /* Removed Google Fonts @import for performance */
 
 html {
   scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
 *, *::before, *::after {

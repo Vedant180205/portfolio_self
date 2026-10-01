@@ -51,7 +51,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
   if (!project) return null;
 
   return (
-    <dialog ref={dialogRef} className={styles.projectDialog}>
+    <dialog ref={dialogRef} className={styles.projectDialog} data-lenis-prevent>
       <div className={styles.modalBody}>
         {/* Left Column: text details & GitHub link */}
         <div className={styles.modalLeft}>

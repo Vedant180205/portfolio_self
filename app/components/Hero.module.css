@@ -20,6 +20,7 @@
   background-size: 128px 128px;
   pointer-events: none;
   opacity: 0.35;
+  transform: translateZ(0);
 }
 
 /* ─── LEFT CONTENT ─── */
