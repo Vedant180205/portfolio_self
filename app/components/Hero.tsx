@@ -52,6 +52,8 @@ export default function Hero() {
   const stateRef = useRef<'typing' | 'pausing' | 'deleting'>('typing');
   const charRef = useRef(0);
   const roleRef = useRef(0);
+  const heroRef = useRef<HTMLElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
@@ -88,6 +90,57 @@ export default function Hero() {
     return () => clearTimeout(timeout);
   }, []);
 
+  // Interactive mouse tracking glow for desktop
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia('(max-width: 768px)').matches) return;
+
+    const hero = heroRef.current;
+    const glow = glowRef.current;
+    if (!hero || !glow) return;
+
+    let rafId: number;
+    let targetX = -500;
+    let targetY = -500;
+    let currentX = -500;
+    let currentY = -500;
+    let isInside = false;
+
+    const onMouseMove = (e: MouseEvent) => {
+      const rect = hero.getBoundingClientRect();
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
+      if (!isInside) {
+        isInside = true;
+        glow.style.opacity = '1';
+      }
+    };
+
+    const onMouseLeave = () => {
+      isInside = false;
+      glow.style.opacity = '0';
+    };
+
+    const animate = () => {
+      if (isInside) {
+        currentX += (targetX - currentX) * 0.12;
+        currentY += (targetY - currentY) * 0.12;
+        glow.style.transform = `translate3d(${currentX - 220}px, ${currentY - 220}px, 0)`;
+      }
+      rafId = requestAnimationFrame(animate);
+    };
+
+    hero.addEventListener('mousemove', onMouseMove, { passive: true });
+    hero.addEventListener('mouseleave', onMouseLeave, { passive: true });
+    rafId = requestAnimationFrame(animate);
+
+    return () => {
+      hero.removeEventListener('mousemove', onMouseMove);
+      hero.removeEventListener('mouseleave', onMouseLeave);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
   const renderLetters = (text: string, baseDelay: number) => {
     return text.split('').map((char, index) => (
       <span
@@ -104,7 +157,16 @@ export default function Hero() {
   };
 
   return (
-    <section className={`${styles.hero} paused`} data-animate-pause id="home" aria-label="Introduction">
+    <section ref={heroRef} className={`${styles.hero} paused`} data-animate-pause id="home" aria-label="Introduction">
+      {/* Ambient Grid Layer */}
+      <div className={styles.gridBg} aria-hidden="true" />
+
+      {/* Interactive Cursor Spotlight */}
+      <div ref={glowRef} className={styles.interactiveGlow} aria-hidden="true" />
+
+      {/* Secondary Ambient Corner Glow */}
+      <div className={styles.ambientGlow} aria-hidden="true" />
+
       {/* Background grain overlay */}
       <div className={styles.grain} aria-hidden="true" />
 
@@ -222,8 +284,6 @@ export default function Hero() {
             className={styles.portrait}
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
           />
-          {/* Bottom fade into background */}
-          <div className={styles.imageFade} />
         </div>
       </div>
     </section>

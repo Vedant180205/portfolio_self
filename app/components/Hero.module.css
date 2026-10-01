@@ -23,6 +23,55 @@
   transform: translateZ(0);
 }
 
+/* Ambient Cyber Grid Background (Desktop & Tablet only) */
+.gridBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(212, 160, 23, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+  -webkit-mask-image: radial-gradient(circle at 65% 45%, black 25%, transparent 80%), linear-gradient(to bottom, black 30%, transparent 95%);
+  mask-image: radial-gradient(circle at 65% 45%, black 25%, transparent 80%), linear-gradient(to bottom, black 30%, transparent 95%);
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+/* Dynamic Cursor Follower Glow (Desktop only) — Pure White */
+.interactiveGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 70%);
+  filter: blur(80px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate3d(-500px, -500px, 0);
+  will-change: transform;
+}
+
+/* Deep Atmosphere Corner Glow */
+.ambientGlow {
+  position: absolute;
+  left: -100px;
+  bottom: -80px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.16) 0%, rgba(212, 160, 23, 0.06) 50%, transparent 70%);
+  filter: blur(95px);
+  opacity: 0.65;
+  pointer-events: none;
+  z-index: 0;
+  transform: translateZ(0);
+}
+
 /* ─── LEFT CONTENT ─── */
 .content {
   position: relative;
@@ -380,23 +429,10 @@
 .portrait {
   object-fit: contain;
   object-position: center bottom;
-  filter: contrast(1.02) brightness(1);
   width: 79% !important;
   left: 2% !important;
   transform: none;
   z-index: 1;
-  -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.8) 10%, #000 22%, #000 100%);
-  mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.8) 10%, #000 22%, #000 100%);
-}
-
-/* Gradient fades: left edge blends into background */
-.imageFade {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to right, var(--color-bg) 0%, var(--color-bg) 5%, transparent 35%),
-    linear-gradient(to top, var(--color-bg) 0%, transparent 12%);
-  pointer-events: none;
 }
 
 /* ─── ANIMATIONS ─── */
@@ -467,8 +503,6 @@
     left: var(--image-left) !important;
     top: var(--image-padding-top) !important;
     height: calc(100% - var(--image-padding-top) - var(--image-padding-bottom)) !important;
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.8) 12%, #000 25%, #000 100%);
-    mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.8) 12%, #000 25%, #000 100%);
   }
 }
 
@@ -590,8 +624,11 @@
     margin: 0;
   }
 
-  .grain {
-    display: none;
+  .grain,
+  .gridBg,
+  .interactiveGlow,
+  .ambientGlow {
+    display: none !important;
   }
 
   .portrait {
