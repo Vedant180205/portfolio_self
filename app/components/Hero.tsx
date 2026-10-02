@@ -272,19 +272,26 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Right — Portrait Image */}
-      <div className={styles.imageWrapper} aria-hidden="true">
-        <div className={styles.imageInner}>
-          <Image
-            src="/images/avatar/vedant-hero.webp"
-            alt="Vedant Patil"
-            fill
-            priority
-            quality={95}
-            className={styles.portrait}
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
-          />
-        </div>
+      {/* Right — Dual Layered Portrait Visual */}
+      <div className={styles.heroVisual} aria-hidden="true">
+        <Image
+          src="/images/avatar/portrait-back.webp"
+          alt=""
+          width={486}
+          height={514}
+          priority
+          unoptimized
+          className={`${styles.heroPortrait} ${styles.heroPortraitBack}`}
+        />
+        <Image
+          src="/images/avatar/vedant-cutout.webp"
+          alt="Vedant Patil"
+          width={942}
+          height={1108}
+          priority
+          unoptimized
+          className={`${styles.heroPortrait} ${styles.heroPortraitFront}`}
+        />
       </div>
     </section>
   );

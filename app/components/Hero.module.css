@@ -111,7 +111,7 @@
 .headlineLine,
 .headlineLastName {
   display: block;
-  font-size: clamp(3.2rem, 10vw, 9rem);
+  font-size: clamp(3.8rem, 11.5vw, 10.5rem);
   font-weight: 400;
   /* Protest Guerrilla is single-weight */
   line-height: 0.92;
@@ -409,30 +409,68 @@
   background: var(--color-overlay);
 }
 
-/* ─── RIGHT IMAGE ─── */
-.imageWrapper {
+/* ─── RIGHT VISUAL COMPOSITION ─── */
+.heroVisual {
   position: absolute;
-  right: 2%;
-  top: 90px;
-  bottom: 0;
-  width: 50%;
+  right: 7%;
+  top: 50%;
+  transform: translateY(-46%);
+  width: auto;
+  height: auto;
+  max-width: 58vw;
+  overflow: visible;
+  pointer-events: none;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroPortrait {
+  display: block;
+  user-select: none;
   pointer-events: none;
 }
 
-.imageInner {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.heroPortraitBack {
+  position: absolute;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  max-height: 118vh;
+  top: 50%;
+  transform: translateY(-50%) scale(1.45);
+  right: -17%;
+  opacity: 0.45;
+  filter: grayscale(1) contrast(1.15) brightness(0.92);
+  transform-origin: center right;
+  mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 85%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 85%,
+    transparent 100%
+  );
 }
 
-.portrait {
-  object-fit: contain;
-  object-position: center bottom;
-  width: 79% !important;
-  left: 2% !important;
+.heroPortraitFront {
+  position: relative;
+  z-index: 2;
+  width: auto;
+  height: auto;
+  max-height: 94vh;
+  max-width: 100%;
+  left: -125px;
+  opacity: 1;
+  filter: grayscale(1) contrast(1.05);
   transform: none;
-  z-index: 1;
+  object-fit: contain;
 }
 
 /* ─── ANIMATIONS ─── */
@@ -474,35 +512,32 @@
 
 /* ─── RESPONSIVE MEDIA QUERIES ─── */
 @media (max-width: 1440px) and (min-width: 1025px) {
-  .imageWrapper {
-    top: 90px;
-    width: 48%;
+  .heroVisual {
+    max-width: 55vw;
+    right: 1%;
   }
 
-  .portrait {
-    width: 78% !important;
+  .heroPortraitFront {
+    max-height: 91vh;
+  }
+
+  .heroPortraitBack {
+    max-height: 125vh;
   }
 }
 
 @media (max-width: 1280px) and (min-width: 769px) {
-  .imageWrapper {
-    top: 85px;
-    width: 46%;
+  .heroVisual {
+    max-width: 53vw;
+    right: 0%;
   }
 
-  .imageInner {
-    --image-width: 85%;
-    --image-left: 0%;
-    --image-padding-top: 10px;
-    --image-padding-bottom: 0px;
+  .heroPortraitFront {
+    max-height: 89vh;
   }
 
-  .portrait {
-    object-position: center bottom !important;
-    width: var(--image-width) !important;
-    left: var(--image-left) !important;
-    top: var(--image-padding-top) !important;
-    height: calc(100% - var(--image-padding-top) - var(--image-padding-bottom)) !important;
+  .heroPortraitBack {
+    max-height: 120vh;
   }
 }
 
@@ -513,39 +548,43 @@
   }
 
   .content {
-    flex: 0 0 54%;
-    max-width: 54%;
+    flex: 0 0 50%;
+    max-width: 50%;
     padding-left: 2rem;
   }
 
-  .imageWrapper {
-    top: 80px;
-    width: 44%;
+  .heroVisual {
+    max-width: 50vw;
+    right: -1%;
   }
 
-  .portrait {
-    width: 87% !important;
+  .heroPortraitFront {
+    max-height: 86vh;
+  }
+
+  .heroPortraitBack {
+    max-height: 115vh;
   }
 }
 
-/* Height-based media queries: prevent head from touching navbar on short laptop screens */
+/* Height-based media queries */
 @media (min-width: 769px) and (max-height: 850px) {
-  .imageWrapper {
-    top: 85px;
+  .heroVisual {
+    transform: translateY(-46%);
   }
 
-  .portrait {
-    max-height: calc(100vh - 110px) !important;
+  .heroPortraitFront {
+    max-height: 94vh;
   }
 }
 
 @media (min-width: 769px) and (max-height: 720px) {
-  .imageWrapper {
-    top: 75px;
+  .heroVisual {
+    transform: translateY(-44%);
   }
 
-  .portrait {
-    max-height: calc(100vh - 95px) !important;
+  .heroPortraitFront {
+    max-height: 95vh;
   }
 }
 
@@ -579,7 +618,7 @@
 
   .headlineLine,
   .headlineLastName {
-    font-size: 4.5rem;
+    font-size: 5.2rem;
     line-height: 0.9;
     letter-spacing: 0.02em;
   }
@@ -611,17 +650,21 @@
     display: none;
   }
 
-  .imageWrapper {
+  .heroVisual {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1.4);
+    transform: translate(-50%, -50%) scale(1.35);
     width: 100%;
     height: 100%;
+    min-height: auto;
     z-index: 1;
     opacity: 0.22;
     pointer-events: none;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .grain,
@@ -631,11 +674,17 @@
     display: none !important;
   }
 
-  .portrait {
-    width: 100% !important;
-    height: 100% !important;
-    left: 0 !important;
-    top: 0 !important;
+  .heroPortraitBack {
+    display: none;
+  }
+
+  .heroPortraitFront {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    max-width: none;
+    height: 100%;
     object-fit: contain;
     object-position: center center;
     filter: brightness(0.8) contrast(1.1);
