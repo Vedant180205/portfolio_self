@@ -111,6 +111,7 @@
 .headlineLine,
 .headlineLastName {
   display: block;
+  white-space: nowrap;
   font-size: clamp(3.5rem, 10.8vw, 9.6rem);
   font-weight: 400;
   /* Protest Guerrilla is single-weight */
@@ -119,9 +120,16 @@
   color: var(--color-text-primary);
 }
 
+/* Unbreakable word container */
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 /* VEDANT */
 .headlineLine {
   display: block;
+  white-space: nowrap;
 }
 
 /* PATIL container */
@@ -130,11 +138,13 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0;
+  white-space: nowrap;
 }
 
 /* PATIL text — same metrics as VEDANT */
 .headlineLastName {
   color: var(--color-text-primary);
+  white-space: nowrap;
 }
 
 /* Individual letter base styles & animations */
@@ -621,6 +631,7 @@
     font-size: 4.8rem;
     line-height: 0.9;
     letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 
   .headlineLine {
@@ -766,6 +777,7 @@
   .headlineLine,
   .headlineLastName {
     font-size: clamp(3.2rem, 15vw, 4.4rem);
+    white-space: nowrap;
   }
 
   .heroPortraitFront {

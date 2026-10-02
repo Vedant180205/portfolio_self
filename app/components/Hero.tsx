@@ -142,18 +142,22 @@ export default function Hero() {
   }, []);
 
   const renderLetters = (text: string, baseDelay: number) => {
-    return text.split('').map((char, index) => (
-      <span
-        key={index}
-        className={styles.char}
-        style={{
-          '--char-index': index,
-          '--base-delay': `${baseDelay}s`,
-        } as React.CSSProperties}
-      >
-        {char}
+    return (
+      <span className={styles.word}>
+        {text.split('').map((char, index) => (
+          <span
+            key={index}
+            className={styles.char}
+            style={{
+              '--char-index': index,
+              '--base-delay': `${baseDelay}s`,
+            } as React.CSSProperties}
+          >
+            {char}
+          </span>
+        ))}
       </span>
-    ));
+    );
   };
 
   return (
