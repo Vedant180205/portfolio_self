@@ -82,8 +82,8 @@ const certs = [
 
 function ArrowUpRight() {
   return (
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-      <path d="M2 11L11 2M11 2H4.5M11 2V8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="15" height="15" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+      <path d="M2 11L11 2M11 2H4.5M11 2V8.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -150,7 +150,7 @@ export default function Certifications() {
               {/* Footer */}
               <div className={styles.cardFooter}>
                 <span className={styles.viewCta}>
-                  VIEW CREDENTIAL <ArrowUpRight />
+                  VIEW CERTIFICATE <ArrowUpRight />
                 </span>
               </div>
 

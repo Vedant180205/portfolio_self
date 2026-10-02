@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       <About />
       <Projects />
-      <section id="skills" data-stacked-section style={{ position: 'relative', overflow: 'hidden' }}>
+      <section id="skills" data-stacked-section style={{ position: 'relative', overflow: 'hidden', background: 'var(--color-bg-light)', boxShadow: '0 -25px 50px rgba(0, 0, 0, 0.45)' }}>
         <div data-stacked-inner>
           <TechStack />
           <Workflow />

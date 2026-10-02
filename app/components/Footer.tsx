@@ -46,8 +46,7 @@ export default function Footer() {
             <span className={styles.eyebrow}>Get In Touch</span>
             <h2 className={styles.heading}>Let&apos;s Connect</h2>
             <p className={styles.subtext}>
-              Open to collaborations, internships, and interesting projects.
-              Reach out and let&apos;s build something great.
+              Open to <strong>collaborations</strong>, <strong>internships</strong>, and <strong>interesting projects</strong>. Reach out and let&apos;s <strong>build something great</strong>.
             </p>
           </div>
 

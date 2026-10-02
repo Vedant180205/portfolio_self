@@ -24,8 +24,16 @@ function RouteScrollHandler() {
   const lenis = useLenis();
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
+  useEffect(() => {
     if (lenis && !window.location.hash) {
       lenis.scrollTo(0, { immediate: true });
+      window.scrollTo(0, 0);
+      ScrollTrigger.refresh();
     }
   }, [pathname, lenis]);
 

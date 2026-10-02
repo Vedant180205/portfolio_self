@@ -24,10 +24,6 @@ function ArrowDownIcon() {
 export default function About() {
   return (
     <section className={styles.section} id="about" aria-label="About" data-stacked-section>
-      {/* Decorative glows */}
-      <div className={styles.glowLeft} aria-hidden="true" />
-      <div className={styles.glowRight} aria-hidden="true" />
-
       {/* Corner bracket accents */}
       <div className={styles.cornerTL} aria-hidden="true" />
       <div className={styles.cornerBR} aria-hidden="true" />

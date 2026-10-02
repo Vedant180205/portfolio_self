@@ -23,24 +23,28 @@ html.lenis-smooth {
 ═══════════════════════════════ */
 :root {
   /* Brand */
-  --color-accent:      #7c3aed;
-  --color-accent-gold: #d4a017;
+  --color-accent:        #7c3aed;
+  --color-accent-gold:   #d4a017;
+  --color-accent-orange: #ff3e00;
 
   /* Accent variants — used in component hover/glow states */
-  --color-accent-soft:   rgba(124, 58, 237, 0.06);
-  --color-accent-border: rgba(124, 58, 237, 0.40);
-  --color-accent-glow:   rgba(124, 58, 237, 0.30);
+  --color-accent-soft:          rgba(124, 58, 237, 0.06);
+  --color-accent-border:        rgba(124, 58, 237, 0.40);
+  --color-accent-glow:          rgba(124, 58, 237, 0.30);
+  --color-accent-orange-soft:   rgba(255, 62, 0, 0.08);
+  --color-accent-orange-border: rgba(255, 62, 0, 0.45);
 
   /* Backgrounds */
-  --color-bg:        #0a0a0a;
-  --color-surface:   #111111;
-  --color-surface-2: #1a1a2e;
-  --color-surface-3: #0d0d0d;
-  --color-img-bg:    #0d0d0d;
+  --color-bg:          #121316;
+  --color-bg-light:    #eceef2;
+  --color-surface:     #1a1b20;
+  --color-surface-2:   #22232a;
+  --color-surface-3:   #16171c;
+  --color-img-bg:      #16171c;
 
   /* Text */
   --color-text-primary:   #ffffff;
-  --color-text-secondary: rgba(255, 255, 255, 0.70);
+  --color-text-secondary: rgba(255, 255, 255, 0.72);
   --color-text-muted:     rgba(255, 255, 255, 0.60);
   --color-text-faint:     rgba(255, 255, 255, 0.40);
 
@@ -51,9 +55,9 @@ html.lenis-smooth {
   --color-border-logo:   rgba(255, 255, 255, 0.90);
 
   /* Nav */
-  --color-nav-scrolled:   rgba(10, 10, 10, 0.95);
+  --color-nav-scrolled:   rgba(18, 19, 22, 0.95);
   --color-cta-bg-hover:   #ffffff;
-  --color-cta-text-hover: #0a0a0a;
+  --color-cta-text-hover: #121316;
   --color-cta-border:     rgba(255, 255, 255, 0.75);
 
   /* Decorative blocks */

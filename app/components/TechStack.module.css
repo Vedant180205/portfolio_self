@@ -1,9 +1,10 @@
 /* ─── SECTION ─── */
 .section {
-  background: var(--color-bg);
+  background: var(--color-bg-light);
   position: relative;
-  padding: 8rem 0 0;
+  padding: 5.5rem 0 0;
   overflow: hidden;
+  box-shadow: 0 -25px 50px rgba(0, 0, 0, 0.45);
 }
 
 .section::before {
@@ -13,7 +14,7 @@
   left: 3rem;
   right: 3rem;
   height: 1px;
-  background: var(--color-border-subtle);
+  background: rgba(0, 0, 0, 0.08);
 }
 
 /* ─── HEADER ─── */
@@ -23,7 +24,7 @@
   align-items: center;
   text-align: center;
   gap: 0.75rem;
-  padding: 0 2rem 4.5rem;
+  padding: 0 2rem 3rem;
 }
 
 .eyebrow {
@@ -32,9 +33,9 @@
   gap: 1rem;
   font-family: var(--font-body);
   font-size: 0.7rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.3em;
-  color: var(--color-accent);
+  color: var(--color-accent-orange);
   text-transform: uppercase;
 }
 
@@ -44,8 +45,8 @@
   display: block;
   width: 24px;
   height: 1px;
-  background: var(--color-accent);
-  opacity: 0.5;
+  background: var(--color-accent-orange);
+  opacity: 0.6;
 }
 
 .title {
@@ -53,7 +54,7 @@
   font-size: clamp(2.5rem, 5vw, 5rem);
   font-weight: 900;
   letter-spacing: 0.05em;
-  color: var(--color-text-primary);
+  color: #0a0a0a;
   line-height: 1;
   margin: 0;
 }
@@ -74,21 +75,22 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 1rem 0.5rem;
+  padding: 1.1rem 0.5rem;
   position: relative;
   overflow: hidden;
   cursor: default;
-  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
-  border: 1px solid var(--color-border-subtle);
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(0, 0, 0, 0.09);
   border-radius: 8px;
-  background: var(--color-surface);
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .card::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--color-accent-soft);
+  background: var(--color-accent-orange-soft);
   opacity: 0;
   transition: opacity 0.25s ease;
 }
@@ -98,8 +100,9 @@
 }
 
 .card:hover {
-  border-color: var(--color-accent-border);
-  transform: translateY(-2px);
+  border-color: var(--color-accent-orange);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 62, 0, 0.12);
   z-index: 1;
 }
 
@@ -125,23 +128,17 @@
   transform: scale(1.08);
 }
 
-/*
-  Some devicons (Next.js, GitHub, Flask, Express) ship as
-  black SVGs — fine in light mode, invisible in dark mode.
-  .invertDark flips them white in dark mode.
-*/
 :root .invertDark img {
-  /* dark mode (default :root) — invert the black icon to white */
-  filter: invert(1);
+  filter: none;
 }
 
 /* ─── CARD NAME ─── */
 .cardName {
   font-family: var(--font-body);
-  font-size: 0.65rem;
-  font-weight: 500;
+  font-size: 0.68rem;
+  font-weight: 600;
   letter-spacing: 0.05em;
-  color: var(--color-text-muted);
+  color: #222222;
   text-align: center;
   transition: color 0.25s ease;
   position: relative;
@@ -153,7 +150,7 @@
 }
 
 .card:hover .cardName {
-  color: var(--color-text-secondary);
+  color: var(--color-accent-orange);
 }
 
 /* ─── MARQUEE ─── */
@@ -161,10 +158,10 @@
   margin-top: 5rem;
   width: 100%;
   overflow: hidden;
-  border-top: 1px solid var(--color-border-subtle);
-  border-bottom: 1px solid var(--color-border-subtle);
-  padding: 1rem 0;
-  background: var(--color-surface-3);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1.1rem 0;
+  background: #0a0a0a;
 }
 
 .marqueeTrack {
@@ -175,19 +172,19 @@
 
 .marqueeItem {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: #ffffff;
   white-space: nowrap;
   padding: 0 0.5rem;
 }
 
 .marqueeDot {
   margin: 0 0.75rem;
-  color: var(--color-accent);
-  opacity: 0.6;
+  color: var(--color-accent-orange);
+  opacity: 1;
 }
 
 @keyframes marquee {
