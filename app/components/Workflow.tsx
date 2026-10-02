@@ -12,7 +12,7 @@ import styles from './Workflow.module.css';
 
 export default function Workflow() {
   return (
-    <section className={`${styles.section} paused`} data-animate-pause id="workflow" aria-label="Workflow tools">
+    <div className={`${styles.section} paused`} data-animate-pause id="workflow" aria-label="Workflow tools">
       {/* Header */}
       <div className={styles.header}>
         <span className={styles.eyebrow}>AI & UTILITIES</span>
@@ -49,6 +49,6 @@ export default function Workflow() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

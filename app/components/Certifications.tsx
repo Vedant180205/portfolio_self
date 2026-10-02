@@ -90,10 +90,10 @@ function ArrowUpRight() {
 
 export default function Certifications() {
   return (
-    <section className={styles.section} id="certifications" aria-label="Certifications">
+    <section className={styles.section} id="certifications" aria-label="Certifications" data-stacked-section>
       <span className={styles.bgWatermark} aria-hidden="true">07</span>
 
-      <div className={styles.container}>
+      <div className={styles.container} data-stacked-inner>
         {/* ── Header ── */}
         <div className={styles.header}>
           <div className={styles.headerLeft}>

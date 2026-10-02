@@ -3,6 +3,13 @@
 import { ReactNode, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { ReactLenis, useLenis } from 'lenis/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import StackedScrollManager from './StackedScrollManager';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface SmoothScrollProps {
   children: ReactNode;
@@ -10,7 +17,7 @@ interface SmoothScrollProps {
 
 /**
  * RouteScrollHandler resets the scroll position to top on route change
- * unless an in-page hash anchor is present in the URL.
+ * unless an in-page hash anchor is present in the URL, and refreshes ScrollTrigger.
  */
 function RouteScrollHandler() {
   const pathname = usePathname();
@@ -22,12 +29,17 @@ function RouteScrollHandler() {
     }
   }, [pathname, lenis]);
 
+  // Synchronize Lenis scroll updates with GSAP ScrollTrigger
+  useLenis(() => {
+    ScrollTrigger.update();
+  });
+
   return null;
 }
 
 /**
  * SmoothScroll wraps the root layout with a single global Lenis instance.
- * Configured for natural, responsive, and accessible smooth scrolling.
+ * Configured for natural, responsive, and accessible smooth scrolling with GSAP ScrollTrigger integration.
  */
 export default function SmoothScroll({ children }: SmoothScrollProps) {
   return (
@@ -54,6 +66,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
       }}
     >
       <RouteScrollHandler />
+      <StackedScrollManager />
       {children}
     </ReactLenis>
   );

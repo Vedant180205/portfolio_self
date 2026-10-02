@@ -12,10 +12,13 @@ export default function Home() {
       <Hero />
       <About />
       <Projects />
-      <TechStack />
-      <Workflow />
+      <section id="skills" data-stacked-section style={{ position: 'relative', overflow: 'hidden' }}>
+        <div data-stacked-inner>
+          <TechStack />
+          <Workflow />
+        </div>
+      </section>
       <Certifications />
-
     </main>
   );
 }

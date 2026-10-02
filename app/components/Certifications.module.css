@@ -7,8 +7,6 @@
   position: relative;
   padding: 5.5rem 0;
   overflow: hidden;
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 700px;
 }
 
 .section::before {

@@ -157,7 +157,7 @@ export default function Hero() {
   };
 
   return (
-    <section ref={heroRef} className={`${styles.hero} paused`} data-animate-pause id="home" aria-label="Introduction">
+    <section ref={heroRef} className={`${styles.hero} paused`} data-animate-pause id="home" aria-label="Introduction" data-stacked-section>
       {/* Ambient Grid Layer */}
       <div className={styles.gridBg} aria-hidden="true" />
 

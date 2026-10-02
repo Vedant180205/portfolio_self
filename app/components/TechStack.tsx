@@ -41,7 +41,7 @@ import styles from './TechStack.module.css';
 
 export default function TechStack() {
   return (
-    <section className={styles.section} id="techstack" aria-label="Tech Stack">
+    <div className={styles.section} id="techstack" aria-label="Tech Stack">
       {/* Header */}
       <div className={styles.header}>
         <span className={styles.eyebrow}>TOOLKIT</span>
@@ -66,6 +66,6 @@ export default function TechStack() {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

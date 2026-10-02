@@ -271,78 +271,84 @@ export default function Projects() {
   };
 
   return (
-    <section className={styles.section} id="projects" aria-label="Projects">
-      {/* Accent line at the very top of the section */}
-      <div className={styles.topAccentLine} />
+    <section className={styles.section} id="projects" aria-label="Projects" data-stacked-section>
+      <div data-stacked-inner>
+        {/* Accent line at the very top of the section */}
+        <div className={styles.topAccentLine} />
 
-      {/* Section header */}
-      <div className={styles.sectionHeader}>
-        <div className={styles.headerLeft}>
-          <div className={styles.eyebrowContainer}>
-            <svg className={styles.starMarker} width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z" />
-            </svg>
-            <span className={styles.sectionEyebrow}>SELECTED WORK / 01–06</span>
+        {/* Section header */}
+        <div className={styles.sectionHeader}>
+          <div className={styles.headerLeft}>
+            <div className={styles.eyebrowContainer}>
+              <svg className={styles.starMarker} width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z" />
+              </svg>
+              <span className={styles.sectionEyebrow}>SELECTED WORK / 01–06</span>
+            </div>
+            <h2 className={styles.sectionTitle}>
+              ENGINEERING PROJECTS
+              <br />
+              BUILT TO WORK.
+            </h2>
           </div>
-          <h2 className={styles.sectionTitle}>
-            ENGINEERING PROJECTS
-            <br />
-            BUILT TO WORK.
-          </h2>
-        </div>
-        <div className={styles.headerRight} />
-      </div>
-
-      {/* Project rows (Desktop 3-column asymmetric layout) */}
-      <div className={styles.projectRows}>
-        <div className={styles.projectRow}>
-          {firstRowProjects.map((project, idx) => renderCard(project, idx))}
+          <div className={styles.headerRight} />
         </div>
 
-        {/* Render second row if showAll is true */}
-        <div className={`${styles.projectRow} ${styles.secondRow} ${showAll ? styles.showRow : ''}`}>
-          {secondRowProjects.map((project, idx) => renderCard(project, idx + 3))}
-        </div>
-      </div>
+        {/* Project rows (Desktop 3-column asymmetric layout) */}
+        <div className={styles.projectRows}>
+          <div className={styles.projectRow}>
+            {firstRowProjects.map((project, idx) => renderCard(project, idx))}
+          </div>
 
-      {/* Center toggle button below the cards (for both desktop and mobile/tablet) */}
-      <div className={styles.toggleWrapper}>
-        <button
-          className={styles.viewMoreBtn}
-          onClick={() => {
-            if (showAll) {
-              setShowAll(false);
-              const section = document.getElementById('projects');
-              if (section) {
-                section.scrollIntoView({ behavior: 'smooth' });
+          {/* Render second row if showAll is true */}
+          <div className={`${styles.projectRow} ${styles.secondRow} ${showAll ? styles.showRow : ''}`}>
+            {secondRowProjects.map((project, idx) => renderCard(project, idx + 3))}
+          </div>
+        </div>
+
+        {/* Center toggle button below the cards (for both desktop and mobile/tablet) */}
+        <div className={styles.toggleWrapper}>
+          <button
+            className={styles.viewMoreBtn}
+            onClick={() => {
+              if (showAll) {
+                setShowAll(false);
+                const section = document.getElementById('projects');
+                if (section) {
+                  section.scrollIntoView({ behavior: 'smooth' });
+                }
+              } else {
+                setShowAll(true);
               }
-            } else {
-              setShowAll(true);
-            }
-          }}
-          aria-label={showAll ? 'Show fewer projects' : 'View all projects'}
-          id="projects-toggle-bottom"
-        >
-          <span>{showAll ? 'SHOW FEWER' : 'VIEW ALL PROJECTS'}</span>
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className={`${styles.headerArrow} ${showAll ? styles.headerArrowRotate : ''}`}
+              if (typeof window !== 'undefined') {
+                setTimeout(() => {
+                  window.dispatchEvent(new Event('resize'));
+                }, 350);
+              }
+            }}
+            aria-label={showAll ? 'Show fewer projects' : 'View all projects'}
+            id="projects-toggle-bottom"
           >
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
-        </button>
+            <span>{showAll ? 'SHOW FEWER' : 'VIEW ALL PROJECTS'}</span>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={`${styles.headerArrow} ${showAll ? styles.headerArrowRotate : ''}`}
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Modal Popup Details */}
-      
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
   );

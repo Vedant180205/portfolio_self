@@ -23,7 +23,7 @@ function ArrowDownIcon() {
 
 export default function About() {
   return (
-    <section className={styles.section} id="about" aria-label="About">
+    <section className={styles.section} id="about" aria-label="About" data-stacked-section>
       {/* Decorative glows */}
       <div className={styles.glowLeft} aria-hidden="true" />
       <div className={styles.glowRight} aria-hidden="true" />
@@ -33,7 +33,7 @@ export default function About() {
       <div className={styles.cornerBR} aria-hidden="true" />
 
       {/* Content */}
-      <div className={styles.inner}>
+      <div className={styles.inner} data-stacked-inner>
 
         <h2 className={styles.heading}>What Defines My Work</h2>
 
