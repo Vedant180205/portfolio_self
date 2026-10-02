@@ -111,7 +111,7 @@
 .headlineLine,
 .headlineLastName {
   display: block;
-  font-size: clamp(3.8rem, 11.5vw, 10.5rem);
+  font-size: clamp(3.5rem, 10.8vw, 9.6rem);
   font-weight: 400;
   /* Protest Guerrilla is single-weight */
   line-height: 0.92;
@@ -618,7 +618,7 @@
 
   .headlineLine,
   .headlineLastName {
-    font-size: 5.2rem;
+    font-size: 4.8rem;
     line-height: 0.9;
     letter-spacing: 0.02em;
   }
