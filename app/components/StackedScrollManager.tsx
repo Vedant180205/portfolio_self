@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import { useLenis } from 'lenis/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -11,11 +12,14 @@ if (typeof window !== 'undefined') {
 
 /**
  * StackedScrollManager implements the premium GSAP ScrollTrigger stacked section
- * interaction across portfolio pages while preserving existing designs, components,
- * and Lenis smooth scrolling.
+ * interaction across the homepage with Lenis smooth scrolling and step-by-step
+ * gesture navigation to prevent accidental section skipping on hard scrolls.
  */
 export default function StackedScrollManager() {
   const pathname = usePathname();
+  const lenis = useLenis();
+  const lenisRef = useRef(lenis);
+  lenisRef.current = lenis;
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -86,6 +90,7 @@ export default function StackedScrollManager() {
 
         const tl = gsap.timeline({
           scrollTrigger: {
+            id: `stacked-${panel.id || i}`,
             trigger: panel,
             start: 'bottom bottom',
             end: () =>
@@ -142,7 +147,132 @@ export default function StackedScrollManager() {
         }
       });
 
+      // ─── Step-by-Step Controlled Section Navigation ───
+      // Collect key stop positions to prevent overshooting on hard scrolls
+      const getCheckpoints = () => {
+        const rawCheckpoints: number[] = [0];
+
+        createdTriggers.forEach((st) => {
+          if (st.start != null) rawCheckpoints.push(Math.round(st.start));
+          if (st.end != null) rawCheckpoints.push(Math.round(st.end));
+        });
+
+        const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        rawCheckpoints.push(maxScroll);
+
+        const sorted = Array.from(new Set(rawCheckpoints)).sort((a, b) => a - b);
+        const filtered: number[] = [];
+        sorted.forEach((val) => {
+          if (filtered.length === 0 || Math.abs(val - filtered[filtered.length - 1]) > 40) {
+            filtered.push(val);
+          }
+        });
+        return filtered;
+      };
+
+      let isTransitioning = false;
+      let transitionTimer: ReturnType<typeof setTimeout>;
+
+      const onWheel = (e: WheelEvent) => {
+        // Allow modals and non-scroll elements to interact naturally
+        if (document.querySelector('dialog[open], [data-lenis-prevent]')) return;
+        if (e.ctrlKey) return; // Allow browser zoom
+
+        // Intercept immediately in capture phase before browser or Lenis accumulates delta
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+
+        if (isTransitioning) return;
+
+        // Threshold to ignore accidental micro-jitters
+        if (Math.abs(e.deltaY) < 6) return;
+
+        const direction = e.deltaY > 0 ? 1 : -1;
+        const currentY = window.scrollY || window.pageYOffset;
+        const checkpoints = getCheckpoints();
+
+        if (direction > 0) {
+          // Navigate to exactly next section checkpoint
+          const target = checkpoints.find((cp) => cp > currentY + 25);
+          if (target !== undefined) {
+            isTransitioning = true;
+            clearTimeout(transitionTimer);
+            lenisRef.current?.scrollTo(target, {
+              duration: 0.95,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+              immediate: false,
+            });
+            transitionTimer = setTimeout(() => {
+              isTransitioning = false;
+            }, 900);
+          }
+        } else {
+          // Navigate to exactly previous section checkpoint
+          const target = [...checkpoints].reverse().find((cp) => cp < currentY - 25);
+          if (target !== undefined) {
+            isTransitioning = true;
+            clearTimeout(transitionTimer);
+            lenisRef.current?.scrollTo(target, {
+              duration: 0.95,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+              immediate: false,
+            });
+            transitionTimer = setTimeout(() => {
+              isTransitioning = false;
+            }, 900);
+          }
+        }
+      };
+
+      const onKeyDown = (e: KeyboardEvent) => {
+        if (['ArrowDown', 'PageDown', 'Space'].includes(e.code)) {
+          if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+          e.preventDefault();
+          if (isTransitioning) return;
+          const currentY = window.scrollY || window.pageYOffset;
+          const checkpoints = getCheckpoints();
+          const target = checkpoints.find((cp) => cp > currentY + 25);
+          if (target !== undefined) {
+            isTransitioning = true;
+            clearTimeout(transitionTimer);
+            lenisRef.current?.scrollTo(target, {
+              duration: 0.95,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            });
+            transitionTimer = setTimeout(() => {
+              isTransitioning = false;
+            }, 900);
+          }
+        } else if (['ArrowUp', 'PageUp'].includes(e.code)) {
+          if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+          e.preventDefault();
+          if (isTransitioning) return;
+          const currentY = window.scrollY || window.pageYOffset;
+          const checkpoints = getCheckpoints();
+          const target = [...checkpoints].reverse().find((cp) => cp < currentY - 25);
+          if (target !== undefined) {
+            isTransitioning = true;
+            clearTimeout(transitionTimer);
+            lenisRef.current?.scrollTo(target, {
+              duration: 0.95,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            });
+            transitionTimer = setTimeout(() => {
+              isTransitioning = false;
+            }, 900);
+          }
+        }
+      };
+
+      window.addEventListener('wheel', onWheel, { passive: false, capture: true });
+      window.addEventListener('keydown', onKeyDown, { capture: true });
+
       return () => {
+        window.removeEventListener('wheel', onWheel, { capture: true });
+        window.removeEventListener('keydown', onKeyDown, { capture: true });
+        clearTimeout(transitionTimer);
+
         validPanels.forEach((panel) => {
           panel.style.marginBottom = '';
           panel.style.zIndex = '';

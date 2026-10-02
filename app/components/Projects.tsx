@@ -273,9 +273,6 @@ export default function Projects() {
   return (
     <section className={styles.section} id="projects" aria-label="Projects" data-stacked-section>
       <div data-stacked-inner>
-        {/* Accent line at the very top of the section */}
-        <div className={styles.topAccentLine} />
-
         {/* Section header */}
         <div className={styles.sectionHeader}>
           <div className={styles.headerLeft}>

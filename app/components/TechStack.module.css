@@ -2,7 +2,7 @@
 .section {
   background: var(--color-bg);
   position: relative;
-  padding: 5.5rem 0 0;
+  padding: 8rem 0 0;
   overflow: hidden;
 }
 
@@ -23,7 +23,7 @@
   align-items: center;
   text-align: center;
   gap: 0.75rem;
-  padding: 0 2rem 5rem;
+  padding: 0 2rem 4.5rem;
 }
 
 .eyebrow {

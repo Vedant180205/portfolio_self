@@ -5,7 +5,7 @@
 .section {
   background: var(--color-bg);
   position: relative;
-  padding: 5.5rem 0;
+  padding: 8rem 0 6rem;
   overflow: hidden;
 }
 

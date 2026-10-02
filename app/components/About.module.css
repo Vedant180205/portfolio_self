@@ -2,7 +2,7 @@
 .section {
   background: var(--color-bg);
   position: relative;
-  padding: 5.5rem 0;
+  padding: 8rem 0 6rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -20,16 +20,7 @@
   background: var(--color-border-subtle);
 }
 
-/* ── bottom hairline ── */
-.section::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 3rem;
-  right: 3rem;
-  height: 1px;
-  background: var(--color-border-subtle);
-}
+
 
 /* ─── DECORATIVE GLOW ─── */
 .glowLeft {
