@@ -279,12 +279,6 @@ export default function Projects() {
         {/* Section header */}
         <div className={styles.sectionHeader}>
           <div className={styles.headerLeft}>
-            <div className={styles.eyebrowContainer}>
-              <svg className={styles.starMarker} width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z" />
-              </svg>
-              <span className={styles.sectionEyebrow}>SELECTED WORK / 01–06</span>
-            </div>
             <h2 className={styles.sectionTitle}>
               ENGINEERING PROJECTS
               <br />
