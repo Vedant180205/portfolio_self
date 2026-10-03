@@ -30,8 +30,6 @@ const techs = [
   // Tools & Hardware & Others
   { name: 'Git', icon: '/icons/tech/git.svg', invert: false },
   { name: 'GitHub', icon: '/icons/tech/github.svg', invert: true },
-  { name: 'Canva', icon: '/icons/tech/canva.svg', invert: false },
-  { name: 'CapCut', icon: '/icons/tech/capcut.svg', invert: false },
   { name: 'Arduino', icon: '/icons/tech/arduino.svg', invert: false },
   { name: 'MediaPipe', icon: '/icons/tech/google.svg', invert: false },
   { name: 'Vercel', icon: '/icons/tech/vercel.svg', invert: true },
