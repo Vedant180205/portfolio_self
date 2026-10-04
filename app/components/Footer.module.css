@@ -191,22 +191,23 @@
 
 .credit {
   font-family: var(--font-body);
-  font-size: 0.68rem;
-  color: #6b7280;
-  letter-spacing: 0.08em;
+  font-size: clamp(0.88rem, 1.1vw, 1rem);
+  font-weight: 500;
+  color: #4b5563;
+  letter-spacing: 0.04em;
 }
 
 .credit span {
-  color: #111827;
-  font-weight: 600;
+  color: #0f172a;
+  font-weight: 700;
 }
 
 .accentDot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--color-accent-orange);
-  opacity: 0.6;
+  opacity: 0.7;
   flex-shrink: 0;
 }
 

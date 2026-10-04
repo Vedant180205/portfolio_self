@@ -5,11 +5,19 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
 }
 
 html.lenis,
 html.lenis-smooth {
   scroll-behavior: auto !important;
+}
+
+html.lenis.lenis-stopped,
+html.lenis-smooth.lenis-stopped {
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
 }
 
 *, *::before, *::after {

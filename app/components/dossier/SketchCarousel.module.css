@@ -1,0 +1,296 @@
+.carouselSection {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  padding: 0;
+  background: #060508;
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+}
+
+/* ─── BACKGROUND IMAGE (85% HIGH VISIBILITY) ─── */
+.bgImageContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: 0.85;
+  filter: saturate(1.05) contrast(1.1) brightness(1.0);
+  transform: scale(1.02);
+}
+
+.bgImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 65% 50%,
+    rgba(12, 9, 20, 0.1) 0%,
+    rgba(8, 6, 14, 0.35) 60%,
+    rgba(6, 5, 8, 0.65) 100%
+  );
+  pointer-events: none;
+}
+
+/* Ambient Dark Depth */
+.ambientGlow {
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  width: 700px;
+  height: 700px;
+  transform: translate(0%, -50%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.25) 0%, rgba(20, 15, 25, 0.08) 50%, transparent 75%);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── SPLIT LAYOUT CONTAINER ─── */
+.splitLayout {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: minmax(380px, 520px) 1fr;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1600px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vh, 4.5rem) clamp(1.2rem, 3vw, 3.5rem) clamp(1.5rem, 3vh, 2.5rem);
+  box-sizing: border-box;
+}
+
+/* ─── LEFT EDITORIAL PANEL ─── */
+.leftEditorial {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  z-index: 10;
+  padding-left: 0.5rem;
+  padding-top: 1rem;
+}
+
+.mainTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.6rem, 4.4vw, 4.4rem);
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.85);
+}
+
+.mainDesc {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  max-width: 480px;
+}
+
+/* ─── 3D CAROUSEL CONTAINER (RIGHT SIDE) ─── */
+.carouselStage {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: clamp(580px, 78vh, 800px);
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+/* ─── CAROUSEL ITEM (WOODEN FRAME BORDER & BLACK SHADOW) ─── */
+.carouselItem {
+  --items: 6;
+  --width: clamp(360px, 34vw, 490px);
+  --height: clamp(500px, 47vw, 680px);
+  --x: calc(var(--active) * 280%);
+  --y: calc(var(--active) * 90%);
+  --rot: calc(var(--active) * 35deg);
+  
+  position: absolute;
+  z-index: var(--zIndex);
+  width: var(--width);
+  height: var(--height);
+  margin: calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
+  top: 52%;
+  left: 38%;
+  border-radius: 16px;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  transform-origin: center bottom;
+  border: 5px solid transparent;
+  background: linear-gradient(#0d0d12, #0d0d12) padding-box,
+              linear-gradient(135deg, #5c3822 0%, #2e1a0e 25%, #4a2e1b 50%, #1e0f07 75%, #52311c 100%) border-box;
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 
+              inset 0 0 0 1px rgba(110, 68, 39, 0.45),
+              inset 0 0 0 2px rgba(0, 0, 0, 0.85);
+  pointer-events: all;
+  transform: translate3d(var(--x), var(--y), 0) rotate(var(--rot));
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+  will-change: transform, opacity;
+}
+
+.carouselItem:hover {
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.98), 
+              inset 0 0 0 1px rgba(140, 88, 52, 0.6),
+              inset 0 0 0 2px rgba(0, 0, 0, 0.9);
+}
+
+.activeItem {
+  box-shadow: 0 45px 105px rgba(0, 0, 0, 1), 
+              0 15px 40px rgba(0, 0, 0, 0.95),
+              inset 0 0 0 1px rgba(175, 110, 65, 0.7),
+              inset 0 0 0 2px rgba(0, 0, 0, 0.95);
+  border: 5px solid transparent;
+  background: linear-gradient(#0d0d12, #0d0d12) padding-box,
+              linear-gradient(135deg, #6e432a 0%, #362012 25%, #5c3822 50%, #25140b 75%, #663d25 100%) border-box;
+}
+
+.carouselBox {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.carouselBox::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.05) 35%,
+    rgba(0, 0, 0, 0.1) 55%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  pointer-events: none;
+}
+
+.num {
+  position: absolute;
+  z-index: 3;
+  color: #d6cebf;
+  top: 14px;
+  left: 20px;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.95);
+}
+
+.metaInfo {
+  position: absolute;
+  z-index: 3;
+  bottom: 22px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sketchTitle {
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.15;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.sketchMedium {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sketchYear {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #c8bfb0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sketchImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .splitLayout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 0 1.5rem;
+  }
+
+  .leftEditorial {
+    text-align: center;
+    align-items: center;
+  }
+
+  .carouselItem {
+    left: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .carouselSection {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .carouselStage {
+    height: clamp(500px, 70vh, 600px);
+  }
+
+  .carouselItem {
+    --width: clamp(280px, 76vw, 360px);
+    --height: clamp(390px, 105vw, 500px);
+    --x: calc(var(--active) * 240%);
+    --rot: calc(var(--active) * 28deg);
+  }
+}

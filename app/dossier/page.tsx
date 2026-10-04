@@ -1,7 +1,7 @@
 import { DossierClientWrapper } from '@/app/components/dossier/DossierClientWrapper';
-import { CollapsibleSketches } from '@/app/components/dossier/CollapsibleSketches';
 import { MissionLogBoard } from '@/app/components/dossier/MissionLogBoard';
 import MusicianSection from '@/app/components/MusicianSection';
+import SketchCarousel from '@/app/components/dossier/SketchCarousel';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './page.module.css';
@@ -58,59 +58,6 @@ const missionLogs: MissionLog[] = [
     description: 'Secured 1st Place at AMUHACKS 5.0 (4th hackathon win). Worked with Sahil Rane as Team CyberDevs, enduring an intense coding grind and late-night coding sessions to build and launch a fully functional system. Repo: https://lnkd.in/dJUqpzp2',
     coordinates: { x: '82%', y: '70%' },
     image: '/hackathon_certs/Vedant_Patil_CyberDevs.png'
-  }
-];
-
-interface Sketch {
-  id: string;
-  src: string;
-  title: string;
-  medium: string;
-  year: string;
-}
-
-const sketches: Sketch[] = [
-  {
-    id: 'EXHIBIT 01',
-    src: '/images/sketches/20230926_232508.jpg',
-    title: 'CHHATRAPATI SHIVAJI MAHARAJ',
-    medium: 'Charcoal & Graphite on Art Paper',
-    year: 'c. 2023'
-  },
-  {
-    id: 'EXHIBIT 02',
-    src: '/images/sketches/20230926_232747.jpg',
-    title: 'SACHIN TENDULKAR',
-    medium: 'Fine Pencil Drawing',
-    year: 'c. 2023'
-  },
-  {
-    id: 'EXHIBIT 03',
-    src: '/images/sketches/20241202_222420.jpg',
-    title: 'VIRAT KOHLI',
-    medium: 'Detailed Graphite Sketch',
-    year: 'c. 2024'
-  },
-  {
-    id: 'EXHIBIT 04',
-    src: '/images/sketches/20230926_232844.jpg',
-    title: 'MICHAEL FARADAY',
-    medium: 'Ink & Graphite Drawing',
-    year: 'c. 2023'
-  },
-  {
-    id: 'EXHIBIT 05',
-    src: '/images/sketches/20230926_232914.jpg',
-    title: 'LATA MANGESHKAR',
-    medium: 'Fine Charcoal Blending',
-    year: 'c. 2023'
-  },
-  {
-    id: 'EXHIBIT 06',
-    src: '/images/sketches/20230926_233120.jpg',
-    title: 'KAPIL DEV',
-    medium: 'Fine Line Pencil Sketch',
-    year: 'c. 2023'
   }
 ];
 
@@ -281,70 +228,9 @@ export default function DossierPage() {
         </section>
 
         {/* -------------------------------------------------------------
-            SECTION 03: THE ARTIST
+            SECTION 03: THE ARTIST (3D Arc Drag & Wheel Carousel)
             ------------------------------------------------------------- */}
-        <section  className={styles.artistSection} id="artist">
-          <div className={styles.artistWrapper}>
-            <div className={styles.sectionHeaderCentered}>
-              <span className={styles.sectionCategoryLight}>ARCHIVE_CREATOR // OBSERVATIONS</span>
-              <h2 className={styles.artistLargeTitle}>
-                A PENCIL, A PAGE, AND A THOUSAND OBSERVATIONS.
-              </h2>
-            </div>
-
-            {/* Museum Exhibition Gallery */}
-            <div className={styles.museumGallery}>
-              <div className={styles.museumRow}>
-                {sketches.slice(0, 2).map((sketch, index) => (
-                  <div className={styles.exhibitionFrame} id={`artwork-${index + 1}`} key={sketch.id}>
-                    <div className={styles.artworkContainer}>
-                      <div className={styles.canvasTexture} />
-                      <Image
-                        src={sketch.src}
-                        alt={sketch.title}
-                        fill
-                        className={styles.sketchImage}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    </div>
-                    <div className={styles.museumTag}>
-                      <span className={styles.tagNum}>{sketch.id}</span>
-                      <h4 className={styles.tagTitle}>{sketch.title}</h4>
-                      <p className={styles.tagMedium}>{sketch.medium}</p>
-                      <p className={styles.tagYear}>{sketch.year}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {sketches[2] && (
-                <div className={styles.museumRowSingle}>
-                  <div className={styles.exhibitionFrameLarge} id="artwork-3">
-                    <div className={styles.artworkContainerLarge}>
-                      <div className={styles.canvasTexture} />
-                      <Image
-                        src={sketches[2].src}
-                        alt={sketches[2].title}
-                        fill
-                        className={styles.sketchImage}
-                        sizes="(max-width: 1024px) 100vw, 80vw"
-                      />
-                    </div>
-                    <div className={styles.museumTag}>
-                      <span className={styles.tagNum}>{sketches[2].id}</span>
-                      <h4 className={styles.tagTitle}>{sketches[2].title}</h4>
-                      <p className={styles.tagMedium}>{sketches[2].medium}</p>
-                      <p className={styles.tagYear}>{sketches[2].year}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Collapsible/Expandable Sketches */}
-              <CollapsibleSketches sketches={sketches} />
-            </div>
-          </div>
-        </section>
+        <SketchCarousel />
 
         {/* -------------------------------------------------------------
             SECTION 04: THROUGH MY LENS (Scrapbook Layout)
@@ -359,11 +245,11 @@ export default function DossierPage() {
 
           {/* Swatches Container */}
           <div className={styles.swatchesContainer}>
-            <span className="${styles.swatch} ${styles.swatchOlive}" />
-            <span className="${styles.swatch} ${styles.swatchCharcoal}" />
-            <span className="${styles.swatch} ${styles.swatchGrey}" />
-            <span className="${styles.swatch} ${styles.swatchBlue}" />
-            <span className="${styles.swatch} ${styles.swatchRust}" />
+            <span className={`${styles.swatch} ${styles.swatchOlive}`} />
+            <span className={`${styles.swatch} ${styles.swatchCharcoal}`} />
+            <span className={`${styles.swatch} ${styles.swatchGrey}`} />
+            <span className={`${styles.swatch} ${styles.swatchBlue}`} />
+            <span className={`${styles.swatch} ${styles.swatchRust}`} />
           </div>
 
           {/* Archive Title Block */}
@@ -380,7 +266,6 @@ export default function DossierPage() {
                   key={item.id}
                   className={styles.collagePhotoItem}
                   style={{ aspectRatio: item.aspectRatio }}
-                  
                 >
                   <Image
                     src={item.src}
@@ -400,7 +285,6 @@ export default function DossierPage() {
                   key={item.id}
                   className={styles.collagePhotoItem}
                   style={{ aspectRatio: item.aspectRatio }}
-                  
                 >
                   <Image
                     src={item.src}
@@ -420,7 +304,6 @@ export default function DossierPage() {
                   key={item.id}
                   className={styles.collagePhotoItem}
                   style={{ aspectRatio: item.aspectRatio }}
-                  
                 >
                   <Image
                     src={item.src}
