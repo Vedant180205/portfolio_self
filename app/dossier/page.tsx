@@ -1,3 +1,4 @@
+import React from 'react';
 import { DossierClientWrapper } from '@/app/components/dossier/DossierClientWrapper';
 import { MissionLogBoard } from '@/app/components/dossier/MissionLogBoard';
 import MusicianSection from '@/app/components/MusicianSection';
@@ -13,7 +14,7 @@ interface MissionLog {
   year: string;
   role: string;
   achievement: string;
-  description: string;
+  description: React.ReactNode;
   coordinates: { x: string; y: string };
   image: string;
 }
@@ -25,7 +26,11 @@ const missionLogs: MissionLog[] = [
     year: '2026',
     role: 'Quant Developer',
     achievement: 'WINNER — 3RD PRIZE (IIT GUWAHATI & AQUA)',
-    description: 'Secured 3rd Prize at the IO Hackathon 2026, hosted by IIT Guwahati in collaboration with AQUA (Advanced Quantitative Analytics) and organized by the Finance & Economics Club - IIT Guwahati. Worked with Sahil Rane as team QuantDevs. Developed a valuation-driven Python system accelerated via Numba JIT for pricing American options on NVIDIA (NVDA) using Binomial Cox–Ross–Rubinstein (CRR) and Black–Scholes models, live yfinance data, and Sharpe/Sortino ratios.',
+    description: (
+      <>
+        Secured <strong>3rd Prize</strong> at the <strong>IO Hackathon 2026</strong>, hosted by <strong>IIT Guwahati</strong> in collaboration with <strong>AQUA (Advanced Quantitative Analytics)</strong> and organized by the <strong>Finance & Economics Club - IIT Guwahati</strong>. Worked with <strong>Sahil Rane</strong> as team <strong>QuantDevs</strong>. Developed a valuation-driven <strong>Python</strong> system accelerated via <strong>Numba JIT</strong> for pricing <strong>American options on NVIDIA (NVDA)</strong> using <strong>Binomial Cox–Ross–Rubinstein (CRR)</strong> and <strong>Black–Scholes</strong> models, live <strong>yfinance</strong> data, and <strong>Sharpe/Sortino ratios</strong>.
+      </>
+    ),
     coordinates: { x: '18%', y: '20%' },
     image: '/hackathon_certs/WhatsApp Image 2026-03-08 at 8.48.49 AM.jpeg'
   },
@@ -35,7 +40,11 @@ const missionLogs: MissionLog[] = [
     year: '2026',
     role: 'Logic & Implementation',
     achievement: 'WINNER — 1ST PLACE (XIE MAHIM)',
-    description: 'Secured 1st Place at Code Sprint, a high-pressure 4-hour hackathon hosted at Xavier’s Institute of Engineering, Mahim. Worked with Team CodeRunners alongside Saiprasad Jamdar (Backend & AI lead), Rajnish Rao (Full-Stack & Design), and Sahil Rane (Frontend & Ideation). Contributed to logic building and implementation under extremely tight timelines.',
+    description: (
+      <>
+        Secured <strong>1st Place</strong> at <strong>Code Sprint</strong>, a high-pressure <strong>4-hour hackathon</strong> hosted at <strong>Xavier’s Institute of Engineering, Mahim</strong>. Worked with <strong>Team CodeRunners</strong> alongside <strong>Saiprasad Jamdar</strong> (Backend & AI lead), <strong>Rajnish Rao</strong> (Full-Stack & Design), and <strong>Sahil Rane</strong> (Frontend & Ideation). Contributed to <strong>logic building and implementation</strong> under extremely tight timelines.
+      </>
+    ),
     coordinates: { x: '30%', y: '68%' },
     image: '/hackathon_certs/codesprint_cert.jpeg'
   },
@@ -45,7 +54,11 @@ const missionLogs: MissionLog[] = [
     year: '2026',
     role: 'Machine Learning Engineer',
     achievement: 'WINNER — 1ST PLACE (IIT JODHPUR)',
-    description: 'Secured 1st Place at the Kaggle Knight – 36 Hour ML Hackathon, hosted at IIT Jodhpur, Rajasthan and organized by Prometeo IIT Jodhpur. Partnered with Sahil Rane as Team nightknight, focusing on ML fundamentals, clean execution, and prioritizing clarity and signal over complexity under intense pressure.',
+    description: (
+      <>
+        Secured <strong>1st Place</strong> at the <strong>Kaggle Knight – 36 Hour ML Hackathon</strong>, hosted at <strong>IIT Jodhpur, Rajasthan</strong> and organized by <strong>Prometeo IIT Jodhpur</strong>. Partnered with <strong>Sahil Rane</strong> as <strong>Team nightknight</strong>, focusing on <strong>ML fundamentals</strong>, <strong>clean execution</strong>, and prioritizing <strong>clarity and signal over complexity</strong> under intense pressure.
+      </>
+    ),
     coordinates: { x: '78%', y: '22%' },
     image: '/hackathon_certs/kagglenight_cert.png'
   },
@@ -55,7 +68,11 @@ const missionLogs: MissionLog[] = [
     year: '2026',
     role: 'Full-Stack Developer',
     achievement: 'WINNER — 1ST PLACE (AMUHACKS)',
-    description: 'Secured 1st Place at AMUHACKS 5.0 (4th hackathon win). Worked with Sahil Rane as Team CyberDevs, enduring an intense coding grind and late-night coding sessions to build and launch a fully functional system. Repo: https://lnkd.in/dJUqpzp2',
+    description: (
+      <>
+        Secured <strong>1st Place</strong> at <strong>AMUHACKS 5.0</strong> (<strong>4th hackathon win</strong>). Worked with <strong>Sahil Rane</strong> as <strong>Team CyberDevs</strong>, enduring an intense coding grind and late-night coding sessions to build and launch a <strong>fully functional system</strong>.
+      </>
+    ),
     coordinates: { x: '82%', y: '70%' },
     image: '/hackathon_certs/Vedant_Patil_CyberDevs.png'
   }
@@ -177,11 +194,6 @@ export default function DossierPage() {
             <div className={styles.topperGrid}>
               {/* Left Column: Intelligence Dossier Briefing Card */}
               <div className={styles.topperBriefing}>
-                <div className={styles.reportHeader}>
-                  <span className={styles.reportStatus}>INTEL REPORT : ACADEMIC EXCELLENCE</span>
-                  <span className={styles.reportConsoleLine}>FILE_TO_DECRYPT_v1.0</span>
-                </div>
-
                 <div className={styles.topperHighlightBox}>
                   <span className={styles.topperLabel}>CLASSIFICATION / PERFORMANCE:</span>
                   <div className={styles.topperHighlightVal}>RANK 1 — PERFECT 10/10 SGPA (YEAR I)</div>
@@ -199,9 +211,8 @@ export default function DossierPage() {
                 </div>
 
                 <div className={styles.topperDescBlock}>
-                  <span className={styles.topperLabel}>BRIEFING ANALYSIS:</span>
                   <p className={styles.topperDescText}>
-                    Achieved a perfect 10.0 SGPA in both Semesters I and II during the first year of engineering. Secured the highest SGPA in the college across all engineering branches, demonstrating academic excellence alongside project building.
+                    Achieved a <strong>perfect 10.0 SGPA</strong> in both <strong>Semesters I and II</strong> during the first year of engineering. Secured the <strong>highest SGPA in the college across all engineering branches</strong>, demonstrating academic excellence alongside project building.
                   </p>
                 </div>
               </div>
@@ -359,10 +370,10 @@ export default function DossierPage() {
               <div className={styles.storyTag}>DEVELOPMENT_RECORD // 2018</div>
               <h4 className={styles.storyHeadline}>COGNITIVE AWAKENING</h4>
               <p className={styles.storyBody}>
-                Completed all progressive levels of Abacus Mental Mathematics at a very early stage. Rather than just calculation, this intense training served as a cognitive foundation that shaped my logical thinking and spatial processing.
+                Completed all progressive levels of <strong>Abacus Mental Mathematics</strong> at a very early stage. Rather than just calculation, this intense training served as a <strong>cognitive foundation</strong> that shaped my <strong>logical thinking</strong> and <strong>spatial processing</strong>.
               </p>
               <p className={styles.storyBody}>
-                By learning to visualize and manipulate a virtual abacus inside my mind, I developed strong mental imagery and concentration. This early development laid the groundwork for my analytical capabilities as an engineer, enabling me to visualize complex logic flows and system architectures before writing code.
+                By learning to <strong>visualize and manipulate a virtual abacus inside my mind</strong>, I developed strong <strong>mental imagery and concentration</strong>. This early development laid the groundwork for my analytical capabilities as an engineer, enabling me to <strong>visualize complex logic flows and system architectures</strong> before writing code.
               </p>
               {/* Tech card corner brackets */}
               <div className={styles.cardCornerTopLeft} />

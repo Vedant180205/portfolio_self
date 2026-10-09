@@ -1,47 +1,117 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './MusicianSection.module.css';
 
 export default function MusicianSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Ensure playback starts smoothly
+    video.play().catch(() => {
+      // Autoplay handled by browser policy
+    });
+
+    let animId: number;
+    const fadeDuration = 0.9; // 0.9s cinematic fade at start & end of loop
+
+    const handleLoopFade = () => {
+      if (video && video.duration && !video.paused) {
+        const t = video.currentTime;
+        const d = video.duration;
+        let opacity = 1;
+
+        if (t < fadeDuration) {
+          // Fade in at start of loop
+          opacity = Math.max(0, Math.min(1, t / fadeDuration));
+        } else if (t > d - fadeDuration) {
+          // Fade out before loop ends
+          opacity = Math.max(0, Math.min(1, (d - t) / fadeDuration));
+        } else {
+          opacity = 1;
+        }
+
+        video.style.opacity = opacity.toFixed(3);
+      }
+      animId = requestAnimationFrame(handleLoopFade);
+    };
+
+    animId = requestAnimationFrame(handleLoopFade);
+
+    return () => {
+      cancelAnimationFrame(animId);
+    };
+  }, []);
+
+  const renderLetters = (text: string, baseDelay: number, charSpeed: number = 0.04) => {
+    let charIndex = 0;
+    return (
+      <>
+        {text.split(' ').map((word, wIndex, arr) => (
+          <span key={wIndex} className={styles.wordWrap}>
+            <span className={styles.word}>
+              {word.split('').map((char, cIndex) => {
+                const idx = charIndex++;
+                return (
+                  <span
+                    key={cIndex}
+                    className={styles.char}
+                    style={{
+                      '--char-index': idx,
+                      '--base-delay': `${baseDelay}s`,
+                      '--char-speed': `${charSpeed}s`,
+                    } as React.CSSProperties}
+                  >
+                    {char}
+                  </span>
+                );
+              })}
+            </span>
+            {wIndex < arr.length - 1 && (
+              <span className={styles.spaceChar}>&nbsp;</span>
+            )}
+          </span>
+        ))}
+      </>
+    );
+  };
 
   return (
     <div className={styles.editorialContainer}>
 
-      {/* SECTION TITLE */}
+      {/* SECTION TITLE / HERO */}
       <section className={styles.musicSection}>
         <div className={styles.heroBg}>
-          <Image
-            src="/images/music/9600f8df-e754-45b1-815b-6ddcba877140.png"
-            alt="Vedant Patil Live On Stage"
-            width={1635}
-            height={962}
-            sizes="100vw"
-            priority
-            quality={85}
-            className={`${styles.editorialHeroImg} ${styles.desktopHeroImg}`}
-          />
-          <Image
-            src="/images/music/ChatGPT Image Jun 25, 2026, 11_45_12 PM.png"
-            alt="Vedant Patil Live On Stage Mobile"
-            width={864}
-            height={1547}
-            sizes="100vw"
-            priority
-            quality={85}
-            className={`${styles.editorialHeroImg} ${styles.mobileHeroImg}`}
-          />
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className={styles.heroVideo}
+          >
+            <source src="/dossier_hero.webm" type="video/webm" />
+            <source src="/download (1).webm" type="video/webm" />
+          </video>
           <div className={styles.heroOverlay} />
         </div>
         
         <div className={styles.content}>
-          <p className={styles.eyebrow}>MUSIC // CHRONICLE</p>
+          <p className={styles.eyebrow}>
+            {renderLetters("MUSIC // CHRONICLE", 0.1, 0.03)}
+          </p>
 
-          <h2 className={styles.heading}>10+ YEARS OF MUSIC.</h2>
+          <h2 className={styles.heading}>
+            {renderLetters("10+ YEARS OF MUSIC.", 0.35, 0.045)}
+          </h2>
 
           <p className={styles.description}>
-            From Hindustani Classical Vocals to Live Performances, Bass Guitar and Leadership.
+            {renderLetters("From Hindustani Classical Vocals to Live Performances, Bass Guitar and Leadership.", 0.85, 0.012)}
           </p>
         </div>
       </section>

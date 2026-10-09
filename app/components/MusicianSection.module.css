@@ -85,35 +85,56 @@
 }
 
 .heroBg {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
+  height: 100%;
   z-index: 1;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.heroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+  background-color: #000000;
+  will-change: opacity;
 }
 
 .heroOverlay {
   position: absolute;
   inset: 0;
   z-index: 2;
+  background: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.55) 42%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0.65) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, transparent 20%, transparent 75%, #000000 100%);
+  pointer-events: none;
 }
 
-@media (max-width: 899px) {
-  .heroOverlay {
-    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 40%, transparent 80%);
+@media (min-width: 900px) {
+  .musicSection {
+    min-height: 95vh;
+    max-height: 1100px;
+    padding: 3rem 0;
   }
 }
 
-.editorialHeroImg {
-  width: 100% !important;
-  height: auto !important;
-  display: block;
-}
-
-.desktopHeroImg {
-  display: block;
-}
-
-.mobileHeroImg {
-  display: none;
+@media (max-width: 899px) {
+  .musicSection {
+    min-height: 85vh;
+    padding: 2rem 0;
+  }
+  .heroVideo {
+    object-position: 56% 35%;
+  }
+  .heroOverlay {
+    background: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%),
+      linear-gradient(to bottom, transparent 65%, #000000 100%);
+  }
 }
 
 /* Content Layout */
@@ -123,6 +144,74 @@
   width: 100%;
   max-width: 38%;
   padding-left: clamp(2rem, 6vw, 7rem);
+}
+
+/* Character Decrypt Animation (Initial Mount Only) */
+.wordWrap {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.spaceChar {
+  display: inline-block;
+}
+
+.char {
+  display: inline-block;
+  opacity: 0;
+  animation-name: hitmanDecrypt;
+  animation-duration: 0.65s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: calc(var(--base-delay, 0s) + var(--char-index, 0) * var(--char-speed, 0.04s));
+}
+
+@keyframes hitmanDecrypt {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+    color: #D4A017;
+    filter: brightness(2.5) contrast(1.2);
+  }
+
+  12% {
+    opacity: 0.9;
+    transform: translateY(0);
+    filter: brightness(2);
+  }
+
+  24% {
+    opacity: 0.15;
+    color: #D4A017;
+  }
+
+  36% {
+    opacity: 1;
+    color: #ffffff;
+    filter: brightness(1.5);
+  }
+
+  48% {
+    opacity: 0.35;
+  }
+
+  60% {
+    opacity: 0.95;
+    filter: brightness(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: none;
+    color: inherit;
+  }
 }
 
 /* Typography */
@@ -173,43 +262,38 @@
     position: absolute;
     inset: 0;
   }
+  .heroVideo {
+    object-position: 61% 35%;
+  }
   .heroOverlay {
-    background: radial-gradient(ellipse at 30% 45%, rgba(0,0,0,0.7) 0%, transparent 60%);
+    background: 
+      linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.15) 75%, rgba(0,0,0,0.4) 100%),
+      linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 20%, transparent 75%, #000000 100%);
   }
   .content {
     position: absolute;
-    top: 43%;
-    left: 2rem;
+    top: 45%;
+    left: 1.5rem;
     right: 1.5rem;
     padding: 0;
     transform: translateY(-50%);
-    max-width: 100%;
+    max-width: 80%;
   }
   .heading {
     white-space: normal;
-    font-size: clamp(3rem, 14vw, 4.8rem);
-    line-height: 0.86;
+    font-size: clamp(2.8rem, 13vw, 4.4rem);
+    line-height: 0.88;
     margin-top: 1.25rem;
   }
   .description {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
     margin-left: 0;
-    margin-right: 2.75rem;
-    max-width: 22rem;
+    margin-right: 1.5rem;
+    max-width: 20rem;
+    font-size: 0.92rem;
   }
   .description br {
     display: none; /* Let it wrap naturally on mobile */
-  }
-  .desktopHeroImg {
-    display: none !important;
-  }
-  .mobileHeroImg {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-    object-position: 58% 42%;
-    transform: scale(1.12);
   }
 }
 

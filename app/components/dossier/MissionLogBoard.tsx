@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import styles from '@/app/dossier/page.module.css';
 
@@ -10,7 +10,7 @@ export interface MissionLog {
   year: string;
   role: string;
   achievement: string;
-  description: string;
+  description: React.ReactNode;
   coordinates: { x: string; y: string };
   image: string;
 }
@@ -123,19 +123,13 @@ export function MissionLogBoard({ logs }: MissionLogBoardProps) {
         {/* Column 2: Dashboard Terminal Briefing Reader */}
         <div className={styles.consoleCol}>
           <div className={styles.intelligenceReport}>
-            <div className={styles.reportHeader}>
-              <span className={styles.reportStatus}>INTEL REPORT : ACTIVE</span>
-              <span className={styles.reportConsoleLine}>CONSOLE_SYS_v2.0</span>
-            </div>
             <div className={styles.reportContent}>
               {hoveredLog ? (
                 <div className={styles.reportDetails}>
                   <div className={styles.reportTitleRow}>
-                    <span className={styles.reportLabel}>EVENT:</span>
                     <h4 className={styles.reportTitle}>{hoveredLog.name}</h4>
                   </div>
                   <div className={styles.reportAchievementRow}>
-                    <span className={styles.reportLabel}>CLASSIFICATION / OUTCOME:</span>
                     <div className={styles.reportAchievementVal}>{hoveredLog.achievement}</div>
                   </div>
                   <div className={styles.reportMetaRow}>
@@ -149,14 +143,7 @@ export function MissionLogBoard({ logs }: MissionLogBoardProps) {
                     </div>
                   </div>
                   <div className={styles.reportDescBlock}>
-                    <span className={styles.reportLabel}>BRIEFING:</span>
                     <p className={styles.reportDesc}>{hoveredLog.description}</p>
-                    <button
-                      className={styles.decryptEvidenceBtn}
-                      onClick={() => openModal(hoveredLog)}
-                    >
-                      DECRYPT CERTIFICATE EVIDENCE →
-                    </button>
                   </div>
                 </div>
               ) : (
@@ -178,7 +165,11 @@ export function MissionLogBoard({ logs }: MissionLogBoardProps) {
             onClick={closeModal}
             aria-label="Close certificate"
           >
-            [ CLOSE EVIDENCE × ]
+            <span>CLOSE</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
           </button>
 
           {activeCert && (
@@ -202,7 +193,6 @@ export function MissionLogBoard({ logs }: MissionLogBoardProps) {
                   </div>
                   <div className={styles.certModalMeta}>
                     <div>
-                      <span className={styles.certModalLabel}>CLASSIFICATION / OUTCOME:</span>
                       <div className={styles.certModalVal} style={{ color: '#D4A017' }}>
                         {(activeCert as MissionLog).achievement}
                       </div>
@@ -219,7 +209,6 @@ export function MissionLogBoard({ logs }: MissionLogBoardProps) {
                     </div>
                   </div>
                   <div className={styles.certModalDesc}>
-                    <span className={styles.certModalLabel}>BRIEFING ANALYSIS:</span>
                     <p>{(activeCert as MissionLog).description}</p>
                   </div>
                 </div>
@@ -238,11 +227,6 @@ export function MissionLogBoard({ logs }: MissionLogBoardProps) {
               </div>
             )
           )}
-
-          <div className={styles.certModalFooter}>
-            <span>ENCRYPTED_FILE_DECRYPTED</span>
-            <span>VP_SYS_INTEL_BOARD</span>
-          </div>
         </div>
       </dialog>
     </>
