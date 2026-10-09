@@ -1,0 +1,129 @@
+.loaderOverlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #000000;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.loaderOverlay.fadeOut {
+  opacity: 0;
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+/* Ambient Subtle Lighting */
+.ambientGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90vw, 650px);
+  height: min(90vw, 650px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.06) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── CENTER ASCII PORTRAIT ─── */
+.centerStage {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* The Core ASCII Text Mask Container — Significantly larger physical footprint, full portrait */
+.ascii {
+  height: min(76vh, 780px);
+  aspect-ratio: 443 / 591;
+  width: auto;
+  max-width: min(94vw, 680px);
+  overflow: hidden;
+  background-image: url('/images/avatar/ascii_loader_portrait.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: "Courier New", Courier, monospace, monospace;
+  font-size: clamp(6.5px, 0.72vw, 9px);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  word-break: break-all;
+  text-transform: uppercase;
+  text-align: justify;
+  user-select: none;
+  pointer-events: none;
+  filter: contrast(1.4) brightness(1.25);
+}
+
+/* ─── MINIMAL BOTTOM LOADER ─── */
+.bottomHud {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: min(92vw, 640px);
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.loadingLabel {
+  font-family: var(--font-space, monospace);
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  color: #D4A017;
+  text-transform: uppercase;
+  text-shadow: 0 0 16px rgba(212, 160, 23, 0.65), 0 0 32px rgba(212, 160, 23, 0.35);
+}
+
+.progressBarTrack {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, #D4A017 0%, #ffe89e 100%);
+  box-shadow: 0 0 14px #D4A017;
+  border-radius: 2px;
+  transition: width 0.08s ease-out;
+}
+
+@media (max-width: 599px) {
+  .ascii {
+    height: min(68vh, 520px);
+    max-width: 90vw;
+    font-size: 6.8px;
+    line-height: 1.05;
+  }
+  .bottomHud {
+    margin-top: 1.2rem;
+    max-width: 88vw;
+  }
+}
