@@ -21,7 +21,7 @@ import { CHAT_LIMITS } from './constants';
 //  ChatStreamContext — hot during streaming (~60 fps). The ONLY consumer is
 //                      StreamingBubble. Every other component is unaffected.
 //
-const ChatStateContext  = createContext<ChatStateContextType  | undefined>(undefined);
+const ChatStateContext = createContext<ChatStateContextType | undefined>(undefined);
 const ChatStreamContext = createContext<ChatStreamContextType | undefined>(undefined);
 
 // ── Session count helpers ────────────────────────────────────────────────────
@@ -36,15 +36,15 @@ function writeCount(n: number) {
 // ── Provider ─────────────────────────────────────────────────────────────────
 export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // — Stable state (ChatStateContext) —
-  const [isOpen,           setIsOpen]         = useState(false);
-  const [settledMessages,  setSettledMessages] = useState<Message[]>([]);
-  const [input,            setInput]           = useState('');
-  const [isTyping,         setIsTyping]        = useState(false);
-  const [sessionCount,     setSessionCount]    = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+  const [settledMessages, setSettledMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [sessionCount, setSessionCount] = useState(0);
 
   // — Hot state (ChatStreamContext) —
   const [streamingContent, setStreamingContent] = useState('');
-  const [isStreaming,      setIsStreaming]       = useState(false);
+  const [isStreaming, setIsStreaming] = useState(false);
 
   // Ref so callbacks always read current settled messages without depending on them
   const settledRef = useRef<Message[]>([]);
@@ -62,7 +62,7 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   }, [isOpen]);
 
-  const openChat  = useCallback(() => setIsOpen(true),  []);
+  const openChat = useCallback(() => setIsOpen(true), []);
   const closeChat = useCallback(() => setIsOpen(false), []);
 
   // Memoized explicitly — both deps only change at stream boundaries (start/end),
@@ -133,8 +133,8 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
         const finalContent = accumulated;
         const assistantMsg: Message = {
-          id:      crypto.randomUUID(),
-          role:    'assistant',
+          id: crypto.randomUUID(),
+          role: 'assistant',
           content: finalContent,
         };
         // React 18 batches these four updates into one render pass:

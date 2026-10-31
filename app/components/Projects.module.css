@@ -681,169 +681,358 @@
   }
 }
 
-@media (max-width: 767px) {
+.desktopProjects {
+  display: contents;
+}
+
+.mobileProjects {
+  display: none;
+}
+
+/* ─── RESPONSIVE (Mobile Showcase) ─── */
+@media (max-width: 768px) {
   .section {
-    padding: 3rem 0;
+    background: #000000 !important;
+    padding: 5.5rem 0 3.5rem;
+    box-shadow: none;
+    overflow-x: hidden;
   }
 
-  .sectionHeader {
+  .desktopProjects {
+    display: none !important;
+  }
+
+  .mobileProjects {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* Header Section */
+  .mobileHeader {
+    padding: 0 1.25rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mobileTitleGroup {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Orange corner-bracket accent matching reference */
+  .mobileCornerAccent {
+    position: absolute;
+    top: -6px;
+    left: -10px;
+    width: 28px;
+    height: 28px;
+    border-top: 2.5px solid #FF6500;
+    border-left: 2.5px solid #FF6500;
+    pointer-events: none;
+  }
+
+  .mobileProjectsTitle {
+    font-family: 'Zen Dots', var(--font-zen-dots), sans-serif;
+    font-size: clamp(2.35rem, 10.5vw, 3.1rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .mobileProjectsSubtitle {
+    font-family: var(--font-breul), sans-serif;
+    font-size: clamp(1rem, 4.2vw, 1.15rem);
+    font-weight: 400;
+    color: #BDBDBD;
+    margin: 0.85rem 0 0 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* Vertically Stacked Project Cards Section */
+  .mobileStackWrapper {
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    padding: 0 1.5rem 2.5rem;
-    gap: 1.5rem;
   }
 
-  .sectionTitle {
-    font-size: 2.2rem;
+  .mobileStackContainer {
+    position: relative;
+    width: 100%;
+    max-width: 410px;
+    height: 560px; /* Adjusted height after removing tag pills */
+    margin: 0 auto;
   }
 
-  .headerRight {
-    display: none;
+  /* Single Project Card */
+  .mobileCard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    cursor: pointer;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+    transform-origin: center top;
   }
 
-  .projectRows {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding: 0 1.5rem;
-    align-items: start;
+  /* Stack Depth Variations */
+  .stackDepth0 {
+    /* Front Card */
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+    filter: brightness(1);
+    pointer-events: auto;
   }
 
-  .projectRow {
-    display: contents;
+  .stackDepth1 {
+    /* 2nd Card */
+    transform: translateY(16px) scale(0.96);
+    opacity: 0.85;
+    filter: brightness(0.7);
+    pointer-events: auto;
   }
 
-  .secondRow {
-    display: none;
+  .stackDepth2 {
+    /* 3rd Card */
+    transform: translateY(32px) scale(0.92);
+    opacity: 0.65;
+    filter: brightness(0.5);
+    pointer-events: auto;
   }
 
-  .showRow {
-    display: contents !important;
+  .stackDepth3 {
+    /* 4th Card */
+    transform: translateY(46px) scale(0.88);
+    opacity: 0.45;
+    filter: brightness(0.35);
+    pointer-events: auto;
   }
 
-  .card {
-    height: auto;
-    min-height: 380px;
-    cursor: default;
+  .stackHidden {
+    transform: translateY(58px) scale(0.84);
+    opacity: 0;
+    pointer-events: none;
   }
 
-  .featured {
-    transform: none !important;
-    margin-bottom: 0 !important;
-    height: auto;
-    flex-direction: column-reverse;
+  /* Image Container (top 35-40% of card) */
+  .mobileCardImageContainer {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: #1a1a1a;
+    overflow: hidden;
+    border-top-left-radius: 23px;
+    border-top-right-radius: 23px;
   }
 
-  .imageWrapper {
-    height: 220px !important;
+  .mobileCardImage {
+    object-fit: cover;
+    display: block;
   }
 
-  .contentWrapper {
-    height: auto !important;
-    padding: 1.25rem !important;
+  .mobileExternalLinkBtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    z-index: 2;
+  }
+
+  /* Card Content */
+  .mobileCardContent {
+    padding: 1.15rem 1.25rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     gap: 0.75rem;
   }
 
-  .cardTitle {
-    font-size: 1.5rem;
+  /* Metadata row */
+  .mobileMetaRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
 
-  .cardDesc {
-    display: none !important;
+  .mobileMetaNumber {
+    font-family: var(--font-breul), sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #888888;
+    letter-spacing: 0.05em;
   }
 
-  .mobileDesc {
-    display: block !important;
-    font-family: var(--font-body);
-    font-size: 0.88rem;
-    line-height: 1.55;
-    color: var(--color-text-secondary);
+  .mobileMetaDivider {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .mobileMetaCategory {
+    font-family: var(--font-breul), sans-serif;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #FF6500;
+    text-transform: uppercase;
+  }
+
+  /* Title */
+  .mobileCardTitle {
+    font-family: 'Zen Dots', var(--font-zen-dots), sans-serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.15;
+    color: #FFFFFF;
+    text-transform: uppercase;
     margin: 0;
+    white-space: pre-line;
+    letter-spacing: -0.01em;
   }
 
-  .tagList {
+  /* Description */
+  .mobileCardDesc {
+    font-family: var(--font-body);
+    font-optical-sizing: auto;
+    font-variation-settings: "slnt" 0, "wdth" 100, "CTRS" 0;
+    font-size: 0.92rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #D1D5DB;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* Tags */
+  .mobileTagList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.1rem;
+  }
+
+  .mobileTag {
+    background: #222222;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+    padding: 0.3rem 0.8rem;
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: #E2E8F0;
+    white-space: nowrap;
+  }
+
+  /* Repository CTA button */
+  .mobileRepoBtn {
     margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 52px;
+    background: #FFFFFF;
+    color: #000000 !important;
+    border-radius: 9999px;
+    padding: 0.35rem 0.45rem 0.35rem 1.45rem;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    box-sizing: border-box;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   }
 
-  .arrowWrapper {
-    display: none;
+  .mobileRepoBtnText {
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: #000000;
+    white-space: nowrap;
   }
 
-  .metaRow .circularArrow {
-    display: none;
-  }
-
-  .toggleWrapper {
-    margin-top: 1.8rem;
-  }
-
-  .viewMoreBtn {
-    width: calc(100% - 3rem);
+  .mobileRepoArrowCircle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #000000;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    flex-shrink: 0;
   }
 
-  .mobileCardGithubBtn {
-    display: inline-flex;
+  /* Stack Navigator */
+  .mobileStackNav {
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    margin-top: 1.2rem;
-    padding: 0.9rem 1.8rem;
-    border: 1px solid var(--color-border-strong);
-    background: var(--color-surface);
-    color: var(--color-text-primary);
-    font-family: var(--font-body);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-decoration: none;
-    text-transform: uppercase;
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 4px;
-    transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+    margin-top: 2.2rem;
   }
 
-  .mobileCardGithubBtn:active {
-    background-color: var(--color-accent);
-    border-color: var(--color-accent);
-    color: var(--color-btn-hover-text);
+  .mobileStackTab {
+    background: #1c1c1c;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #888888;
+    border-radius: 8px;
+    padding: 0.4rem 0.75rem;
+    font-family: 'Zen Dots', var(--font-zen-dots), sans-serif;
+    font-size: 0.75rem;
+    cursor: pointer;
   }
 
-  /* Disable hover blur and View in Detail button on mobile */
-  .hoverOverlay {
-    display: none !important;
+  .mobileStackTabActive {
+    background: #FF6500;
+    border-color: #FF6500;
+    color: #FFFFFF;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobileStackContainer {
+    height: 585px;
   }
 
-  .card:hover {
-    transform: none !important;
-    box-shadow: none !important;
-    border-color: var(--color-border) !important;
+  .mobileProjectsTitle {
+    font-size: 2.1rem;
   }
 
-  .featured:hover {
-    border-color: var(--color-accent-orange) !important;
+  .mobileCardTitle {
+    font-size: 1.18rem;
   }
 
-  .card:hover .imageWrapper,
-  .card:hover .contentWrapper {
-    opacity: 1 !important;
-    filter: none !important;
+  .mobileCardDesc {
+    font-size: 0.85rem;
   }
 
-  .card:hover .image {
-    transform: scale(1) !important;
-  }
-
-  .card:hover .tag {
-    border-color: var(--color-border) !important;
-    color: var(--color-text-muted) !important;
-  }
-
-  .featured:hover .tag {
-    border-color: rgba(255, 255, 255, 0.25) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
+  .mobileCardImageContainer {
+    height: 175px;
   }
 }
 

@@ -62,19 +62,19 @@ export const MessageBubble = memo(({ message, isNew }: MessageBubbleProps) => {
           <div style={{ color: '#e4e4e7', fontSize: '13px', lineHeight: 1.65, wordBreak: 'break-word' }}>
             <ReactMarkdown
               components={{
-                p:          ({ children }) => <p style={{ margin: '0 0 8px 0', lineHeight: 1.65 }}>{children}</p>,
-                strong:     ({ children }) => <strong style={{ color: '#ffffff', fontWeight: 600 }}>{children}</strong>,
-                em:         ({ children }) => <em style={{ color: '#a1a1aa' }}>{children}</em>,
-                ul:         ({ children }) => <ul style={{ margin: '6px 0', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>{children}</ul>,
-                ol:         ({ children }) => <ol style={{ margin: '6px 0', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>{children}</ol>,
-                li:         ({ children }) => <li style={{ color: '#e4e4e7', lineHeight: 1.6 }}>{children}</li>,
-                code:       ({ children }) => <code style={{ background: 'rgba(255,255,255,0.08)', padding: '1px 5px', borderRadius: '4px', fontSize: '12px', fontFamily: 'monospace', color: '#a5b4fc' }}>{children}</code>,
-                pre:        ({ children }) => <pre style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', padding: '10px', borderRadius: '8px', overflowX: 'auto', margin: '8px 0', fontSize: '12px' }}>{children}</pre>,
-                h1:         ({ children }) => <h1 style={{ color: '#ffffff', fontSize: '15px', fontWeight: 700, margin: '8px 0 4px' }}>{children}</h1>,
-                h2:         ({ children }) => <h2 style={{ color: '#ffffff', fontSize: '14px', fontWeight: 600, margin: '8px 0 4px' }}>{children}</h2>,
-                h3:         ({ children }) => <h3 style={{ color: '#ffffff', fontSize: '13px', fontWeight: 600, margin: '6px 0 4px' }}>{children}</h3>,
-                a:          ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{children}</a>,
-                hr:         () => <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)', margin: '10px 0' }} />,
+                p: ({ children }) => <p style={{ margin: '0 0 8px 0', lineHeight: 1.65 }}>{children}</p>,
+                strong: ({ children }) => <strong style={{ color: '#ffffff', fontWeight: 600 }}>{children}</strong>,
+                em: ({ children }) => <em style={{ color: '#a1a1aa' }}>{children}</em>,
+                ul: ({ children }) => <ul style={{ margin: '6px 0', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>{children}</ul>,
+                ol: ({ children }) => <ol style={{ margin: '6px 0', paddingLeft: '18px', display: 'flex', flexDirection: 'column', gap: '4px' }}>{children}</ol>,
+                li: ({ children }) => <li style={{ color: '#e4e4e7', lineHeight: 1.6 }}>{children}</li>,
+                code: ({ children }) => <code style={{ background: 'rgba(255,255,255,0.08)', padding: '1px 5px', borderRadius: '4px', fontSize: '12px', fontFamily: 'monospace', color: '#a5b4fc' }}>{children}</code>,
+                pre: ({ children }) => <pre style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', padding: '10px', borderRadius: '8px', overflowX: 'auto', margin: '8px 0', fontSize: '12px' }}>{children}</pre>,
+                h1: ({ children }) => <h1 style={{ color: '#ffffff', fontSize: '15px', fontWeight: 700, margin: '8px 0 4px' }}>{children}</h1>,
+                h2: ({ children }) => <h2 style={{ color: '#ffffff', fontSize: '14px', fontWeight: 600, margin: '8px 0 4px' }}>{children}</h2>,
+                h3: ({ children }) => <h3 style={{ color: '#ffffff', fontSize: '13px', fontWeight: 600, margin: '6px 0 4px' }}>{children}</h3>,
+                a: ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{children}</a>,
+                hr: () => <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.08)', margin: '10px 0' }} />,
                 blockquote: ({ children }) => <blockquote style={{ borderLeft: '2px solid rgba(255,255,255,0.15)', paddingLeft: '12px', margin: '8px 0', color: 'rgba(255,255,255,0.6)', fontStyle: 'italic' }}>{children}</blockquote>,
               }}
             >

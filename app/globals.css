@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&family=Zen+Dots&display=swap');
 @import "lenis/dist/lenis.css";
 
 /* Removed Google Fonts @import for performance */
@@ -20,10 +20,37 @@ html.lenis-smooth.lenis-stopped {
   overflow-x: hidden !important;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* Font-face declarations for Zen Dots & Breul Grotesk */
+@font-face {
+  font-family: 'Zen Dots';
+  src: url('/fonts/ZenDots-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Breul Grotesk';
+  src: url('/fonts/BreulGrotesk-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Breul Grotesk';
+  src: url('/fonts/BreulGrotesk-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* ═══════════════════════════════
@@ -31,59 +58,61 @@ html.lenis-smooth.lenis-stopped {
 ═══════════════════════════════ */
 :root {
   /* Brand */
-  --color-accent:        #7c3aed;
-  --color-accent-gold:   #d4a017;
+  --color-accent: #7c3aed;
+  --color-accent-gold: #d4a017;
   --color-accent-orange: #ff3e00;
 
   /* Accent variants — used in component hover/glow states */
-  --color-accent-soft:          rgba(124, 58, 237, 0.06);
-  --color-accent-border:        rgba(124, 58, 237, 0.40);
-  --color-accent-glow:          rgba(124, 58, 237, 0.30);
-  --color-accent-orange-soft:   rgba(255, 62, 0, 0.08);
+  --color-accent-soft: rgba(124, 58, 237, 0.06);
+  --color-accent-border: rgba(124, 58, 237, 0.40);
+  --color-accent-glow: rgba(124, 58, 237, 0.30);
+  --color-accent-orange-soft: rgba(255, 62, 0, 0.08);
   --color-accent-orange-border: rgba(255, 62, 0, 0.45);
 
   /* Backgrounds */
-  --color-bg:          #121316;
-  --color-bg-light:    #eceef2;
-  --color-surface:     #1a1b20;
-  --color-surface-2:   #22232a;
-  --color-surface-3:   #16171c;
-  --color-img-bg:      #16171c;
+  --color-bg: #121316;
+  --color-bg-light: #eceef2;
+  --color-surface: #1a1b20;
+  --color-surface-2: #22232a;
+  --color-surface-3: #16171c;
+  --color-img-bg: #16171c;
 
   /* Text */
-  --color-text-primary:   #ffffff;
+  --color-text-primary: #ffffff;
   --color-text-secondary: rgba(255, 255, 255, 0.72);
-  --color-text-muted:     rgba(255, 255, 255, 0.60);
-  --color-text-faint:     rgba(255, 255, 255, 0.40);
+  --color-text-muted: rgba(255, 255, 255, 0.60);
+  --color-text-faint: rgba(255, 255, 255, 0.40);
 
   /* Borders */
-  --color-border:        rgba(255, 255, 255, 0.12);
+  --color-border: rgba(255, 255, 255, 0.12);
   --color-border-subtle: rgba(255, 255, 255, 0.06);
   --color-border-strong: rgba(255, 255, 255, 0.22);
-  --color-border-logo:   rgba(255, 255, 255, 0.90);
+  --color-border-logo: rgba(255, 255, 255, 0.90);
 
   /* Nav */
-  --color-nav-scrolled:   rgba(18, 19, 22, 0.95);
-  --color-cta-bg-hover:   #ffffff;
+  --color-nav-scrolled: rgba(18, 19, 22, 0.95);
+  --color-cta-bg-hover: #ffffff;
   --color-cta-text-hover: #121316;
-  --color-cta-border:     rgba(255, 255, 255, 0.75);
+  --color-cta-border: rgba(255, 255, 255, 0.75);
 
   /* Decorative blocks */
   --color-block-a-1: #0a1628;
   --color-block-a-2: #0f2347;
-  --color-block-b:   #1a1a2e;
+  --color-block-b: #1a1a2e;
 
   /* Misc */
-  --color-overlay:        rgba(255, 255, 255, 0.07);
+  --color-overlay: rgba(255, 255, 255, 0.07);
   --color-btn-hover-text: #0a0a0a;
 
   /* Fonts */
-  --font-name:        var(--font-protest-guerrilla);
-  --font-heading:     var(--font-protest-guerrilla);
-  --font-body:        'Science Gothic', sans-serif;
-  
-  --font-russo:       var(--font-russo-one);
-  --font-goldman:     var(--font-goldman);
+  --font-name: var(--font-protest-guerrilla);
+  --font-heading: var(--font-protest-guerrilla);
+  --font-body: 'Science Gothic', sans-serif;
+
+  --font-russo: var(--font-russo-one);
+  --font-goldman: var(--font-goldman);
+  --font-zen-dots: 'Zen Dots', sans-serif;
+  --font-breul: 'Breul Grotesk', sans-serif;
 }
 
 
@@ -151,6 +180,7 @@ select {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -178,8 +208,18 @@ button {
    CHATBOT WIDGET
 ═══════════════════════════════ */
 @keyframes chat-bounce {
-  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-  40%            { transform: scale(1);   opacity: 1;   }
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .chat-window-overlay {
@@ -203,7 +243,10 @@ button {
   }
 }
 
-.chat-window-scrollbar::-webkit-scrollbar { display: none; }
+.chat-window-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .chat-window-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -214,8 +257,19 @@ button {
    Size:     64 px (mobile) → scales with viewport → 100 px (desktop)
    Position: 16 px (mobile) →                      →  28 px (desktop) */
 .chat-launcher-btn {
-  width:  clamp(4rem, 8vw, 6.25rem);   /* 64 px – 100 px */
+  width: clamp(4rem, 8vw, 6.25rem);
+  /* 64 px – 100 px */
   height: clamp(4rem, 8vw, 6.25rem);
-  bottom: clamp(1rem, 2.5vw, 1.75rem); /* 16 px – 28 px  */
-  right:  clamp(1rem, 2.5vw, 1.75rem);
+  bottom: clamp(1rem, 2.5vw, 1.75rem);
+  /* 16 px – 28 px  */
+  right: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+@media (max-width: 768px) {
+  .chat-launcher-btn {
+    width: 3.25rem !important;
+    height: 3.25rem !important;
+    bottom: 5.4rem !important;
+    right: 0.85rem !important;
+  }
 }

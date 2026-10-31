@@ -21,66 +21,124 @@ function ArrowDownIcon() {
   );
 }
 
+function ArrowRightIcon() {
+  return (
+    <svg
+      className={styles.mobileArrowIcon}
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <line x1="4" y1="12" x2="20" y2="12" />
+      <polyline points="14 6 20 12 14 18" />
+    </svg>
+  );
+}
+
 export default function About() {
   return (
     <section className={styles.section} id="about" aria-label="About" data-stacked-section>
-      {/* Corner bracket accents */}
-      <div className={styles.cornerTL} aria-hidden="true" />
-      <div className={styles.cornerBR} aria-hidden="true" />
+      {/* ─── DESKTOP ABOUT (Preserved exactly as-is) ─── */}
+      <div className={styles.desktopAbout}>
+        {/* Corner bracket accents */}
+        <div className={styles.cornerTL} aria-hidden="true" />
+        <div className={styles.cornerBR} aria-hidden="true" />
 
-      {/* Content */}
-      <div className={styles.inner} data-stacked-inner>
+        {/* Content */}
+        <div className={styles.inner} data-stacked-inner>
+          <h2 className={styles.heading}>What Defines My Work</h2>
 
-        <h2 className={styles.heading}>What Defines My Work</h2>
-
-        {/* Meta strip */}
-        <div className={styles.metaStrip}>
-          <div className={styles.metaItem}>
-            <span className={styles.metaLabel}>Recognition</span>
-            <span className={styles.metaValue}>4× Hackathon Winner</span>
+          {/* Meta strip */}
+          <div className={styles.metaStrip}>
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>Recognition</span>
+              <span className={styles.metaValue}>4× Hackathon Winner</span>
+            </div>
+            <div className={styles.metaDivider} aria-hidden="true" />
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>Location</span>
+              <span className={styles.metaValue}>Mumbai, India</span>
+            </div>
+            <div className={styles.metaDivider} aria-hidden="true" />
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>Email</span>
+              <a href="mailto:vedbhumi123@gmail.com" className={styles.metaLink}>
+                vedbhumi123@gmail.com
+              </a>
+            </div>
           </div>
-          <div className={styles.metaDivider} aria-hidden="true" />
-          <div className={styles.metaItem}>
-            <span className={styles.metaLabel}>Location</span>
-            <span className={styles.metaValue}>Mumbai, India</span>
+
+          {/* Main copy */}
+          <div className={styles.body}>
+            <p className={styles.para}>
+              <strong>Electronics and Computer Science</strong> student building engineering systems
+              across software and hardware domains. My projects span{' '}
+              <strong>IoT systems</strong>, <strong>backend applications</strong>,{' '}
+              <strong>machine learning solutions</strong>, and <strong>data-driven applications</strong> — with a
+              focus on building practical systems that solve real-world problems.
+            </p>
+            <p className={styles.para}>
+              Currently strengthening foundations in{' '}
+              <strong>data structure and algorithms</strong>, <strong>embedded systems</strong>, and low-level
+              programming while exploring system-oriented engineering domains.
+            </p>
           </div>
-          <div className={styles.metaDivider} aria-hidden="true" />
-          <div className={styles.metaItem}>
-            <span className={styles.metaLabel}>Email</span>
-            <a href="mailto:vedbhumi123@gmail.com" className={styles.metaLink}>
-              vedbhumi123@gmail.com
+
+          {/* Resume CTA */}
+          <a
+            href="https://drive.google.com/file/d/1ZSy1FW-6aWlZugjsOIPU0rK0etNAOTlA/view"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.resumeBtn}
+            id="about-resume-btn"
+            aria-label="View resume on Google Drive"
+          >
+            <ArrowDownIcon />
+            <span>View Resume</span>
+          </a>
+        </div>
+      </div>
+
+      {/* ─── MOBILE ABOUT (Recreated strictly to reference image) ─── */}
+      <div className={styles.mobileAbout}>
+        <div className={styles.mobileAboutInner}>
+          <h2 className={styles.mobileHeading}>
+            <span className={styles.mobileHeadingLine}>WHAT</span>
+            <span className={styles.mobileHeadingLine}>DEFINES</span>
+            <span className={styles.mobileHeadingLine}>
+              <span className={styles.mobileAccentWork}>MY WORK</span>..
+            </span>
+          </h2>
+
+          <div className={styles.mobileDescription}>
+            <p className={styles.mobilePara}>
+              <strong>Electronics and Computer Science</strong> student building engineering systems across{' '}
+              <strong>software</strong> and <strong>hardware</strong> domains. My projects span{' '}
+              <strong>IoT systems, backend applications, machine learning solutions, and data-driven applications</strong>{' '}
+              — with a focus on building practical systems that <strong>solve real-world problems.</strong>
+            </p>
+          </div>
+
+          <div className={styles.mobileCtaWrapper}>
+            <a
+              href="https://drive.google.com/file/d/1ZSy1FW-6aWlZugjsOIPU0rK0etNAOTlA/view"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.mobileResumeBtn}
+              id="mobile-about-resume-btn"
+              aria-label="View My Resume"
+            >
+              <span>View My Resume</span>
+              <ArrowRightIcon />
             </a>
           </div>
         </div>
-
-        {/* Main copy */}
-        <div className={styles.body}>
-          <p className={styles.para}>
-            <strong>Electronics and Computer Science</strong> student building engineering systems
-            across software and hardware domains. My projects span{' '}
-            <strong>IoT systems</strong>, <strong>backend applications</strong>,{' '}
-            <strong>machine learning solutions</strong>, and <strong>data-driven applications</strong> — with a
-            focus on building practical systems that solve real-world problems.
-          </p>
-          <p className={styles.para}>
-            Currently strengthening foundations in{' '}
-            <strong>data structure and algorithms</strong>, <strong>embedded systems</strong>, and low-level
-            programming while exploring system-oriented engineering domains.
-          </p>
-        </div>
-
-        {/* Resume CTA */}
-        <a
-          href="https://drive.google.com/file/d/1ZSy1FW-6aWlZugjsOIPU0rK0etNAOTlA/view"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.resumeBtn}
-          id="about-resume-btn"
-          aria-label="View resume on Google Drive"
-        >
-          <ArrowDownIcon />
-          <span>View Resume</span>
-        </a>
       </div>
     </section>
   );

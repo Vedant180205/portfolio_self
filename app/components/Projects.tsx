@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import styles from './Projects.module.css';
 import { ProjectModal } from './ProjectModal';
@@ -17,7 +17,7 @@ const projects = [
         Built a <strong>quantitative finance platform</strong> for pricing and analyzing stock options using industry-standard derivatives models. Implemented the <strong>Cox-Ross-Rubinstein (CRR) Binomial Tree Model</strong>, <strong>EWMA volatility forecasting</strong>, and <strong>risk-neutral valuation</strong> techniques to estimate option prices under varying market conditions. Integrated <strong>interactive visualizations</strong> and <strong>financial analytics</strong> to help users evaluate volatility, risk exposure, and potential trading opportunities.
       </>
     ),
-    mobileDescription: 'Quantitative finance platform for options pricing and risk analysis using CRR Binomial Tree, EWMA volatility, and risk-neutral valuation.',
+    mobileDescription: 'Quantitative finance platform for options pricing and risk analysis using CRR Binomial Trees, EWMA volatility, and risk-neutral valuation.',
     tags: ['Python', 'Binomial Tree', 'Black-Scholes', 'Finance'],
     github: 'https://github.com/Vedant180205/OptionsPricingModel_QuantDevs',
     image: '/images/projects/thumbs/Quant_bg.webp',
@@ -140,9 +140,91 @@ function GitHubIcon() {
   );
 }
 
+function ExternalLinkIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
+  );
+}
+
+function ArrowRightIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </svg>
+  );
+}
+
+function ChevronLeftIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <line x1="19" y1="12" x2="5" y2="12" />
+      <polyline points="12 19 5 12 12 5" />
+    </svg>
+  );
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </svg>
+  );
+}
+
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [activeMobileIndex, setActiveMobileIndex] = useState(0);
+
+  const handleCardSelect = (index: number) => {
+    setActiveMobileIndex(index);
+  };
 
   
 
@@ -272,7 +354,8 @@ export default function Projects() {
 
   return (
     <section className={styles.section} id="projects" aria-label="Projects" data-stacked-section>
-      <div data-stacked-inner>
+      {/* ─── DESKTOP PROJECTS (Preserved exactly as-is) ─── */}
+      <div className={styles.desktopProjects} data-stacked-inner>
         {/* Section header */}
         <div className={styles.sectionHeader}>
           <div className={styles.headerLeft}>
@@ -336,6 +419,117 @@ export default function Projects() {
               <polyline points="12 5 19 12 12 19" />
             </svg>
           </button>
+        </div>
+      </div>
+
+      {/* ─── MOBILE PROJECTS SHOWCASE (Faithful to Reference) ─── */}
+      <div className={styles.mobileProjects}>
+        {/* Header section with corner-bracket decoration */}
+        <div className={styles.mobileHeader}>
+          <div className={styles.mobileTitleGroup}>
+            <div className={styles.mobileCornerAccent} aria-hidden="true" />
+            <h2 className={styles.mobileProjectsTitle}>PROJECTS</h2>
+          </div>
+          <p className={styles.mobileProjectsSubtitle}>
+            Ideas turned into working solutions.
+          </p>
+        </div>
+
+        {/* Vertically Stacked Project Cards */}
+        <div className={styles.mobileStackWrapper}>
+          <div className={styles.mobileStackContainer}>
+            {projects.map((project, index) => {
+              // Calculate relative position to active index in circular deck fashion
+              const diff = (index - activeMobileIndex + projects.length) % projects.length;
+              const isFront = diff === 0;
+
+              // Display formatting
+              const displayTitle = project.id === 1 ? 'OPTIONS PRICING\nTRADING PLATFORM' : project.title;
+              const displayCategory = project.id === 1 ? 'FINANCE · ANALYTICS' : project.subtitle.toUpperCase();
+              const displayDesc = project.mobileDescription;
+
+              return (
+                <div
+                  key={project.id}
+                  className={`${styles.mobileCard} ${styles[`stackDepth${diff}`] || styles.stackHidden}`}
+                  onClick={() => !isFront && handleCardSelect(index)}
+                  id={`mobile-project-card-${project.id}`}
+                  style={{
+                    zIndex: projects.length - diff,
+                  }}
+                >
+                  {/* 1. Preview Image with external link in top right */}
+                  <div className={styles.mobileCardImageContainer}>
+                    <Image
+                      src={project.image}
+                      alt={project.imageAlt}
+                      fill
+                      sizes="(max-width: 480px) 90vw, 380px"
+                      style={{ objectPosition: project.imagePosition }}
+                      className={styles.mobileCardImage}
+                    />
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.mobileExternalLinkBtn}
+                      aria-label={`Open ${project.title} on GitHub`}
+                    >
+                      <ExternalLinkIcon />
+                    </a>
+                  </div>
+
+                  {/* Card Content */}
+                  <div className={styles.mobileCardContent}>
+                    {/* 2. Metadata row: Number - line - category */}
+                    <div className={styles.mobileMetaRow}>
+                      <span className={styles.mobileMetaNumber}>{project.number}</span>
+                      <span className={styles.mobileMetaDivider} aria-hidden="true" />
+                      <span className={styles.mobileMetaCategory}>{displayCategory}</span>
+                    </div>
+
+                    {/* 3. Project Title */}
+                    <h3 className={styles.mobileCardTitle}>
+                      {displayTitle}
+                    </h3>
+
+                    {/* 4. Project Description */}
+                    <p className={styles.mobileCardDesc}>
+                      {displayDesc}
+                    </p>
+
+                    {/* 5. Repository CTA button */}
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.mobileRepoBtn}
+                      aria-label={`View ${project.title} Repository`}
+                    >
+                      <span className={styles.mobileRepoBtnText}>View Repository</span>
+                      <span className={styles.mobileRepoArrowCircle}>
+                        <ArrowRightIcon />
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Quick Deck Switcher indicator */}
+          <div className={styles.mobileStackNav}>
+            {projects.map((p, idx) => (
+              <button
+                key={p.id}
+                onClick={() => handleCardSelect(idx)}
+                className={`${styles.mobileStackTab} ${idx === activeMobileIndex ? styles.mobileStackTabActive : ''}`}
+                aria-label={`Switch to project ${p.number}`}
+              >
+                {p.number}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

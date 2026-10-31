@@ -10,9 +10,9 @@ const chunks = md.split(/\n(?=## )/).filter(c => c.trim());
 
 // 3. Build the BM25 index
 const miniSearch = new MiniSearch({
-    fields: ['text'],
-    storeFields: ['text'],
-    idField: 'id',
+  fields: ['text'],
+  storeFields: ['text'],
+  idField: 'id',
 });
 
 const documents = chunks.map((text, id) => ({ id, text }));
@@ -21,7 +21,7 @@ miniSearch.addAll(documents);
 // 4. Ensure the root data directory exists
 const outputDir = path.join(__dirname, '..', 'data');
 if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
+  fs.mkdirSync(outputDir, { recursive: true });
 }
 
 // 5. Save the index to root data folder

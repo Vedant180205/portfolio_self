@@ -162,140 +162,198 @@ export default function Hero() {
 
   return (
     <section ref={heroRef} className={`${styles.hero} paused`} data-animate-pause id="home" aria-label="Introduction" data-stacked-section>
-      {/* Ambient Grid Layer */}
-      <div className={styles.gridBg} aria-hidden="true" />
+      {/* ─── DESKTOP HERO (Preserved exactly as-is) ─── */}
+      <div className={styles.desktopHero}>
+        {/* Ambient Grid Layer */}
+        <div className={styles.gridBg} aria-hidden="true" />
 
-      {/* Interactive Cursor Spotlight */}
-      <div ref={glowRef} className={styles.interactiveGlow} aria-hidden="true" />
+        {/* Interactive Cursor Spotlight */}
+        <div ref={glowRef} className={styles.interactiveGlow} aria-hidden="true" />
 
-      {/* Secondary Ambient Corner Glow */}
-      <div className={styles.ambientGlow} aria-hidden="true" />
+        {/* Secondary Ambient Corner Glow */}
+        <div className={styles.ambientGlow} aria-hidden="true" />
 
-      {/* Background grain overlay */}
-      <div className={styles.grain} aria-hidden="true" />
+        {/* Background grain overlay */}
+        <div className={styles.grain} aria-hidden="true" />
 
-      {/* Left Content */}
-      <div className={styles.content}>
-        <h1 className={styles.headline} aria-label="Vedant Patil">
-          {/* VEDANT */}
-          <span className={styles.headlineLine}>
-            {renderLetters("VEDANT", 0.1)}
-          </span>
-
-          {/* Gold classification divider */}
-          <span className={styles.nameDivider} aria-hidden="true" />
-
-          {/* PATIL */}
-          <span className={styles.headlineLastLine}>
-            <span className={styles.headlineLastName}>
-              {renderLetters("PATIL", 0.35)}
+        {/* Left Content */}
+        <div className={styles.content}>
+          <h1 className={styles.headline} aria-label="Vedant Patil">
+            {/* VEDANT */}
+            <span className={styles.headlineLine}>
+              {renderLetters("VEDANT", 0.1)}
             </span>
-            <span className={styles.accentRule} aria-hidden="true" />
-          </span>
-        </h1>
 
-        {/* Mobile-only cycling role ticker */}
-        <div className={styles.roleTicker} aria-live="polite">
-          <span className={styles.roleText}>{displayed}</span>
-          <span className={styles.roleCursor} aria-hidden="true">|</span>
-        </div>
+            {/* Gold classification divider */}
+            <span className={styles.nameDivider} aria-hidden="true" />
 
-        <p className={styles.description}>
-          Building intelligent software, hardware projects, and AI-powered solutions that solve real-world problems.
-        </p>
+            {/* PATIL */}
+            <span className={styles.headlineLastLine}>
+              <span className={styles.headlineLastName}>
+                {renderLetters("PATIL", 0.35)}
+              </span>
+              <span className={styles.accentRule} aria-hidden="true" />
+            </span>
+          </h1>
 
-        <div className={styles.actions}>
-          <a href="#projects" id="hero-view-work-btn" className={styles.primaryBtn}>
-            <span>VIEW MY WORK</span>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M3.5 9H14.5M14.5 9L10 4.5M14.5 9L10 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
+          {/* Cycling role ticker */}
+          <div className={styles.roleTicker} aria-live="polite">
+            <span className={styles.roleText}>{displayed}</span>
+            <span className={styles.roleCursor} aria-hidden="true">|</span>
+          </div>
 
-          <a href="/dossier" id="hero-visit-dossier-btn" className={`${styles.primaryBtn} ${styles.mobileDossierBtn}`}>
-            <span>VISIT DOSSIER PAGE</span>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M3.5 9H14.5M14.5 9L10 4.5M14.5 9L10 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
+          <p className={styles.description}>
+            Building intelligent software, hardware projects, and AI-powered solutions that solve real-world problems.
+          </p>
 
-          <a
-            href="https://drive.google.com/file/d/1ZSy1FW-6aWlZugjsOIPU0rK0etNAOTlA/view"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondaryBtn}
-            id="hero-resume-btn"
-            aria-label="Download Resume"
-          >
-            <span>DOWNLOAD RESUME</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-          </a>
-
-          {/* Scroll indicator */}
-          <div className={styles.scrollIndicator} aria-label="Scroll to explore">
-            <svg className={styles.scrollCircle} viewBox="0 0 120 120" width="110" height="110">
-              <defs>
-                <path
-                  id="circlePath"
-                  d="M 60,60 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0"
-                />
-              </defs>
-              <text className={styles.scrollCircleText}>
-                <textPath href="#circlePath" startOffset="0%">
-                  • SCROLL TO EXPLORE • SCROLL TO EXPLORE •
-                </textPath>
-              </text>
-            </svg>
-            <div className={styles.scrollArrow} aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                <path d="M4 11H18M18 11L12 5M18 11L12 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <div className={styles.actions}>
+            <a href="#projects" id="hero-view-work-btn" className={styles.primaryBtn}>
+              <span>VIEW MY WORK</span>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M3.5 9H14.5M14.5 9L10 4.5M14.5 9L10 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
+            </a>
+
+            <a href="/dossier" id="hero-visit-dossier-btn" className={`${styles.primaryBtn} ${styles.mobileDossierBtn}`}>
+              <span>VISIT DOSSIER PAGE</span>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M3.5 9H14.5M14.5 9L10 4.5M14.5 9L10 13.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+
+            <a
+              href="https://drive.google.com/file/d/1ZSy1FW-6aWlZugjsOIPU0rK0etNAOTlA/view"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.secondaryBtn}
+              id="hero-resume-btn"
+              aria-label="Download Resume"
+            >
+              <span>DOWNLOAD RESUME</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </a>
+
+            {/* Scroll indicator */}
+            <div className={styles.scrollIndicator} aria-label="Scroll to explore">
+              <svg className={styles.scrollCircle} viewBox="0 0 120 120" width="110" height="110">
+                <defs>
+                  <path
+                    id="circlePath"
+                    d="M 60,60 m -42,0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0"
+                  />
+                </defs>
+                <text className={styles.scrollCircleText}>
+                  <textPath href="#circlePath" startOffset="0%">
+                    • SCROLL TO EXPLORE • SCROLL TO EXPLORE •
+                  </textPath>
+                </text>
+              </svg>
+              <div className={styles.scrollArrow} aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M4 11H18M18 11L12 5M18 11L12 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
             </div>
+          </div>
+
+          {/* Social links */}
+          <div className={styles.socialRow} aria-label="Social links">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+                className={styles.socialIcon}
+                aria-label={link.label}
+                title={link.label}
+              >
+                {link.icon}
+              </a>
+            ))}
           </div>
         </div>
 
-        {/* Mobile-only social links */}
-        <div className={styles.socialRow} aria-label="Social links">
-          {socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target={link.href.startsWith('mailto') ? undefined : '_blank'}
-              rel="noopener noreferrer"
-              className={styles.socialIcon}
-              aria-label={link.label}
-              title={link.label}
-            >
-              {link.icon}
-            </a>
-          ))}
+        {/* Right — Dual Layered Portrait Visual */}
+        <div className={styles.heroVisual} aria-hidden="true">
+          <Image
+            src="/images/avatar/portrait-back.webp"
+            alt=""
+            width={486}
+            height={514}
+            priority
+            unoptimized
+            className={`${styles.heroPortrait} ${styles.heroPortraitBack}`}
+          />
+          <Image
+            src="/images/avatar/vedant-cutout.webp"
+            alt="Vedant Patil"
+            width={942}
+            height={1108}
+            priority
+            unoptimized
+            className={`${styles.heroPortrait} ${styles.heroPortraitFront}`}
+          />
         </div>
       </div>
 
-      {/* Right — Dual Layered Portrait Visual */}
-      <div className={styles.heroVisual} aria-hidden="true">
-        <Image
-          src="/images/avatar/portrait-back.webp"
-          alt=""
-          width={486}
-          height={514}
-          priority
-          unoptimized
-          className={`${styles.heroPortrait} ${styles.heroPortraitBack}`}
-        />
-        <Image
-          src="/images/avatar/vedant-cutout.webp"
-          alt="Vedant Patil"
-          width={942}
-          height={1108}
-          priority
-          unoptimized
-          className={`${styles.heroPortrait} ${styles.heroPortraitFront}`}
-        />
+      {/* ─── MOBILE HERO (Faithful to Reference Image) ─── */}
+      <div className={styles.mobileHero}>
+        {/* Layered Portrait Container */}
+        <div className={styles.mobilePortraitContainer}>
+          {/* Layer 1: Background Portrait (Scaled slightly larger, offset silhouette, low opacity) */}
+          <Image
+            src="/images/avatar/vedant-cutout.webp"
+            alt=""
+            width={942}
+            height={1108}
+            priority
+            unoptimized
+            aria-hidden="true"
+            className={styles.mobilePortraitBack}
+          />
+          {/* Layer 2: Foreground Portrait (Original opacity, primary focus, crisp) */}
+          <Image
+            src="/images/avatar/vedant-cutout.webp"
+            alt="Vedant Patil"
+            width={942}
+            height={1108}
+            priority
+            unoptimized
+            className={styles.mobilePortraitFront}
+          />
+        </div>
+
+        {/* Semi-transparent Name Overlay Card */}
+        <div className={styles.mobileNameCard}>
+          <h1 className={styles.mobileNameTitle}>
+            <span className={styles.mobileNameLine}>VEDANT</span>
+            <span className={styles.mobileNameLine}>PATIL</span>
+          </h1>
+          <p className={styles.mobileSubtitle}>
+            Crafting technology with purpose.
+          </p>
+        </div>
+
+        {/* Unified Bottom Pill CTA Container */}
+        <div className={styles.mobileCtaContainer}>
+          <a href="#projects" className={styles.mobilePrimaryBtn} id="mobile-hero-view-work">
+            View my Work
+          </a>
+          <a href="#contact" className={styles.mobileSecondaryBtn} id="mobile-hero-connect">
+            <span className={styles.mobileSecondaryBtnText}>Let’s Connect</span>
+            <span className={styles.mobileArrowCircle} aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   );

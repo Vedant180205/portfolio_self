@@ -193,10 +193,6 @@
   display: block;
 }
 
-.mobilePara {
-  display: none;
-}
-
 /* ─── DIVIDER DOT ROW ─── */
 .dots {
   display: flex;
@@ -278,74 +274,163 @@
   transform: translateY(2px);
 }
 
+.desktopAbout {
+  display: contents;
+}
+
+.mobileAbout {
+  display: none;
+}
+
 /* ─── RESPONSIVE ─── */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .section {
-    padding: 3rem 0;
+    background: #F8F7F5;
+    padding: 5.5rem 1.25rem 2.5rem;
+    min-height: 100vh;
+    min-height: 100dvh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    box-shadow: none;
   }
 
-  .cornerTL,
-  .cornerBR {
+  .section::before {
     display: none;
   }
 
-  .glowLeft,
-  .glowRight {
-    width: 250px;
-    height: 250px;
+  .desktopAbout {
+    display: none !important;
   }
 
-  .heading {
-    white-space: normal;
-    font-size: clamp(2.3rem, 9vw, 4.5rem);
-    line-height: 1.05;
-  }
-
-  .metaStrip {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.2rem 2.4rem;
-    padding: 1rem 1.4rem;
+  .mobileAbout {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    flex: 1;
+    box-sizing: border-box;
   }
 
-  .metaDivider {
-    display: none;
+  .mobileAboutInner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    flex: 1;
   }
 
-  .metaItem {
-    min-width: 40%;
-    flex: 1 1 40%;
+  /* 3-line heading */
+  .mobileHeading {
+    font-family: 'Zen Dots', var(--font-zen-dots), sans-serif;
+    font-size: clamp(2.35rem, 10.8vw, 3.25rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    color: #252525;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 1.85rem 0;
+    text-align: left;
   }
 
-  /* Email spans full width so it sits alone on its own row */
-  .metaItem:last-child {
-    flex: 1 1 100%;
+  .mobileHeadingLine {
+    display: block;
+    white-space: nowrap;
   }
 
-  .metaLabel {
-    font-size: 0.68rem;
+  .mobileAccentWork {
+    color: #FF5558;
   }
 
-  .metaValue,
-  .metaLink {
-    font-size: 1rem;
-  }
-
-  .para {
-    font-size: 0.9rem;
-  }
-
-  .inner {
-    gap: 1.2rem;
-  }
-
-  .desktopPara {
-    display: none;
+  /* Description */
+  .mobileDescription {
+    margin-bottom: auto;
+    width: 100%;
   }
 
   .mobilePara {
     display: block;
+    font-family: var(--font-body);
+    font-optical-sizing: auto;
+    font-variation-settings: "slnt" 0, "wdth" 100, "CTRS" 0;
+    font-size: clamp(1.05rem, 4.4vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.5;
+    color: #111111;
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-align: left;
+  }
+
+  .mobilePara strong {
+    font-weight: 700;
+    color: #000000;
+  }
+
+  /* CTA Button */
+  .mobileCtaWrapper {
+    width: 100%;
+    margin-top: 3.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .mobileResumeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    width: 100%;
+    height: 58px;
+    background: #FF5558;
+    color: #FFFFFF !important;
+    border-radius: 9999px;
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    border: none;
+    box-sizing: border-box;
+    padding: 0 1.75rem;
+  }
+
+  .mobileArrowIcon {
+    width: 26px;
+    height: 26px;
+    stroke: #FFFFFF;
+    stroke-width: 2.4;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .section {
+    padding: 5rem 1rem 2rem;
+  }
+
+  .mobileHeading {
+    font-size: 2.15rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .mobilePara {
+    font-size: 0.98rem;
+    line-height: 1.42;
+  }
+
+  .mobileResumeBtn {
+    height: 52px;
+    font-size: 1.05rem;
+  }
+
+  .mobileArrowIcon {
+    width: 22px;
+    height: 22px;
   }
 }

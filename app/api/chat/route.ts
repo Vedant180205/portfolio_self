@@ -15,7 +15,7 @@ const RATE = {
 };
 
 function checkRateLimit(ip: string): { allowed: boolean; retryAfterSec: number } {
-  const now        = Date.now();
+  const now = Date.now();
   const windowStart = now - RATE.WINDOW_MS;
 
   const prev = (rateLimitStore.get(ip) ?? []).filter(t => t > windowStart);
@@ -115,11 +115,11 @@ ${context || 'No context available.'}`;
     ];
 
     const completion = await groq.chat.completions.create({
-      model:       'llama-3.1-8b-instant',
-      messages:    conversationMessages,
+      model: 'llama-3.1-8b-instant',
+      messages: conversationMessages,
       temperature: 0.3,
-      max_tokens:  400,   // conservative — keeps Groq free-tier usage low
-      stream:      true,
+      max_tokens: 400,   // conservative — keeps Groq free-tier usage low
+      stream: true,
     });
 
     // Stream as SSE
@@ -146,16 +146,16 @@ ${context || 'No context available.'}`;
 
     return new Response(stream, {
       headers: {
-        'Content-Type':  'text/event-stream',
+        'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
-        'Connection':    'keep-alive',
+        'Connection': 'keep-alive',
       },
     });
   } catch (err: any) {
     console.error('[Chat API]', err);
-    return new Response(JSON.stringify({ 
-      error: 'Internal server error', 
-      details: err?.message || String(err) 
+    return new Response(JSON.stringify({
+      error: 'Internal server error',
+      details: err?.message || String(err)
     }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

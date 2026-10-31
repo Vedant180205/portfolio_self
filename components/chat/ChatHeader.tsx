@@ -15,14 +15,14 @@ export const ChatHeader = () => {
       flexShrink: 0,
     }}>
       <div>
-          <div style={{ color: '#ffffff', fontSize: '16px', fontWeight: 600, letterSpacing: '0.01em', lineHeight: 1.2 }}>
-            Agent Noir at your service
-          </div>
-          <div style={{ color: '#10b981', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '3px' }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
-            Online
-          </div>
+        <div style={{ color: '#ffffff', fontSize: '16px', fontWeight: 600, letterSpacing: '0.01em', lineHeight: 1.2 }}>
+          Agent Noir at your service
         </div>
+        <div style={{ color: '#10b981', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '3px' }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
+          Online
+        </div>
+      </div>
       <button
         onClick={closeChat}
         aria-label="Close chat"

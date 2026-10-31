@@ -83,6 +83,7 @@ export default function Navbar() {
             />
           </div>
           <div className={styles.logoText}>
+            <span className={styles.brandNameMobile}>Vedant P.</span>
             <span className={`${styles.logoRole} ${styles.hiddenOnDesktop}`}>ENGINEERING THE IMPOSSIBLE.</span>
           </div>
         </a>
@@ -124,9 +125,26 @@ export default function Navbar() {
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             id="nav-hamburger"
           >
-            <span className={styles.bar} />
-            <span className={styles.bar} />
-            <span className={styles.bar} />
+            <span className={styles.desktopBars}>
+              <span className={styles.bar} />
+              <span className={styles.bar} />
+              <span className={styles.bar} />
+            </span>
+            <svg
+              className={styles.mobileHamburgerIcon}
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle cx="4" cy="5" r="2" fill="white" />
+              <line x1="9" y1="5" x2="21" y2="5" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+              <circle cx="4" cy="12" r="2" fill="white" />
+              <line x1="9" y1="12" x2="21" y2="12" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+              <circle cx="4" cy="19" r="2" fill="white" />
+              <line x1="9" y1="19" x2="21" y2="19" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
+            </svg>
           </button>
         </div>
       </nav>

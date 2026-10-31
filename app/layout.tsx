@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Protest_Guerrilla, Russo_One, Goldman } from 'next/font/google';
+import { Protest_Guerrilla, Russo_One, Goldman, Zen_Dots } from 'next/font/google';
 import Script from 'next/script';
 import "./globals.css";
 import { GlobalChatAssistant } from '@/components/chat';
@@ -23,6 +23,13 @@ const goldman = Goldman({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-goldman',
+  display: 'swap',
+});
+
+const zenDots = Zen_Dots({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-zen-dots',
   display: 'swap',
 });
 
@@ -74,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${protestGuerrilla.variable} ${russoOne.variable} ${goldman.variable}`}>
+    <html lang="en" className={`${protestGuerrilla.variable} ${russoOne.variable} ${goldman.variable} ${zenDots.variable}`}>
       <head>
         <script
           type="application/ld+json"
