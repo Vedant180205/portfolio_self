@@ -116,6 +116,27 @@ export default function About() {
             </span>
           </h2>
 
+          {/* Clean Editorial Meta Strip */}
+          <div className={styles.mobileMetaStrip}>
+            <div className={styles.mobileMetaPill}>
+              <span className={styles.mobileMetaTag}>4×</span>
+              <span className={styles.mobileMetaText}>Hackathon Winner</span>
+            </div>
+            <div className={styles.mobileMetaDot} aria-hidden="true" />
+            <div className={styles.mobileMetaPill}>
+              <span className={styles.mobileMetaTag}>9.94</span>
+              <span className={styles.mobileMetaText}>CGPA</span>
+            </div>
+            <div className={styles.mobileMetaDot} aria-hidden="true" />
+            <div className={styles.mobileMetaPill}>
+              <svg className={styles.mobilePinIcon} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span className={styles.mobileMetaText}>Mumbai, IN</span>
+            </div>
+          </div>
+
           <div className={styles.mobileDescription}>
             <p className={styles.mobilePara}>
               <strong>Electronics and Computer Science</strong> student building engineering systems across{' '}

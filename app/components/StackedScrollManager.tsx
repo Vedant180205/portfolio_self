@@ -50,8 +50,6 @@ export default function StackedScrollManager() {
       if (validPanels.length < 2) return;
 
       const hasFooter = Boolean(document.querySelector('#contact, footer'));
-      // If there's a footer, all panels animate before the footer comes in.
-      // If there is no footer, the last panel remains unpinned so the user rests on it.
       const panelsToAnimate = hasFooter ? validPanels : validPanels.slice(0, -1);
 
       panelsToAnimate.forEach((panel, i) => {
@@ -104,6 +102,92 @@ export default function StackedScrollManager() {
           panel.style.opacity = '';
           panel.style.filter = '';
           panel.style.borderRadius = '';
+          panel.style.pointerEvents = '';
+        });
+      };
+    });
+
+    // Mobile viewports (<= 768px): Layered Pinning with Card Deck Layering & Snap
+    mm.add('(max-width: 768px)', () => {
+      const sectionElements = gsap.utils.toArray<HTMLElement>(
+        'main > [data-stacked-section], main > section:not([data-stacked-exclude])'
+      );
+
+      const panels = sectionElements.filter((el) => {
+        if (!el || (el.offsetParent === null && el.offsetHeight === 0)) return false;
+        if (el.hasAttribute('data-stacked-exclude')) return false;
+        if (el.id === 'contact' || el.tagName.toLowerCase() === 'footer') return false;
+        return true;
+      });
+
+      if (panels.length < 2) return;
+
+      // Ensure proper base stacking order for layered pinning
+      panels.forEach((panel, i) => {
+        panel.style.position = 'relative';
+        panel.style.zIndex = String((i + 1) * 5);
+        panel.style.transformOrigin = 'center top';
+        panel.style.willChange = 'transform, filter';
+
+        // Pin each panel at the top of the mobile viewport with pinSpacing: false
+        // so the incoming panel stacks and rolls right on top of it.
+        // We exclude the last panel from pinning so it transitions smoothly to the footer.
+        if (i < panels.length - 1) {
+          const nextPanel = panels[i + 1];
+          const st = ScrollTrigger.create({
+            id: `mobile-stacked-${panel.id || i}`,
+            trigger: panel,
+            start: 'top top',
+            endTrigger: nextPanel,
+            end: 'top top',
+            pin: true,
+            pinSpacing: false,
+            invalidateOnRefresh: true,
+            snap: {
+              snapTo: 1,
+              duration: { min: 0.25, max: 0.5 },
+              delay: 0.05,
+              ease: 'power1.inOut',
+            },
+            onEnter: () => {
+              panel.style.pointerEvents = 'auto';
+            },
+            onLeave: () => {
+              panel.style.pointerEvents = 'none';
+            },
+            onEnterBack: () => {
+              panel.style.pointerEvents = 'auto';
+            },
+          });
+
+          // Subtle depth scale and dim as the next section layers over it
+          gsap.fromTo(
+            panel,
+            { scale: 1, filter: 'brightness(1)' },
+            {
+              scale: 0.94,
+              filter: 'brightness(0.7)',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: nextPanel,
+                start: 'top bottom',
+                end: 'top top',
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
+            }
+          );
+        }
+      });
+
+      return () => {
+        panels.forEach((panel) => {
+          panel.style.position = '';
+          panel.style.zIndex = '';
+          panel.style.transformOrigin = '';
+          panel.style.willChange = '';
+          panel.style.transform = '';
+          panel.style.filter = '';
           panel.style.pointerEvents = '';
         });
       };

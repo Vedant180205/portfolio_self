@@ -221,9 +221,36 @@ export default function Projects() {
   const [showAll, setShowAll] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [activeMobileIndex, setActiveMobileIndex] = useState(0);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
 
   const handleCardSelect = (index: number) => {
     setActiveMobileIndex(index);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartYRef.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartXRef.current === null || touchStartYRef.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartXRef.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartYRef.current;
+
+    // Only swipe if horizontal distance is significantly greater than vertical scroll
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+      if (deltaX < 0) {
+        // Swipe Left -> Next Project
+        setActiveMobileIndex((prev) => Math.min(projects.length - 1, prev + 1));
+      } else {
+        // Swipe Right -> Previous Project
+        setActiveMobileIndex((prev) => Math.max(0, prev - 1));
+      }
+    }
+
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
   };
 
   
@@ -437,10 +464,14 @@ export default function Projects() {
 
         {/* Vertically Stacked Project Cards */}
         <div className={styles.mobileStackWrapper}>
-          <div className={styles.mobileStackContainer}>
+          <div
+            className={styles.mobileStackContainer}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             {projects.map((project, index) => {
-              // Calculate relative position to active index in circular deck fashion
-              const diff = (index - activeMobileIndex + projects.length) % projects.length;
+              // Direct index diff from active card
+              const diff = index - activeMobileIndex;
               const isFront = diff === 0;
 
               // Display formatting
@@ -448,14 +479,32 @@ export default function Projects() {
               const displayCategory = project.id === 1 ? 'FINANCE · ANALYTICS' : project.subtitle.toUpperCase();
               const displayDesc = project.mobileDescription;
 
+              // Class name based on distance from front (0, 1, 2) or hidden
+              let stackClass = styles.stackHidden;
+              let zIndexVal = 1;
+
+              if (diff === 0) {
+                stackClass = styles.stackDepth0;
+                zIndexVal = 10;
+              } else if (diff === 1) {
+                stackClass = styles.stackDepth1;
+                zIndexVal = 8;
+              } else if (diff === 2) {
+                stackClass = styles.stackDepth2;
+                zIndexVal = 6;
+              } else if (diff < 0) {
+                stackClass = styles.stackPassed;
+                zIndexVal = 2;
+              }
+
               return (
                 <div
                   key={project.id}
-                  className={`${styles.mobileCard} ${styles[`stackDepth${diff}`] || styles.stackHidden}`}
-                  onClick={() => !isFront && handleCardSelect(index)}
+                  className={`${styles.mobileCard} ${stackClass}`}
+                  onClick={() => diff > 0 && diff <= 2 && handleCardSelect(index)}
                   id={`mobile-project-card-${project.id}`}
                   style={{
-                    zIndex: projects.length - diff,
+                    zIndex: zIndexVal,
                   }}
                 >
                   {/* 1. Preview Image with external link in top right */}
@@ -517,18 +566,23 @@ export default function Projects() {
             })}
           </div>
 
-          {/* Quick Deck Switcher indicator */}
-          <div className={styles.mobileStackNav}>
-            {projects.map((p, idx) => (
-              <button
-                key={p.id}
-                onClick={() => handleCardSelect(idx)}
-                className={`${styles.mobileStackTab} ${idx === activeMobileIndex ? styles.mobileStackTabActive : ''}`}
-                aria-label={`Switch to project ${p.number}`}
-              >
-                {p.number}
-              </button>
-            ))}
+          {/* Swipe Hint & Quick Deck Switcher indicator */}
+          <div className={styles.mobileStackNavWrapper}>
+            <span className={styles.mobileSwipeHint}>
+              ← Swipe left to move to next card
+            </span>
+            <div className={styles.mobileStackNav}>
+              {projects.map((p, idx) => (
+                <button
+                  key={p.id}
+                  onClick={() => handleCardSelect(idx)}
+                  className={`${styles.mobileStackTab} ${idx === activeMobileIndex ? styles.mobileStackTabActive : ''}`}
+                  aria-label={`Switch to project ${p.number}`}
+                >
+                  {p.number}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -758,7 +758,7 @@
   /* Vertically Stacked Project Cards Section */
   .mobileStackWrapper {
     width: 100%;
-    padding: 0 1rem;
+    padding: 0 0.5rem 0 1.25rem; /* Shift whole structure towards the right */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -769,8 +769,10 @@
     position: relative;
     width: 100%;
     max-width: 410px;
-    height: 560px; /* Adjusted height after removing tag pills */
+    height: 520px; /* Snug height closely framing the active cards */
     margin: 0 auto;
+    padding-right: 48px; /* Room for peeked cards on the right */
+    box-sizing: border-box;
   }
 
   /* Single Project Card */
@@ -778,7 +780,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: calc(100% - 48px);
     background: #111111;
     border: 1px solid rgba(255, 255, 255, 0.75);
     border-radius: 24px;
@@ -787,45 +789,49 @@
     flex-direction: column;
     box-sizing: border-box;
     cursor: pointer;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
-    transform-origin: center top;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
+    transform-origin: left center;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease, filter 0.35s ease;
   }
 
-  /* Stack Depth Variations */
+  /* Stack Depth Variations — More pronounced rightward offsets & crisp borders */
   .stackDepth0 {
-    /* Front Card */
-    transform: translateY(0px) scale(1);
+    /* Front Card: Main active card */
+    transform: translate3d(0, 0, 0) scale(1);
     opacity: 1;
     filter: brightness(1);
+    border-color: rgba(255, 255, 255, 0.85);
     pointer-events: auto;
   }
 
   .stackDepth1 {
-    /* 2nd Card */
-    transform: translateY(16px) scale(0.96);
-    opacity: 0.85;
-    filter: brightness(0.7);
+    /* 2nd Card: Distinctly shifted right by 24px, clearly visible */
+    transform: translate3d(24px, 8px, 0) scale(0.97);
+    opacity: 0.9;
+    filter: brightness(0.8);
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
     pointer-events: auto;
   }
 
   .stackDepth2 {
-    /* 3rd Card */
-    transform: translateY(32px) scale(0.92);
-    opacity: 0.65;
-    filter: brightness(0.5);
+    /* 3rd Card: Shifted right by 44px, higher visibility & clear bright border */
+    transform: translate3d(44px, 16px, 0) scale(0.94);
+    opacity: 0.8;
+    filter: brightness(0.68);
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
     pointer-events: auto;
   }
 
-  .stackDepth3 {
-    /* 4th Card */
-    transform: translateY(46px) scale(0.88);
-    opacity: 0.45;
-    filter: brightness(0.35);
-    pointer-events: auto;
+  .stackPassed {
+    /* Cards scrolled past: smooth exit to the left */
+    transform: translate3d(-100px, 0, 0) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
   }
 
   .stackHidden {
-    transform: translateY(58px) scale(0.84);
+    /* Remaining cards beyond 3rd: hidden behind deck */
+    transform: translate3d(52px, 20px, 0) scale(0.91);
     opacity: 0;
     pointer-events: none;
   }
@@ -987,13 +993,33 @@
     flex-shrink: 0;
   }
 
-  /* Stack Navigator */
+  /* Stack Navigator & Swipe Hint */
+  .mobileStackNavWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    width: 100%;
+  }
+
+  .mobileSwipeHint {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: #888888;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    user-select: none;
+  }
+
   .mobileStackNav {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    margin-top: 2.2rem;
   }
 
   .mobileStackTab {
