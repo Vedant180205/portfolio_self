@@ -59,7 +59,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
         smoothWheel: true,
         syncTouch: false, // Preserves native responsive touch scroll on mobile
         wheelMultiplier: 1.0,
-        touchMultiplier: 1.5,
+        touchMultiplier: 0.9, // Reduced touch sensitivity to prevent multi-section skips on mobile fling
         autoRaf: true,
         anchors: true,
         stopInertiaOnNavigate: true,

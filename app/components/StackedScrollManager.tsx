@@ -134,7 +134,7 @@ export default function StackedScrollManager() {
         // We exclude the last panel from pinning so it transitions smoothly to the footer.
         if (i < panels.length - 1) {
           const nextPanel = panels[i + 1];
-          const st = ScrollTrigger.create({
+          ScrollTrigger.create({
             id: `mobile-stacked-${panel.id || i}`,
             trigger: panel,
             start: 'top top',
@@ -144,10 +144,14 @@ export default function StackedScrollManager() {
             pinSpacing: false,
             invalidateOnRefresh: true,
             snap: {
-              snapTo: 1,
-              duration: { min: 0.25, max: 0.5 },
+              snapTo: (progress: number) => {
+                // Directional single-step clamping:
+                // Prevents aggressive flings from overshooting and skipping multiple sections at once
+                return progress > 0.35 ? 1 : 0;
+              },
+              duration: { min: 0.3, max: 0.6 },
               delay: 0.05,
-              ease: 'power1.inOut',
+              ease: 'power2.out',
             },
             onEnter: () => {
               panel.style.pointerEvents = 'auto';
