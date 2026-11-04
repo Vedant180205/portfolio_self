@@ -127,7 +127,7 @@ export default function StackedScrollManager() {
         panel.style.position = 'relative';
         panel.style.zIndex = String((i + 1) * 5);
         panel.style.transformOrigin = 'center top';
-        panel.style.willChange = 'transform, filter';
+        panel.style.willChange = 'transform, opacity';
 
         // Pin each panel at the top of the mobile viewport with pinSpacing: false
         // so the incoming panel stacks and rolls right on top of it.
@@ -145,13 +145,14 @@ export default function StackedScrollManager() {
             invalidateOnRefresh: true,
             snap: {
               snapTo: (progress: number) => {
-                // Directional single-step clamping:
-                // Prevents aggressive flings from overshooting and skipping multiple sections at once
-                return progress > 0.35 ? 1 : 0;
+                // Symmetrical 50% midpoint threshold:
+                // If user scrolls half or less (< 0.5), it safely snaps back to the current section.
+                // If user scrolls past half (>= 0.5), it smoothly settles forward onto the next section.
+                return progress >= 0.5 ? 1 : 0;
               },
-              duration: { min: 0.3, max: 0.6 },
-              delay: 0.05,
-              ease: 'power2.out',
+              duration: { min: 0.45, max: 0.8 },
+              delay: 0.1,
+              ease: 'power3.out',
             },
             onEnter: () => {
               panel.style.pointerEvents = 'auto';
@@ -164,19 +165,19 @@ export default function StackedScrollManager() {
             },
           });
 
-          // Subtle depth scale and dim as the next section layers over it
+          // Lightweight transform (transform & opacity only - no heavy CSS filter repaints)
           gsap.fromTo(
             panel,
-            { scale: 1, filter: 'brightness(1)' },
+            { scale: 1, opacity: 1 },
             {
-              scale: 0.94,
-              filter: 'brightness(0.7)',
-              ease: 'none',
+              scale: 0.95,
+              opacity: 0.75,
+              ease: 'power1.out',
               scrollTrigger: {
                 trigger: nextPanel,
                 start: 'top bottom',
                 end: 'top top',
-                scrub: true,
+                scrub: 0.5,
                 invalidateOnRefresh: true,
               },
             }
