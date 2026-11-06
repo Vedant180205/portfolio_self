@@ -127,7 +127,16 @@ export default function StackedScrollManager() {
         panel.style.position = 'relative';
         panel.style.zIndex = String((i + 1) * 5);
         panel.style.transformOrigin = 'center top';
-        panel.style.willChange = 'transform, opacity';
+        panel.style.willChange = 'transform';
+        panel.style.opacity = '1';
+
+        // Ensure opaque background so lower layers never bleed through during scrolling
+        if (!panel.style.backgroundColor) {
+          const computedBg = window.getComputedStyle(panel).backgroundColor;
+          if (!computedBg || computedBg === 'transparent' || computedBg === 'rgba(0, 0, 0, 0)') {
+            panel.style.backgroundColor = 'var(--color-bg)';
+          }
+        }
 
         // Pin each panel at the top of the mobile viewport with pinSpacing: false
         // so the incoming panel stacks and rolls right on top of it.
@@ -165,13 +174,12 @@ export default function StackedScrollManager() {
             },
           });
 
-          // Lightweight transform (transform & opacity only - no heavy CSS filter repaints)
+          // Clean, crisp card deck scale ONLY — 100% solid opacity with NO dimming/opacity bleeding
           gsap.fromTo(
             panel,
-            { scale: 1, opacity: 1 },
+            { scale: 1 },
             {
               scale: 0.95,
-              opacity: 0.75,
               ease: 'power1.out',
               scrollTrigger: {
                 trigger: nextPanel,
