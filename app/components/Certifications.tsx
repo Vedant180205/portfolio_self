@@ -293,22 +293,22 @@ export default function Certifications() {
                   <div className={styles.pillImageFade} />
                 </div>
 
-                {/* Inner Card Floating Content */}
+                {/* Inner Card Content: Title and Arrow aligned side-by-side */}
                 <div className={styles.pillCardBody}>
-                  <h3 className={styles.pillTitle}>{cert.title}</h3>
-
-                  {/* Arrow Action Button */}
-                  <button
-                    type="button"
-                    className={styles.pillActionBtn}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedCert(cert);
-                    }}
-                    aria-label={`View ${cert.title}`}
-                  >
-                    <ArrowUpRight />
-                  </button>
+                  <div className={styles.pillHeaderRow}>
+                    <h3 className={styles.pillTitle}>{cert.title}</h3>
+                    <button
+                      type="button"
+                      className={styles.pillActionBtn}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedCert(cert);
+                      }}
+                      aria-label={`View ${cert.title}`}
+                    >
+                      <ArrowUpRight />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
