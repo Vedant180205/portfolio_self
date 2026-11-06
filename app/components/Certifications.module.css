@@ -489,7 +489,8 @@
 
 /* ─── DESKTOP ONLY & MOBILE VISIBILITY ─── */
 .mobileHeaderWrapper,
-.mobileCardsList {
+.mobileShowcaseWrapper,
+.lightboxOverlay {
   display: none;
 }
 
@@ -535,7 +536,7 @@
 
 /* ─────────────────────────────────────────────────────────────
    MOBILE VIEWPORT ONLY (max-width: 768px)
-   Futuristic, Dark-Themed Brutalist Credential Showcase
+   Pill Cards Showcase matching the Reference Aesthetics
    ───────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .section {
@@ -545,7 +546,7 @@
   }
 
   .container {
-    padding: 0 1.15rem;
+    padding: 0 1rem;
   }
 
   /* Hide Desktop specific components */
@@ -558,15 +559,15 @@
   .mobileHeaderWrapper {
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
+    gap: 1.35rem;
     margin-bottom: 1.5rem;
   }
 
-  .mobileCardsList {
+  .mobileShowcaseWrapper {
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
     width: 100%;
+    gap: 1.5rem;
   }
 
   /* ── Header ── */
@@ -741,228 +742,316 @@
     box-shadow: 0 3px 12px rgba(255, 69, 0, 0.35);
   }
 
-  /* ── Innovative Certification Card ── */
-  .mobileCard {
+  /* ─────────────────────────────────────────────────────────────
+     2x2 GRID OF PILL CARDS (Reference Design)
+     ───────────────────────────────────────────────────────────── */
+  .mobileCardsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    width: 100%;
+  }
+
+  .mobilePillCard {
     display: flex;
-    align-items: stretch;
-    background: #111213;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 0.85rem 0.95rem;
-    position: relative;
+    flex-direction: column;
+    border-radius: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    gap: 0.75rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    cursor: pointer;
+    min-height: 270px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
     -webkit-tap-highlight-color: transparent;
   }
 
-  .mobileCard:active {
-    transform: scale(0.985);
-    border-color: rgba(255, 69, 0, 0.5);
+  .mobilePillCard:active {
+    transform: scale(0.97);
   }
 
-  /* Corner cut aesthetic & subtle edge glow */
-  .mobileCardCornerCut {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 28px;
-    height: 28px;
-    background: linear-gradient(135deg, transparent 50%, rgba(255, 69, 0, 0.2) 50%, rgba(255, 69, 0, 0.6) 100%);
-    pointer-events: none;
+  /* Top Image Area with Fade Mist into Card Base */
+  .pillImageContainer {
+    width: 100%;
+    height: 135px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.25);
   }
 
-  .mobileCardCornerCut::after {
-    content: '';
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    width: 4px;
-    height: 4px;
-    background: #FF4500;
-    border-radius: 50%;
+  .pillCertImage {
+    width: 90%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: transform 0.35s ease;
   }
 
-  /* Subtle domain pattern motif in card background */
-  .mobileCardBgPattern {
+  .mobilePillCard:hover .pillCertImage {
+    transform: scale(1.05);
+  }
+
+  /* Mist Gradient Fade: blends image bottom into the gradient background seamlessly */
+  .pillImageFade {
     position: absolute;
     inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(17, 18, 19, 0.75) 85%, rgba(17, 18, 19, 0.98) 100%);
     pointer-events: none;
-    opacity: 0.035;
-    background-size: 20px 20px;
   }
 
-  .domainAi .mobileCardBgPattern {
-    background-image: radial-gradient(#00BCEB 1px, transparent 1px);
-  }
-
-  .domainDev .mobileCardBgPattern {
-    background-image: linear-gradient(45deg, #007CC3 25%, transparent 25%, transparent 75%, #007CC3 75%);
-  }
-
-  .domainDesign .mobileCardBgPattern {
-    background-image: radial-gradient(#FF4500 1px, transparent 1px);
-  }
-
-  /* Left Zone — Issuer Identity */
-  .mobileIssuerZone {
+  /* Card Content Body */
+  .pillCardBody {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 52px;
-    flex-shrink: 0;
-    gap: 0.4rem;
-  }
-
-  .mobileLogoBox {
-    width: 52px;
-    height: 52px;
-    border-radius: 8px;
-    background: #17181a;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.04);
-  }
-
-  .mobileCardIndex {
-    font-family: var(--font-heading);
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    color: rgba(255, 255, 255, 0.25);
-  }
-
-  /* Diagonal Fine Separator */
-  .mobileZoneSeparator {
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.08) 20%, rgba(255, 255, 255, 0.08) 80%, transparent);
-    transform: skewX(-12deg);
-    flex-shrink: 0;
-  }
-
-  /* Center Zone — Certificate Information */
-  .mobileInfoZone {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 0.65rem 0.85rem 0.85rem;
     flex: 1;
-    min-width: 0;
-    gap: 0.25rem;
+    position: relative;
+    z-index: 2;
+    justify-content: flex-end;
   }
 
-  .mobileBadgeRow {
-    display: flex;
-    align-items: center;
-  }
-
-  .mobileCategoryBadge {
+  .pillBadge {
     display: inline-block;
     font-family: var(--font-body);
-    font-size: 0.56rem;
+    font-size: 0.52rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
-    padding: 0.15rem 0.45rem;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.05);
+    letter-spacing: 0.1em;
     color: #FF4500;
-    border: 1px solid rgba(255, 69, 0, 0.25);
     text-transform: uppercase;
+    margin-bottom: 0.25rem;
   }
 
-  .mobileCardTitle {
+  .pillTitle {
     font-family: var(--font-heading);
-    font-size: 0.96rem;
+    font-size: 0.88rem;
     font-weight: 700;
-    color: #F5F5F5;
-    margin: 0;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    word-break: break-word;
-  }
-
-  .mobileCardIssuerRow {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-
-  .issuerDot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #A5A5A5;
-    flex-shrink: 0;
-  }
-
-  .mobileCardIssuerName {
-    font-family: var(--font-body);
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: #A5A5A5;
-  }
-
-  .mobileCardDesc {
-    font-family: var(--font-body);
-    font-size: 0.7rem;
-    line-height: 1.35;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 0.15rem;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin: 0 0 0.25rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   }
 
-  /* Right Zone — Metadata and Action */
-  .mobileMetaActionZone {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-shrink: 0;
-    gap: 0.5rem;
-    padding-left: 0.2rem;
-  }
-
-  .mobileYearBadge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
+  .pillIssuer {
     font-family: var(--font-body);
     font-size: 0.65rem;
-    font-weight: 700;
-    color: #A5A5A5;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 0.2rem 0.4rem;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .mobileArrowBtn {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(255, 69, 0, 0.08);
-    border: 1px solid #FF4500;
-    color: #FF4500;
+  /* Frosted Pill Action Button (matching the reference "Buy Now" frosted capsule) */
+  .pillActionBtn {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    gap: 0.35rem;
+    width: 100%;
+    padding: 0.5rem 0.65rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: none;
+    color: #0A0A0A;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    transition: all 0.2s ease;
     margin-top: auto;
   }
 
-  .mobileCard:hover .mobileArrowBtn,
-  .mobileCard:active .mobileArrowBtn {
+  .pillActionBtn:active {
+    background: #FFFFFF;
+    transform: scale(0.96);
+  }
+
+  /* View More Button Container */
+  .mobileViewMoreContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .mobileViewMoreBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.6rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 69, 0, 0.45);
+    color: #F5F5F5;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .mobileViewMoreBtn:active {
     background: #FF4500;
+    border-color: #FF4500;
     color: #FFFFFF;
-    box-shadow: 0 0 10px rgba(255, 69, 0, 0.4);
-    transform: translate(1px, -1px);
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   IN-APP LIGHTBOX MODAL (Direct site viewing)
+   ───────────────────────────────────────────────────────────── */
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightboxContent {
+  width: 100%;
+  max-width: 850px;
+  background: #111213;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 69, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.94);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lightboxHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #151618;
+}
+
+.lightboxTitleInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.lightboxBadge {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #FF4500;
+  text-transform: uppercase;
+}
+
+.lightboxTitle {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.lightboxIssuer {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: #A5A5A5;
+}
+
+.lightboxCloseBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lightboxCloseBtn:hover,
+.lightboxCloseBtn:active {
+  background: #FF4500;
+  border-color: #FF4500;
+}
+
+.lightboxImageWrapper {
+  width: 100%;
+  max-height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0A0B0C;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.lightboxImage {
+  max-width: 100%;
+  max-height: 60vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.lightboxFooter {
+  padding: 0.9rem 1.4rem;
+  background: #151618;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lightboxDesc {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: #A5A5A5;
+  line-height: 1.4;
+  margin: 0;
+}
+

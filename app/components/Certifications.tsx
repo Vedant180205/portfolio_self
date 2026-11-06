@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Image from 'next/image';
 import styles from './Certifications.module.css';
 
 interface CertItem {
@@ -9,105 +10,145 @@ interface CertItem {
   issuer: string;
   title: string;
   description: string;
-  url: string;
+  url: string; // fallback / direct asset
+  image: string; // optimized webp
+  thumb: string; // lightweight thumb webp
   date: string;
   category: string;
   catClass: string;
-  domainGroup: 'AI & Data' | 'Development' | 'Design' | 'Languages';
+  domainGroup: 'AI & Data' | 'Development' | 'Design';
   badge: string;
+  themeGradient: string; // custom aesthetic glow matching the reference
 }
 
 const certs: CertItem[] = [
   {
     id: 'cert-1',
     index: '01',
-    issuer: 'Cisco',
-    title: 'Data Analytics',
+    issuer: 'Cisco Networking Academy',
+    title: 'Data Analytics Essentials',
     description: 'Querying, transforming, and modeling data to extract actionable business intelligence from complex datasets.',
-    url: 'https://drive.google.com/file/d/1wbC7HA7anC_3Esf0Zs3BXdn3XbI--axM/view?usp=sharing',
+    url: '/certs/optimized/cisco_data_analytics_vedantpatil_1.webp',
+    image: '/certs/optimized/cisco_data_analytics_vedantpatil_1.webp',
+    thumb: '/certs/thumbs/cisco_data_analytics_vedantpatil_1.webp',
     date: '2026',
     category: 'AI & DATA',
     catClass: 'catAiData',
     domainGroup: 'AI & Data',
     badge: 'ANALYTICS',
+    themeGradient: 'linear-gradient(135deg, rgba(0, 188, 235, 0.45) 0%, rgba(13, 148, 136, 0.25) 50%, rgba(17, 18, 19, 0.95) 100%)',
   },
   {
     id: 'cert-2',
     index: '02',
-    issuer: 'ExcelR',
+    issuer: 'ExcelR Solutions',
     title: 'AIML & Power BI',
     description: 'Machine learning pipelines and professional-grade data visualization using Power BI dashboards for analytics.',
-    url: 'https://drive.google.com/file/d/1FTG1aWfd2iuYqaohcuX_HPomTvgCSZc2/view?usp=sharing',
+    url: '/certs/optimized/AIML_pwerrBI_certificate_1.webp',
+    image: '/certs/optimized/AIML_pwerrBI_certificate_1.webp',
+    thumb: '/certs/thumbs/AIML_pwerrBI_certificate_1.webp',
     date: '2025',
     category: 'AI & DATA',
     catClass: 'catAiData',
     domainGroup: 'AI & Data',
     badge: 'MACHINE LEARNING',
+    themeGradient: 'linear-gradient(135deg, rgba(255, 69, 0, 0.45) 0%, rgba(245, 158, 11, 0.25) 50%, rgba(17, 18, 19, 0.95) 100%)',
   },
   {
     id: 'cert-3',
     index: '03',
-    issuer: 'Cisco',
+    issuer: 'Cisco Networking Academy',
     title: 'Data Science Essentials',
     description: 'Core data science concepts, analytics methodologies, and Python tools for data-driven exploration.',
-    url: 'https://drive.google.com/file/d/12dzyGm9Fwm70P9iZIR6RXIzthGdfev9B/view?usp=sharing',
+    url: '/certs/optimized/Data_Science_Essentials_with_Python_certificate_vedant-patil242-sakec-ac-in_a5b2aee3-b7a0-4444-891a-c944dabff2a2_1.webp',
+    image: '/certs/optimized/Data_Science_Essentials_with_Python_certificate_vedant-patil242-sakec-ac-in_a5b2aee3-b7a0-4444-891a-c944dabff2a2_1.webp',
+    thumb: '/certs/thumbs/Data_Science_Essentials_with_Python_certificate_vedant-patil242-sakec-ac-in_a5b2aee3-b7a0-4444-891a-c944dabff2a2_1.webp',
     date: '2025',
     category: 'AI & DATA',
     catClass: 'catAiData',
     domainGroup: 'AI & Data',
     badge: 'DATA SCIENCE',
+    themeGradient: 'linear-gradient(135deg, rgba(14, 165, 233, 0.45) 0%, rgba(99, 102, 241, 0.25) 50%, rgba(17, 18, 19, 0.95) 100%)',
   },
   {
     id: 'cert-4',
     index: '04',
-    issuer: 'Infosys',
-    title: 'C++',
-    description: 'Object-oriented design, memory management, and structured systems programming in C++.',
-    url: 'https://drive.google.com/file/d/19zQz-rCrrI4MLawaZCZZVlnffnYK9Qqj/view?usp=sharing',
+    issuer: 'Cisco / NDG',
+    title: 'Linux Essentials',
+    description: 'Operating systems fundamentals, command-line administration, bash scripting, and Linux file systems.',
+    url: '/certs/optimized/Linux_Essentials_certificate_vedant-patil242-sakec-ac-in_1b6efe39-1555-4a35-a05d-cae2589c99f1_1.webp',
+    image: '/certs/optimized/Linux_Essentials_certificate_vedant-patil242-sakec-ac-in_1b6efe39-1555-4a35-a05d-cae2589c99f1_1.webp',
+    thumb: '/certs/thumbs/Linux_Essentials_certificate_vedant-patil242-sakec-ac-in_1b6efe39-1555-4a35-a05d-cae2589c99f1_1.webp',
     date: '2025',
     category: 'SOFTWARE DEV',
     catClass: 'catSoftware',
     domainGroup: 'Development',
-    badge: 'SYSTEMS / OOP',
+    badge: 'SYSTEMS / LINUX',
+    themeGradient: 'linear-gradient(135deg, rgba(234, 179, 8, 0.45) 0%, rgba(249, 115, 22, 0.25) 50%, rgba(17, 18, 19, 0.95) 100%)',
   },
   {
     id: 'cert-5',
     index: '05',
-    issuer: 'Infosys',
-    title: 'Python',
+    issuer: 'Infosys Springboard',
+    title: 'Python Programming',
     description: 'Core Python programming, data structures, and procedural logic patterns for real-world applications.',
-    url: 'https://drive.google.com/file/d/1w5c_wZAZbIow1l1NxjNftwq9J5rgrZKw/view?usp=sharing',
+    url: '/certs/optimized/ved_infosys_python.webp',
+    image: '/certs/optimized/ved_infosys_python.webp',
+    thumb: '/certs/thumbs/ved_infosys_python.webp',
     date: '2024',
     category: 'SOFTWARE DEV',
     catClass: 'catSoftware',
     domainGroup: 'Development',
     badge: 'CORE PYTHON',
+    themeGradient: 'linear-gradient(135deg, rgba(59, 130, 246, 0.45) 0%, rgba(37, 99, 235, 0.25) 50%, rgba(17, 18, 19, 0.95) 100%)',
   },
   {
     id: 'cert-6',
     index: '06',
-    issuer: 'Spoken Tutorial',
+    issuer: 'Infosys Springboard',
+    title: 'C++ Programming',
+    description: 'Object-oriented design, memory management, pointers, and structured systems programming in C++.',
+    url: '/certs/optimized/ved_infosys_cpp.webp',
+    image: '/certs/optimized/ved_infosys_cpp.webp',
+    thumb: '/certs/thumbs/ved_infosys_cpp.webp',
+    date: '2025',
+    category: 'SOFTWARE DEV',
+    catClass: 'catSoftware',
+    domainGroup: 'Development',
+    badge: 'OOP / C++',
+    themeGradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.45) 0%, rgba(124, 58, 237, 0.25) 50%, rgba(17, 18, 19, 0.95) 100%)',
+  },
+  {
+    id: 'cert-7',
+    index: '07',
+    issuer: 'IIT Bombay / Spoken Tutorial',
     title: 'Java Training',
     description: 'Structured Java programming covering object-oriented concepts, inheritance, and application design.',
-    url: 'https://drive.google.com/file/d/1fGg8xFkjT0wh-S9xdxWTIu4IacUS65sQ/view?usp=sharing',
+    url: '/certs/optimized/VEDANT-PATIL-java_training.webp',
+    image: '/certs/optimized/VEDANT-PATIL-java_training.webp',
+    thumb: '/certs/thumbs/VEDANT-PATIL-java_training.webp',
     date: '2024',
     category: 'SOFTWARE DEV',
     catClass: 'catSoftware',
     domainGroup: 'Development',
     badge: 'JAVA OOP',
+    themeGradient: 'linear-gradient(135deg, rgba(239, 68, 68, 0.45) 0%, rgba(220, 38, 38, 0.25) 50%, rgba(17, 18, 19, 0.95) 100%)',
   },
   {
-    id: 'cert-7',
-    index: '07',
-    issuer: 'NPTEL',
+    id: 'cert-8',
+    index: '08',
+    issuer: 'NPTEL / Swayam',
     title: 'German Language',
     description: 'Foundational German vocabulary, grammar structures, pronunciation, and conversational competency.',
-    url: 'https://drive.google.com/file/d/10JsUK_uTvz76qxiD-8W6ou3Bed34p-xY/view?usp=sharing',
+    url: '/certs/optimized/germancertificate_copy_1.webp',
+    image: '/certs/optimized/germancertificate_copy_1.webp',
+    thumb: '/certs/thumbs/germancertificate_copy_1.webp',
     date: '2025',
     category: 'LANGUAGES',
     catClass: 'catLanguages',
     domainGroup: 'Design',
     badge: 'GLOBAL COMM',
+    themeGradient: 'linear-gradient(135deg, rgba(245, 158, 11, 0.45) 0%, rgba(217, 119, 6, 0.25) 50%, rgba(17, 18, 19, 0.95) 100%)',
   },
 ];
 
@@ -119,77 +160,21 @@ function ArrowUpRight() {
   );
 }
 
-function CalendarIcon() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-      <line x1="16" y1="2" x2="16" y2="6" />
-      <line x1="8" y1="2" x2="8" y2="6" />
-      <line x1="3" y1="10" x2="21" y2="10" />
-    </svg>
-  );
-}
-
-function IssuerLogo({ issuer }: { issuer: string }) {
-  const norm = issuer.toLowerCase().trim();
-
-  if (norm.includes('cisco')) {
-    return (
-      <svg viewBox="0 0 48 30" width="34" height="22" fill="#00BCEB" aria-label="Cisco">
-        <rect x="2" y="10" width="3.2" height="18" rx="1.6" />
-        <rect x="7.8" y="4" width="3.2" height="24" rx="1.6" />
-        <rect x="13.6" y="10" width="3.2" height="18" rx="1.6" />
-        <rect x="19.4" y="0" width="3.2" height="28" rx="1.6" />
-        <rect x="25.2" y="0" width="3.2" height="28" rx="1.6" />
-        <rect x="31" y="10" width="3.2" height="18" rx="1.6" />
-        <rect x="36.8" y="4" width="3.2" height="24" rx="1.6" />
-        <rect x="42.6" y="10" width="3.2" height="18" rx="1.6" />
-      </svg>
-    );
-  }
-
-  if (norm.includes('infosys')) {
-    return (
-      <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 900, fontSize: '1.05rem', letterSpacing: '-0.02em', color: '#007CC3' }}>
-        infy
-      </span>
-    );
-  }
-
-  if (norm.includes('excelr')) {
-    return (
-      <div style={{ display: 'flex', alignItems: 'center', gap: '2px', fontWeight: 900, fontFamily: 'var(--font-heading)' }}>
-        <span style={{ color: '#FF4500', fontSize: '1.15rem' }}>E</span>
-        <span style={{ color: '#00B4D8', fontSize: '0.85rem' }}>R</span>
-      </div>
-    );
-  }
-
-  if (norm.includes('spoken') || norm.includes('iit')) {
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: 1 }}>
-        <span style={{ color: '#FF7A00', fontSize: '0.75rem', fontWeight: 900, fontFamily: 'var(--font-heading)' }}>IITB</span>
-        <span style={{ color: '#888', fontSize: '0.5rem', fontWeight: 700, letterSpacing: '0.05em' }}>SPOKEN</span>
-      </div>
-    );
-  }
-
-  // NPTEL / SWAYAM / Languages
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: 1 }}>
-      <span style={{ color: '#FF4500', fontSize: '0.78rem', fontWeight: 900, fontFamily: 'var(--font-heading)', letterSpacing: '0.05em' }}>NPTEL</span>
-      <span style={{ color: '#A5A5A5', fontSize: '0.5rem', fontWeight: 600 }}>SWAYAM</span>
-    </div>
-  );
-}
-
 export default function Certifications() {
   const [activeFilter, setActiveFilter] = useState<'All' | 'AI & Data' | 'Development' | 'Design'>('All');
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [selectedCert, setSelectedCert] = useState<CertItem | null>(null);
 
   const filteredCerts = useMemo(() => {
     if (activeFilter === 'All') return certs;
     return certs.filter((c) => c.domainGroup === activeFilter);
   }, [activeFilter]);
+
+  // Mobile 4-card display grid with "View More" toggle
+  const visibleMobileCerts = useMemo(() => {
+    if (isExpanded) return filteredCerts;
+    return filteredCerts.slice(0, 4);
+  }, [filteredCerts, isExpanded]);
 
   const counts = useMemo(() => {
     return {
@@ -202,7 +187,7 @@ export default function Certifications() {
 
   return (
     <section className={styles.section} id="certifications" aria-label="Certifications" data-stacked-section>
-      <span className={styles.bgWatermark} aria-hidden="true">07</span>
+      <span className={styles.bgWatermark} aria-hidden="true">08</span>
 
       <div className={styles.container} data-stacked-inner>
         {/* ── DESKTOP HEADER (Preserved 100%) ── */}
@@ -214,7 +199,7 @@ export default function Certifications() {
           {/* Stats bar */}
           <div className={styles.statsBar}>
             <div className={styles.stat}>
-              <span className={styles.statNum}>07</span>
+              <span className={styles.statNum}>08</span>
               <span className={styles.statLabel}>Total</span>
             </div>
             <span className={styles.statDivider} />
@@ -249,7 +234,7 @@ export default function Certifications() {
             <div className={styles.mobileStatItem}>
               <div className={styles.mobileStatValueRow}>
                 <span className={styles.statDot} />
-                <span className={styles.mobileStatVal}>07</span>
+                <span className={styles.mobileStatVal}>08</span>
               </div>
               <span className={styles.mobileStatLbl}>TOTAL</span>
             </div>
@@ -282,7 +267,10 @@ export default function Certifications() {
               role="tab"
               aria-selected={activeFilter === 'All'}
               className={`${styles.filterChip} ${activeFilter === 'All' ? styles.activeFilterChip : ''}`}
-              onClick={() => setActiveFilter('All')}
+              onClick={() => {
+                setActiveFilter('All');
+                setIsExpanded(false);
+              }}
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <rect x="3" y="3" width="7" height="7" />
@@ -298,7 +286,10 @@ export default function Certifications() {
               role="tab"
               aria-selected={activeFilter === 'AI & Data'}
               className={`${styles.filterChip} ${activeFilter === 'AI & Data' ? styles.activeFilterChip : ''}`}
-              onClick={() => setActiveFilter('AI & Data')}
+              onClick={() => {
+                setActiveFilter('AI & Data');
+                setIsExpanded(false);
+              }}
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
@@ -311,7 +302,10 @@ export default function Certifications() {
               role="tab"
               aria-selected={activeFilter === 'Development'}
               className={`${styles.filterChip} ${activeFilter === 'Development' ? styles.activeFilterChip : ''}`}
-              onClick={() => setActiveFilter('Development')}
+              onClick={() => {
+                setActiveFilter('Development');
+                setIsExpanded(false);
+              }}
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <polyline points="16 18 22 12 16 6" />
@@ -325,7 +319,10 @@ export default function Certifications() {
               role="tab"
               aria-selected={activeFilter === 'Design'}
               className={`${styles.filterChip} ${activeFilter === 'Design' ? styles.activeFilterChip : ''}`}
-              onClick={() => setActiveFilter('Design')}
+              onClick={() => {
+                setActiveFilter('Design');
+                setIsExpanded(false);
+              }}
             >
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="10" />
@@ -342,9 +339,11 @@ export default function Certifications() {
             {certs.map((cert) => (
               <a
                 key={cert.id}
-                href={cert.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={cert.image}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCert(cert);
+                }}
                 className={`${styles.card} ${styles[cert.catClass as keyof typeof styles]}`}
                 id={`cert-${cert.id}`}
                 aria-label={`View ${cert.title} by ${cert.issuer}`}
@@ -370,74 +369,141 @@ export default function Certifications() {
           </div>
         </div>
 
-        {/* ── INNOVATIVE MOBILE CERTIFICATION CARDS LIST ── */}
-        <div className={styles.mobileCardsList} role="region" aria-label="Certifications list">
-          {filteredCerts.map((cert) => {
-            const domainClass =
-              cert.domainGroup === 'AI & Data'
-                ? styles.domainAi
-                : cert.domainGroup === 'Development'
-                ? styles.domainDev
-                : styles.domainDesign;
-
-            return (
-              <a
-                key={`mobile-${cert.id}`}
-                href={cert.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles.mobileCard} ${domainClass}`}
-                aria-label={`Open certificate for ${cert.title} by ${cert.issuer}`}
+        {/* ── INNOVATIVE MOBILE 4-CARD SHOWCASE GRID (Reference Style) ── */}
+        <div className={styles.mobileShowcaseWrapper}>
+          <div className={styles.mobileCardsGrid} role="region" aria-label="Certifications grid">
+            {visibleMobileCerts.map((cert) => (
+              <div
+                key={`mobile-grid-${cert.id}`}
+                className={styles.mobilePillCard}
+                style={{ background: cert.themeGradient }}
+                onClick={() => setSelectedCert(cert)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Open ${cert.title} certificate`}
               >
-                {/* Asymmetric corner edge & subtle domain gradient */}
-                <span className={styles.mobileCardCornerCut} aria-hidden="true" />
-                <span className={styles.mobileCardBgPattern} aria-hidden="true" />
-
-                {/* Left Zone — Issuer Identity */}
-                <div className={styles.mobileIssuerZone}>
-                  <div className={styles.mobileLogoBox}>
-                    <IssuerLogo issuer={cert.issuer} />
-                  </div>
-                  <span className={styles.mobileCardIndex}>{cert.index}</span>
+                {/* Upper Certificate Image with Radial Glow & Fade */}
+                <div className={styles.pillImageContainer}>
+                  <Image
+                    src={cert.thumb}
+                    alt={cert.title}
+                    width={280}
+                    height={190}
+                    className={styles.pillCertImage}
+                    priority={false}
+                  />
+                  {/* Subtle fade mist gradient to blend into card bottom */}
+                  <div className={styles.pillImageFade} />
                 </div>
 
-                {/* Diagonal fine separator */}
-                <span className={styles.mobileZoneSeparator} aria-hidden="true" />
+                {/* Inner Card Floating Content */}
+                <div className={styles.pillCardBody}>
+                  <span className={styles.pillBadge}>{cert.badge}</span>
+                  <h3 className={styles.pillTitle}>{cert.title}</h3>
+                  <span className={styles.pillIssuer}>{cert.issuer}</span>
 
-                {/* Center Zone — Certificate Information */}
-                <div className={styles.mobileInfoZone}>
-                  <div className={styles.mobileBadgeRow}>
-                    <span className={styles.mobileCategoryBadge}>{cert.badge}</span>
-                  </div>
-                  <h3 className={styles.mobileCardTitle}>{cert.title}</h3>
-                  <div className={styles.mobileCardIssuerRow}>
-                    <span className={styles.issuerDot} />
-                    <span className={styles.mobileCardIssuerName}>{cert.issuer}</span>
-                  </div>
-                  {cert.description && (
-                    <p className={styles.mobileCardDesc}>{cert.description}</p>
-                  )}
-                </div>
-
-                {/* Diagonal fine separator */}
-                <span className={styles.mobileZoneSeparator} aria-hidden="true" />
-
-                {/* Right Zone — Metadata and Action */}
-                <div className={styles.mobileMetaActionZone}>
-                  <div className={styles.mobileYearBadge}>
-                    <CalendarIcon />
-                    <span>{cert.date}</span>
-                  </div>
-
-                  <span className={styles.mobileArrowBtn} aria-hidden="true">
+                  {/* Frosted Action Button */}
+                  <button
+                    type="button"
+                    className={styles.pillActionBtn}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedCert(cert);
+                    }}
+                    aria-label={`View ${cert.title}`}
+                  >
+                    <span>View Cert</span>
                     <ArrowUpRight />
-                  </span>
+                  </button>
                 </div>
-              </a>
-            );
-          })}
+              </div>
+            ))}
+          </div>
+
+          {/* View More / View Less Toggle Button */}
+          {filteredCerts.length > 4 && (
+            <div className={styles.mobileViewMoreContainer}>
+              <button
+                type="button"
+                className={styles.mobileViewMoreBtn}
+                onClick={() => setIsExpanded(!isExpanded)}
+              >
+                <span>{isExpanded ? 'Show Less' : `View More (+${filteredCerts.length - 4})`}</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{
+                    transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                  aria-hidden="true"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
       </div>
+
+      {/* ── IN-APP LIGHTBOX MODAL (Opens certificate directly on site without Google Drive) ── */}
+      {selectedCert && (
+        <div
+          className={styles.lightboxOverlay}
+          onClick={() => setSelectedCert(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Certificate: ${selectedCert.title}`}
+        >
+          <div
+            className={styles.lightboxContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className={styles.lightboxHeader}>
+              <div className={styles.lightboxTitleInfo}>
+                <span className={styles.lightboxBadge}>{selectedCert.badge}</span>
+                <h3 className={styles.lightboxTitle}>{selectedCert.title}</h3>
+                <span className={styles.lightboxIssuer}>{selectedCert.issuer} • {selectedCert.date}</span>
+              </div>
+              <button
+                type="button"
+                className={styles.lightboxCloseBtn}
+                onClick={() => setSelectedCert(null)}
+                aria-label="Close modal"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Modal Image Display */}
+            <div className={styles.lightboxImageWrapper}>
+              <Image
+                src={selectedCert.image}
+                alt={selectedCert.title}
+                width={1100}
+                height={750}
+                className={styles.lightboxImage}
+                priority
+              />
+            </div>
+
+            {/* Modal Footer Description */}
+            <div className={styles.lightboxFooter}>
+              <p className={styles.lightboxDesc}>{selectedCert.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
