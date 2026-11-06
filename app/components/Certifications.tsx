@@ -228,109 +228,6 @@ export default function Certifications() {
             </h2>
             <p className={styles.mobileSubtitle}>Professional credentials &amp; achievements</p>
           </div>
-
-          {/* ── MOBILE STATISTICS OVERVIEW ── */}
-          <div className={styles.mobileStatsPanel}>
-            <div className={styles.mobileStatItem}>
-              <div className={styles.mobileStatValueRow}>
-                <span className={styles.statDot} />
-                <span className={styles.mobileStatVal}>08</span>
-              </div>
-              <span className={styles.mobileStatLbl}>TOTAL</span>
-            </div>
-
-            <span className={styles.mobileStatSep} />
-
-            <div className={styles.mobileStatItem}>
-              <div className={styles.mobileStatValueRow}>
-                <span className={styles.statDot} />
-                <span className={styles.mobileStatVal}>03</span>
-              </div>
-              <span className={styles.mobileStatLbl}>DOMAINS</span>
-            </div>
-
-            <span className={styles.mobileStatSep} />
-
-            <div className={styles.mobileStatItem}>
-              <div className={styles.mobileStatValueRow}>
-                <span className={styles.statDot} />
-                <span className={styles.mobileStatVal}>2024–26</span>
-              </div>
-              <span className={styles.mobileStatLbl}>ACTIVE SPAN</span>
-            </div>
-          </div>
-
-          {/* ── MOBILE CATEGORY FILTERS ── */}
-          <div className={styles.mobileFiltersRow} role="tablist" aria-label="Filter certifications by domain">
-            <button
-              type="button"
-              role="tab"
-              aria-selected={activeFilter === 'All'}
-              className={`${styles.filterChip} ${activeFilter === 'All' ? styles.activeFilterChip : ''}`}
-              onClick={() => {
-                setActiveFilter('All');
-                setIsExpanded(false);
-              }}
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <rect x="3" y="3" width="7" height="7" />
-                <rect x="14" y="3" width="7" height="7" />
-                <rect x="14" y="14" width="7" height="7" />
-                <rect x="3" y="14" width="7" height="7" />
-              </svg>
-              <span>All ({counts.all})</span>
-            </button>
-
-            <button
-              type="button"
-              role="tab"
-              aria-selected={activeFilter === 'AI & Data'}
-              className={`${styles.filterChip} ${activeFilter === 'AI & Data' ? styles.activeFilterChip : ''}`}
-              onClick={() => {
-                setActiveFilter('AI & Data');
-                setIsExpanded(false);
-              }}
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-              </svg>
-              <span>AI &amp; Data ({counts.ai})</span>
-            </button>
-
-            <button
-              type="button"
-              role="tab"
-              aria-selected={activeFilter === 'Development'}
-              className={`${styles.filterChip} ${activeFilter === 'Development' ? styles.activeFilterChip : ''}`}
-              onClick={() => {
-                setActiveFilter('Development');
-                setIsExpanded(false);
-              }}
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-              <span>Development ({counts.dev})</span>
-            </button>
-
-            <button
-              type="button"
-              role="tab"
-              aria-selected={activeFilter === 'Design'}
-              className={`${styles.filterChip} ${activeFilter === 'Design' ? styles.activeFilterChip : ''}`}
-              onClick={() => {
-                setActiveFilter('Design');
-                setIsExpanded(false);
-              }}
-            >
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" />
-                <polygon points="12 8 8 12 12 16 16 12 12 8" />
-              </svg>
-              <span>Design ({counts.design})</span>
-            </button>
-          </div>
         </div>
 
         {/* ── DESKTOP GRID (Preserved 100% desktop presentation) ── */}
@@ -398,9 +295,7 @@ export default function Certifications() {
 
                 {/* Inner Card Floating Content */}
                 <div className={styles.pillCardBody}>
-                  <span className={styles.pillBadge}>{cert.badge}</span>
                   <h3 className={styles.pillTitle}>{cert.title}</h3>
-                  <span className={styles.pillIssuer}>{cert.issuer}</span>
 
                   {/* Frosted Action Button */}
                   <button
