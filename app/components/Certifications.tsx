@@ -297,7 +297,7 @@ export default function Certifications() {
                 <div className={styles.pillCardBody}>
                   <h3 className={styles.pillTitle}>{cert.title}</h3>
 
-                  {/* Frosted Action Button */}
+                  {/* Arrow Action Button */}
                   <button
                     type="button"
                     className={styles.pillActionBtn}
@@ -307,7 +307,6 @@ export default function Certifications() {
                     }}
                     aria-label={`View ${cert.title}`}
                   >
-                    <span>View Cert</span>
                     <ArrowUpRight />
                   </button>
                 </div>
