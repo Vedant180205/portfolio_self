@@ -602,24 +602,26 @@
   }
 
   .mobileTitle {
-    font-family: var(--font-heading);
-    font-size: clamp(1.85rem, 6.5vw, 2.3rem);
-    font-weight: 900;
-    letter-spacing: -0.02em;
+    font-family: 'Zen Dots', var(--font-zen-dots), sans-serif;
+    font-size: clamp(2rem, 8.5vw, 2.7rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
     line-height: 1.05;
-    color: #F5F5F5;
+    color: #FFFFFF;
+    text-transform: uppercase;
     margin: 0;
   }
 
   .orangeDot {
-    color: #FF4500;
+    color: #FF6500;
   }
 
   .mobileSubtitle {
-    font-family: var(--font-body);
-    font-size: 0.82rem;
-    color: #A5A5A5;
-    margin: 0;
+    font-family: var(--font-breul), sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #BDBDBD;
+    margin: 0.2rem 0 0 0;
     letter-spacing: -0.01em;
   }
 
